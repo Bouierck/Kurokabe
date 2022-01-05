@@ -3,7 +3,7 @@
 **Projet L3 Génie Logiciel 2**
 > Jacoding - Despres ou de loin, on résout tout vos besoins
 
-![jacoding](assets/img/")
+![jacoding](assets/img/Jacoding Logo Text.png")
 
 **Groupe 3**
 - BEAUFRETON Lucas
