@@ -1,7 +1,7 @@
 # Kurokabe
 
 **Projet L3 Génie Logiciel 2**
-> Jacoding - Despres ou de loin, on résout tout vos besoins
+> Jacoding - Despres ou de loin, on répond à vos besoins
 
 **Groupe 3**
 - BEAUFRETON Lucas
