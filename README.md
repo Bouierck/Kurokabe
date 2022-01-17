@@ -21,5 +21,3 @@ Ressources utilisés :
 [Cahier des charges](https://docs.google.com/document/d/1FlOhuZBHOW_MoYjFRI37mKT_h2xnf7UtVAXiw66D7dE/edit?usp=sharing),
 [Diagramme de Gantt](https://docs.google.com/spreadsheets/d/19JpsNgYenO6e5OJJh9Wqvrw7NUWOYOXc-5A1ql4AVF8/edit#gid=0),
 [Trello](https://trello.com/b/AYIpps7L/jacoding).
-
-<a target="_blank" href="https://docs.google.com/document/d/1FlOhuZBHOW_MoYjFRI37mKT_h2xnf7UtVAXiw66D7dE/edit?usp=sharing">Cahier des charges</a>
