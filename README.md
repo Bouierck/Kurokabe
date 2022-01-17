@@ -17,6 +17,7 @@
 - LABBE Nathan
 - LARDAIS Benjamin
 
+<br>
 
 Ressources utilisés : 
 [Cahier des charges](https://docs.google.com/document/d/1FlOhuZBHOW_MoYjFRI37mKT_h2xnf7UtVAXiw66D7dE/edit?usp=sharing),
