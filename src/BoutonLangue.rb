@@ -2,7 +2,8 @@
 
 require 'gtk3'
 
-class BoutonLangue
+class BoutonLangue implements Bouton
+
     private_class_method :new
 
     def initialize(uneLangue)
@@ -28,6 +29,11 @@ class BoutonLangue
     
     monBoutonLangue = Gtk::Button.new
     
+    monBoutonLangue.add(box)
+    monBoutonLangue.show_all
+    
+    #fenetre detruite = quitter
+    monBoutonLangue.signal_connect('destroy') {onDestroy}
 
     Gtk.main
 

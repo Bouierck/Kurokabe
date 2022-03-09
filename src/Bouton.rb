@@ -1,6 +1,9 @@
 #!/usr/bin/env ruby
 
+
+
 require 'gtk3' 
+
 
 class Bouton
     private_class_method :new
@@ -42,32 +45,36 @@ class Bouton
         Gtk.main_quit
     end
     
-    monApp = Gtk::Window.new
+
     monBouton = Gtk::Button.new
     
     #titre fenetre
-    monApp.set_title("Bouton")
+    monBouton.set_title("Bouton")
     
     #taille de la fenetre
-    monApp.set_default_size(300,100)
+    monBouton.set_default_size(300,100)
     
     #bordure
-    monApp.border_width = 5
+    monBouton.border_width = 5
     
     #redimensionnement
-    monApp.set_resizable(true)
-
-    # L'application est toujours centrée
-    monApp.set_window_position(Gtk::WindowPosition::CENTER_ALWAYS)
+    monBouton.set_resizable(true)
     
     #Création des boxs
-    maBox = Gtk::Box.new(:horizontal,6)
+    box = Gtk::Box.new(false,6)
+
+    
+
     B1 = Gtk::ToggleButton.new('Bouton')
     box.pack_start(B1)
     B1.active = true
     box.pack_start(B1)
     
-    monApp.add(box)
+
+    monBouton.add(box)
+
+
+
     monBouton.show_all
     
     #fenetre detruite = quitter

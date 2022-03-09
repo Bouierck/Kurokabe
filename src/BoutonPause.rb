@@ -2,7 +2,10 @@
 
 require 'gtk3'
 
-class BoutonPause
+
+class BoutonPause implements Bouton
+    
+
     private_class_method :new
 
     def initialize(unePause)

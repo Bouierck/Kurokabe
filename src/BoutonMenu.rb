@@ -11,6 +11,7 @@ class BoutonMenu
         Gtk.main_quit
     }
 
+
     def initialize(unMenu)
         @menu = unMenu
     end
@@ -37,8 +38,16 @@ class BoutonMenu
 
     
     monBoutonMenu = Gtk::Button.new("Menu 1")
+    monBoutonMenu.active=true
+    hb.pack_start(monBoutonMenu)
 
-    window.add(monBoutonMenu)
+    window = Gtk::Window.new
+    window.signal_connect('destroy') {
+        Gtk.main_quit
+    }
+
+    window.add(hb)
+
     window.show_all
     Gtk.main
 
