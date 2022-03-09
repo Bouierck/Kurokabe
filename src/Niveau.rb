@@ -5,12 +5,14 @@
 
 class Niveau
 
-    #@idNiveau -> Numero du niveau 
-    #@grille -> Bouton pour accéder a la grille
-    #@typeFenetre -> Booleen qui definit si la fenetre est en grande ou en petite 
-    #@listBoutonSpe -> de type BoutonSpecial qui correspond aux différents boutons dans le niveau
+    ##
+    #@idNiveau => Numero du niveau 
+    #@grille => Bouton pour accéder a la grille
+    #@typeFenetre => Booleen qui definit si la fenetre est en grande ou en petite 
+    #@listBoutonSpe => de type BoutonSpecial qui correspond aux différents boutons dans le niveau
+    #@Chrono => ce type int qui correspond au chronometre du niveau
 
-    def initialize(idNiveau,uneGrille,typeFenetre,listBoutonSpe)
+    def initialize(idNiveau,uneGrille,typeFenetre,listBoutonSpe,unChronometre)
         @idNiveau = idNiveau
         @grille = uneGrille
         @typeFenetre = false
@@ -19,7 +21,7 @@ class Niveau
 
     #Action lors de clique sur un bouton special comme pause
     def LancerBoutonSpe()
-
+        
     end 
 
     #changement de la représentation en fonction de la taille de la fenetre 
