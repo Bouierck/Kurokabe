@@ -2,7 +2,8 @@
 
 require 'gtk3'
 
-class BoutonNiveau
+class BoutonNiveau implements Bouton
+    
     private_class_method :new
 
     def initialize(unNiveau)

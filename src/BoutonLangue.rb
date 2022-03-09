@@ -2,7 +2,7 @@
 
 require 'gtk3'
 
-class BoutonLangue
+class BoutonLangue implements Bouton
     private_class_method :new
 
     def initialize(uneLangue)
