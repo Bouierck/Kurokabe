@@ -3,10 +3,10 @@
 require 'gtk3'
 
 class BoutonMenu
-    private_class_method : new
+    private_class_method :new
 
-    def initialize(UnMenu)
-        @menu = UnMenu
+    def initialize(unMenu)
+        @menu = unMenu
     end
 
     def menu()

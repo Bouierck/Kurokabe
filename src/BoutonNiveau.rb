@@ -3,10 +3,10 @@
 require 'gtk3'
 
 class BoutonNiveau
-    private_class_method : new
+    private_class_method :new
 
-    def initialize(UnNiveau)
-        @niveau = UnNiveau
+    def initialize(unNiveau)
+        @niveau = unNiveau
     end
 
     def niveau()

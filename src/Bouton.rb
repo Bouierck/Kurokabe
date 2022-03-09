@@ -5,12 +5,12 @@ require 'gtk3'
 class Bouton
     private_class_method :new
 
-	def initialize(UneEtiquette, UneLongueur, UneLargeur, PositionX, PositionY)
-        @etiquette = UneEtiquette
-        @longueur = UneLongueur
-        @largeur = UneLargeur
-        @x = PositionX
-        @y = PositionY
+	def initialize(uneEtiquette, uneLongueur, uneLargeur, positionX, positionY)
+        @etiquette = uneEtiquette
+        @longueur = uneLongueur
+        @largeur = uneLargeur
+        @x = positionX
+        @y = positionY
     end
 
     def etiquette()

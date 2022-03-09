@@ -3,10 +3,10 @@
 require 'gtk3'
 
 class BoutonSpecial
-    private_class_method : new
+    private_class_method :new
 
-    def initialize(UneMethode)
-        @methode = UneMethode
+    def initialize(uneMethode)
+        @methode = uneMethode
     end
 
 

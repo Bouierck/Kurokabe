@@ -3,10 +3,10 @@
 require 'gtk3'
 
 class BoutonPause
-    private_class_method : new
+    private_class_method :new
 
-    def initialize(UnePause)
-        @pause = UnePause
+    def initialize(unePause)
+        @pause = unePause
     end
 
     def pause()

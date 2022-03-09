@@ -3,10 +3,10 @@
 require 'gtk3'
 
 class BoutonLangue
-    private_class_method : new
+    private_class_method :new
 
-    def initialize(UneLangue)
-        @langue = UneLangue
+    def initialize(uneLangue)
+        @langue = uneLangue
     end
 
     def langue()
