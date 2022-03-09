@@ -3,7 +3,7 @@ class Case
     ##
     # @x => position x de la case dans la grille
     # @y => position y de la case dans la grille
-    # @etat => etat actuel dela case
+    # @etat => etat actuel de la case
 
     ##
     # Constructeur de Case
