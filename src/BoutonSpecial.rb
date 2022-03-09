@@ -4,6 +4,7 @@ require 'gtk3'
 
 class BoutonSpecial implements Bouton
     
+
     private_class_method :new
 
     def initialize(uneMethode)

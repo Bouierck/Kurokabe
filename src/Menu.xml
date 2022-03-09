@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROJET NOM="Menu" TYPE="Ruby">
+  <FICHIER>MenuConnexion.rb</FICHIER>
+  <FICHIER>MenuConnexion.glade</FICHIER>
+  <FICHIER>MenuPrincipal.rb</FICHIER>
+  <FICHIER>MenuPrincipal.glade</FICHIER>
+  <FICHIER>Menu.rb</FICHIER>
+  <FICHIER>MenuNiveaux.rb</FICHIER>
+  <FICHIER>MenuNiveaux.glade</FICHIER>
+  <FICHIER>MenuClassement.rb</FICHIER>
+  <FICHIER>MenuClassement.glade</FICHIER>
+  <FICHIER>MenuPause.rb</FICHIER>
+  <FICHIER>MenuPause.glade</FICHIER>
+  <FICHIER>MenuRegles.rb</FICHIER>
+  <FICHIER>MenuRegles.glade</FICHIER>
+</PROJET>
+

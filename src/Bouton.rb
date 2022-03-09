@@ -1,6 +1,9 @@
 #!/usr/bin/env ruby
 
-require 'gtk3'
+
+
+require 'gtk3' 
+
 
 class Bouton
     private_class_method :new
@@ -42,6 +45,7 @@ class Bouton
         Gtk.main_quit
     end
     
+
     monBouton = Gtk::Button.new
     
     #titre fenetre
@@ -58,12 +62,19 @@ class Bouton
     
     #Création des boxs
     box = Gtk::Box.new(false,6)
+
+    
+
     B1 = Gtk::ToggleButton.new('Bouton')
     box.pack_start(B1)
     B1.active = true
     box.pack_start(B1)
     
+
     monBouton.add(box)
+
+
+
     monBouton.show_all
     
     #fenetre detruite = quitter
