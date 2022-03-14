@@ -1,57 +1,34 @@
 #!/usr/bin/env ruby
 
 require 'gtk3'
+require_relative "Kurob/src/Menus/Menu.rb"
 Gtk.init
 
 class BoutonMenu
     private_class_method :new
 
-    window = Gtk::Window.new
-    window.signal_connect('destroy') {
-        Gtk.main_quit
-    }
 
-
-    def initialize(unMenu)
-        @menu = unMenu
+    def initialize(uneEtiquette)
+        @etiquette = uneEtiquette
     end
 
-    def menu()
-        return @menu
+    def BoutonMenu.creer(uneEtiquette)
+        new(uneEtiquette)
     end
 
-    def BoutonMenu.creer()
-        new()
-    end
+    def afficheToi()
+        window = Gtk::Window.new
+        vbox = Gtk::VBox.new(true, 6)
+        vbox.pack_start(Gtk::Button.new('Bouton Menu 1'), false)
+        vbox.pack_start(Gtk::Button.new('Bouton Menu 2'), true, false)
+        vbox.pack_start(Gtk::Button.new('Bouton Menu 3'), true, true)
 
-    def lanceMenu()
-        monBoutonMenu.signal_connect('clicked') {
-            print"Bonsoir"
+        window.add(vbox)
+        window.show_all
+        Gtk.main
+
+        window.signal_connect('destroy') { 
+            Gtk.main_quit 
         }
-    
-    end
-
-    def onDestroy
-        puts "Fin de l'appli"
-        Gtk.main_quit
-    end
-
-    
-    monBoutonMenu = Gtk::Button.new("Menu 1")
-    monBoutonMenu.active=true
-    hb.pack_start(monBoutonMenu)
-
-    window = Gtk::Window.new
-    window.signal_connect('destroy') {
-        Gtk.main_quit
-    }
-
-    window.add(hb)
-
-    window.show_all
-    Gtk.main
-
-
-
-
+    end 
 end

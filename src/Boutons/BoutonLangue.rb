@@ -2,40 +2,30 @@
 
 require 'gtk3'
 
-class BoutonLangue implements Bouton
+class BoutonLangue
 
     private_class_method :new
 
-    def initialize(uneLangue)
-        @langue = uneLangue
+    def initialize(uneEtiquette)
+        @etiquette = uneEtiquette
     end
 
-    def langue()
-        return @langue
+    def BoutonLangue.creer(uneEtiquette)
+        new(uneEtiquette)
     end
 
-    def BoutonLangue.creer()
-        new()
-    end
+    def afficheToi()
+        window = Gtk::Window.new
+        vbox = Gtk::VBox.new(true, 6)
+        vbox.pack_start(Gtk::Button.new('Français'), false)
+        vbox.pack_start(Gtk::Button.new('English'), true, false)
 
-    def changeLangue()
+        window.add(vbox)
+        window.show_all
+        Gtk.main
 
-    end
-
-    def onDestroy
-        puts "Fin de l'appli"
-        Gtk.main_quit
-    end
-    
-    monBoutonLangue = Gtk::Button.new
-    
-    monBoutonLangue.add(box)
-    monBoutonLangue.show_all
-    
-    #fenetre detruite = quitter
-    monBoutonLangue.signal_connect('destroy') {onDestroy}
-
-    Gtk.main
-
-
+        window.signal_connect('destroy') { 
+            Gtk.main_quit 
+        }
+    end 
 end

@@ -2,60 +2,33 @@
 
 require 'gtk3'
 
-class BoutonSpecial implements Bouton
+class BoutonSpecial
     
 
     private_class_method :new
 
-    def initialize(uneMethode)
-        @methode = uneMethode
+    def initialize(uneEtiquette)
+        @etiquette = uneEtiquette
     end
 
 
-    def methode()
-        return @methode
+    def BoutonSpecial.creer(uneEtiquette)
+        new(uneEtiquette)
     end
 
-    def BoutonSpecial.creer()
-        new()
-    end
+    def afficheToi()
+        window = Gtk::Window.new
+        vbox = Gtk::VBox.new(true, 6)
+        vbox.pack_start(Gtk::Button.new('Bouton Special 1'), false)
+        vbox.pack_start(Gtk::Button.new('Bouton Special 2'), true, false)
+        vbox.pack_start(Gtk::Button.new('Bouton Special 3'), true, true)
 
-    def lanceMethode()
+        window.add(vbox)
+        window.show_all
+        Gtk.main
 
-    end
-
-    def onDestroy
-        puts "Fin de l'appli"
-        Gtk.main_quit
-    end
-    
-    monBoutonSpecial = Gtk::Button.new
-    
-    #titre fenetre
-    monBoutonSpecial.set_title("Bouton Special")
-    
-    #taille de la fenetre
-    monBoutonSpecial.set_default_size(300,100)
-    
-    #bordure
-    monBoutonSpecial.border_width = 5
-    
-    #redimensionnement
-    monBoutonSpecial.set_resizable(true)
-    
-    #Création des boxs
-    box = Gtk::Box.new(false,6)
-    B2 = Gtk::ToggleButton.new('Special')
-    box.pack_start(B2)
-    B2.active = true
-    box.pack_start(B2)
-    
-    monBoutonSpecial.add(box)
-    monBoutonSpecial.show_all
-    
-    #fenetre detruite = quitter
-    monBoutonSpecial.signal_connect('destroy') {onDestroy}
-    Gtk.main
-
-
+        window.signal_connect('destroy') { 
+            Gtk.main_quit 
+        }
+    end 
 end
