@@ -14,9 +14,11 @@ class CaseCliquable < Case
     #
     # * -x- Position x dans la grille
     # * -y- Position y dans la grille
+    # * -etat- etat de la case: 0 vide, 1 point, 2 mur
     #
-    def CaseCliquable.creer(x, y)
+    def CaseCliquable.creer(x, y, etat = 0)
         new(x, y)
+        @etat = etat
     end
 
     def initialize(x, y)
@@ -33,6 +35,6 @@ class CaseCliquable < Case
     end
     
     def to_s
-        return @etat.to_s
+        return "~" + @etat.to_s + "~"
     end
 end

@@ -26,7 +26,7 @@ class CaseChiffre < Case
     end
 
     def to_s
-        return @chiffre.to_s
+        return "*" + @chiffre.to_s + "*"
     end
     
 end
