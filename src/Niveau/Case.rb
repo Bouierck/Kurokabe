@@ -7,7 +7,7 @@ class Case
 
     private_class_method :new
 
-    def initialize(x, y):
+    def initialize(x, y)
         @x, @y = x, y
         @clicable = false
     end

@@ -1,3 +1,5 @@
+require_relative "Case.rb"
+
 class CaseCliquable < Case
 
     ##
@@ -13,21 +15,24 @@ class CaseCliquable < Case
     # * -x- Position x dans la grille
     # * -y- Position y dans la grille
     #
-    def CaseClicable.creer(x, y)
+    def CaseCliquable.creer(x, y)
         new(x, y)
     end
 
     def initialize(x, y)
         super(x, y)
         @etat = 0
-        @clicable = true
+        @cliquable = true
     end
 
     ##
     # Met l'etat de la case à l'etat suivant
     #
-    def changeEtat:
+    def changeEtat
         @etat = (@etat + 1) % 3
     end
     
+    def to_s
+        return @etat.to_s
+    end
 end

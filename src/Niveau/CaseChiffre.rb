@@ -1,4 +1,6 @@
-class CaseClicable < Case
+require_relative "Case.rb"
+
+class CaseChiffre < Case
 
     ##
     # @chiffre chiffre de la case (correspond au nombre de case libre autour d'elle)
@@ -21,6 +23,10 @@ class CaseClicable < Case
     def initialize(x, y, chiffre)
         super(x, y)
         @chiffre = chiffre
+    end
+
+    def to_s
+        return @chiffre.to_s
     end
     
 end

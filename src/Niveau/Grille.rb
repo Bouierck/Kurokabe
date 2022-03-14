@@ -1,3 +1,7 @@
+require_relative "../Donnees/Utilisateur.rb"
+require_relative "./CaseChiffre.rb"
+require_relative "./CaseCliquable.rb"
+
 class Grille
 
     def Grille.creer(utilisateur, nomGrille)
@@ -9,28 +13,27 @@ class Grille
     def initialize(utilisateur, nomGrille)
         @utilisateur = utilisateur
 
-        chemin = "../../profile/" + @utilisateur.nom + "/" + nomGrille
+        chemin = __dir__ + "/../../profile/" + @utilisateur.nom + "/levels/" + nomGrille + ".krkb"
+    
         fichierMap = File.open(chemin)
-        tailleGrilleX = fichierMap.read.split("\n")[0]
-        tailleGrilleY = fichierMap.read.split("\n")[1]
-        donneesCases = fichierMap.read.split("\n")[2]
-        donneesHistorique = fichierMap.read.split("\n")[3]
+        donnees = fichierMap.read.split("\n")
+        tailleGrilleX = donnees[0].to_i
+        tailleGrilleY = donnees[1].to_i
+        donneesCases = donnees[2].split(" ")
+        donneesHistorique = donnees[3].split(" ")
+
         
         @matrice = Array.new(tailleGrilleY) { Array.new(tailleGrilleX) { 0 } }
 
-        int x, y = 0, 0
+        x, y = 0, 0
         for chiffre in donneesCases do
-            if chiffre == -1
-                @matrice[y][x] = (CaseCliquable.creer(tailleGrilleX, tailleGrilleY))
+            if chiffre.to_i < 0
+                @matrice[y][x] = (CaseCliquable.creer(x, y))
             else
-                @matrice[y][x] = (CaseChiffre.creer())
+                @matrice[y][x] = (CaseChiffre.creer(x, y, chiffre.to_i))
             end
-            x = x+1%TailleGrilleX
+            x = (x+1)%tailleGrilleX
             y += 1 if x == 0
-        end
-
-        for histo in donneesHistorique do
-
         end
     end
 
