@@ -14,6 +14,7 @@ class Bouton
         @largeur = uneLargeur
         @x = positionX
         @y = positionY
+        
     end
 
     def etiquette()
@@ -36,50 +37,21 @@ class Bouton
         return @y 
     end
 
-    def Bouton.creer()
-        new()
+    def Bouton.creer(uneEtiquette, uneLongueur, uneLargeur, positionX, positionY)
+        new(uneEtiquette, uneLongueur, uneLargeur, positionX, positionY)
     end
 
-    def onDestroy
-        puts "Fin de l'appli"
-        Gtk.main_quit
-    end
-    
+    def afficheToi()
+        window = Gtk::Window.new
+        button = Gtk::Button.new('Bouton')
 
-    monBouton = Gtk::Button.new
-    
-    #titre fenetre
-    monBouton.set_title("Bouton")
-    
-    #taille de la fenetre
-    monBouton.set_default_size(300,100)
-    
-    #bordure
-    monBouton.border_width = 5
-    
-    #redimensionnement
-    monBouton.set_resizable(true)
-    
-    #Création des boxs
-    box = Gtk::Box.new(false,6)
+        window.add(button)
+        window.show_all
+        
+        Gtk.main
 
-    
-
-    B1 = Gtk::ToggleButton.new('Bouton')
-    box.pack_start(B1)
-    B1.active = true
-    box.pack_start(B1)
-    
-
-    monBouton.add(box)
-
-
-
-    monBouton.show_all
-    
-    #fenetre detruite = quitter
-    monBouton.signal_connect('destroy') {onDestroy}
-    Gtk.main
-
-
+        window.signal_connect('destroy') { 
+            Gtk.main_quit 
+        }
+    end 
 end
