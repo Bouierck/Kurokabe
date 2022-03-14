@@ -92,6 +92,10 @@ class Grille
         return true
     end
 
+    ##
+    # Compare la grille courante et la correction et renvoi un tableau composée des cases ayant une erreur (un point au lieu d'un
+    # mur ou inversement).
+    #
     def compareGrille
         
         erreurs = []
@@ -99,9 +103,9 @@ class Grille
         for y in 0...@matrice.length do #parcours de la matrice
             for x in 0...@matrice[y] do
 
-                if(@matrice[y][x].is_a CaseCliquable && @matrice[y][x].etat != 0){ #Si case jouable n'est pas vide
+                if(@matrice[y][x].is_a CaseCliquable && @matrice[y][x].etat != 0) #Si case jouable n'est pas vide
                     erreurs.push(@matrice[y][x]) if @matrice[y][x] != @matriceCorrigee[y][x] #ajout de l'erreur
-                }
+                end
                 
             end
         end
