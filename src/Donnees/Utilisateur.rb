@@ -10,6 +10,7 @@ class Utilisateur
     #@langue => Langue choisi de type Langue
     #@nbEtoiles => Nombre d'étoile obtenu dans le mode aventure
     #@sauvegarde => Sauvegarde de l'utilisateur
+    attr_reader :nom
 
     ##
     # Constructeur de Sauvegarde
@@ -18,14 +19,14 @@ class Utilisateur
         new(unNom, uneLangue)
     end
 
+    private_class_method :new
+
     def initialize(unNom, uneLangue)
         @nom = unNom
         @langue = uneLangue
-        @sauvegarde = new Sauvegarde(unNom)
-        @nbEtoiles = unInt.nbEtoiles()
+        #@sauvegarde = new Sauvegarde(unNom)
+        #@nbEtoiles = unInt.nbEtoiles()
     end
-
-    private_class_method :new
 
     ##
     # Retourne le nombre d'étoiles
