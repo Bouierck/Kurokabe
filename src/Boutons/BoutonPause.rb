@@ -20,13 +20,20 @@ class BoutonPause
         window = Gtk::Window.new
         button = Gtk::Button.new('Bouton Pause')
 
+
         window.add(button)
         window.show_all
-        
-        Gtk.main
+ 
 
-        window.signal_connect('destroy') { 
+        button.signal_connect('clicked') { 
+            print"Bonjour"
+        }
+
+        button.signal_connect('destroy') { 
+            print"je suis mort"
             Gtk.main_quit 
         }
+        Gtk.main
+
     end 
 end

@@ -31,4 +31,8 @@ class BoutonSpecial
             Gtk.main_quit 
         }
     end 
+
+    def quitter()
+        
+    end
 end
