@@ -1,4 +1,4 @@
-load "BoutonMenu.rb"
+load "BoutonLangue.rb"
 
-x = BoutonMenu.creer(1)
+x = BoutonLangue.creer(1)
 x.afficheToi()
