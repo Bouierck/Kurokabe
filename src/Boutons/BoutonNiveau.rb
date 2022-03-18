@@ -3,33 +3,28 @@
 require 'gtk3'
 
 
-class BoutonNiveau implements Bouton
-    
-
+class BoutonNiveau
     private_class_method :new
 
-    def initialize(uneEtiquette)
+    def initialize(uneEtiquette, uneMethode)
         @etiquette = uneEtiquette
+        @methode = uneMethode
     end
 
-    def BoutonNiveau.creer()
-        new()
+    def methode()
+        return @methode
     end
 
-    ddef afficheToi()
-    window = Gtk::Window.new
-    vbox = Gtk::VBox.new(true, 6)
-    vbox.pack_start(Gtk::Button.new('Niveau 1'), false)
-    vbox.pack_start(Gtk::Button.new('Niveau 2'), true, false)
-    vbox.pack_start(Gtk::Button.new('Niveau 3'), true, true)
+    def etiquette()
+        return @etiquette
+    end
 
-    window.add(vbox)
-    window.show_all
-    Gtk.main
+    def BoutonNiveau.creer(uneEtiquette, uneMethode)
+        new(uneEtiquette, uneMethode)
+    end
 
-    window.signal_connect('destroy') { 
-        Gtk.main_quit 
-    }
-end 
-
+    def afficheBouton()
+        button = Gtk::Button.new(etiquette)
+        Gtk.main
+    end 
 end

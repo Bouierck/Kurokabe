@@ -41,17 +41,8 @@ class Bouton
         new(uneEtiquette, uneLongueur, uneLargeur, positionX, positionY)
     end
 
-    def afficheToi()
-        window = Gtk::Window.new
-        button = Gtk::Button.new('Bouton')
-
-        window.add(button)
-        window.show_all
-        
+    def afficheBouton()
+        button = Gtk::Button.new(etiquette)
         Gtk.main
-
-        window.signal_connect('destroy') { 
-            Gtk.main_quit 
-        }
     end 
 end
