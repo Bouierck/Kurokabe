@@ -1,4 +1,4 @@
 load "BoutonLangue.rb"
 
-x = BoutonLangue.creer(1)
-x.afficheToi()
+x = BoutonMenu.creer('PAUSE', 12)
+x.afficheBouton()

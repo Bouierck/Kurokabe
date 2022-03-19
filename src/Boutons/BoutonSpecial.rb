@@ -2,37 +2,30 @@
 
 require 'gtk3'
 
-class BoutonSpecial
-    
+Gtk.init
 
+class BoutonSpecial
     private_class_method :new
 
-    def initialize(uneEtiquette)
+    def initialize(uneEtiquette, uneMethode)
         @etiquette = uneEtiquette
+        @methode = uneMethode
     end
 
-
-    def BoutonSpecial.creer(uneEtiquette)
-        new(uneEtiquette)
+    def methode()
+        return @methode
     end
 
-    def afficheToi()
-        window = Gtk::Window.new
-        vbox = Gtk::VBox.new(true, 6)
-        vbox.pack_start(Gtk::Button.new('Bouton Special 1'), false)
-        vbox.pack_start(Gtk::Button.new('Bouton Special 2'), true, false)
-        vbox.pack_start(Gtk::Button.new('Bouton Special 3'), true, true)
+    def etiquette()
+        return @etiquette
+    end
 
-        window.add(vbox)
-        window.show_all
+    def BoutonSpecial.creer(uneEtiquette, uneMethode)
+        new(uneEtiquette, uneMethode)
+    end
+
+    def afficheBouton()
+        button = Gtk::Button.new(etiquette)
         Gtk.main
-
-        window.signal_connect('destroy') { 
-            Gtk.main_quit 
-        }
     end 
-
-    def quitter()
-        
-    end
 end

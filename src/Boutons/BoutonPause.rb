@@ -4,36 +4,27 @@ require 'gtk3'
 
 
 class BoutonPause
-    
-
     private_class_method :new
 
-    def initialize(uneEtiquette)
+    def initialize(uneEtiquette, uneMethode)
         @etiquette = uneEtiquette
+        @methode = uneMethode
     end
 
-    def BoutonPause.creer(uneEtiquette)
-        new(uneEtiquette)
+    def methode()
+        return @methode
     end
 
-    def afficheToi()
-        window = Gtk::Window.new
-        button = Gtk::Button.new('Bouton Pause')
+    def etiquette()
+        return @etiquette
+    end
 
+    def BoutonPause.creer(uneEtiquette, uneMethode)
+        new(uneEtiquette, uneMethode)
+    end
 
-        window.add(button)
-        window.show_all
- 
-
-        button.signal_connect('clicked') { 
-            print"Bonjour"
-        }
-
-        button.signal_connect('destroy') { 
-            print"je suis mort"
-            Gtk.main_quit 
-        }
+    def afficheBouton()
+        button = Gtk::Button.new(etiquette)
         Gtk.main
-
-    end 
+    end  
 end
