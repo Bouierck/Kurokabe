@@ -1,48 +1,27 @@
 #!/usr/bin/env ruby
 
-
-
 require 'gtk3' 
 
+##
+# Représente un bouton (Classe abstraite)
+#
+class Bouton < Gtk::Button
 
-class Bouton
+    ##
+    # @longueur longueur du bouton
+    # @largeur largeur du bouton
+
+    attr_reader :longueur :largeur
+
     private_class_method :new
 
-	def initialize(uneEtiquette, uneLongueur, uneLargeur, positionX, positionY)
-        @etiquette = uneEtiquette
+	def initialize(uneEtiquette, uneLongueur, uneLargeur)
+        
+        super(etiquette)
+
         @longueur = uneLongueur
         @largeur = uneLargeur
-        @x = positionX
-        @y = positionY
-        
-    end
 
-    def etiquette()
-        return @etiquette
     end
-
-    def longueur()
-        return @longueur
-    end
-
-    def largeur()
-        return @largeur
-    end
-
-    def x()
-        return @x 
-    end
-
-    def y()
-        return @y 
-    end
-
-    def Bouton.creer(uneEtiquette, uneLongueur, uneLargeur, positionX, positionY)
-        new(uneEtiquette, uneLongueur, uneLargeur, positionX, positionY)
-    end
-
-    def afficheBouton()
-        button = Gtk::Button.new(etiquette)
-        Gtk.main
-    end 
+    
 end

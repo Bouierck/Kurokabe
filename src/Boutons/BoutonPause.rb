@@ -1,30 +1,31 @@
 #!/usr/bin/env ruby
 
+require_relative "./Bouton.rb"
+
 require 'gtk3'
 
+##
+# Lance le menu pause et stop le chronometre du niveau
+#
+class BoutonPause < BoutonMenu
 
-class BoutonPause
+    ##
+    #@niveau niveau mis en pause
+
     private_class_method :new
 
-    def initialize(uneEtiquette, uneMethode)
-        @etiquette = uneEtiquette
-        @methode = uneMethode
+    def BoutonPause.creer(uneEtiquette, uneLongueur, uneLargeur, unMenu, unNiveau)
+        new(uneEtiquette, uneLongueur, uneLargeur, unMenu, unNiveau)
     end
 
-    def methode()
-        return @methode
+    def initialize(uneEtiquette, uneLongueur, uneLargeur, unMenu, unNiveau)
+        super(uneEtiquette, uneLongueur, uneLargeur, unMenu)
+        @niveau = unNiveau
     end
 
-    def etiquette()
-        return @etiquette
-    end
+    self.signal_connect('clicked'){
+        super()
+        #Arret chrono dans le niveau
+    }
 
-    def BoutonPause.creer(uneEtiquette, uneMethode)
-        new(uneEtiquette, uneMethode)
-    end
-
-    def afficheBouton()
-        button = Gtk::Button.new(etiquette)
-        Gtk.main
-    end  
 end
