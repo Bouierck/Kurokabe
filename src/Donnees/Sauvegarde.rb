@@ -96,7 +96,7 @@ class Sauvegarde
             end
         end
         fGrille = File.open("../../profile/#{@nomUtilisateur}/levels/#{niveau}", "w")
-        fGrille.write("#{grille.length}\n#{grille[0].length}\n#{sauvLigneGrille})
+        fGrille.write("#{grille.length}\n#{grille[0].length}\n#{sauvLigneGrille}")
     end
 end # Marqueur de fin de classe
 
