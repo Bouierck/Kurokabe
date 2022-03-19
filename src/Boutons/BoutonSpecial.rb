@@ -1,31 +1,24 @@
 #!/usr/bin/env ruby
 
+require_relative "./Bouton.rb"
+
 require 'gtk3'
 
-Gtk.init
+class BoutonSpecial < Bouton
 
-class BoutonSpecial
-    private_class_method :new
+    def BoutonLangue.creer(uneEtiquette, uneLongueur, uneLargeur, uneMethode)
+        new(uneEtiquette, uneLongueur, uneLargeur, uneMethode)
+    end
 
-    def initialize(uneEtiquette, uneMethode)
-        @etiquette = uneEtiquette
+    def initialize(uneEtiquette, uneLongueur, uneLargeur, uneMethode)
+        
+        super(uneEtiquette, uneLongueur, uneLargeur)
         @methode = uneMethode
+
     end
 
-    def methode()
-        return @methode
-    end
+    self.signal_connect('clicked'){
+        #Lancement de la méthode
+    }
 
-    def etiquette()
-        return @etiquette
-    end
-
-    def BoutonSpecial.creer(uneEtiquette, uneMethode)
-        new(uneEtiquette, uneMethode)
-    end
-
-    def afficheBouton()
-        button = Gtk::Button.new(etiquette)
-        Gtk.main
-    end 
 end

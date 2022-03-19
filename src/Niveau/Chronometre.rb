@@ -47,8 +47,9 @@ class Chronometre
     #
     def update
 
-        if(estLance)
+        if(@estLance)
             @timer += Time.new().sec - @dateDebut.sec
+            @dateDebut = Time.new()
         end
 
         return @timer

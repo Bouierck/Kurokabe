@@ -1,32 +1,32 @@
 #!/usr/bin/env ruby
 
+require_relative "./Bouton.rb"
+
 require 'gtk3'
- 
 
-Gtk.init
+##
+# Lance un menu
+#
+class BoutonMenu < Bouton
+    
+    ##
+    #@menu Menu à lancé à l'appuie du bouton
 
-class BoutonMenu
+    def BoutonMenu.creer(uneEtiquette, uneLongueur, uneLargeur, unMenu)
+        new(uneEtiquette, uneLongueur, uneLargeur, unMenu)
+    end
+
     private_class_method :new
 
-    def initialize(uneEtiquette, uneMethode)
-        @etiquette = uneEtiquette
-        @methode = uneMethode
+    def initialize(uneEtiquette, uneLongueur, uneLargeur, unMenu)
+
+        super(uneEtiquette, uneLongueur, uneLargeur)
+        @menu = unMenu
+
     end
 
-    def methode()
-        return @methode
-    end
+    self.signal_connect('clicked'){
+        @menu.lancerMenu
+    }
 
-    def etiquette()
-        return @etiquette
-    end
-
-    def BoutonMenu.creer(uneEtiquette, uneMethode)
-        new(uneEtiquette, uneMethode)
-    end
-
-    def afficheBouton()
-        button = Gtk::Button.new(etiquette)
-        Gtk.main
-    end 
 end
