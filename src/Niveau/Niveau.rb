@@ -50,7 +50,7 @@ class Niveau
 
         BoutonSpecial boutonArriere= BoutonSpecial.creer(Historique.RetourArriere())
         BoutonSpecial boutonAvant = BoutonSpecial.creer(Historique.RetourAvant())
-    
+        
     end 
 
     #changement de la représentation en fonction de la taille de la fenetre 
@@ -59,6 +59,10 @@ class Niveau
     end 
 
     def lanceToi(){
+        
+        window = Gtk::Window.new
+        window.set_default_size(300,700)
+        window.show_all
 
         BoutonSpecial boutonArriere= BoutonSpecial.creer(Historique.RetourArriere())
 
