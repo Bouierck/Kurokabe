@@ -27,4 +27,4 @@ class BoutonLangue < Bouton
 
     end
 
-
+end
