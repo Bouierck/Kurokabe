@@ -17,7 +17,7 @@ class Bouton < Gtk::Button
 
 	def initialize(uneEtiquette, uneLongueur, uneLargeur)
         
-        super(etiquette)
+        super(uneEtiquette)
 
         @longueur = uneLongueur
         @largeur = uneLargeur

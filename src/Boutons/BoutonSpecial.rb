@@ -6,7 +6,7 @@ require 'gtk3'
 
 class BoutonSpecial < Bouton
 
-    def BoutonLangue.creer(uneEtiquette, uneLongueur, uneLargeur, uneMethode)
+    def BoutonSpecial.creer(uneEtiquette, uneLongueur, uneLargeur, uneMethode)
         new(uneEtiquette, uneLongueur, uneLargeur, uneMethode)
     end
 
@@ -15,10 +15,11 @@ class BoutonSpecial < Bouton
         super(uneEtiquette, uneLongueur, uneLargeur)
         @methode = uneMethode
 
+        self.signal_connect('clicked'){
+            #Lancement de la méthode
+            @methode.call
+        }
+
     end
 
-    self.signal_connect('clicked'){
-        #Lancement de la méthode
-    }
 
-end
