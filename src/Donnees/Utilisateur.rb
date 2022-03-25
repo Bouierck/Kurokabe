@@ -25,8 +25,8 @@ class Utilisateur
     def initialize(unNom, uneLangue)
         @nom = unNom
         @langue = uneLangue
-        #@sauvegarde = new Sauvegarde(unNom)
-        #@nbEtoiles = unInt.nbEtoiles()
+        @sauvegarde = new Sauvegarde(unNom)
+        @nbEtoiles = @nom.nbEtoiles()
     end
 
 end # Marqueur de fin de classe
