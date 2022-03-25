@@ -19,10 +19,11 @@ class CaseChiffre < Case
     def CaseChiffre.creer(x, y, chiffre)
         new(x, y, chiffre)
     end
-
+    
     def initialize(x, y, chiffre)
         super(x, y)
         @chiffre = chiffre
+        self.label= @chiffre
     end
 
     def to_s
