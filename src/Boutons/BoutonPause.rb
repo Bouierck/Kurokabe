@@ -21,11 +21,13 @@ class BoutonPause < BoutonMenu
     def initialize(uneEtiquette, uneLongueur, uneLargeur, unMenu, unNiveau)
         super(uneEtiquette, uneLongueur, uneLargeur, unMenu)
         @niveau = unNiveau
+
+        self.signal_connect('clicked'){
+            super()
+            #Arret chrono dans le niveau
+        }
     end
 
-    self.signal_connect('clicked'){
-        super()
-        #Arret chrono dans le niveau
-    }
+    
 
 end

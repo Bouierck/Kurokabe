@@ -18,10 +18,13 @@ class BoutonLangue < Bouton
         super(uneEtiquette, uneLongueur, uneLargeur)
         @langue = uneLangue
 
+
+        self.signal_connect('clicked'){
+            @langue.changerLangue
+            #Changement de la langue
+        }
+
     end
 
-    self.signal_connect('clicked'){
-        #Changement de la langue
-    }
 
 end
