@@ -29,4 +29,4 @@ class BoutonPause < BoutonMenu
     end
 
     
-
+end
