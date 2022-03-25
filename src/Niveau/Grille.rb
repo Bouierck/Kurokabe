@@ -1,6 +1,7 @@
 require_relative "../Donnees/Utilisateur.rb"
 require_relative "./CaseChiffre.rb"
 require_relative "./CaseCliquable.rb"
+require_relative "./Historique.rb"
 
 class Grille < Gtk::Grid
     ##
@@ -26,6 +27,7 @@ class Grille < Gtk::Grid
     def initialize(utilisateur, nomGrille, mode)
         super()
         @utilisateur = utilisateur
+        @historique = Historique.creer(self)
     
         fichierMap = File.open(__dir__ + "/../../profile/" + @utilisateur.nom + "/levels/" + mode + "/" + nomGrille + ".krkb")
         donnees = fichierMap.read.split("\n")
@@ -40,7 +42,7 @@ class Grille < Gtk::Grid
         x, y = 0, 0
         for chiffre in donneesCases do
             if chiffre.to_i < 0
-                @matrice[y][x] = (CaseCliquable.creer(x, y))
+                @matrice[y][x] = (CaseCliquable.creer(x, y, historique))
             else
                 @matrice[y][x] = (CaseChiffre.creer(x, y, chiffre.to_i))
             end
@@ -70,7 +72,7 @@ class Grille < Gtk::Grid
         end
     end
 
-    attr_reader :matrice, :matriceCorrigee
+    attr_reader :matrice, :matriceCorrigee, :historique
 
     def grilleAfficher
         
