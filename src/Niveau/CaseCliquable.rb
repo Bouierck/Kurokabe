@@ -17,14 +17,15 @@ class CaseCliquable < Case
     # * -etat- etat de la case: 0 vide, 1 point, 2 mur
     #
     def CaseCliquable.creer(x, y, etat = 0)
-        new(x, y)
-        @etat = etat
+        new(x, y, etat)
     end
 
-    def initialize(x, y)
+    def initialize(x, y, etat)
         super(x, y)
-        @etat = 0
+        @etat = etat
         @cliquable = true
+        self.label = @etat.to_s
+        self.signal_connect("clicked") {changeEtat}
     end
 
     ##
@@ -32,6 +33,7 @@ class CaseCliquable < Case
     #
     def changeEtat
         @etat = (@etat + 1) % 3
+        self.label = @etat.to_s
     end
     
     def to_s

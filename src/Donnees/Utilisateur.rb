@@ -11,7 +11,7 @@ class Utilisateur
     #@nbEtoiles => Nombre d'étoile obtenu dans le mode aventure
     #@sauvegarde => Sauvegarde de l'utilisateur
 
-    attr_reader :nom :nbEtoiles
+    attr_reader :nom, :nbEtoiles
 
     ##
     # Constructeur de Sauvegarde
@@ -26,7 +26,7 @@ class Utilisateur
         @nom = unNom
         @langue = uneLangue
         #@sauvegarde = new Sauvegarde(unNom)
-        #@nbEtoiles = unInt.nbEtoiles()
+        #@nbEtoiles = @nom.nbEtoiles()
     end
 
 end # Marqueur de fin de classe
