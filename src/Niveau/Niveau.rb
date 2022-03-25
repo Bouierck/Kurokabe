@@ -4,7 +4,9 @@
 #
 require 'gtk3'
 
-class Niveau
+
+class Niveau < Gtk::Builder
+
 
     ##
     #@idNiveau => Numero du niveau 
@@ -25,49 +27,107 @@ class Niveau
     end
 
 
-    ###################
-    #retour niveau, menu, pause(reprendre, niveau, menu, quitter), quitter
-    ###################
-    ###########
-    #Positionner les BoutonSpecial
-    ###########
 
-
-
-    def AfficherBoutton()
-        if (tailleFenetre == false ){
-            BoutonSpecial.AfficheBoutonArriere()
-            BoutonSpecial.AfficheBoutonAvant()
-            BoutonSpecial.AfficheBoutonAide()
-        }
-        
-        BoutonPause.application.show_all
-        BoutonMenu.application.show_all
-    end 
-
-
-    def LancerBouton()
-
-        BoutonSpecial boutonArriere= BoutonSpecial.creer(Historique.RetourArriere())
-        BoutonSpecial boutonAvant = BoutonSpecial.creer(Historique.RetourAvant())
-    
-    end 
 
     #changement de la représentation en fonction de la taille de la fenetre 
     def FenetreTaille()
         
     end 
 
-    def lanceToi(){
+    ##
+    #Affichage de la fenetre du niveau
+    def NiveauAffiche()
 
         BoutonSpecial boutonArriere= BoutonSpecial.creer(Historique.RetourArriere())
+        BoutonSpecial boutonAvant = BoutonSpecial.creer(Historique.RetourAvant())
+        BoutonPause boutonPause = BoutonPause.creer()
+        BoutonSpecial boutonReinitialiser = BoutonSpecial.creer()
+        
 
-        if FenetreTaille == true
-            Grille.grilleAfficher()
-            AfficherBoutton()
-            LancerBouton()
+        #Creation de la fenetre 
+        window = Gtk::Window.set("Test Niveaux")
+        window.set_size_request(400,700)
+        window.set_border_width(5)
+
+        #Creation du container pour tous les boutons (important pour contriler la taille ou encore ou ils sont positionné sur l'application)
+        grid = Gtk::Grid.new
+        window.add(grid)
+
+        #Mise en place du bouton menu et action effectue lors du click dessus 
+        button_pause = Gtk::Button.new(:label => "NIVEAU")
+        button.signal_connect(clicked){
+        #mettre l'action du bouton niveau pour le retour sur le menu
+        #MenuNiveaux.show_all
+        puts "niveau"
+        }
+        #place le bouton sur la cellule 0,0 et de taille 1,1 donc 1 horizontalement et 1 verticalement 
+        grid.attach(button_pause,0,0,1,1)
+        window.add(button_pause)
+
+        #Mise en place du bouton menu et action effectue lors du click dessus 
+        button_pause = Gtk::Button.new(:label => "MENU")
+        button.signal_connect(clicked){
+        #mettre l'action du bouton menu pour le retour sur le menu
+        #Menu.show_all
+        puts "menu"
+        }
+        #place le bouton sur la cellule 0,0 et de taille 1,1 donc 1 horizontalement et 1 verticalement 
+        grid.attach(button_pause,0,0,1,1)
+        window.add(button_pause)
+
+        #Mise en place du bouton menu et action effectue lors du click dessus 
+        button_pause = Gtk::Button.new(:label => "REINITIALISER")
+        button.signal_connect(clicked){
+        #mettre l'action du bouton reinitialiser pour le retour sur le menu
+        puts "niveau"
+        }
+        #place le bouton sur la cellule 0,0 et de taille 1,1 donc 1 horizontalement et 1 verticalement 
+        grid.attach(button_pause,0,0,1,1)
+        window.add(button_pause)
+
+        #Mise en place du bouton pause et action effectue lors du click dessus 
+        button_pause = Gtk::Button.new(:label => "PAUSE")
+        button.signal_connect(clicked){
+        #mettre l'action du bouton pause
+        #boutonPause.lanceToi() -> lancer l'action du bouton pause ?
+        puts "jeu en pause"
+        }
+        #place le bouton sur la cellule 0,0 et de taille 1,1 donc 1 horizontalement et 1 verticalement 
+        grid.attach(button_pause,0,0,1,1)
+        window.add(button_pause)
+
+        #Mise en place du bouton aide et action effectue lors du click dessus 
+        button_pause = Gtk::Button.new(:label => "AIDE")
+        button.signal_connect(clicked){
+        #mettre l'action de l'aide 
+        puts "aide activée"
+        }
+        #place le bouton sur la cellule 1,0 et de taille 1,1 donc 1 horizontalement et 1 verticalement 
+        grid.attach(button_pause,1,0,1,1)
+        window.add(button_pause)
+
+
+        #Mise en place du bouton quitter et action effectue lors du click dessus 
+        button_pause = Gtk::Button.new(:label => "QUITTER")
+        button.signal_connect(clicked){
+            window.destroy
+        }
+        #place le bouton sur la cellule 1,0 et de taille 2,1 donc 2 horizontalement et 1 verticalement 
+        grid.attach(button_pause,0,1,2,1)
+        window.add(button_pause)
+
+
+        #Affichage
+        window.show_all
+    end
+
+    def lanceToi()
+
+        if FenetreTaille == true  
+
         else 
-            Grille.grilleAfficher()
+            
         end 
-    }
+    end
+
 end # Marqueur de fin de classe
