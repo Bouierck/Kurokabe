@@ -1,3 +1,4 @@
+
 #!/usr/bin/env ruby
 
 require_relative "./Bouton.rb"
@@ -27,4 +28,3 @@ class BoutonLangue < Bouton
     end
 
 
-end

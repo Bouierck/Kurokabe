@@ -1,4 +1,6 @@
-class Case
+require 'gtk3'
+
+class Case < Gtk::Button
 
     ##
     # @x => position x de la case dans la grille
@@ -8,6 +10,7 @@ class Case
     private_class_method :new
 
     def initialize(x, y)
+        super()
         @x, @y = x, y
         @clicable = false
     end

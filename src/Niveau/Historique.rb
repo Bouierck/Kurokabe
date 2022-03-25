@@ -1,3 +1,4 @@
+
 class Historique
 
     ##
@@ -49,5 +50,4 @@ class Historique
             #Effectuer mouvement
         end
     end
-
 end

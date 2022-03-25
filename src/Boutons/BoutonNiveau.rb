@@ -1,3 +1,4 @@
+
 #!/usr/bin/env ruby
 
 require_relative "./Bouton.rb"
@@ -27,6 +28,4 @@ class BoutonNiveau < Bouton
         }
     end
 
-   
-
-end
+  

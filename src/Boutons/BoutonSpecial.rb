@@ -23,5 +23,3 @@ class BoutonSpecial < Bouton
     end
 
 
-
-end

@@ -30,5 +30,3 @@ class BoutonMenu < Bouton
     end
 
    
-
-end

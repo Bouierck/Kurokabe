@@ -30,4 +30,3 @@ class BoutonPause < BoutonMenu
 
     
 
-end
