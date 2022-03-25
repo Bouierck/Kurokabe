@@ -1,3 +1,5 @@
+require 'gtk3'
+
 class Case < Gtk::Button
 
     ##
