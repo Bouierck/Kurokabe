@@ -27,5 +27,5 @@ class BoutonNiveau < Bouton
             @niveau.lanceToi
         }
     end
-
+end
   
