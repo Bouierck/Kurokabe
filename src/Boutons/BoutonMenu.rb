@@ -24,7 +24,7 @@ class BoutonMenu < Bouton
         @menu = unMenu
 
         self.signal_connect('clicked'){
-            @menu.lancerMenu
+            @menu.affichageMode()
         }
 
     end
