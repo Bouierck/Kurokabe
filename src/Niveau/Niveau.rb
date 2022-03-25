@@ -7,6 +7,7 @@ require 'gtk3'
 
 class Niveau < Gtk::Builder
 
+
     ##
     #@idNiveau => Numero du niveau 
     #@grille => Bouton pour accéder a la grille
@@ -24,6 +25,7 @@ class Niveau < Gtk::Builder
     def Niveau.Creer()
         new(idNiveau,uneGrille)
     end
+
 
 
 
@@ -127,4 +129,5 @@ class Niveau < Gtk::Builder
             
         end 
     end
+
 end # Marqueur de fin de classe
