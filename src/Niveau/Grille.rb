@@ -2,7 +2,7 @@ require_relative "../Donnees/Utilisateur.rb"
 require_relative "./CaseChiffre.rb"
 require_relative "./CaseCliquable.rb"
 
-class Grille
+class Grille < Gtk::Grid
     ##
     # @utilisateur Utilisateur propriétaire de la grille.
     # @matrice Matrice représentant la grille, composée de CaseChiffre et de CaseCliquable.
@@ -24,6 +24,7 @@ class Grille
     private_class_method :new
 
     def initialize(utilisateur, nomGrille, mode)
+        super()
         @utilisateur = utilisateur
     
         fichierMap = File.open(__dir__ + "/../../profile/" + @utilisateur.nom + "/levels/" + mode + "/" + nomGrille + ".krkb")
@@ -43,6 +44,7 @@ class Grille
             else
                 @matrice[y][x] = (CaseChiffre.creer(x, y, chiffre.to_i))
             end
+            self.attach(@matrice[y][x], x, y, 1, 1)
             x = (x+1)%tailleGrilleX
             y += 1 if x == 0
         end

@@ -8,6 +8,8 @@ class Historique
         @listeCoups = Array.new()
         @index = 0
     end
+
+    attr_reader :listeCoups
    
     ##
     # Ajoute un nouveau coup dans l'historique
