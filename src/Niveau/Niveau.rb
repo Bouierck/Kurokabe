@@ -50,8 +50,8 @@ class Niveau < Gtk::Builder
     def NiveauAffiche()
 
 
-        # BoutonSpecial boutonArriere= BoutonSpecial.creer("retour arriere",2,2,historique.RetourArriere())
-        # BoutonSpecial boutonAvant = BoutonSpecial.creer("retour avant",2,2,historique.RetourAvant())
+        boutonArriere= BoutonSpecial.creer("retour arriere",2,2,@grille.historique.method(:retourArriere))
+        boutonAvant = BoutonSpecial.creer("retour avant",2,2,@grille.historique.method(:retourAvant))
         # BoutonPause boutonPause = BoutonPause.creer("Pause",2,10,menuPause.show_all,@idNiveau)
         # BoutonSpecial boutonReinitialiser = BoutonSpecial.creer("reinitialiser",2,2,@grille)
         # BoutonNiveau boutonNiveau = BoutonNiveau.creer("niveau",2,10,@idNiveau)
@@ -69,8 +69,8 @@ class Niveau < Gtk::Builder
         #Creation du container pour tous les boutons (important pour contriler la taille ou encore ou ils sont positionné sur l'application)
         grid = Gtk::Grid.new
         window.add(grid)
-        grid.attach(@grille,3,0,3,1)
-        grid.attach(@chrono,3,1,3,1)
+        grid.attach(@grille,0,0,5,5)
+        grid.attach(@chrono,4,5,1,1)
 
         #Mise en place des boutons  
         # boutonPause = Gtk::Button.new
@@ -82,7 +82,9 @@ class Niveau < Gtk::Builder
         # grid.attach(boutonNiveau,3,1,2,10)
         # window.add(boutonNiveau)
 
-        grid.attach(boutonQuitter,6,1,2,2)
+        grid.attach(boutonAvant,6,0,2,2)
+        grid.attach(boutonArriere,6,2,2,2)
+        grid.attach(boutonQuitter,6,4,2,2)
 
         # boutonMenu = Gtk::Button.new
         # grid.attach(boutonMenu,5,1,2,10)
@@ -119,6 +121,6 @@ class Niveau < Gtk::Builder
 
 end # Marqueur de fin de classe
 
-#niveau = Niveau.Creer(1,Utilisateur.creer("Stun",1),"aventure")
-#niveau.NiveauAffiche()
+niveau = Niveau.Creer(1,Utilisateur.creer("Stun",1),"aventure")
+niveau.NiveauAffiche()
 
