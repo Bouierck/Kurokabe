@@ -11,7 +11,7 @@ class Bouton < Gtk::Button
     # @longueur longueur du bouton
     # @largeur largeur du bouton
 
-    attr_reader :longueur :largeur
+    attr_reader :longueur, :largeur
 
     private_class_method :new
 
