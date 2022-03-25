@@ -1,5 +1,6 @@
 require 'gtk3'
 load "../src/Niveau/Grille.rb"
+load "../src/Donnees/Utilisateur.rb"
 
 def onDestroy
 	puts "Fin de l'application"
