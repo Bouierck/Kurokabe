@@ -4,7 +4,7 @@ class Resolveur
     end
 
     def resoudreGrille(grille)
-
+        
     end
 
     def checkGrille
