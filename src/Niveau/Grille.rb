@@ -130,5 +130,5 @@ class Grille < Gtk::Grid
         end
         return string
     end
-
+    
 end
