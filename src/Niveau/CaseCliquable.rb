@@ -19,6 +19,7 @@ class CaseCliquable < Case
     def CaseCliquable.creer(x, y, etat = 0)
         new(x, y)
         @etat = etat
+        self.label = @etat
     end
 
     def initialize(x, y)
