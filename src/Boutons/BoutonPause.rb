@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require_relative "./Bouton.rb"
+require_relative "./BoutonMenu.rb"
 
 require 'gtk3'
 

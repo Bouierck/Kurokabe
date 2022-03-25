@@ -1,8 +1,9 @@
-class Chronometre
+require 'gtk3'
+
+class Chronometre < Gtk::Label
 
     ##
     # @timer => temps en seconde depuis le début de la grille
-    # @dateDebut => date de lancement de la grille
     # @estLance => vrai si le chrono est lancé faux sinon
 
     attr_reader :timer
@@ -20,39 +21,60 @@ class Chronometre
     private_class_method :new
 
     def initialize(temps)
+        super(temps.to_s)
         @timer = temps
-    end
-
-    ##
-    # Lancer le timer du chrono
-    #
-    def lancer
-
-        @dateDebut = Time.new()  
-        @estLance = true
-
-    end
-
-    ##
-    # Arreter le timer du chrono
-    #
-    def stop
         @estLance = false
     end
 
     ##
-    # Update le timer 
+    #Creer un thread qui update le timer
     #
-    # @returns La nouvel valeur du timer
+    def lancer
+
+        @estLance = true
+
+        Thread.new do
+            while(@estLance)
+                update
+                sleep(1)
+            end
+        end
+
+    end
+
+    ##
+    # Arreter ou lance le timer du chrono
+    # 
+    # === Attributes ===
+    #
+    # * -bool- true pour lancer le chrono false pour l'arreter
+    #
+    def on(bool = true)
+
+        @estLance = bool
+
+    end
+
+    ##
+    # Update le timer et l'affichage
     #
     def update
 
-        if(@estLance)
-            @timer += Time.new().sec - @dateDebut.sec
-            @dateDebut = Time.new()
-        end
+        @timer += 1
+        self.label = self.to_s
+        return self
 
-        return @timer
+    end
+
+    ##
+    # Format des secondes en minutes:secondes
+    #
+    def to_s
+
+        min = @timer / 60
+        sec = @timer % 60
+
+        return "#{min}:#{sec}"
 
     end
 

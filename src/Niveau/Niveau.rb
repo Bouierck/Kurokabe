@@ -28,7 +28,7 @@ class Niveau < Gtk::Builder
         #@menuPrincipal = new MenuPrincipal()
         #@menuPause = new MenuPause()
         @grille = Grille.creer(@utilisateur,"level" + @idNiveau.to_s, @mode)
-        #@chrono = Chronometre.creerChrono()
+        @chrono = Chronometre.creerChrono()
     end
 
     ##
@@ -70,7 +70,7 @@ class Niveau < Gtk::Builder
         grid = Gtk::Grid.new
         window.add(grid)
         grid.attach(@grille,3,0,3,1)
-        #grid.attach(@chrono,3,1,3,1)
+        grid.attach(@chrono,3,1,3,1)
 
         #Mise en place des boutons  
         # boutonPause = Gtk::Button.new
@@ -105,7 +105,8 @@ class Niveau < Gtk::Builder
         # grid.attach(boutonAide,0,0,1,1)
         # window.add(boutonAide)
 
-
+        #lancement du chrono
+        @chrono.lancer
 
         #Affichage de la fenetre 
         window.show_all
