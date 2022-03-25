@@ -24,7 +24,7 @@ class BoutonNiveau < Bouton
         @niveau = unNiveau
 
         self.signal_connect('clicked'){
-            @niveau.lanceToi
+            @niveau.NiveauAffiche
         }
     end
 end

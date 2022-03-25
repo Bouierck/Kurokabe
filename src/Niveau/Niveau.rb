@@ -119,6 +119,6 @@ class Niveau < Gtk::Builder
 
 end # Marqueur de fin de classe
 
-niveau = Niveau.Creer(1,Utilisateur.creer("Stun",1),"aventure")
-niveau.NiveauAffiche()
+#niveau = Niveau.Creer(1,Utilisateur.creer("Stun",1),"aventure")
+#niveau.NiveauAffiche()
 
