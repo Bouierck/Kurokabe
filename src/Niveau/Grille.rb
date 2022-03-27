@@ -63,7 +63,7 @@ class Grille < Gtk::Grid
         x, y = 0, 0
         for chiffre in donneesCases do
             if chiffre.to_i < 0
-                @matriceCorrigee[y][x] = (CaseCliquable.creer(x, y, chiffre.to_i.abs-1))
+                @matriceCorrigee[y][x] = (CaseCliquable.creer(x, y, Historique.creer(self), chiffre.to_i.abs-1))
             else
                 @matriceCorrigee[y][x] = (CaseChiffre.creer(x, y, chiffre.to_i))
             end
@@ -86,10 +86,10 @@ class Grille < Gtk::Grid
         if compareGrille != []
             return false
         end
-        
+
         for y in 0...@matrice.length do
             for x in 0...@matrice[y].length do
-                return false if @matrice[y][x].is_a CaseCliquable && @matrice[y][x].etat == 0 && @matriceCorrigee[y][x].etat == 2
+                return false if @matrice[y][x].is_a?(CaseCliquable) && @matrice[y][x].etat == 0 && @matriceCorrigee[y][x].etat == 2
             end
         end
         
@@ -105,10 +105,10 @@ class Grille < Gtk::Grid
         erreurs = []
 
         for y in 0...@matrice.length do #parcours de la matrice
-            for x in 0...@matrice[y] do
+            for x in 0...@matrice[y].length do
 
-                if(@matrice[y][x].is_a CaseCliquable && @matrice[y][x].etat != 0) #Si case jouable n'est pas vide
-                    erreurs.push(@matrice[y][x]) if @matrice[y][x] != @matriceCorrigee[y][x] #ajout de l'erreur
+                if(@matrice[y][x].is_a?(CaseCliquable) && @matrice[y][x].etat != 0) #Si case jouable n'est pas vide
+                    erreurs.push(@matrice[y][x]) if @matrice[y][x].etat != @matriceCorrigee[y][x].etat #ajout de l'erreur
                 end
                 
             end
@@ -130,5 +130,5 @@ class Grille < Gtk::Grid
         end
         return string
     end
-
+    
 end
