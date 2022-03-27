@@ -1,3 +1,4 @@
+
 #!/usr/bin/env ruby
 
 require_relative "./Bouton.rb"
@@ -13,18 +14,18 @@ class BoutonNiveau < Bouton
     #@niveau Niveaau qui se lance au clque sur le bouton
 
     def BoutonNiveau.creer(uneEtiquette, uneLongueur, uneLargeur, unNiveau)
-        new(uneEtiquette, uneLongueur, uneLargeur, unMenu)
+        new(uneEtiquette, uneLongueur, uneLargeur, unNiveau)
     end
 
     private_class_method :new
 
-    def initialize(uneEtiquette, uneLongueur, uneLargeur, unMenu)
+    def initialize(uneEtiquette, uneLongueur, uneLargeur, unNiveau)
         super(uneEtiquette, uneLongueur, uneLargeur)
         @niveau = unNiveau
+
+        self.signal_connect('clicked'){
+            @niveau.NiveauAffiche
+        }
     end
-
-    self.signal_connect('clicked'){
-        @niveau.lanceToi
-    }
-
 end
+  

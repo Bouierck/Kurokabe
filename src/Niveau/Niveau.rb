@@ -1,31 +1,41 @@
+
 ##
 # Auteur Jérémy Bourgouin & Oussama Belkadi
 # Date : Vendredi 25/02 2022 11:36
 #
 require 'gtk3'
-
+require_relative '../Boutons/BoutonSpecial.rb'
+require_relative '../Boutons/BoutonPause.rb'
+require_relative '../Boutons/BoutonNiveau.rb'
+require_relative '../Boutons/BoutonMenu.rb'
+require_relative './Grille.rb'
+require_relative './Chronometre.rb'
 
 class Niveau < Gtk::Builder
 
 
     ##
     #@idNiveau => Numero du niveau 
-    #@grille => Bouton pour accéder a la grille
     #@tailleFenetre => est de type boolean pour savoir la la fenetre est en taille reduite ou en grande taille (false -> petite fenetre) ( true -> grande fenetre)
-    #@Chrono => ce type int qui correspond au chronometre du niveau
-
-    def initialize(idNiveau,uneGrille)
+    def initialize(idNiveau, unUtilisateur, unMode)
+        @mode =unMode
+        @utilisateur = unUtilisateur
         @idNiveau = idNiveau
-        @grille = uneGrille
         @tailleFenetre = false
+
+        #@resolveur = new Resolveur()
+        #@historique = new Historique()
+        #@menuPrincipal = new MenuPrincipal()
+        #@menuPause = new MenuPause()
+        @grille = Grille.creer(@utilisateur,"level" + @idNiveau.to_s, @mode)
+        @chrono = Chronometre.creerChrono()
     end
 
     ##
     #Methode de creation de niveau
-    def Niveau.Creer()
-        new(idNiveau,uneGrille)
-    end
-
+    def Niveau.Creer(idNiveau, unUtilisateur, unMode)
+        new(idNiveau,unUtilisateur,unMode)
+    end 
 
 
 
@@ -34,100 +44,83 @@ class Niveau < Gtk::Builder
         
     end 
 
+
     ##
     #Affichage de la fenetre du niveau
     def NiveauAffiche()
 
-        BoutonSpecial boutonArriere= BoutonSpecial.creer(Historique.RetourArriere())
-        BoutonSpecial boutonAvant = BoutonSpecial.creer(Historique.RetourAvant())
-        BoutonPause boutonPause = BoutonPause.creer()
-        BoutonSpecial boutonReinitialiser = BoutonSpecial.creer()
+
+        boutonArriere= BoutonSpecial.creer("retour arriere",2,2,@grille.historique.method(:retourArriere))
+        boutonAvant = BoutonSpecial.creer("retour avant",2,2,@grille.historique.method(:retourAvant))
+        # BoutonPause boutonPause = BoutonPause.creer("Pause",2,10,menuPause.show_all,@idNiveau)
+        # BoutonSpecial boutonReinitialiser = BoutonSpecial.creer("reinitialiser",2,2,@grille)
+        # BoutonNiveau boutonNiveau = BoutonNiveau.creer("niveau",2,10,@idNiveau)
+        # BoutonSpecial boutonAide = BoutonSpecial.creer("aide",2,2,resolveur.resoudreGrille())
+        # BoutonSpecial boutonErreur = BoutonSpecial.creer("erreur",2,2,@grille.methode(:compareGrille))
+        boutonQuitter = BoutonSpecial.creer("quitter",2,10,self.method(:QuitterFenetre))
+        # BoutonMenu boutonMenu = BoutonMenu.creer("Menu",2,10,menuPrincipal.show_all)
         
 
         #Creation de la fenetre 
-        window = Gtk::Window.set("Test Niveaux")
-        window.set_size_request(400,700)
+        window = Gtk::Window.new
+        window.set_default_size(650,700)
         window.set_border_width(5)
 
         #Creation du container pour tous les boutons (important pour contriler la taille ou encore ou ils sont positionné sur l'application)
         grid = Gtk::Grid.new
         window.add(grid)
+        grid.attach(@grille,0,0,5,5)
+        grid.attach(@chrono,4,5,1,1)
 
-        #Mise en place du bouton menu et action effectue lors du click dessus 
-        button_pause = Gtk::Button.new(:label => "NIVEAU")
-        button.signal_connect(clicked){
-        #mettre l'action du bouton niveau pour le retour sur le menu
-        #MenuNiveaux.show_all
-        puts "niveau"
-        }
-        #place le bouton sur la cellule 0,0 et de taille 1,1 donc 1 horizontalement et 1 verticalement 
-        grid.attach(button_pause,0,0,1,1)
-        window.add(button_pause)
+        #Mise en place des boutons  
+        # boutonPause = Gtk::Button.new
+        # #place le bouton sur la cellule 2,0 et de taille 1,1 donc 1 horizontalement et 1 verticalement 
+        # grid.attach(boutonPause,2,0,2,10)
+        # window.add(boutonPause)
 
-        #Mise en place du bouton menu et action effectue lors du click dessus 
-        button_pause = Gtk::Button.new(:label => "MENU")
-        button.signal_connect(clicked){
-        #mettre l'action du bouton menu pour le retour sur le menu
-        #Menu.show_all
-        puts "menu"
-        }
-        #place le bouton sur la cellule 0,0 et de taille 1,1 donc 1 horizontalement et 1 verticalement 
-        grid.attach(button_pause,0,0,1,1)
-        window.add(button_pause)
+        # boutonNiveau = Gtk::Button.new
+        # grid.attach(boutonNiveau,3,1,2,10)
+        # window.add(boutonNiveau)
 
-        #Mise en place du bouton menu et action effectue lors du click dessus 
-        button_pause = Gtk::Button.new(:label => "REINITIALISER")
-        button.signal_connect(clicked){
-        #mettre l'action du bouton reinitialiser pour le retour sur le menu
-        puts "niveau"
-        }
-        #place le bouton sur la cellule 0,0 et de taille 1,1 donc 1 horizontalement et 1 verticalement 
-        grid.attach(button_pause,0,0,1,1)
-        window.add(button_pause)
+        grid.attach(boutonAvant,6,0,2,2)
+        grid.attach(boutonArriere,6,2,2,2)
+        grid.attach(boutonQuitter,6,4,2,2)
 
-        #Mise en place du bouton pause et action effectue lors du click dessus 
-        button_pause = Gtk::Button.new(:label => "PAUSE")
-        button.signal_connect(clicked){
-        #mettre l'action du bouton pause
-        #boutonPause.lanceToi() -> lancer l'action du bouton pause ?
-        puts "jeu en pause"
-        }
-        #place le bouton sur la cellule 0,0 et de taille 1,1 donc 1 horizontalement et 1 verticalement 
-        grid.attach(button_pause,0,0,1,1)
-        window.add(button_pause)
-
-        #Mise en place du bouton aide et action effectue lors du click dessus 
-        button_pause = Gtk::Button.new(:label => "AIDE")
-        button.signal_connect(clicked){
-        #mettre l'action de l'aide 
-        puts "aide activée"
-        }
-        #place le bouton sur la cellule 1,0 et de taille 1,1 donc 1 horizontalement et 1 verticalement 
-        grid.attach(button_pause,1,0,1,1)
-        window.add(button_pause)
+        # boutonMenu = Gtk::Button.new
+        # grid.attach(boutonMenu,5,1,2,10)
+        # window.add(boutonMenu)
 
 
-        #Mise en place du bouton quitter et action effectue lors du click dessus 
-        button_pause = Gtk::Button.new(:label => "QUITTER")
-        button.signal_connect(clicked){
-            window.destroy
-        }
-        #place le bouton sur la cellule 1,0 et de taille 2,1 donc 2 horizontalement et 1 verticalement 
-        grid.attach(button_pause,0,1,2,1)
-        window.add(button_pause)
+        # boutonArriere = Gtk::Button.new
+        # grid.attach(boutonArriere,0,0,1,1)
+        # window.add(boutonArriere)
 
+        # boutonAvant = Gtk::Button.new
+        # grid.attach(boutonAvant,0,0,1,1)
+        # window.add(boutonAvant)
 
-        #Affichage
+        # boutonReinitialiser = Gtk::Button.new
+        # grid.attach(boutonReinitialiser,0,0,1,1)
+        # window.add(boutonReinitialiser)
+
+        # boutonAide = Gtk::Button.new
+        # grid.attach(boutonAide,0,0,1,1)
+        # window.add(boutonAide)
+
+        #lancement du chrono
+        @chrono.lancer
+
+        #Affichage de la fenetre 
         window.show_all
+        Gtk.main
     end
 
-    def lanceToi()
-
-        if FenetreTaille == true  
-
-        else 
-            
-        end 
-    end
+    def QuitterFenetre()
+        window.destroy
+    end 
 
 end # Marqueur de fin de classe
+
+niveau = Niveau.Creer(1,Utilisateur.creer("Stun",1),"aventure")
+niveau.NiveauAffiche()
+

@@ -23,10 +23,11 @@ class BoutonMenu < Bouton
         super(uneEtiquette, uneLongueur, uneLargeur)
         @menu = unMenu
 
+        self.signal_connect('clicked'){
+            @menu.lancerMenu
+        }
+
     end
-
-    self.signal_connect('clicked'){
-        @menu.lancerMenu
-    }
-
 end
+
+   
