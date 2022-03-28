@@ -1,7 +1,7 @@
 require_relative "Case.rb"
 require_relative "./Historique.rb"
 
-require_relative "../Donnees/Sauvegarde.rb"
+#require_relative "../Donnees/Sauvegarde.rb"
 
 ##
 # Case cliquable qui peut prendre plusieurs états (vide, supposé vide ou mur)
