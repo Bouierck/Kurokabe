@@ -1,62 +1,57 @@
-
+##
+# L'historique stock les coups de l'utilisateur pour permttre de faire des retours en arrière / en avant
+#
 class Historique
 
     ##
     # @listeCoups => Liste contenant les coups effectués
     # @index => coup actuel
 
-    def Historique.creer(grille)
-        new(grille)
-    end
-
-    def initialize(grille)
+    def initialize
         @listeCoups = Array.new()
         @index = 0
-        @grille = grille
     end
    
     ##
     # Ajoute un nouveau coup dans l'historique
     # Le retour en avant n'est plus possible après un nouveau coup !
     #
-    def nouveauCoup(x, y)
+    def nouveauCoup(c)
+
+        #S'il y avait des coups après on les enlève
         if(@index < @listeCoups.size)
             @listeCoups = @listeCoups.take(@index)
         end
  
         @index += 1
-        @listeCoups.push([x, y])
+        @listeCoups.push(c)
+
     end
     
     ##
     # Retourne sur le mouvement précédent
     #
     def retourArriere
-        if(@index > 0)
+
+        if(@index > 0) #On est pas au début de la liste de coups
             @index -= 1
 
-            #TODO
             #Effectuer mouvement inverse
-            x = @listeCoups[@index][0]
-            y = @listeCoups[@index][1]
- 
-            2.times { @grille.matrice[y][x].changeEtat }
+            2.times { @listeCoups[@index].changeEtat }
+
         end
     end
 
     ##
     # Retourne sur le mouvement précédement annulé
     #
-    def retourAvant
+    def retourAvant()
         if(@index < @listeCoups.size)
+            
+            #Effectuer mouvement
+            @listeCoups[@index].changeEtat
             @index += 1
 
-            #TODO
-            #Effectuer mouvement
-            x = @listeCoups[@index-1][0]
-            y = @listeCoups[@index-1][1]
- 
-            @grille.matrice[y][x].changeEtat
         end
     end
 end

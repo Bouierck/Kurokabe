@@ -23,8 +23,8 @@ class BoutonPause < BoutonMenu
         @niveau = unNiveau
 
         self.signal_connect('clicked'){
-            super()
-            #Arret chrono dans le niveau
+            @menu.lancerMenu
+            @niveau.chrono.on(false)
         }
     end
 
