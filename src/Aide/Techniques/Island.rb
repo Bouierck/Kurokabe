@@ -14,7 +14,7 @@ class Island < Technique
 
     end
 
-    def verifieTech()
+    def verifieTech
 
         @grille.matrice.each do |line|
             line.each do |c|

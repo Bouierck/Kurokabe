@@ -18,7 +18,7 @@ class Technique
     end
 
     #renvoi un booleen
-    def verifieTech()
+    def verifieTech
     end
 
     def to_s
