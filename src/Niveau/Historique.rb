@@ -51,7 +51,6 @@ class Historique
             #Effectuer mouvement
             @listeCoups[@index].changeEtat
             @index += 1
-
         end
     end
 end
