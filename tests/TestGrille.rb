@@ -23,7 +23,7 @@ monApp.set_resizable(true)
 monApp.set_window_position(Gtk::WindowPosition::CENTER_ALWAYS)
 
 # Création du Layout
-frame=Gtk::Box.new(:vertical, 5)
+frame=Gtk::Box.new(:vertical, 4)
 monApp.add(frame)
 
 g = Grille.creer(Utilisateur.creer("Stun", "") ,"level1", "aventure")
@@ -40,16 +40,6 @@ frame.add(btnAvancer)
 btnTest=Gtk::Button.new(:label=>"compare")
 btnTest.signal_connect('clicked') { puts g.compareGrille }
 frame.add(btnTest)
-
-btnFini=Gtk::Button.new(:label=>"fini ?")
-btnFini.signal_connect('clicked') {
-	if g.estFini
-		puts "Fini !"
-	else
-		puts "Pas fini..."
-	end
-}
-frame.add(btnFini)
 
 monApp.show_all
 

@@ -17,14 +17,15 @@ class CaseCliquable < Case
     # * -y- Position y dans la grille
     # * -etat- etat de la case: 0 vide, 1 point, 2 mur
     #
-    def CaseCliquable.creer(x, y, historique, etat = 0)
-        new(x, y, historique, etat)
+    def CaseCliquable.creer(x, y, historique, grille, etat = 0)
+        new(x, y, historique, grille, etat)
     end
 
-    def initialize(x, y, historique, etat)
+    def initialize(x, y, historique, grille, etat)
         super(x, y)
         @etat = etat
         @historique = historique
+        @grille = grille
         @cliquable = true
         self.label = @etat.to_s
         self.signal_connect("clicked") {clicked}
@@ -41,6 +42,7 @@ class CaseCliquable < Case
     def clicked
         changeEtat
         @historique.nouveauCoup(@x, @y)
+        @grille.estFini
     end
     
     def to_s

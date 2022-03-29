@@ -35,8 +35,6 @@ class Historique
         if(@index > 0)
             @index -= 1
 
-            #TODO
-            #Effectuer mouvement inverse
             x = @listeCoups[@index][0]
             y = @listeCoups[@index][1]
  
@@ -51,8 +49,6 @@ class Historique
         if(@index < @listeCoups.size)
             @index += 1
 
-            #TODO
-            #Effectuer mouvement
             x = @listeCoups[@index-1][0]
             y = @listeCoups[@index-1][1]
  
