@@ -1,8 +1,58 @@
+require 'gtk3'
 load "../src/Niveau/Grille.rb"
 load "../src/Donnees/Utilisateur.rb"
+load "../src/Niveau/Historique.rb"
+
+
+def onDestroy
+	puts "Fin de l'application"
+	Gtk.main_quit
+end
+
+monApp = Gtk::Window.new
+
+# Titre de la fenêtre
+monApp.set_title("Clicker")
+# Taille de la fenêtre
+monApp.set_default_size(600,600)
+# Réglage de la bordure
+monApp.border_width=5
+# On peut redimensionner
+monApp.set_resizable(true)
+# L'application est toujours centrée
+monApp.set_window_position(Gtk::WindowPosition::CENTER_ALWAYS)
+
+# Création du Layout
+frame=Gtk::Box.new(:vertical, 5)
+monApp.add(frame)
 
 g = Grille.creer(Utilisateur.creer("Stun", "") ,"level1", "aventure")
-puts g
+frame.add(g)
 
-puts g.matriceCorrigee
+btnRetour=Gtk::Button.new(:label=>"retour")
+btnRetour.signal_connect('clicked') { g.historique.retourArriere }
+frame.add(btnRetour)
 
+btnAvancer=Gtk::Button.new(:label=>"avancer")
+btnAvancer.signal_connect('clicked') { g.historique.retourAvant }
+frame.add(btnAvancer)
+
+btnTest=Gtk::Button.new(:label=>"compare")
+btnTest.signal_connect('clicked') { puts g.compareGrille }
+frame.add(btnTest)
+
+btnFini=Gtk::Button.new(:label=>"fini ?")
+btnFini.signal_connect('clicked') {
+	if g.estFini
+		puts "Fini !"
+	else
+		puts "Pas fini..."
+	end
+}
+frame.add(btnFini)
+
+monApp.show_all
+
+# Quand la fenêtre est détruite il faut quitter
+monApp.signal_connect('destroy') {onDestroy}
+Gtk.main

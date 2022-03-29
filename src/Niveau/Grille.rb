@@ -1,15 +1,13 @@
 require_relative "../Donnees/Utilisateur.rb"
 require_relative "./CaseChiffre.rb"
 require_relative "./CaseCliquable.rb"
+require_relative "./Historique.rb"
 
-class Grille
+class Grille < Gtk::Grid
     ##
     # @utilisateur Utilisateur propriétaire de la grille.
-    # @nomGrille Nom de la grille
     # @matrice Matrice représentant la grille, composée de CaseChiffre et de CaseCliquable.
     # @matriceCorrigee Matrice représentant la grille corrigée avec les états finaux, composée de CaseChiffre et de CaseCliquable.
-
-    attr_reader :nomGrille, :matrice, :matriceCorrigee
 
     ##
     # Constructeur de Grille
@@ -27,50 +25,45 @@ class Grille
     private_class_method :new
 
     def initialize(utilisateur, nomGrille, mode)
-
+        super()
         @utilisateur = utilisateur
-        @nomGrille = nomGrille
+        @historique = Historique.new
     
-        #Ouverture du fichier de la grille de l'utilisateur
         fichierMap = File.open(__dir__ + "/../../profile/" + @utilisateur.nom + "/levels/" + mode + "/" + nomGrille + ".krkb")
-
-        #récupération des données de la grille
         donnees = fichierMap.read.split("\n")
         tailleGrilleX = donnees[0].to_i
         tailleGrilleY = donnees[1].to_i
         donneesCases = donnees[2].split(" ")
         donneesHistorique = donnees[3].split(" ")
 
-        #Création et initialisation de la matrice pour la grille de jeu
+        
         @matrice = Array.new(tailleGrilleY) { Array.new(tailleGrilleX) { 0 } }
 
         x, y = 0, 0
         for chiffre in donneesCases do
             if chiffre.to_i < 0
-                @matrice[y][x] = (CaseCliquable.creer(x, y))
+                @matrice[y][x] = (CaseCliquable.creer(x, y, historique))
             else
                 @matrice[y][x] = (CaseChiffre.creer(x, y, chiffre.to_i))
             end
+            self.attach(@matrice[y][x], x, y, 1, 1)
             x = (x+1)%tailleGrilleX
             y += 1 if x == 0
         end
 
-        #Ouverture du fichier de la grille complète
         fichierMapCorrigee = File.open(__dir__ + "/../../assets/levels/" + mode + "/" + nomGrille + "_corrige.krkb")
-
-        #récupération des données 
         donnees = fichierMapCorrigee.read.split("\n")
         tailleGrilleX = donnees[0].to_i
         tailleGrilleY = donnees[1].to_i
         donneesCases = donnees[2].split(" ")
 
-        #Création et initialisation de la matrice solution
+        
         @matriceCorrigee = Array.new(tailleGrilleY) { Array.new(tailleGrilleX) { 0 } }
 
         x, y = 0, 0
         for chiffre in donneesCases do
             if chiffre.to_i < 0
-                @matriceCorrigee[y][x] = (CaseCliquable.creer(x, y, chiffre.to_i.abs-1))
+                @matriceCorrigee[y][x] = (CaseCliquable.creer(x, y, Historique.new, chiffre.to_i.abs-1))
             else
                 @matriceCorrigee[y][x] = (CaseChiffre.creer(x, y, chiffre.to_i))
             end
@@ -79,22 +72,25 @@ class Grille
         end
     end
 
+    attr_reader :matrice, :matriceCorrigee, :historique
+
     def grilleAfficher
         
     end
 
     ##
-    # Méthode de vérification de la validité de la grille avec le corrigé. Renvoi vrai si la grille est
-    # terminée, sinon renvoi faux.
+    # Méthode de vérification de la validité de la grille avec le corrigé.
+    #
+    # @return Vrai si la grille est terminée, faux sinon
     # 
     def estFini
         if compareGrille != []
             return false
         end
-        
-        for y in 0...@matrice.length do
-            for x in 0...@matrice[y].length do
-                return false if @matrice[y][x].is_a CaseCliquable && @matrice[y][x].etat == 0 && @matriceCorrigee[y][x].etat == 2
+
+        @matrice.each do |line|
+            line.each do |c|
+                return false if c.is_a?(CaseCliquable) && c.etat != 2  && @matriceCorrigee[c.y][c.x].etat == 2 
             end
         end
         
@@ -102,20 +98,17 @@ class Grille
     end
 
     ##
-    # Compare la grille courante et la correction et renvoi un tableau composée des cases ayant une erreur (un point au lieu d'un
-    # mur ou inversement).
+    # Compare la grille courante et la correction
+    #
+    # @return Tableau contenant les cases éronnées
     #
     def compareGrille
         
         erreurs = []
 
-        for y in 0...@matrice.length do #parcours de la matrice
-            for x in 0...@matrice[y] do
-
-                if(@matrice[y][x].is_a CaseCliquable && @matrice[y][x].etat != 0) #Si case jouable n'est pas vide
-                    erreurs.push(@matrice[y][x]) if @matrice[y][x] != @matriceCorrigee[y][x] #ajout de l'erreur
-                end
-                
+        @matrice.each do |line|
+            line.each do |c|
+                erreurs.push(c) if c.is_a?(CaseCliquable) && c.etat != 0 && c.etat != @matriceCorrigee[c.y][c.x].etat
             end
         end
         
@@ -125,6 +118,7 @@ class Grille
 
     ##
     # Affiche la grille dans le terminal pour les tests de celle-ci.
+    #
     def to_s
         string = ""
         for y in 0...@matrice.length do
@@ -135,4 +129,5 @@ class Grille
         end
         return string
     end
+    
 end
