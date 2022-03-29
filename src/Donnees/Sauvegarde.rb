@@ -39,28 +39,6 @@ class Sauvegarde
             Dir.mkdir("../../profile/#{@nomUtilisateur}/levels/aventure")
             Dir.mkdir("../../profile/#{@nomUtilisateur}/levels/classe")
             Dir.mkdir("../../profile/#{@nomUtilisateur}/levels/classique")
-
-            dir_aventure = Dir["../../assets/levels/aventure/*.krkb"]
-            dir_classe = Dir["../../assets/levels/classe/*.krkb"]
-            dir_classique = Dir["../../assets/levels/classique/*.krkb"]
-
-            dir_aventure.each do |filename|
-                name = File.basename(filename)
-                dest_folder = "../../profile/#{@nomUtilisateur}/levels/aventure/#{name}"
-                FileUtils.cp(filename, dest_folder)
-            end
-
-            dir_classe.each do |filename|
-                name = File.basename(filename)
-                dest_folder = "../../profile/#{@nomUtilisateur}/levels/classe/#{name}"
-                FileUtils.cp(filename, dest_folder)
-            end
-
-            dir_classique.each do |filename|
-                name = File.basename(filename)
-                dest_folder = "../../profile/#{@nomUtilisateur}/levels/classique/#{name}"
-                FileUtils.cp(filename, dest_folder)
-            end
         end 
     end
 
@@ -112,14 +90,9 @@ class Sauvegarde
     # estFini- Indication si le niveau est fini (1 si fini, 0 si pas fini) 
     # nbEtoiles- Le nombre d'étoiles récupérés sur le niveau (-1 si pas de système d'étoiles dans le niveau)
     def sauvNiveau(mode, niveau, grille, listCoup, chrono, estFini, nbEtoiles)
-        sauvLigneGrille, sauvListCoup = "", ""
         
-        grille.each{|t| t.each{|e| sauvLigneGrille = sauvLigneGrille.concat(e.to_s, " ")}}
-        listCoup.each{|e| sauvListCoup = sauvListCoup.concat(e.to_s, " ")}
-        
-        fNiveau = File.open("../../profile/#{@nomUtilisateur}/levels/#{mode}/#{niveau}.krkb", "w")
-        fNiveau.write("#{grille.length}\n#{grille[0].length}\n#{sauvLigneGrille}\n#{sauvListCoup}\n#{chrono}\n#{estFini}\n#{nbEtoiles}")
-        fNiveau.close()
+
+
         if(estFini == 1)
             if(mode == "aventure")
                 ligneModif = 0
@@ -177,4 +150,4 @@ listCoup[1][1] = 5
 listCoup[2][0] = 7
 listCoup[2][1] = 8
 
-sauvegarde.sauvNiveau("aventure", "1", grille, listCoup, -1, 1, 2)
+#sauvegarde.sauvNiveau("aventure", "1", grille, listCoup, -1, 1, 2)
