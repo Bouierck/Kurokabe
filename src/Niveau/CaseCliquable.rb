@@ -53,6 +53,7 @@ class CaseCliquable < Case
     def clicked
         changeEtat
         @historique.nouveauCoup(self)
+        @grille.estFini
         #Sasuvegarder le niveau !!!!!
         return self
     end
