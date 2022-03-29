@@ -8,6 +8,7 @@ require_relative '../Boutons/BoutonSpecial.rb'
 require_relative '../Boutons/BoutonPause.rb'
 require_relative '../Boutons/BoutonNiveau.rb'
 require_relative '../Boutons/BoutonMenu.rb'
+require_relative '../Menus/Menu.rb'
 require_relative './Grille.rb'
 require_relative './Chronometre.rb'
 
@@ -15,8 +16,14 @@ class Niveau < Gtk::Builder
 
 
     ##
-    #@idNiveau => Numero du niveau 
-    #@tailleFenetre => est de type boolean pour savoir la la fenetre est en taille reduite ou en grande taille (false -> petite fenetre) ( true -> grande fenetre)
+    # @idNiveau => Numero du niveau 
+    # @tailleFenetre => est de type boolean pour savoir la la fenetre est en taille reduite ou en grande taille (false -> petite fenetre) ( true -> grande fenetre)
+    # @mode => mode de jeu du nieau
+    # @grille => grille du niveau
+    # @chrono => chrono du niveau
+
+    attr_reader :idNiveau, :mode, :grille, :chrono
+
     def initialize(idNiveau, unUtilisateur, unMode)
         @mode =unMode
         @utilisateur = unUtilisateur
@@ -50,9 +57,9 @@ class Niveau < Gtk::Builder
     def NiveauAffiche()
 
 
-        boutonArriere= BoutonSpecial.creer("retour arriere",2,2,@grille.historique.method(:retourArriere))
-        boutonAvant = BoutonSpecial.creer("retour avant",2,2,@grille.historique.method(:retourAvant))
-        # BoutonPause boutonPause = BoutonPause.creer("Pause",2,10,menuPause.show_all,@idNiveau)
+        boutonArriere= BoutonSpecial.creer("retour arriere", 2, 2, @grille.historique.method(:retourArriere))
+        boutonAvant = BoutonSpecial.creer("retour avant", 2, 2, @grille.historique.method(:retourAvant))
+        boutonPause = BoutonPause.creer("Pause", 2, 10, Menu.new, self)
         # BoutonSpecial boutonReinitialiser = BoutonSpecial.creer("reinitialiser",2,2,@grille)
         # BoutonNiveau boutonNiveau = BoutonNiveau.creer("niveau",2,10,@idNiveau)
         # BoutonSpecial boutonAide = BoutonSpecial.creer("aide",2,2,resolveur.resoudreGrille())
@@ -82,9 +89,10 @@ class Niveau < Gtk::Builder
         # grid.attach(boutonNiveau,3,1,2,10)
         # window.add(boutonNiveau)
 
-        grid.attach(boutonAvant,6,0,2,2)
-        grid.attach(boutonArriere,6,2,2,2)
-        grid.attach(boutonQuitter,6,4,2,2)
+        grid.attach(boutonAvant, 6, 0, 2, 2)
+        grid.attach(boutonArriere, 6, 2, 2, 2)
+        grid.attach(boutonPause, 6, 4, 2, 2)
+        grid.attach(boutonQuitter, 6, 6, 2, 2)
 
         # boutonMenu = Gtk::Button.new
         # grid.attach(boutonMenu,5,1,2,10)

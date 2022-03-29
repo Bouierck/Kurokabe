@@ -1,6 +1,11 @@
 require_relative "Case.rb"
 require_relative "./Historique.rb"
 
+#require_relative "../Donnees/Sauvegarde.rb"
+
+##
+# Case cliquable qui peut prendre plusieurs états (vide, supposé vide ou mur)
+#
 class CaseCliquable < Case
 
     ##
@@ -39,10 +44,17 @@ class CaseCliquable < Case
         self.label = @etat.to_s
     end
 
+    ##
+    # Lorsque la case est cliquée
+    # change l'etat et ajoute le coup à l'historique
+    #
+    # @return la case
+    #
     def clicked
         changeEtat
-        @historique.nouveauCoup(@x, @y)
-        @grille.estFini
+        @historique.nouveauCoup(self)
+        #Sasuvegarder le niveau !!!!!
+        return self
     end
     
     def to_s

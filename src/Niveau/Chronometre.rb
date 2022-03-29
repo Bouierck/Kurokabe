@@ -1,5 +1,8 @@
 require 'gtk3'
 
+##
+# Chronomètre donne le temps depuis que le niveau a commencé a être résolue
+#
 class Chronometre < Gtk::Label
 
     ##
@@ -14,6 +17,7 @@ class Chronometre < Gtk::Label
     # === Attributes ===
     #
     # * -temps- temps avec lequel le chrono va démarer
+    #
     def Chronometre.creerChrono(temps = 0)
         new(temps)
     end
@@ -40,18 +44,21 @@ class Chronometre < Gtk::Label
             end
         end
 
+        return self
+
     end
 
     ##
     # Arreter ou lance le timer du chrono
     # 
-    # === Attributes ===
+    # ==== Attributes
     #
     # * -bool- true pour lancer le chrono false pour l'arreter
     #
     def on(bool = true)
 
         @estLance = bool
+        return self
 
     end
 

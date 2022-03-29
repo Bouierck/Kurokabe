@@ -1,5 +1,8 @@
 require_relative "Case.rb"
 
+##
+# Case non cliquable qui indique le nombre de case vide autour d'elle
+#
 class CaseChiffre < Case
 
     ##
