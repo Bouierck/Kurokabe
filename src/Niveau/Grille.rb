@@ -42,7 +42,7 @@ class Grille < Gtk::Grid
         x, y = 0, 0
         for chiffre in donneesCases do
             if chiffre.to_i < 0
-                @matrice[y][x] = (CaseCliquable.creer(x, y, historique, self))
+                @matrice[y][x] = (CaseCliquable.creer(x, y, historique))
             else
                 @matrice[y][x] = (CaseChiffre.creer(x, y, chiffre.to_i))
             end
@@ -63,7 +63,7 @@ class Grille < Gtk::Grid
         x, y = 0, 0
         for chiffre in donneesCases do
             if chiffre.to_i < 0
-                @matriceCorrigee[y][x] = (CaseCliquable.creer(x, y, Historique.new, self, chiffre.to_i.abs-1))
+                @matriceCorrigee[y][x] = (CaseCliquable.creer(x, y, Historique.new, chiffre.to_i.abs-1))
             else
                 @matriceCorrigee[y][x] = (CaseChiffre.creer(x, y, chiffre.to_i))
             end
@@ -94,7 +94,6 @@ class Grille < Gtk::Grid
             end
         end
         
-        puts "grille fini"
         return true
     end
 

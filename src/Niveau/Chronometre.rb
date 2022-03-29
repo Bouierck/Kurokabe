@@ -1,12 +1,8 @@
-require 'gtk3'
-
-##
-# Chronomètre donne le temps depuis que le niveau a commencé a être résolue
-#
-class Chronometre < Gtk::Label
+class Chronometre
 
     ##
     # @timer => temps en seconde depuis le début de la grille
+    # @dateDebut => date de lancement de la grille
     # @estLance => vrai si le chrono est lancé faux sinon
 
     attr_reader :timer
@@ -17,7 +13,6 @@ class Chronometre < Gtk::Label
     # === Attributes ===
     #
     # * -temps- temps avec lequel le chrono va démarer
-    #
     def Chronometre.creerChrono(temps = 0)
         new(temps)
     end
@@ -25,63 +20,39 @@ class Chronometre < Gtk::Label
     private_class_method :new
 
     def initialize(temps)
-        super(temps.to_s)
         @timer = temps
+    end
+
+    ##
+    # Lancer le timer du chrono
+    #
+    def lancer
+
+        @dateDebut = Time.new()  
+        @estLance = true
+
+    end
+
+    ##
+    # Arreter le timer du chrono
+    #
+    def stop
         @estLance = false
     end
 
     ##
-    #Creer un thread qui update le timer
+    # Update le timer 
     #
-    def lancer
-
-        @estLance = true
-
-        Thread.new do
-            while(@estLance)
-                update
-                sleep(1)
-            end
-        end
-
-        return self
-
-    end
-
-    ##
-    # Arreter ou lance le timer du chrono
-    # 
-    # ==== Attributes
-    #
-    # * -bool- true pour lancer le chrono false pour l'arreter
-    #
-    def on(bool = true)
-
-        @estLance = bool
-        return self
-
-    end
-
-    ##
-    # Update le timer et l'affichage
+    # @returns La nouvel valeur du timer
     #
     def update
 
-        @timer += 1
-        self.label = self.to_s
-        return self
+        if(@estLance)
+            @timer += Time.new().sec - @dateDebut.sec
+            @dateDebut = Time.new()
+        end
 
-    end
-
-    ##
-    # Format des secondes en minutes:secondes
-    #
-    def to_s
-
-        min = @timer / 60
-        sec = @timer % 60
-
-        return "#{min}:#{sec}"
+        return @timer
 
     end
 

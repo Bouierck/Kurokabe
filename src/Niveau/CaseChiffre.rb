@@ -1,8 +1,5 @@
 require_relative "Case.rb"
 
-##
-# Case non cliquable qui indique le nombre de case vide autour d'elle
-#
 class CaseChiffre < Case
 
     ##
@@ -22,11 +19,10 @@ class CaseChiffre < Case
     def CaseChiffre.creer(x, y, chiffre)
         new(x, y, chiffre)
     end
-    
+
     def initialize(x, y, chiffre)
         super(x, y)
         @chiffre = chiffre
-        self.label= @chiffre.to_s
     end
 
     def to_s

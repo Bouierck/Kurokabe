@@ -1,11 +1,11 @@
-require_relative '../src/Boutons/BoutonSpecial.rb'
-require_relative '../src/Niveau/Chronometre.rb'
-require_relative '../src/Boutons/BoutonNiveau.rb'
-require_relative '../src/Boutons/BoutonMenu.rb'
-require_relative '../src/Boutons/niveau1.rb'
-require_relative '../src/Boutons/score.txt'
-<%= stylesheet_link_tag "../src/Boutons/style.css" %>
-<% end %>
+
+require_relative '../Niveau/Chronometre.rb'
+require_relative 'BoutonLangue.rb'
+require_relative 'BoutonMenu.rb'
+require_relative 'BoutonNiveau.rb'
+require_relative 'BoutonPause.rb'
+require_relative 'BoutonSpecial.rb'
+
 
 require 'gtk3'
 
@@ -25,7 +25,7 @@ boutonSpecial2 = BoutonSpecial.creer("Afficher Chrono",10, 10, c.method(:update)
 
 boutonNiveau1 = BoutonNiveau.creer("Un Niveau", 10, 10, "level1")
 
-boutonMenu1 = BoutonMenu.creer("Un Menu", 10, 10, niveau1)
+boutonMenu1 = BoutonMenu.creer("Un Menu", 10, 10, MenuNiveaux.new)
 
 
 
