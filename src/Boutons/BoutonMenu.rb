@@ -5,12 +5,17 @@ require_relative "./Bouton.rb"
 require 'gtk3'
 
 ##
-# Lance un menu
+# Boutons présents sur la fenêtre du menu principal
 #
+
 class BoutonMenu < Bouton
     
     ##
-    #@menu Menu à lancé à l'appuie du bouton
+    # @uneEtiquette, nom donné au bouton
+    # @uneLongueur, longueur du bouton
+    # @uneLargeur, largeur du bouton
+    # @unMenu, menu à lancer
+    #
 
     def BoutonMenu.creer(uneEtiquette, uneLongueur, uneLargeur, unMenu)
         new(uneEtiquette, uneLongueur, uneLargeur, unMenu)
@@ -19,16 +24,17 @@ class BoutonMenu < Bouton
     private_class_method :new
 
     def initialize(uneEtiquette, uneLongueur, uneLargeur, unMenu)
-
+        #Initialisation du bouton avec ses valeurs
         super(uneEtiquette, uneLongueur, uneLargeur)
         @menu = unMenu
 
+        
         self.signal_connect('clicked'){
-            @menu.affichageMode()
+            #Lance le menu
+            @menu.lancerMenu
         }
 
     end
+end
 
    
-
-end
