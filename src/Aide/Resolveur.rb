@@ -1,4 +1,5 @@
 class Resolveur
+
     def initialize
         @listTech = Array.new
     end
@@ -11,5 +12,4 @@ class Resolveur
         
     end
 
-    end
 end

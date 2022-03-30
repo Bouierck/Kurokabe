@@ -49,9 +49,11 @@ class GrilleGUI < Gtk::Grid
 
         @matriceGUI.each do |line|
             line.each do |c|
-                c.updateCaseGUI
+                c.updateCaseGUI if(c.is_a?(CaseCliquableGUI))
             end
         end
+
+        return @grille.estFini?
 
     end
 

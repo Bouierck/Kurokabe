@@ -7,7 +7,7 @@ class CaseCliquableGUI < CaseGUI
     ##
     # @case case qui est représentée par ce GUI
 
-    def CaseGUI.creer(c)
+    def CaseCliquableGUI.creer(c)
         new(c)
     end
 
@@ -28,7 +28,6 @@ class CaseCliquableGUI < CaseGUI
         @case.changeEtat
         @case.historique.nouveauCoup(@case)
         updateCaseGUI
-        return @case.grille.estFini
 
     end
 
