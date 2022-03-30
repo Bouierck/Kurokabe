@@ -2,7 +2,7 @@ class Technique
 
     ##
     # @grille => grille du niveau dans laquelle chercher les techniques
-    # @casesChange => listes de cases à surbriller/résoudre pour appilqué la technique
+    # @casesChange => listes de cases à surbriller/résoudre pour appliqué la technique
     # @nom de la technique
 
     attr_reader :casesChange

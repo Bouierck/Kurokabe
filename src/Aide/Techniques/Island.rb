@@ -10,7 +10,7 @@ class Island < Technique
     def initialize(grille)
         
         super(grille)
-        @nom = "Ile de 1";
+        @nom = "Ile de 1"
 
     end
 
