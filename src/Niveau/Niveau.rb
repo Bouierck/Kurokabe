@@ -1,27 +1,29 @@
-require_relative '../Menus/Menu.rb'
-require_relative '../Boutons/BoutonSpecial.rb'
-require_relative '../Boutons/BoutonPause.rb'
-require_relative '../Boutons/BoutonNiveau.rb'
-require_relative '../Boutons/BoutonMenu.rb'
 require_relative './Grille.rb'
 require_relative './Chronometre.rb'
 
 class Niveau
 
     ##
-    #@id => Numero du niveau 
-    #@utilisaaateur => l'utilisateur en cours sur le niveau
-    #@mode => mode du niveau( classement, survie, etc..)
-    #@grille => grille du niveau
+    # @id => Numero du niveau 
+    # @utilisateur => l'utilisateur en cours sur le niveau
+    # @mode => mode du niveau( classement, survie, etc..)
+    # @grille => grille du niveau
 
     ##
     #Constructeur du niveau
-    def Niveau.Creer(id, utiliseur, mode)
+    def Niveau.Creer(id, utilisateur, mode)
         new(id, utilisateur, mode)
     end
 
-    def initialize(id, utiliseur, mode)
+    def initialize(id, utilisateur, mode)
         
+        @id = id
+        @utilisateur = utilisateur
+        @mode = mode
+        @chrono = Chronometre.creer
+
+        ##
+        # LOAD DU FICHIER DE BASE
         fichierMap = File.open(__dir__ + "../../assets/levels/#{@mode}/level#{@id}.krkb")
 
         donnees = fichierMap.read.split("\n")
