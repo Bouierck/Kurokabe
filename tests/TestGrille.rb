@@ -1,5 +1,6 @@
 require 'gtk3'
 load "../src/Niveau/Grille.rb"
+load "../src/GUI/GrilleGUI.rb"
 load "../src/Donnees/Utilisateur.rb"
 load "../src/Niveau/Historique.rb"
 
@@ -27,7 +28,8 @@ frame=Gtk::Box.new(:vertical, 4)
 monApp.add(frame)
 
 g = Grille.creer(Utilisateur.creer("Stun", "") ,"level1", "aventure")
-frame.add(g)
+gG = GrilleGUI.creer(g)
+frame.add(gG)
 
 btnRetour=Gtk::Button.new(:label=>"retour")
 btnRetour.signal_connect('clicked') { g.historique.retourArriere }

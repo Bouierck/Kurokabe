@@ -26,7 +26,7 @@ class CaseCliquableGUI < CaseGUI
     def updateCase
 
         @case.changeEtat
-        @case.historique.nouveauCoup(self)
+        @case.historique.nouveauCoup(@case)
         updateCaseGUI
         return @case.grille.estFini
 

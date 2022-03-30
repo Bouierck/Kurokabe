@@ -5,6 +5,8 @@ class CaseGUI < Gtk::Button
     ##
     # @case case qui est représentée par ce GUI
 
+    attr_reader :case
+
     def CaseGUI.creer(c)
         new(c)
     end

@@ -1,13 +1,10 @@
 require_relative "../Donnees/Utilisateur.rb"
 
-require_relative "../GUI/CaseChiffreGUI.rb"
-require_relative "../GUI/CaseCliquableGUI.rb"
-
 require_relative "./CaseChiffre.rb"
 require_relative "./CaseCliquable.rb"
 require_relative "./Historique.rb"
 
-class Grille < Gtk::Grid
+class Grille
     ##
     # @utilisateur Utilisateur propriétaire de la grille.
     # @matrice Matrice représentant la grille, composée de CaseChiffre et de CaseCliquable.
@@ -29,7 +26,7 @@ class Grille < Gtk::Grid
     private_class_method :new
 
     def initialize(utilisateur, nomGrille, mode)
-        super()
+        
         @utilisateur = utilisateur
         @historique = Historique.new
     
@@ -46,11 +43,10 @@ class Grille < Gtk::Grid
         x, y = 0, 0
         for chiffre in donneesCases do
             if chiffre.to_i < 0
-                @matrice[y][x] = (CaseCliquableGUI.creer(CaseCliquable.creer(x, y, historique, self)))
+                @matrice[y][x] = (CaseCliquable.creer(x, y, historique, self))
             else
-                @matrice[y][x] = (CaseChiffreGUI.creer(CaseChiffre.creer(x, y, chiffre.to_i)))
+                @matrice[y][x] = (CaseChiffre.creer(x, y, chiffre.to_i))
             end
-            self.attach(@matrice[y][x], x, y, 1, 1)
             x = (x+1)%tailleGrilleX
             y += 1 if x == 0
         end
