@@ -27,9 +27,9 @@ monApp.set_window_position(Gtk::WindowPosition::CENTER_ALWAYS)
 frame=Gtk::Box.new(:vertical, 4)
 monApp.add(frame)
 
-g = Grille.creer(Utilisateur.creer("Stun", "") ,"level1", "aventure")
-gG = GrilleGUI.creer(g)
-frame.add(gG)
+# niveau = Niveau.creer("4", "Stun", "aventure");
+# niveauGUI = NiveauGUI.creer(niveau);
+# frame.add(niveauGUI)
 
 btnRetour=Gtk::Button.new(:label=>"retour")
 btnRetour.signal_connect('clicked') { g.historique.retourArriere }

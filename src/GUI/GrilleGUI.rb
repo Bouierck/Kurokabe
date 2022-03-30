@@ -22,7 +22,7 @@ class GrilleGUI < Gtk::Grid
 
         super()
         @grille = grille
-        @matriceGUI = @grille.matrice.clone
+        @matriceGUI = @grille.matrice.map(&:clone)
         initMatriceGui
 
     end
@@ -53,7 +53,7 @@ class GrilleGUI < Gtk::Grid
             end
         end
 
-        return @grille.estFini?
+        @grille.update
 
     end
 

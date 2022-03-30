@@ -73,6 +73,8 @@ class NiveauGUI < Gtk::Box
         self.add(@grilleGUI)
         self.add(boxMenu)
 
+        chronoLabel.lancer
+
     end
 
     def clickRetourArriere

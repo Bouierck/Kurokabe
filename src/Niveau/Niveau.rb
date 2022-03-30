@@ -74,7 +74,12 @@ class Niveau
         end
 
         @grille = Grille.creer(matrice, matriceCorrigee)
+        @grille.ajouteObservateur(self)
 
+    end
+
+    def update
+        @chrono.on(false)
     end
 
 end

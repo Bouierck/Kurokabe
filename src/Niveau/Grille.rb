@@ -26,9 +26,17 @@ class Grille
 
     def initialize(matrice, matriceCorrigee)
         
+        @observateurs = []
         @matrice = matrice
         @matriceCorrigee = matriceCorrigee
-    
+
+        @matrice.each do |line|
+            line.each do |c|
+                if(c.is_a?(CaseCliquable))
+                    c.ajouteObservateur(self)
+                end
+            end
+        end
     end
 
     attr_reader :matrice, :matriceCorrigee
@@ -74,6 +82,20 @@ class Grille
         
         return erreurs
         
+    end
+
+    def ajouteObservateur(observateur)
+        @observateurs << observateur
+    end
+
+    def notifObservateurs
+        @observateurs.each do |observateur|
+            observateur.update
+        end
+    end
+
+    def update
+        notifObservateurs if self.estFini?
     end
 
     ##

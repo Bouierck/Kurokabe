@@ -28,6 +28,7 @@ class CaseCliquableGUI < CaseGUI
         @case.changeEtat
         @case.historique.nouveauCoup(@case)
         updateCaseGUI
+        @case.notifObservateurs
 
     end
 

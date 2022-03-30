@@ -32,6 +32,7 @@ class CaseCliquable < Case
         @etat = etat
         @historique = historique
         @cliquable = true
+        @observateurs = []
 
     end
 
@@ -42,6 +43,16 @@ class CaseCliquable < Case
         @etat = (@etat + 1) % 3
     end
     
+    def ajouteObservateur(observateur)
+        @observateurs << observateur
+    end
+
+    def notifObservateurs
+        @observateurs.each do |observateur|
+            observateur.update
+        end
+    end
+
     def to_s
         return "~" + @etat.to_s + "~"
     end
