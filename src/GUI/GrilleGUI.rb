@@ -22,8 +22,10 @@ class GrilleGUI < Gtk::Grid
 
         super()
         @grille = grille
-        @matriceGUI = @grille.matrice.clone
+        @matriceGUI = @grille.matrice.map(&:clone)
         initMatriceGui
+        # self.set_raw_homogeneous(true)
+        # self.set_column_homogeneous(true)
 
     end
 
@@ -49,9 +51,11 @@ class GrilleGUI < Gtk::Grid
 
         @matriceGUI.each do |line|
             line.each do |c|
-                c.updateCaseGUI
+                c.updateCaseGUI if(c.is_a?(CaseCliquableGUI))
             end
         end
+
+        @grille.update
 
     end
 

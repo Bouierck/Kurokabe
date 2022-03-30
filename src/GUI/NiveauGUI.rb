@@ -1,111 +1,101 @@
 require_relative '../Niveau/Niveau.rb'
 
+require_relative '../Menus/Menu.rb'
+require_relative '../Boutons/BoutonSpecial.rb'
+require_relative '../Boutons/BoutonPause.rb'
+require_relative '../Boutons/BoutonNiveau.rb'
+require_relative '../Boutons/BoutonMenu.rb'
+
+require_relative './GrilleGUI.rb'
+require_relative './ChronoGUI.rb'
+
 require 'gtk3'
 
-class Niveau < Gtk::Builder
+class NiveauGUI < Gtk::Box
 
     ##
     # @niveau => niveau représenté paar ce GUI
 
     ##
     #Constructeur du niveau
-    def Niveau.Creer(niveau)
-        new(niveau)
+    def NiveauGUI.creer(app, niveau)
+        new(app, niveau)
     end 
 
-    def initialize(niveau)
+    def initialize(app, niveau)
+
+        super(:horizontal,2)
+        
         @niveau = niveau
+        @grilleGUI = GrilleGUI.creer(@niveau.grille)
+        initGUI
+
     end
 
 
-    ##
-    #Affichage de la fenetre du niveau
-    def NiveauAffiche()
+    def initGUI
 
-        boutonArriere= BoutonSpecial.creer("retour arriere",1,1,@grille.historique.method(:retourArriere))
-        boutonAvant = BoutonSpecial.creer("retour avant",2,2,@grille.historique.method(:retourAvant))
-        boutonPause = BoutonPause.creer("Pause",2,10,Menu.new,self)
-        boutonReinitialiser = BoutonSpecial.creer("reinitialiser",2,2,@grille)
-        boutonNiveau = BoutonNiveau.creer("niveau",2,10,@idNiveau)
-        #boutonCheck = BoutonSpecial.creer("check",2,2,resolveur.resoudreGrille())
-        boutonIndice = BoutonSpecial.creer("indice",2,2,@grille.method(:compareGrille))
-        boutonQuitter = BoutonSpecial.creer("quitter",2,20,self.method(:QuitterFenetre))
-        boutonMenu = BoutonMenu.creer("Menu",2,10,Menu.new)
+        #Box du menu
+        boxMenu = Gtk::Box.new(:vertical,6)
+
+        #label du niveau
+        niveauLabel = Gtk::Label.new("Niveau #{@idNiveau}")
+        chronoLabel = ChronoGUI.creer(@niveau.chrono)
+
+        #Ajout des boutons du menu
+
+        boutonMenu = BoutonMenu.creer("Menu", 2, 10, Menu.new)
+        boutonPause = BoutonPause.creer("Pause", 2, 10, Menu.new, @niveau)
+        boutonQuitter = BoutonSpecial.creer("quitter", 2, 20, self.method(:QuitterFenetre))
+
+        #bouton fonction
+        boxFonction = Gtk::Box.new(:horizontal,5)
+
+        boutonArriere= BoutonSpecial.creer("↶", 1, 1, self.method(:clickRetourArriere))
+        boutonAvant = BoutonSpecial.creer("↷", 2, 2, self.method(:clickRetourAvant))
+        boutonReinitialiser = BoutonSpecial.creer("↻", 2, 2, @niveau.grille.method(:resetGrille))
+        boutonCheck = BoutonSpecial.creer("👁️", 2, 2, @niveau.grille.method(:compareGrille))
+        boutonIndice = BoutonSpecial.creer("💡", 2, 2, self.method(:appelResoudreGrille))
         
+        boxFonction.add(boutonArriere)
+        boxFonction.add(boutonAvant)
+        boxFonction.add(boutonReinitialiser)
+        boxFonction.add(boutonCheck)
+        boxFonction.add(boutonIndice)
 
-        #Creation de la fenetre 
-        window = Gtk::Window.new
-        #window.set_default_size(650,700)
-        window.set_border_width(5)
-        window.set_window_position(Gtk::WindowPosition::CENTER_ALWAYS)
+        boxMenu.add(niveauLabel)
+        boxMenu.add(chronoLabel)
+        boxMenu.add(boutonMenu)
+        boxMenu.add(boutonPause)
+        boxMenu.add(boxFonction)
+        boxMenu.add(boutonQuitter)
 
-        #Creation header
-        header = Gtk::HeaderBar.new
-        header.show_close_button = true
-        header.name = "headerbar"
-        header.title = "Kurikabe"
-        header.subtitle = " "
-        window.titlebar = header
+        #Ajout des deux composant de la box du niveau
+        # self.set_homogeneous(true)        
+        self.add(@grilleGUI)
+        self.add(boxMenu)
 
-        #Creation du container pour tous les boutons (important pour contriler la taille ou encore ou ils sont positionné sur l'application)
-        box = Gtk::Box.new(:horizontal,2)
-        box.can_focus = false
-        box.set_homogeneous(true)
-        box.set_spacing(3)
+        chronoLabel.lancer
 
-        @grille.set_margin_left(50)
-        @grille.set_margin_right(50)
-        @grille.set_margin_top(59)
-        @grille.set_margin_bottom(80)
-        box.add(@grille)
+        self.show_all
 
-        boxDroite = Gtk::Box.new(:vertical,7)
-        boxDroite.set_margin_left(50)
-        boxDroite.set_margin_right(50)
-        boxDroite.set_margin_top(15)
-        boxDroite.set_margin_bottom(15)
-        boxDroite.set_homogeneous(true)
-        boxDroite.set_spacing(23)
-        boxDroite.set_homogeneous(true)
+    end
 
-        nomNiveau=Gtk::Label.new()
-        nomNiveau.set_markup("Niveau #{@idNiveau}")
-        nomNiveau.set_justify(:center)
+    def clickRetourArriere
+        @niveau.historique.retourArriere
+        @grilleGUI.updateGrille
+    end
 
-        boxDroite.add(nomNiveau)
-        boxDroite.add(@chrono.lancer)
-        boxDroite.add(boutonPause)
-        boxDroite.add(boutonNiveau)
+    def clickRetourAvant
+        @niveau.historique.retourAvant
+        @grilleGUI.updateGrille
+    end
 
-        #Ajout des boutons d'aide
-        boxAide = Gtk::Box.new(:horizontal,5)
-        boxAide.set_homogeneous(false)
-
-        boxAide.add(boutonArriere)
-        boxAide.add(boutonAvant)
-        #boxAide.add(boutonCheck)
-        #boxAide.add(boutonReinitialiser)
-        #boxAide.add(boutonIndice)
-        
-        boxDroite.add(boxAide)
-        boxDroite.add(boutonMenu)
-        boxDroite.add(boutonQuitter)
-        
-        box.add(boxDroite)
-
-        #Affichage de la fenetre 
-        window.add(box)
-        window.show_all
-        Gtk.main
+    def appelResoudreGrille
+        @niveau.resolveur.resoudreGrille(@niveau.grille)
     end
 
     def QuitterFenetre()
-        window.destroy
+        Gtk.main_quit
     end 
-
-
-end # Marqueur de fin de classe
-
-# niveau = Niveau.Creer(1,Utilisateur.creer("Jeremy",1),"aventure")
-# niveau.NiveauAffiche()
-# Gtk.main
+end

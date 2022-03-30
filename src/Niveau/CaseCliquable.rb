@@ -22,16 +22,18 @@ class CaseCliquable < Case
     # * -y- Position y dans la grille
     # * -etat- etat de la case: 0 vide, 1 point, 2 mur
     #
-    def CaseCliquable.creer(x, y, historique, grille, etat = 0)
-        new(x, y, historique, grille, etat)
+    def CaseCliquable.creer(x, y, historique, etat = 0)
+        new(x, y, historique, etat)
     end
  
-    def initialize(x, y, historique, grille, etat)
+    def initialize(x, y, historique, etat)
+
         super(x, y)
         @etat = etat
         @historique = historique
-        @grille = grille
         @cliquable = true
+        @observateurs = []
+
     end
 
     ##
@@ -41,6 +43,16 @@ class CaseCliquable < Case
         @etat = (@etat + 1) % 3
     end
     
+    def ajouteObservateur(observateur)
+        @observateurs << observateur
+    end
+
+    def notifObservateurs
+        @observateurs.each do |observateur|
+            observateur.update
+        end
+    end
+
     def to_s
         return "~" + @etat.to_s + "~"
     end

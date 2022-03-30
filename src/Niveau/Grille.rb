@@ -2,7 +2,6 @@ require_relative "../Donnees/Utilisateur.rb"
 
 require_relative "./CaseChiffre.rb"
 require_relative "./CaseCliquable.rb"
-require_relative "./Historique.rb"
 
 class Grille
     ##
@@ -20,23 +19,30 @@ class Grille
     # * -mode- Mode de jeu de la grille
     #
     def Grille.creer(matrice, matriceCorrigee)
-        new(matrice, matriceCorigee)
+        new(matrice, matriceCorrigee)
     end
 
     private_class_method :new
 
     def initialize(matrice, matriceCorrigee)
         
-        @historique = Historique.new
+        @observateurs = []
         @matrice = matrice
         @matriceCorrigee = matriceCorrigee
-    
+
+        @matrice.each do |line|
+            line.each do |c|
+                if(c.is_a?(CaseCliquable))
+                    c.ajouteObservateur(self)
+                end
+            end
+        end
     end
 
-    attr_reader :matrice, :matriceCorrigee, :historique
+    attr_reader :matrice, :matriceCorrigee
 
-    def grilleAfficher
-        
+    def resetGrille
+        puts "resetGrille"
     end
 
     ##
@@ -44,7 +50,7 @@ class Grille
     #
     # @return Vrai si la grille est terminée, faux sinon
     # 
-    def estFini
+    def estFini?
         if compareGrille != []
             return false
         end
@@ -76,6 +82,20 @@ class Grille
         
         return erreurs
         
+    end
+
+    def ajouteObservateur(observateur)
+        @observateurs << observateur
+    end
+
+    def notifObservateurs
+        @observateurs.each do |observateur|
+            observateur.update
+        end
+    end
+
+    def update
+        notifObservateurs if self.estFini?
     end
 
     ##

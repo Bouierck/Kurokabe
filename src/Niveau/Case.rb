@@ -13,7 +13,6 @@ class Case
     private_class_method :new
 
     def initialize(x, y)
-        super()
         @x, @y = x, y
         @cliquable = false
     end
