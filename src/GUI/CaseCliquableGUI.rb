@@ -15,7 +15,7 @@ class CaseCliquableGUI < CaseGUI
 
     def initialize(c)
         super(c)
-        self.label = c.etat.to_s
+        updateCaseGUI
         self.signal_connect('clicked') { updateCase }
     end
 
@@ -37,7 +37,15 @@ class CaseCliquableGUI < CaseGUI
     #
     def updateCaseGUI
 
-        self.label = @case.etat.to_s
+        case @case.etat
+            when 0
+                self.label = ""
+            when 1
+                self.label = "●"
+            when 2
+                self.label = "⬜"
+        end
+        
         return self
 
     end
