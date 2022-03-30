@@ -10,7 +10,6 @@ require_relative '../Boutons/BoutonNiveau.rb'
 require_relative '../Boutons/BoutonMenu.rb'
 require_relative './Grille.rb'
 require_relative './Chronometre.rb'
-require_relative '../Donnees/Sauvegarde.rb'
 
 class Niveau < Gtk::Builder
 
@@ -28,18 +27,24 @@ class Niveau < Gtk::Builder
         #@menuPrincipal = new MenuPrincipal()
         #@menuPause = new MenuPause()
         @grille = Grille.creer(@utilisateur,"level" + @idNiveau.to_s, @mode)
-        @chrono = Chronometre.creerChrono() 	
+        @chrono = Chronometre.creerChrono() 
+        
+        # if (File.exist?("../../profile/#{@utilisateur.nom}/levels/#{@mode}/level#{@idNiveau}.krkb" ))
+        #     fichier = File.open("../../profile/#{@utilisateur.nom}/levels/#{@mode}/level#{@idNiveau}.krkb", "r")
+        #     print(Marshal.load(fichier))
+        #     fichier.close
+        # end
+
+
     end
 
-    attr_reader :chrono, :grille
+    attr_reader :chrono, :grille, :mode, :idNiveau
 
     ##
-    #Methode de creation de niveau
+    #Constructeur du niveau
     def Niveau.Creer(idNiveau, unUtilisateur, unMode)
         new(idNiveau,unUtilisateur,unMode)
     end 
-
-
 
     ##
     #Affichage de la fenetre du niveau
@@ -50,10 +55,10 @@ class Niveau < Gtk::Builder
         boutonPause = BoutonPause.creer("Pause",2,10,Menu.new,self)
         boutonReinitialiser = BoutonSpecial.creer("reinitialiser",2,2,@grille)
         boutonNiveau = BoutonNiveau.creer("niveau",2,10,@idNiveau)
-        boutonCheck = BoutonSpecial.creer("check",2,2,resolveur.resoudreGrille())
+        #boutonCheck = BoutonSpecial.creer("check",2,2,resolveur.resoudreGrille())
         boutonIndice = BoutonSpecial.creer("indice",2,2,@grille.method(:compareGrille))
         boutonQuitter = BoutonSpecial.creer("quitter",2,20,self.method(:QuitterFenetre))
-        boutonMenu = BoutonMenu.creer("Menu",2,10,Menu.new,self)
+        boutonMenu = BoutonMenu.creer("Menu",2,10,Menu.new)
         
 
         #Creation de la fenetre 
@@ -98,7 +103,7 @@ class Niveau < Gtk::Builder
         boxDroite.add(nomNiveau)
         boxDroite.add(@chrono.lancer)
         boxDroite.add(boutonPause)
-        #boxDroite.add(boutonNiveau)
+        boxDroite.add(boutonNiveau)
 
         #Ajout des boutons d'aide
         boxAide = Gtk::Box.new(:horizontal,5)
@@ -111,7 +116,7 @@ class Niveau < Gtk::Builder
         #boxAide.add(boutonIndice)
         
         boxDroite.add(boxAide)
-        #boxDroite.add(boutonMenu)
+        boxDroite.add(boutonMenu)
         boxDroite.add(boutonQuitter)
         
         box.add(boxDroite)
@@ -129,6 +134,6 @@ class Niveau < Gtk::Builder
 
 end # Marqueur de fin de classe
 
-niveau = Niveau.Creer(1,Utilisateur.creer("Jeremy",1),"aventure")
-niveau.NiveauAffiche()
-Gtk.main
+# niveau = Niveau.Creer(1,Utilisateur.creer("Jeremy",1),"aventure")
+# niveau.NiveauAffiche()
+# Gtk.main

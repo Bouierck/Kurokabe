@@ -2,6 +2,7 @@
 # Auteur Jérémy Bourgouin & Oussama Belkadi
 # Date : Vendredi 25/02 2022 11:42
 #
+require_relative '../Donnees/Sauvegarde.rb'
 
 class Utilisateur
 
@@ -11,7 +12,7 @@ class Utilisateur
     #@nbEtoiles => Nombre d'étoile obtenu dans le mode aventure
     #@sauvegarde => Sauvegarde de l'utilisateur
 
-    attr_reader :nom, :nbEtoiles
+    attr_reader :nom, :langue, :nbEtoiles
 
     ##
     # Constructeur de Sauvegarde
@@ -25,8 +26,7 @@ class Utilisateur
     def initialize(unNom, uneLangue)
         @nom = unNom
         @langue = uneLangue
-        #@sauvegarde = new Sauvegarde(unNom)
-        #@nbEtoiles = @nom.nbEtoiles()
+        @nbEtoiles = Sauvegarde.nbEtoiles()
     end
 
 end # Marqueur de fin de classe

@@ -29,7 +29,7 @@ class Grille < Gtk::Grid
         @utilisateur = utilisateur
         @historique = Historique.new
     
-        fichierMap = File.open(__dir__ + "/../../profile/" + @utilisateur.nom + "/levels/" + mode + "/" + nomGrille + ".krkb")
+        fichierMap = File.open(__dir__ + "/../../assets/levels/" + mode + "/" + nomGrille + ".krkb")
         donnees = fichierMap.read.split("\n")
         tailleGrilleX = donnees[0].to_i
         tailleGrilleY = donnees[1].to_i
