@@ -25,7 +25,7 @@ class CaseCliquable < Case
     def CaseCliquable.creer(x, y, historique, grille, etat = 0)
         new(x, y, historique, grille, etat)
     end
-
+ 
     def initialize(x, y, historique, grille, etat)
         super(x, y)
         @etat = etat

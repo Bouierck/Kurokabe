@@ -13,4 +13,4 @@ class Score
     def ajouteScore(score)
         @scoreCumul += score
     end
-end
+end 

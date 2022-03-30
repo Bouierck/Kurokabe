@@ -7,7 +7,7 @@ class Technique
 
     attr_reader :casesChange
 
-    private_class_method :new
+    private_class_method :new 
 
     def initialize(grille)
 

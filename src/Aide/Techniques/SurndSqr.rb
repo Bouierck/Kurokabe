@@ -11,7 +11,7 @@ class SurndSqr < Technique
         @nom = "Case blanche entourée"
     end
 
-    def verifieTech
+    def verifieTech 
 
         @grille.matrice.each do |line|
             line.each do |c|

@@ -57,7 +57,7 @@ class Grille < Gtk::Grid
         tailleGrilleY = donnees[1].to_i
         donneesCases = donnees[2].split(" ")
 
-        
+         
         @matriceCorrigee = Array.new(tailleGrilleY) { Array.new(tailleGrilleX) { 0 } }
 
         x, y = 0, 0

@@ -7,7 +7,7 @@ class Resolveur
         
     end
 
-    def checkGrille
+    def checkGrille 
         
     end
 

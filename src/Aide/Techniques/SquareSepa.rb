@@ -11,7 +11,7 @@ class SquareSepa < Technique
         
         super(grille)
         @nom = "Séparation d'une case";
-
+ 
     end
 
     def verifieTech

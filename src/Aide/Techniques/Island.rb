@@ -19,7 +19,7 @@ class Island < Technique
         @grille.matrice.each do |line|
             line.each do |c|
 
-                @casesChange = []
+                @casesChange = [] 
 
                 if(c.is_a?(CaseChiffre) && c.chiffre == 1)
 

@@ -9,7 +9,7 @@ class IslandExp < Technique
     def initialize(grille)
         super(grille)
         @nom = "Expansion d'ilot."
-    end
+    end 
 
     def verifieTech
 
@@ -18,7 +18,7 @@ class IslandExp < Technique
         @grille.matrice.each do |line|
             line.each do |c|
                 if(c.is_a?(CaseChiffre) && c.chiffre > 1)
-                    
+
                 end
             end
         end

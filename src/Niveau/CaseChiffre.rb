@@ -19,7 +19,7 @@ class CaseChiffre < Case
     # * -y- Position y dans la grille
     # * -chiffre- Chiffre de la case
     #
-    def CaseChiffre.creer(x, y, chiffre)
+    def CaseChiffre.creer(x, y, chiffre) 
         new(x, y, chiffre)
     end
     
