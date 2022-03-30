@@ -8,6 +8,8 @@ require_relative './src/Menus/Fenetre.rb'
 require_relative './src/Menus/MenuPrincipal.rb'
 require_relative './src/Menus/MenuNiveaux.rb'
 require_relative './src/Menus/MenuConnexion.rb'
+require_relative './src/Menus/MenuRegles.rb'
+require_relative './src/Menus/MenuTechnique.rb'
 #require_relative 'MenuRegles'
 
 class Kurokabe < Gtk::Application
@@ -60,13 +62,21 @@ class Kurokabe < Gtk::Application
         return self
     end
 
-    # def regles  
-    #     regle = MenuRegles.new(self)
-    #     @fenetre.remove(@fenetre.child) if(@fenetre.child)
-    #     @fenetre.child = regle
-    #     @fenetre.titlebar = regle.titlebar
-    #     return self
-    # end
+    def regles  
+        regle = MenuRegles.new(self)
+        @fenetre.remove(@fenetre.child) if(@fenetre.child)
+        @fenetre.child = regle
+        @fenetre.titlebar = regle.titlebar
+        return self
+    end
+
+    def techniquemenus
+        techniquemenu = MenuTechnique.new(self)
+        @fenetre.remove(@fenetre.child) if(@fenetre.child)
+        @fenetre.child = techniquemenu
+        @fenetre.titlebar = techniquemenu.titlebar
+        return self
+    end
     
     def closeApp
         @@app.quit

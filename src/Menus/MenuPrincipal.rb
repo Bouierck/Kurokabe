@@ -70,7 +70,7 @@ require_relative '../Boutons/BoutonRetour.rb'
                 bouton.add(Gtk::Label.new.tap{ |label|
                     label.set_markup("REGLES")
                     label.show	})
-                bouton.signal_connect("clicked") { p 'bite' }
+                bouton.signal_connect("clicked") { app.regles }
             bouton.show		}
 
             self.pack_start(btnRegles)
@@ -118,4 +118,6 @@ require_relative '../Boutons/BoutonRetour.rb'
                 barre.show
             }
         end
+    
+
 end
