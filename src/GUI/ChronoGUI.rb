@@ -30,8 +30,8 @@ class ChronoGUI < Gtk::Label
 
         Thread.new do
             while(@chrono.estLance?)
-                sleep(1)
                 update
+                sleep(1)
             end
         end
 

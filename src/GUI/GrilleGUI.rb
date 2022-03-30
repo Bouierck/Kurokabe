@@ -24,6 +24,8 @@ class GrilleGUI < Gtk::Grid
         @grille = grille
         @matriceGUI = @grille.matrice.map(&:clone)
         initMatriceGui
+        # self.set_raw_homogeneous(true)
+        # self.set_column_homogeneous(true)
 
     end
 
