@@ -1,6 +1,12 @@
 require 'gtk3'
+require 'fileutils'
+
+require_relative '../Donnees/Sauvegarde.rb'
+
 require_relative '../Boutons/BoutonRetour.rb'
+
 require_relative '../GUI/NiveauGUI.rb'
+
 require_relative '../Niveau/Niveau.rb'
 
     ##
@@ -405,7 +411,19 @@ require_relative '../Niveau/Niveau.rb'
 			mode = "Classe"
 		end
 
-        @app.lanceNiveau( NiveauGUI.creer(@app, Niveau.creer(niv.to_s, "Stun", mode)) )
+        Sauvegarde.creer("Stun")
+
+        fichierName = __dir__ + "/../../profile/Stun/levels/" + mode + "/level" + niv.to_s + ".krkb"
+
+        if(File.exist?(fichierName))
+            fichier = File.open(fichierName, "r")
+            niveau = Marshal.load(fichier)
+            fichier.close
+        else
+            niveau = Niveau.creer(niv.to_s, Utilisateur.creer("Stun", 0), mode)
+        end
+
+        @app.lanceNiveau( NiveauGUI.creer(@app, niveau))
 
 	end
 
