@@ -3,11 +3,12 @@
 # et de sauvegarder ou de récupérer les informations sur l'utilisateur 
 #
 require 'fileutils'
+require_relative '../Niveau/Niveau.rb'
 
 class Sauvegarde
 
     ##
-    # @nom => nom de l'utilisateur a charger ou sauvegarder
+    # @@nomUtilisateur => nom de l'utilisateur a charger ou sauvegarder
     
     ##
     # Constructeur de Sauvegarde
@@ -17,48 +18,51 @@ class Sauvegarde
     end
 
     def initialize(unNom)
-        @nomUtilisateur = unNom
+        @@nomUtilisateur = unNom
 
-        if (Dir.exist?("../../profile/" + @nomUtilisateur) == false)
+        if (Dir.exist?("../../profile/" + @@nomUtilisateur) == false)
             
             #Création du dossier du nouvel utilisateur
-            Dir.mkdir("../../profile/#{@nomUtilisateur}")
+            Dir.mkdir("../../profile/#{@@nomUtilisateur}")
 
             #Création et initialisation du fichier contenant les informations de l'utilisateur
-            fInfoUtilisateur = File.new("../../profile/#{@nomUtilisateur}/infosUtilisateur.krkb", "w+")
+            fInfoUtilisateur = File.new("../../profile/#{@@nomUtilisateur}/infosUtilisateur.krkb", "w+")
             fInfoUtilisateur.write("0\n0")
             fInfoUtilisateur.close()
 
             #Création fichier contenant les chronos des niveaux classé, les étoiles des niveaux aventures et info si fini ou non des niveaux classiques
-            fInfoUtilisateur = File.new("../../profile/#{@nomUtilisateur}/infosScore.krkb", "w+")
+            fInfoUtilisateur = File.new("../../profile/#{@@nomUtilisateur}/infosScore.krkb", "w+")
             fInfoUtilisateur.write("0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0")
             fInfoUtilisateur.close()
 
             #Copie du dossier assets/levels dans le dossier du nouvel utilisateur
-            Dir.mkdir("../../profile/#{@nomUtilisateur}/levels")
-            Dir.mkdir("../../profile/#{@nomUtilisateur}/levels/aventure")
-            Dir.mkdir("../../profile/#{@nomUtilisateur}/levels/classe")
-            Dir.mkdir("../../profile/#{@nomUtilisateur}/levels/classique")
+            Dir.mkdir("../../profile/#{@@nomUtilisateur}/levels")
+            Dir.mkdir("../../profile/#{@@nomUtilisateur}/levels/aventure")
+            Dir.mkdir("../../profile/#{@@nomUtilisateur}/levels/classe")
+            Dir.mkdir("../../profile/#{@@nomUtilisateur}/levels/classique")
 
             dir_aventure = Dir["../../assets/levels/aventure/*.krkb"]
             dir_classe = Dir["../../assets/levels/classe/*.krkb"]
             dir_classique = Dir["../../assets/levels/classique/*.krkb"]
 
+            #Copie du dossier aventure
             dir_aventure.each do |filename|
                 name = File.basename(filename)
-                dest_folder = "../../profile/#{@nomUtilisateur}/levels/aventure/#{name}"
+                dest_folder = "../../profile/#{@@nomUtilisateur}/levels/aventure/#{name}"
                 FileUtils.cp(filename, dest_folder)
             end
 
+            #Copie du dossier classe
             dir_classe.each do |filename|
                 name = File.basename(filename)
-                dest_folder = "../../profile/#{@nomUtilisateur}/levels/classe/#{name}"
+                dest_folder = "../../profile/#{@@nomUtilisateur}/levels/classe/#{name}"
                 FileUtils.cp(filename, dest_folder)
             end
 
+            #Copie du dossier classique
             dir_classique.each do |filename|
                 name = File.basename(filename)
-                dest_folder = "../../profile/#{@nomUtilisateur}/levels/classique/#{name}"
+                dest_folder = "../../profile/#{@@nomUtilisateur}/levels/classique/#{name}"
                 FileUtils.cp(filename, dest_folder)
             end
         end 
@@ -73,8 +77,8 @@ class Sauvegarde
     #
     # uneLangue- la langue choisie par l'utilisateur 
     # nbEtoiles- le nombre d'etoiles que l'utilisateur 
-    def sauvInfosUtilisateur(uneLangue, nbEtoiles)
-        fInfoUtilisateur = File.open("../../profile/#{@nomUtilisateur}/infosUtilisateur.krkb", "w")
+    def Sauvegarde.sauvInfosUtilisateur(uneLangue, nbEtoiles)
+        fInfoUtilisateur = File.open("../../profile/#{@@nomUtilisateur}/infosUtilisateur.krkb", "w")
         fInfoUtilisateur.write("#{uneLangue}\n#{nbEtoiles}")
         fInfoUtilisateur.close()
     end
@@ -82,8 +86,8 @@ class Sauvegarde
     ##
     # Récupère la langue de l'utilisateur depuis le fichier infoUtilisateur.krkb
     #
-    def langue()
-        fInfoUtilisateur = File.open("../../profile/#{@nomUtilisateur}/infosUtilisateur.krkb", "r")
+    def Sauvegarde.langue()
+        fInfoUtilisateur = File.open("../../profile/#{@@nomUtilisateur}/infosUtilisateur.krkb", "r")
         langue = fInfoUtilisateur.read.split[0]
         fInfoUtilisateur.close()
         return langue
@@ -92,8 +96,8 @@ class Sauvegarde
     ##
     # Récupère le nombre d'étoiles de l'utilisateur depuis le fichier infoUtilisateur.krkb
     #
-    def nbEtoile()
-        fInfoUtilisateur = File.open("../../profile/#{@nomUtilisateur}/infosUtilisateur.krkb", "r")
+    def Sauvegarde.nbEtoile()
+        fInfoUtilisateur = File.open("../../profile/#{@@nomUtilisateur}/infosUtilisateur.krkb", "r")
         nbEtoiles = fInfoUtilisateur.read.split[1]
         fInfoUtilisateur.close()
         return nbEtoiles
@@ -111,33 +115,33 @@ class Sauvegarde
     # chrono- Le chrono en seconde du niveau (-1 si pas de chrono dans le niveau)
     # estFini- Indication si le niveau est fini (1 si fini, 0 si pas fini) 
     # nbEtoiles- Le nombre d'étoiles récupérés sur le niveau (-1 si pas de système d'étoiles dans le niveau)
-    def sauvNiveau(mode, niveau, grille, listCoup, chrono, estFini, nbEtoiles)
-        sauvLigneGrille, sauvListCoup = "", ""
+    def Sauvegarde.sauvNiveau(nomUtilisateur, niveau, estFini, nbEtoiles)
+        fichier = File.open("../../profile/#{@@nomUtilisateur}/levels/#{niveau.mode}/level#{niveau.idNiveau}.iml", "w+")
+        Marshal.dump(niveau,fichier)
+        fichier.close
+        #fichier = File.open("../../profile/#{@@nomUtilisateur}/levels/#{niveau.mode}/level#{niveau.idNiveau}.iml", "r")
+        #print(Marshal.load(fichier))
+        #fichier.close
         
-        grille.each{|t| t.each{|e| sauvLigneGrille = sauvLigneGrille.concat(e.to_s, " ")}}
-        listCoup.each{|e| sauvListCoup = sauvListCoup.concat(e.to_s, " ")}
-        
-        fNiveau = File.open("../../profile/#{@nomUtilisateur}/levels/#{mode}/#{niveau}.krkb", "w")
-        fNiveau.write("#{grille.length}\n#{grille[0].length}\n#{sauvLigneGrille}\n#{sauvListCoup}\n#{chrono}\n#{estFini}\n#{nbEtoiles}")
-        fNiveau.close()
+        #Modification du fichier infosScore.krkb si le niveau sauvegardé est fini
         if(estFini == 1)
-            if(mode == "aventure")
+            if(mode == "classique")
                 ligneModif = 0
-                valeurModif = nbEtoiles
-            elsif(mode == "classique")
-                ligneModif = 1
                 valeurModif = estFini
+            elsif(mode == "aventure")
+                ligneModif = 1
+                valeurModif = nbEtoiles
             else
                 ligneModif = 2
-                valeurModif = chrono
+                valeurModif = niveau.chrono.timer
             end
 
-            fInfoScore = File.open("../../profile/#{@nomUtilisateur}/infosScore.krkb", 'r+')
+            fInfoScore = File.open("../../profile/#{@@nomUtilisateur}/infosScore.krkb", 'r+')
             lines = fInfoScore.each_line.to_a         
 
             lines[ligneModif] = ""
             for i in 0..14 do
-                if(i == niveau.to_i - 1)
+                if(i == niveau[4, 5].to_i)
                     lines[ligneModif] = lines[ligneModif].concat(valeurModif.to_s, " ")
                 else
                     lines[ligneModif] = lines[ligneModif].concat("0 ")
@@ -152,29 +156,6 @@ class Sauvegarde
     end
 end # Marqueur de fin de classe
 
-sauvegarde = Sauvegarde.creer("Jeremy");
-sauvegarde.sauvInfosUtilisateur(1, 15);
-
-print(sauvegarde.langue() + "\n");
-print(sauvegarde.nbEtoile() + "\n");
-
-grille = Array.new(3) { Array.new(3) }
-grille[0][0] = 1
-grille[0][1] = 2
-grille[0][2] = 3
-grille[1][0] = 4
-grille[1][1] = 5
-grille[1][2] = 6
-grille[2][0] = 7
-grille[2][1] = 8
-grille[2][2] = 9
-
-listCoup = Array.new(3) { Array.new(2) }
-listCoup[0][0] = 1
-listCoup[0][1] = 2
-listCoup[1][0] = 4
-listCoup[1][1] = 5
-listCoup[2][0] = 7
-listCoup[2][1] = 8
-
-sauvegarde.sauvNiveau("aventure", "1", grille, listCoup, -1, 1, 2)
+#Sauvegarde.creer("Jeremy")
+#niveau = Niveau.Creer(1, Utilisateur.creer("Jeremy", 1), "aventure")
+#Sauvegarde.sauvNiveau("Jeremy", niveau, 1, 2)
