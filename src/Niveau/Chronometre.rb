@@ -65,4 +65,8 @@ class Chronometre
 
     end
 
+    def estLance?
+        return @estLance
+    end
+
 end

@@ -18,13 +18,14 @@ class NiveauGUI < Gtk::Box
 
     ##
     #Constructeur du niveau
-    def NiveauGUI.creer(niveau)
-        new(niveau)
+    def NiveauGUI.creer(app, niveau)
+        new(app, niveau)
     end 
 
-    def initialize(niveau)
+    def initialize(app, niveau)
 
         super(:horizontal,2)
+        
         @niveau = niveau
         @grilleGUI = GrilleGUI.creer(@niveau.grille)
         initGUI
@@ -54,7 +55,7 @@ class NiveauGUI < Gtk::Box
         boutonAvant = BoutonSpecial.creer("↷", 2, 2, self.method(:clickRetourAvant))
         boutonReinitialiser = BoutonSpecial.creer("↻", 2, 2, @niveau.grille.method(:resetGrille))
         boutonCheck = BoutonSpecial.creer("👁️", 2, 2, @niveau.grille.method(:compareGrille))
-        boutonIndice = BoutonSpecial.creer("💡", 2, 2,self.method(:appelResoudreGrille))
+        boutonIndice = BoutonSpecial.creer("💡", 2, 2, self.method(:appelResoudreGrille))
         
         boxFonction.add(boutonArriere)
         boxFonction.add(boutonAvant)
@@ -70,8 +71,13 @@ class NiveauGUI < Gtk::Box
         boxMenu.add(boutonQuitter)
 
         #Ajout des deux composant de la box du niveau
+        # self.set_homogeneous(true)        
         self.add(@grilleGUI)
         self.add(boxMenu)
+
+        chronoLabel.lancer
+
+        self.show_all
 
     end
 

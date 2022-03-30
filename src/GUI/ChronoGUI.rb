@@ -26,14 +26,12 @@ class ChronoGUI < Gtk::Label
     #
     def lancer
 
-        chrono.on
+        @chrono.on
 
         Thread.new do
-            while(@estLance)
+            while(@chrono.estLance?)
                 update
-            end
-            Thread.handle_interrupt(StandardError => :immediate) do
-                puts "chrono stopped !"
+                sleep(1)
             end
         end
 
@@ -51,7 +49,7 @@ class ChronoGUI < Gtk::Label
     def update
 
         @chrono.update
-        self.label = self.to_s
+        self.label = @chrono.to_s
         return self
 
     end
