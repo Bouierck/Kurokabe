@@ -1,9 +1,7 @@
-require 'gtk3'
-
 ##
 # Chronomètre donne le temps depuis que le niveau a commencé a être résolue
 #
-class Chronometre < Gtk::Label
+class Chronometre
 
     ##
     # @timer => temps en seconde depuis le début de la grille
@@ -25,26 +23,9 @@ class Chronometre < Gtk::Label
     private_class_method :new
 
     def initialize(temps)
-        super(temps.to_s)
+
         @timer = temps
         @estLance = false
-    end
-
-    ##
-    #Creer un thread qui update le timer
-    #
-    def lancer
-
-        @estLance = true
-
-        Thread.new do
-            while(@estLance)
-                update
-                sleep(1)
-            end
-        end
-
-        return self
 
     end
  
@@ -68,7 +49,6 @@ class Chronometre < Gtk::Label
     def update
 
         @timer += 1
-        self.label = self.to_s
         return self
 
     end

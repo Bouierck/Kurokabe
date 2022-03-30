@@ -1,139 +1,80 @@
-##
-# Auteur Jérémy Bourgouin & Oussama Belkadi
-# Date : Vendredi 25/02 2022 11:36
-#
-require 'gtk3'
-require_relative '../Menus/Menu.rb'
-require_relative '../Boutons/BoutonSpecial.rb'
-require_relative '../Boutons/BoutonPause.rb'
-require_relative '../Boutons/BoutonNiveau.rb'
-require_relative '../Boutons/BoutonMenu.rb'
+require_relative '../Aide/Resolveur.rb'
+
 require_relative './Grille.rb'
 require_relative './Chronometre.rb'
 
-class Niveau < Gtk::Builder
-
+class Niveau
 
     ##
-    #@idNiveau => Numero du niveau 
-    #@unUtilsateur => l'utilisateur en cours sur le niveau
-    #@unMode => mode du niveau( classement, survie, etc..)
-    def initialize(idNiveau, unUtilisateur, unMode)
-        @mode =unMode
-        @utilisateur = unUtilisateur
-        @idNiveau = idNiveau
-
-        #@resolveur = new Resolveur()
-        #@menuPrincipal = new MenuPrincipal()
-        #@menuPause = new MenuPause()
-        @grille = Grille.creer(@utilisateur,"level" + @idNiveau.to_s, @mode)
-        @chrono = Chronometre.creerChrono() 
-        
-        # if (File.exist?("../../profile/#{@utilisateur.nom}/levels/#{@mode}/level#{@idNiveau}.krkb" ))
-        #     fichier = File.open("../../profile/#{@utilisateur.nom}/levels/#{@mode}/level#{@idNiveau}.krkb", "r")
-        #     print(Marshal.load(fichier))
-        #     fichier.close
-        # end
-
-
-    end
-
-    attr_reader :chrono, :grille, :mode, :idNiveau
+    # @id => Numero du niveau 
+    # @utilisaaateur => l'utilisateur en cours sur le niveau
+    # @mode => mode du niveau( classement, survie, etc..)
+    # @grille => grille du niveau
+    # @chrono => chronometre du niveau
+    # @resolveur => resolveur du niveau
+    # @historisque => historique du niveau
+    
+    attr_reader :chrono, :grille, :mode, :id, :utilisateur, :resolveur, :historique
 
     ##
     #Constructeur du niveau
-    def Niveau.Creer(idNiveau, unUtilisateur, unMode)
-        new(idNiveau,unUtilisateur,unMode)
-    end 
-
-    ##
-    #Affichage de la fenetre du niveau
-    def NiveauAffiche()
-
-        boutonArriere= BoutonSpecial.creer("retour arriere",1,1,@grille.historique.method(:retourArriere))
-        boutonAvant = BoutonSpecial.creer("retour avant",2,2,@grille.historique.method(:retourAvant))
-        boutonPause = BoutonPause.creer("Pause",2,10,Menu.new,self)
-        boutonReinitialiser = BoutonSpecial.creer("reinitialiser",2,2,@grille)
-        boutonNiveau = BoutonNiveau.creer("niveau",2,10,@idNiveau)
-        #boutonCheck = BoutonSpecial.creer("check",2,2,resolveur.resoudreGrille())
-        boutonIndice = BoutonSpecial.creer("indice",2,2,@grille.method(:compareGrille))
-        boutonQuitter = BoutonSpecial.creer("quitter",2,20,self.method(:QuitterFenetre))
-        boutonMenu = BoutonMenu.creer("Menu",2,10,Menu.new)
-        
-
-        #Creation de la fenetre 
-        window = Gtk::Window.new
-        #window.set_default_size(650,700)
-        window.set_border_width(5)
-        window.set_window_position(Gtk::WindowPosition::CENTER_ALWAYS)
-
-        #Creation header
-        header = Gtk::HeaderBar.new
-        header.show_close_button = true
-        header.name = "headerbar"
-        header.title = "Kurikabe"
-        header.subtitle = " "
-        window.titlebar = header
-
-        #Creation du container pour tous les boutons (important pour contriler la taille ou encore ou ils sont positionné sur l'application)
-        box = Gtk::Box.new(:horizontal,2)
-        box.can_focus = false
-        box.set_homogeneous(true)
-        box.set_spacing(3)
-
-        @grille.set_margin_left(50)
-        @grille.set_margin_right(50)
-        @grille.set_margin_top(59)
-        @grille.set_margin_bottom(80)
-        box.add(@grille)
-
-        boxDroite = Gtk::Box.new(:vertical,7)
-        boxDroite.set_margin_left(50)
-        boxDroite.set_margin_right(50)
-        boxDroite.set_margin_top(15)
-        boxDroite.set_margin_bottom(15)
-        boxDroite.set_homogeneous(true)
-        boxDroite.set_spacing(23)
-        boxDroite.set_homogeneous(true)
-
-        nomNiveau=Gtk::Label.new()
-        nomNiveau.set_markup("Niveau #{@idNiveau}")
-        nomNiveau.set_justify(:center)
-
-        boxDroite.add(nomNiveau)
-        boxDroite.add(@chrono.lancer)
-        boxDroite.add(boutonPause)
-        boxDroite.add(boutonNiveau)
-
-        #Ajout des boutons d'aide
-        boxAide = Gtk::Box.new(:horizontal,5)
-        boxAide.set_homogeneous(false)
-
-        boxAide.add(boutonArriere)
-        boxAide.add(boutonAvant)
-        #boxAide.add(boutonCheck)
-        #boxAide.add(boutonReinitialiser)
-        #boxAide.add(boutonIndice)
-        
-        boxDroite.add(boxAide)
-        boxDroite.add(boutonMenu)
-        boxDroite.add(boutonQuitter)
-        
-        box.add(boxDroite)
-
-        #Affichage de la fenetre 
-        window.add(box)
-        window.show_all
-        Gtk.main
+    def Niveau.creer(id, utilisateur, mode)
+        new(id, utilisateur, mode)
     end
 
-    def QuitterFenetre()
-        window.destroy
-    end 
+    def initialize(id, utilisateur, mode)
+        
+        @id = id
+        @utilisateur = utilisateur
+        @mode = mode
+        @chrono = Chronometre.creerChrono
+        @resolveur = Resolveur.new
+        @historique = Historique.new
+        
+        fichierMap = File.open(__dir__ + "/../../assets/levels/#{@mode}/level#{@id}.krkb")
 
+        donnees = fichierMap.read.split("\n")
+        tailleGrilleX = donnees[0].to_i
+        tailleGrilleY = donnees[1].to_i
+        donneesCases = donnees[2].split(" ")
+        donneesHistorique = donnees[3].split(" ")
 
-end # Marqueur de fin de classe
+        
+        matrice = Array.new(tailleGrilleY) { Array.new(tailleGrilleX) { 0 } }
 
-# niveau = Niveau.Creer(1,Utilisateur.creer("Jeremy",1),"aventure")
-# niveau.NiveauAffiche()
-# Gtk.main
+        x, y = 0, 0
+        for chiffre in donneesCases do
+            if chiffre.to_i < 0
+                matrice[y][x] = (CaseCliquable.creer(x, y, @historique))
+            else
+                matrice[y][x] = (CaseChiffre.creer(x, y, chiffre.to_i))
+            end
+            x = (x+1)%tailleGrilleX
+            y += 1 if x == 0
+        end
+
+        fichierMapCorrigee = File.open(__dir__ + "/../../assets/levels/#{@mode}/level#{@id}_corrige.krkb")
+        donnees = fichierMapCorrigee.read.split("\n")
+        tailleGrilleX = donnees[0].to_i
+        tailleGrilleY = donnees[1].to_i
+        donneesCases = donnees[2].split(" ")
+
+         
+        matriceCorrigee = Array.new(tailleGrilleY) { Array.new(tailleGrilleX) { 0 } }
+
+        x, y = 0, 0
+        for chiffre in donneesCases do
+            if chiffre.to_i < 0
+                matriceCorrigee[y][x] = (CaseCliquable.creer(x, y, @historique, chiffre.to_i.abs-1))
+            else
+                matriceCorrigee[y][x] = (CaseChiffre.creer(x, y, chiffre.to_i))
+            end
+            x = (x+1)%tailleGrilleX
+            y += 1 if x == 0
+        end
+
+        @grille = Grille.creer(matrice, matriceCorrigee)
+
+    end
+
+end

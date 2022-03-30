@@ -23,3 +23,17 @@ if(srdSqr.verifieTech == true)
 else
     puts("Test 2: KO !")
 end
+
+grille = Grille.creer(Utilisateur.creer("Stun", 1), "level4", "aventure")
+srdSqr = SurndSqr.creer(grille)
+
+# Mur entourant la case x = 7 et y = 0
+
+2.times { grille.matrice[0][6].changeEtat }
+2.times { grille.matrice[1][7].changeEtat }
+
+if(srdSqr.verifieTech == true)
+    puts("Test 2: OK !")
+else
+    puts("Test 2: KO !")
+end
