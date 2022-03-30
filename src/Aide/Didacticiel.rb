@@ -6,7 +6,7 @@
 class Didacticiel
     #@utilisateur -> Utilisateur en train de jouer
 
-    def AfficheTexte()
+    def AfficheTexte() 
     
     end
 

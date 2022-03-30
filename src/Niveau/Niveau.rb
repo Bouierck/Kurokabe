@@ -37,7 +37,7 @@ class Niveau < Gtk::Builder
         @grille = Grille.creer(@utilisateur,"level" + @idNiveau.to_s, @mode)
         @chrono = Chronometre.creerChrono()
     end
-
+ 
     ##
     #Methode de creation de niveau
     def Niveau.Creer(idNiveau, unUtilisateur, unMode)

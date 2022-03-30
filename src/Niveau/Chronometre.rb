@@ -47,7 +47,7 @@ class Chronometre < Gtk::Label
         return self
 
     end
-
+ 
     ##
     # Arreter ou lance le timer du chrono
     # 

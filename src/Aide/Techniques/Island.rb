@@ -10,7 +10,7 @@ class Island < Technique
     def initialize(grille)
         
         super(grille)
-        @nom = "Ile de 1"
+        @nom = "Ile de 1";
 
     end
 
@@ -19,7 +19,7 @@ class Island < Technique
         @grille.matrice.each do |line|
             line.each do |c|
 
-                @casesChange = []
+                @casesChange = [] 
 
                 if(c.is_a?(CaseChiffre) && c.chiffre == 1)
 

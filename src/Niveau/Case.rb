@@ -3,7 +3,7 @@ require 'gtk3'
 ##
 # Représente une case de la grille
 #
-class Case < Gtk::Button
+class Case < Gtk::Button 
 
     ##
     # @x => position x de la case dans la grille
