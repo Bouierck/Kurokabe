@@ -1,9 +1,9 @@
 require_relative './Technique.rb'
 require_relative '../../Niveau/CaseChiffre.rb'
 
-class Island < Technique
+class Diagonal < Technique
 
-    def Island.creer(grille)
+    def Diagonal.creer(grille)
         new(grille)
     end
 
