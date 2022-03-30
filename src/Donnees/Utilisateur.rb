@@ -2,7 +2,6 @@
 # Auteur Jérémy Bourgouin & Oussama Belkadi
 # Date : Vendredi 25/02 2022 11:42
 #
-#require_relative '../Donnees/Sauvegarde.rb'
 
 class Utilisateur
 
@@ -10,7 +9,6 @@ class Utilisateur
     #@nom => Nom de l'utilisateur
     #@langue => Langue choisi de type Langue
     #@nbEtoiles => Nombre d'étoile obtenu dans le mode aventure
-    #@sauvegarde => Sauvegarde de l'utilisateur
 
     attr_reader :nom, :langue, :nbEtoiles
 

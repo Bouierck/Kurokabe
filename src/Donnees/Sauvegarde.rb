@@ -87,13 +87,10 @@ class Sauvegarde
     #
     # === Attributes ===
     #
-    # mode- Le mode du niveau ("aventure", "classe", "classique") 
-    # niveau- Le nom du niveau
-    # grille- La grille du niveau
-    # listCoup- L'historique de coup du niveau
-    # chrono- Le chrono en seconde du niveau (-1 si pas de chrono dans le niveau)
+    # nomUtilisateur- Nom de l'utilisateur (dossier de sauvegarde)
+    # niveau- L'objet Niveau a sauvegardé)
     # estFini- Indication si le niveau est fini (1 si fini, 0 si pas fini) 
-    # nbEtoiles- Le nombre d'étoiles récupérés sur le niveau (-1 si pas de système d'étoiles dans le niveau)
+    # nbEtoiles- Le nombre d'étoiles récupérés sur le niveau
     def Sauvegarde.sauvNiveau(nomUtilisateur, niveau, estFini, nbEtoiles)
         fichier = File.open("#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/levels/#{niveau.mode}/level#{niveau.id}.iml", "w+")
         Marshal.dump(niveau,fichier)
