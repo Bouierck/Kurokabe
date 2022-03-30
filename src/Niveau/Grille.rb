@@ -1,4 +1,8 @@
 require_relative "../Donnees/Utilisateur.rb"
+
+require_relative "../GUI/CaseChiffreGUI.rb"
+require_relative "../GUI/CaseCliquableGUI.rb"
+
 require_relative "./CaseChiffre.rb"
 require_relative "./CaseCliquable.rb"
 require_relative "./Historique.rb"
@@ -42,9 +46,9 @@ class Grille < Gtk::Grid
         x, y = 0, 0
         for chiffre in donneesCases do
             if chiffre.to_i < 0
-                @matrice[y][x] = (CaseCliquable.creer(x, y, historique, self))
+                @matrice[y][x] = (CaseCliquableGUI.creer(CaseCliquable.creer(x, y, historique, self)))
             else
-                @matrice[y][x] = (CaseChiffre.creer(x, y, chiffre.to_i))
+                @matrice[y][x] = (CaseChiffreGUI.creer(CaseChiffre.creer(x, y, chiffre.to_i)))
             end
             self.attach(@matrice[y][x], x, y, 1, 1)
             x = (x+1)%tailleGrilleX
