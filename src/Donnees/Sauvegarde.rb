@@ -75,7 +75,7 @@ class Sauvegarde
     ##
     # Récupère le nombre d'étoiles de l'utilisateur depuis le fichier infoUtilisateur.krkb
     #
-    def Sauvegarde.nbEtoile()
+    def Sauvegarde.nbEtoiles()
         fInfoUtilisateur = File.open("#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/infosUtilisateur.krkb", "r")
         nbEtoiles = fInfoUtilisateur.read.split[1]
         fInfoUtilisateur.close()
@@ -91,16 +91,16 @@ class Sauvegarde
     # niveau- L'objet Niveau a sauvegardé)
     # estFini- Indication si le niveau est fini (1 si fini, 0 si pas fini) 
     # nbEtoiles- Le nombre d'étoiles récupérés sur le niveau
-    def Sauvegarde.sauvNiveau(nomUtilisateur, niveau, estFini, nbEtoiles)
-        fichier = File.open("#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/levels/#{niveau.mode}/level#{niveau.id}.iml", "w+")
+    def Sauvegarde.sauvNiveau(nomUtilisateur, niveau, nbEtoiles)
+        fichier = File.open("#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/levels/#{niveau.mode}/level#{niveau.id}.krkb", "w+")
         Marshal.dump(niveau,fichier)
         fichier.close
         
         #Modification du fichier infosScore.krkb si le niveau sauvegardé est fini
-        if(estFini == 1)
+        if(niveau.grille.estFini? == 1)
             if(mode == "classique")
                 ligneModif = 0
-                valeurModif = estFini
+                valeurModif = niveau.grille.estFini?
             elsif(mode == "aventure")
                 ligneModif = 1
                 valeurModif = nbEtoiles

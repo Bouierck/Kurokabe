@@ -95,7 +95,7 @@ class Grille
     end
 
     def update
-        notifObservateurs if self.estFini?
+        notifObservateurs
     end
 
     ##

@@ -5,15 +5,17 @@
 load '../src/Donnees/Sauvegarde.rb'
 
 #Création d'une sauvegarde
-Sauvegarde.creer("Jeremy")
+Sauvegarde.creer("Stun")
 
 #Création d'un niveau
-niveau = Niveau.creer(11, Utilisateur.creer("Jeremy", 1), "Aventure")
+niveau = Niveau.creer(11, Utilisateur.creer("Heaven", 1), "Aventure")
+
+puts niveau
 
 #Sauvegarde du niveau
-Sauvegarde.sauvNiveau("Jeremy", niveau, 0, 2)
+Sauvegarde.sauvNiveau("Heaven", niveau, 2)
 
 #Récupération du niveau sauvegardé
-fichier = File.open("../profile/Jeremy/levels/Aventure/level11.iml", "r")
-print(Marshal.load(fichier))
+fichier = File.open("../profile/Stun/levels/Aventure/level11.krkb", "r")
+puts Marshal.load(fichier)
 fichier.close
