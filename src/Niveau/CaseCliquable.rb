@@ -11,7 +11,7 @@ class CaseCliquable < Case
     ##
     # @etat etat de la case: 0 vide, 1 point, 2 mur
 
-    attr_reader :etat
+    attr_reader :etat, :historique, :grille
 
     ##
     # Constructeur de CaseClicable
@@ -32,8 +32,6 @@ class CaseCliquable < Case
         @historique = historique
         @grille = grille
         @cliquable = true
-        self.label = @etat.to_s
-        self.signal_connect("clicked") {clicked}
     end
 
     ##
@@ -41,21 +39,6 @@ class CaseCliquable < Case
     #
     def changeEtat
         @etat = (@etat + 1) % 3
-        self.label = @etat.to_s
-    end
-
-    ##
-    # Lorsque la case est cliquée
-    # change l'etat et ajoute le coup à l'historique
-    #
-    # @return la case
-    #
-    def clicked
-        changeEtat
-        @historique.nouveauCoup(self)
-        @grille.estFini
-        #Sasuvegarder le niveau !!!!!
-        return self
     end
     
     def to_s
