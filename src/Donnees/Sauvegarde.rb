@@ -9,6 +9,7 @@ class Sauvegarde
 
     ##
     # @@nomUtilisateur => nom de l'utilisateur a charger ou sauvegarder
+    # @@DirKurokabe => PATH du répertoire "Kurokabe"
     
     ##
     # Constructeur de Sauvegarde
@@ -19,52 +20,30 @@ class Sauvegarde
 
     def initialize(unNom)
         @@nomUtilisateur = unNom
+        @@DirKurokabe = Dir.pwd[0, Dir.pwd.index("Kurokabe") + 8]
 
-        if (Dir.exist?("../../profile/" + @@nomUtilisateur) == false)
+
+        if (Dir.exist?("#{@@DirKurokabe}/profile/#{@@nomUtilisateur}") == false)
             
             #Création du dossier du nouvel utilisateur
-            Dir.mkdir("../../profile/#{@@nomUtilisateur}")
+            Dir.mkdir("#{@@DirKurokabe}/profile/#{@@nomUtilisateur}")
 
             #Création et initialisation du fichier contenant les informations de l'utilisateur
-            fInfoUtilisateur = File.new("../../profile/#{@@nomUtilisateur}/infosUtilisateur.krkb", "w+")
+            fInfoUtilisateur = File.new("#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/infosUtilisateur.krkb", "w+")
             fInfoUtilisateur.write("0\n0")
             fInfoUtilisateur.close()
 
             #Création fichier contenant les chronos des niveaux classé, les étoiles des niveaux aventures et info si fini ou non des niveaux classiques
-            fInfoUtilisateur = File.new("../../profile/#{@@nomUtilisateur}/infosScore.krkb", "w+")
+            fInfoUtilisateur = File.new("#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/infosScore.krkb", "w+")
             fInfoUtilisateur.write("0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n0 0 0 0 0 0 0 0 0 0 0 0 0 0 0")
             fInfoUtilisateur.close()
 
             #Copie du dossier assets/levels dans le dossier du nouvel utilisateur
-            Dir.mkdir("../../profile/#{@@nomUtilisateur}/levels")
-            Dir.mkdir("../../profile/#{@@nomUtilisateur}/levels/aventure")
-            Dir.mkdir("../../profile/#{@@nomUtilisateur}/levels/classe")
-            Dir.mkdir("../../profile/#{@@nomUtilisateur}/levels/classique")
+            Dir.mkdir("#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/levels")
+            Dir.mkdir("#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/levels/Aventure")
+            Dir.mkdir("#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/levels/classe")
+            Dir.mkdir("#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/levels/classique")
 
-            dir_aventure = Dir["../../assets/levels/aventure/*.krkb"]
-            dir_classe = Dir["../../assets/levels/classe/*.krkb"]
-            dir_classique = Dir["../../assets/levels/classique/*.krkb"]
-
-            #Copie du dossier aventure
-            dir_aventure.each do |filename|
-                name = File.basename(filename)
-                dest_folder = "../../profile/#{@@nomUtilisateur}/levels/aventure/#{name}"
-                FileUtils.cp(filename, dest_folder)
-            end
-
-            #Copie du dossier classe
-            dir_classe.each do |filename|
-                name = File.basename(filename)
-                dest_folder = "../../profile/#{@@nomUtilisateur}/levels/classe/#{name}"
-                FileUtils.cp(filename, dest_folder)
-            end
-
-            #Copie du dossier classique
-            dir_classique.each do |filename|
-                name = File.basename(filename)
-                dest_folder = "../../profile/#{@@nomUtilisateur}/levels/classique/#{name}"
-                FileUtils.cp(filename, dest_folder)
-            end
         end 
     end
 
@@ -78,7 +57,7 @@ class Sauvegarde
     # uneLangue- la langue choisie par l'utilisateur 
     # nbEtoiles- le nombre d'etoiles que l'utilisateur 
     def Sauvegarde.sauvInfosUtilisateur(uneLangue, nbEtoiles)
-        fInfoUtilisateur = File.open("../../profile/#{@@nomUtilisateur}/infosUtilisateur.krkb", "w")
+        fInfoUtilisateur = File.open("#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/infosUtilisateur.krkb", "w")
         fInfoUtilisateur.write("#{uneLangue}\n#{nbEtoiles}")
         fInfoUtilisateur.close()
     end
@@ -87,7 +66,7 @@ class Sauvegarde
     # Récupère la langue de l'utilisateur depuis le fichier infoUtilisateur.krkb
     #
     def Sauvegarde.langue()
-        fInfoUtilisateur = File.open("../../profile/#{@@nomUtilisateur}/infosUtilisateur.krkb", "r")
+        fInfoUtilisateur = File.open("#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/infosUtilisateur.krkb", "r")
         langue = fInfoUtilisateur.read.split[0]
         fInfoUtilisateur.close()
         return langue
@@ -97,7 +76,7 @@ class Sauvegarde
     # Récupère le nombre d'étoiles de l'utilisateur depuis le fichier infoUtilisateur.krkb
     #
     def Sauvegarde.nbEtoile()
-        fInfoUtilisateur = File.open("../../profile/#{@@nomUtilisateur}/infosUtilisateur.krkb", "r")
+        fInfoUtilisateur = File.open("#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/infosUtilisateur.krkb", "r")
         nbEtoiles = fInfoUtilisateur.read.split[1]
         fInfoUtilisateur.close()
         return nbEtoiles
@@ -116,12 +95,9 @@ class Sauvegarde
     # estFini- Indication si le niveau est fini (1 si fini, 0 si pas fini) 
     # nbEtoiles- Le nombre d'étoiles récupérés sur le niveau (-1 si pas de système d'étoiles dans le niveau)
     def Sauvegarde.sauvNiveau(nomUtilisateur, niveau, estFini, nbEtoiles)
-        fichier = File.open("../../profile/#{@@nomUtilisateur}/levels/#{niveau.mode}/level#{niveau.idNiveau}.iml", "w+")
+        fichier = File.open("#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/levels/#{niveau.mode}/level#{niveau.id}.iml", "w+")
         Marshal.dump(niveau,fichier)
         fichier.close
-        #fichier = File.open("../../profile/#{@@nomUtilisateur}/levels/#{niveau.mode}/level#{niveau.idNiveau}.iml", "r")
-        #print(Marshal.load(fichier))
-        #fichier.close
         
         #Modification du fichier infosScore.krkb si le niveau sauvegardé est fini
         if(estFini == 1)
@@ -136,7 +112,7 @@ class Sauvegarde
                 valeurModif = niveau.chrono.timer
             end
 
-            fInfoScore = File.open("../../profile/#{@@nomUtilisateur}/infosScore.krkb", 'r+')
+            fInfoScore = File.open("#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/infosScore.krkb", 'r+')
             lines = fInfoScore.each_line.to_a         
 
             lines[ligneModif] = ""
@@ -156,6 +132,3 @@ class Sauvegarde
     end
 end # Marqueur de fin de classe
 
-#Sauvegarde.creer("Jeremy")
-#niveau = Niveau.Creer(1, Utilisateur.creer("Jeremy", 1), "aventure")
-#Sauvegarde.sauvNiveau("Jeremy", niveau, 1, 2)

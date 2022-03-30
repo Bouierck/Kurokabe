@@ -2,7 +2,7 @@
 # Auteur Jérémy Bourgouin & Oussama Belkadi
 # Date : Vendredi 25/02 2022 11:42
 #
-require_relative '../Donnees/Sauvegarde.rb'
+#require_relative '../Donnees/Sauvegarde.rb'
 
 class Utilisateur
 
