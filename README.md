@@ -45,4 +45,6 @@ Ressources utilisés :
 - **Terminal** : Installer le module **subversion** avec "sudo apt install subversion" par exemple.
 Puis, exécuter : **"svn export https://github.com/Bouierck/Kurokabe"**
 
-# 
+# Lancer l'application
+
+- Une fois dans le dossier du projet, exécuter `./Kurokabe.rb` ou `ruby Kurokabe.rb`
