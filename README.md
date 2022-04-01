@@ -34,4 +34,5 @@ Ressources utilisés :
 
 - **ZIP** : Cliquer sur Code au dessus de la liste des fichiers de cette page github, appuyer sur "Download ZIP"
 - **Git** : pour cloner se projet dans votre repo **"git clone https://github.com/Bouierck/Kurokabe.git"**
-- **Terminal** : Installer le module **subversion** avec "sudo apt install subversion" par exemple, puis, exécuter : **"svn export https://github.com/Bouierck/Kurokabe"**
+- **Terminal** : Installer le module **subversion** avec "sudo apt install subversion" par exemple.
+Puis, exécuter : **"svn export https://github.com/Bouierck/Kurokabe"**
