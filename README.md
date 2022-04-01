@@ -8,13 +8,13 @@
 <br>
 
 **Groupe 3**
-- BEAUFRETON Lucas
+- BEAUFRETON Lucas (Chef de projet)
 - BELKADI Oussama
 - BOURGOUIN Jeremy
 - COMTE Clement
 - COUTANT Hugo
 - GEORGET Louis
-- LABBE Nathan
+- LABBE Nathan (Documentaliste)
 - LARDAIS Benjamin
 
 <br>
@@ -30,9 +30,19 @@ Ressources utilisés :
 - Pratiquer les différentes étapes de cycle de vie d'un projet Informatique
 - Prendre en compte les demandes clients, et vendre le logiciel développé
 
+# Contraintes
+
+- Programmation Ruby et GTK3
+- L'application doit contenir un système d'aide à la résolution
+- Le produit doit être rendu sous forme d'image Virtuel type VirtualBox
+- Le rendu final devra respecter le cahier des charges validé, et contenir un manuel d'utilisation, ainsi qu'un cahier de conception et d'analyse
+- Le produit final doit être rendu pour le 8 Avril 2022
+
 # Installation 
 
 - **ZIP** : Cliquer sur Code au dessus de la liste des fichiers de cette page github, appuyer sur "Download ZIP"
 - **Git** : pour cloner se projet dans votre repo **"git clone https://github.com/Bouierck/Kurokabe.git"**
 - **Terminal** : Installer le module **subversion** avec "sudo apt install subversion" par exemple.
 Puis, exécuter : **"svn export https://github.com/Bouierck/Kurokabe"**
+
+# 
