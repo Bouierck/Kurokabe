@@ -23,3 +23,15 @@ Ressources utilisés :
 [Cahier des charges](https://docs.google.com/document/d/1FlOhuZBHOW_MoYjFRI37mKT_h2xnf7UtVAXiw66D7dE/edit?usp=sharing),
 [Diagramme de Gantt](https://docs.google.com/spreadsheets/d/19JpsNgYenO6e5OJJh9Wqvrw7NUWOYOXc-5A1ql4AVF8/edit#gid=0),
 [Trello](https://trello.com/b/AYIpps7L/jacoding).
+
+# Objectifs
+
+- Apprendre à s'organiser, concevoir et travailler en équipe
+- Pratiquer les différentes étapes de cycle de vie d'un projet Informatique
+- Prendre en compte les demandes clients, et vendre le logiciel développé
+
+# Installation 
+
+- **ZIP** : Cliquer sur Code au dessus de la liste des fichiers de cette page github, appuyer sur "Download ZIP"
+- **Git** : pour cloner se projet dans votre repo **"git clone https://github.com/Bouierck/Kurokabe.git"**
+- **Terminal** : Installer le module **subversion** avec "sudo apt install subversion" par exemple, puis, exécuter : **"svn export https://github.com/Bouierck/Kurokabe"**
