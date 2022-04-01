@@ -3,7 +3,6 @@
 **Projet L3 Génie Logiciel 2**
 <br><br><img style="width:250px;" src="https://cdn.discordapp.com/attachments/520318904170709023/932563002555764787/Jacoding_Logo_Blanc.png" alt="Logo Jacoding">
 
-> Jacoding - Despres ou de loin, on répond à vos besoins
 
 <br>
 
