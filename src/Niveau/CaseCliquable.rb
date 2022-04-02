@@ -11,7 +11,7 @@ class CaseCliquable < Case
     ##
     # @etat etat de la case: 0 vide, 1 point, 2 mur
 
-    attr_reader :etat, :historique, :grille
+    attr_reader :etat, :historique
 
     ##
     # Constructeur de CaseClicable

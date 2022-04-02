@@ -1,0 +1,28 @@
+.case{
+
+    background: none;
+    color: black;
+    border-radius: 0;
+    text-decoration: none;
+
+}
+
+.case-clic:hover {
+    background-color: rgb(162, 218, 255);
+}
+
+.case-vide{
+    background-color: white;
+}
+
+.case-point{
+    background-color: white;
+}
+
+.case-mur{
+    background-color: black;
+}
+
+.case-mur:hover{
+    background-color: rgb(7, 40, 61)
+}

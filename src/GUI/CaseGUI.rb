@@ -16,6 +16,7 @@ class CaseGUI < Gtk::Button
     def initialize(c)
         super()
         @case = c
+        self.style_context.add_class("case")
     end
 
 end
