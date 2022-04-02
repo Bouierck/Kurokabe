@@ -11,13 +11,24 @@ require_relative './ChronoGUI.rb'
 
 require 'gtk3'
 
+##
+# Représente l'aspect graphique d'un niveau
+# contient le GUI de la grille
+# ainsi que les différent boutons
+#
 class NiveauGUI < Gtk::Box
 
     ##
-    # @niveau => niveau représenté paar ce GUI
+    # @niveau => niveau représenté par ce GUI
 
     ##
-    #Constructeur du niveau
+    # Constructeur du niveau
+    #
+    # === Attributes
+    #
+    # * -app- fenetre de l'application
+    # * -niveau- niveau représenté par ce GUI
+    #
     def NiveauGUI.creer(app, niveau)
         new(app, niveau)
     end 
@@ -32,7 +43,9 @@ class NiveauGUI < Gtk::Box
 
     end
 
-
+    ##
+    # Initialise le GUI du niveau
+    #
     def initGUI
 
         #Box du menu
@@ -81,16 +94,28 @@ class NiveauGUI < Gtk::Box
 
     end
 
+    ##
+    # Fait un retour arrière
+    # puis update l'affichage de la grille
+    #
     def clickRetourArriere
         @niveau.historique.retourArriere
         @grilleGUI.updateGrille
     end
 
+    ##
+    # Fait un retour avant
+    # puis update l'affichage de la grille
+    #
     def clickRetourAvant
         @niveau.historique.retourAvant
         @grilleGUI.updateGrille
     end
 
+    ##
+    # Regarde s'il y a des techniques
+    # puis update l'affichage de la grille
+    #
     def appelResoudreGrille
         indice = @niveau.resolveur.resoudreGrille(@grilleGUI.grille)
         indice.each{ |c|
@@ -98,6 +123,9 @@ class NiveauGUI < Gtk::Box
         }
     end
 
+    ##
+    # !!!!!!!!! A MODIFIER !!!!!!!!!!
+    #
     def QuitterFenetre()
         Gtk.main_quit
     end 

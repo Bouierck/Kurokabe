@@ -13,15 +13,20 @@ class Utilisateur
     attr_reader :nom, :langue, :nbEtoiles
 
     ##
-    # Constructeur de Sauvegarde
+    # Constructeur
     #
-    def Utilisateur.creer(unNom, uneLangue)
-        new(unNom, uneLangue)
+    # === Attributes
+    #
+    # * -nom- nom de l'utilisateur
+    # * -langue- langue de l'utilisateur
+    #
+    def Utilisateur.creer(nom, langue)
+        new(nom, langue)
     end
 
     private_class_method :new
 
-    def initialize(unNom, uneLangue)
+    def initialize(nom, langue)
         Sauvegarde.creer(unNom)
         @nom = unNom
         @langue = uneLangue

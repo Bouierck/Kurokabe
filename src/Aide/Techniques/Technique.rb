@@ -11,16 +11,33 @@ class Technique
 
     def initialize(nom, desc)
         @casesChange = []
-        @nom = no
+        @nom = nom
         @desc = desc
     end
 
-    #renvoi un booleen
-    def verifieTech
+    ##
+    # Verifie si la technique est applicable à la grille
+    # Retourne vrai si oui faux sinon
+    #
+    # === AAttributes
+    #
+    # * -grille- Grille où chercher la technique
+    #
+    def verifieTech(grille)
     end
 
+    ##
+    # Renvoie le non de la technique
+    #
     def to_s
         "Techique : " + nom + " peut être appliqué"
+    end
+
+    ##
+    # Renvoie la description de la technique
+    #
+    def to_s_desc
+        nom + ": " + desc
     end
 
 end

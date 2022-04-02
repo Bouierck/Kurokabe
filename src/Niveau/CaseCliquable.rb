@@ -1,5 +1,7 @@
-require_relative "Case.rb"
+require_relative "./Case.rb"
 require_relative "./Historique.rb"
+
+require_relative "../Modules/dpObservateur/Observable.rb"
 
 #require_relative "../Donnees/Sauvegarde.rb"
 
@@ -7,6 +9,8 @@ require_relative "./Historique.rb"
 # Case cliquable qui peut prendre plusieurs états (vide, supposé vide ou mur)
 #
 class CaseCliquable < Case
+
+    include Observable
 
     ##
     # @etat etat de la case: 0 vide, 1 point, 2 mur
@@ -40,17 +44,10 @@ class CaseCliquable < Case
     # Met l'etat de la case à l'etat suivant
     #
     def changeEtat
+        
         @etat = (@etat + 1) % 3
-    end
-    
-    def ajouteObservateur(observateur)
-        @observateurs << observateur
-    end
-
-    def notifObservateurs
-        @observateurs.each do |observateur|
-            observateur.update
-        end
+        return self
+        
     end
 
     def to_s
