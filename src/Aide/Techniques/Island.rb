@@ -3,30 +3,25 @@ require_relative '../../Niveau/CaseChiffre.rb'
 
 class Island < Technique
 
-    def Island.creer(grille)
-        new(grille)
+    public_class_method :new
+
+    def initialize
+        super("Ile de 1");
     end
 
-    def initialize(grille)
-        
-        super(grille)
-        @nom = "Ile de 1";
+    def verifieTech(grille)
 
-    end
-
-    def verifieTech
-
-        @grille.matrice.each do |line|
+        grille.matrice.each do |line|
             line.each do |c|
 
                 @casesChange = [] 
 
                 if(c.is_a?(CaseChiffre) && c.chiffre == 1)
 
-                    @casesChange.push(@grille.matrice[c.y][c.x - 1]) if @grille.matrice[c.y][c.x - 1].etat != 2
-                    @casesChange.push(@grille.matrice[c.y][c.x + 1]) if @grille.matrice[c.y][c.x + 1].etat != 2
-                    @casesChange.push(@grille.matrice[c.y - 1][c.x]) if @grille.matrice[c.y - 1][c.x].etat != 2
-                    @casesChange.push(@grille.matrice[c.y + 1][c.x]) if @grille.matrice[c.y + 1][c.x].etat != 2
+                    @casesChange << grille.matrice[c.y][c.x - 1] if c.x > 0 && grille.matrice[c.y][c.x - 1].etat != 2
+                    @casesChange << grille.matrice[c.y][c.x + 1] if c.x < (grille.matrice.length - 1) && grille.matrice[c.y][c.x + 1].etat != 2
+                    @casesChange << grille.matrice[c.y - 1][c.x] if c.y > 0 && grille.matrice[c.y - 1][c.x].etat != 2
+                    @casesChange << grille.matrice[c.y + 1][c.x] if c.y < (grille.matrice.length - 1) && grille.matrice[c.y + 1][c.x].etat != 2
 
                 end
 

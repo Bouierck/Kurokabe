@@ -47,6 +47,8 @@ class CaseCliquableGUI < CaseGUI
     #
     def updateCaseGUI
 
+        self.style_context.remove_class("indice")
+
         case @case.etat
             when 0
                 self.style_context.remove_class("case-mur")

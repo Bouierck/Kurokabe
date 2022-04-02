@@ -92,7 +92,10 @@ class NiveauGUI < Gtk::Box
     end
 
     def appelResoudreGrille
-        @niveau.resolveur.resoudreGrille(@niveau.grille)
+        indice = @niveau.resolveur.resoudreGrille(@grilleGUI.grille)
+        indice.each{ |c|
+           @grilleGUI.matriceGUI[c.y][c.x].style_context.add_class("indice")
+        }
     end
 
     def QuitterFenetre()

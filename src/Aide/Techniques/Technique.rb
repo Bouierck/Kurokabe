@@ -9,12 +9,9 @@ class Technique
 
     private_class_method :new 
 
-    def initialize(grille)
-
-        @grille = grille
+    def initialize(nom)
         @casesChange = []
-        @nom = ""
-
+        @nom = nom
     end
 
     #renvoi un booleen
