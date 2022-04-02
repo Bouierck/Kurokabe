@@ -80,7 +80,6 @@ class Niveau
 
     def update
         @chrono.on(false) if @grille.estFini?
-        puts @grille
         Sauvegarde.sauvNiveau(@utilisateur.nom, self, @utilisateur.nbEtoiles)
     end
 

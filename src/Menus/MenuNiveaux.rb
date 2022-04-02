@@ -131,77 +131,77 @@ require_relative '../Niveau/Niveau.rb'
 
         niv11 = Gtk::Button.new.tap{|bouton| 
         bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(11) }
+        bouton.signal_connect("clicked") { jeu(1) }
         bouton.show		}
 
         niv12 = Gtk::Button.new.tap{|bouton| 
         bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(12) }
+        bouton.signal_connect("clicked") { jeu(2) }
         bouton.show		}
 
         niv13 = Gtk::Button.new.tap{|bouton| 
         bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(13) }
+        bouton.signal_connect("clicked") { jeu(3) }
         bouton.show		}
 
         niv14 = Gtk::Button.new.tap{|bouton| 
         bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(14) }
+        bouton.signal_connect("clicked") { jeu(4) }
         bouton.show		}
 
         niv15 = Gtk::Button.new.tap{|bouton| 
         bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(15) }
+        bouton.signal_connect("clicked") { jeu(5) }
         bouton.show		}
 
         niv21 = Gtk::Button.new.tap{|bouton| 
         bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(21) }
+        bouton.signal_connect("clicked") { jeu(6) }
         bouton.show		}
 
         niv22 = Gtk::Button.new.tap{|bouton| 
         bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(22) }
+        bouton.signal_connect("clicked") { jeu(7) }
         bouton.show		}
 
         niv23 = Gtk::Button.new.tap{|bouton| 
         bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(23) }
+        bouton.signal_connect("clicked") { jeu(8) }
         bouton.show		}
 
         niv24 = Gtk::Button.new.tap{|bouton| 
         bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(24) }
+        bouton.signal_connect("clicked") { jeu(9) }
         bouton.show		}
 
         niv25 = Gtk::Button.new.tap{|bouton| 
         bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(25) }
+        bouton.signal_connect("clicked") { jeu(10) }
         bouton.show		}
 
         niv31 = Gtk::Button.new.tap{|bouton| 
         bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(31) }
+        bouton.signal_connect("clicked") { jeu(11) }
         bouton.show		}
 
         niv32 = Gtk::Button.new.tap{|bouton| 
         bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(32) }
+        bouton.signal_connect("clicked") { jeu(12) }
         bouton.show		}
 
         niv33 = Gtk::Button.new.tap{|bouton| 
         bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(33) }
+        bouton.signal_connect("clicked") { jeu(13) }
         bouton.show		}
 
         niv34 = Gtk::Button.new.tap{|bouton| 
         bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(34) }
+        bouton.signal_connect("clicked") { jeu(14) }
         bouton.show		}
 
         niv35 = Gtk::Button.new.tap{|bouton| 
         bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(35) }
+        bouton.signal_connect("clicked") { jeu(15) }
         bouton.show		}
 
 

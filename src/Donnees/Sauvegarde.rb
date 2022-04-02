@@ -41,8 +41,8 @@ class Sauvegarde
             #Copie du dossier assets/levels dans le dossier du nouvel utilisateur
             Dir.mkdir("#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/levels")
             Dir.mkdir("#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/levels/Aventure")
-            Dir.mkdir("#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/levels/classe")
-            Dir.mkdir("#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/levels/classique")
+            Dir.mkdir("#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/levels/Classe")
+            Dir.mkdir("#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/levels/Classique")
 
         end 
     end
@@ -97,11 +97,12 @@ class Sauvegarde
         fichier.close
         
         #Modification du fichier infosScore.krkb si le niveau sauvegardé est fini
-        if(niveau.grille.estFini? == 1)
-            if(niveau.mode == "classique")
+        if(niveau.grille.estFini? == true)
+            if(niveau.mode == "Classique")
                 ligneModif = 0
-                valeurModif = niveau.grille.estFini?
-            elsif(niveau.mode == "aventure")
+                valeurModif = 0
+                valeurModif = 1 if niveau.grille.estFini?
+            elsif(niveau.mode == "Aventure")
                 ligneModif = 1
                 valeurModif = nbEtoiles
             else
@@ -109,21 +110,17 @@ class Sauvegarde
                 valeurModif = niveau.chrono.timer
             end
 
+            #Ouverture du fichier de score
             fInfoScore = File.open("#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/infosScore.krkb", 'r+')
-            lines = fInfoScore.each_line.to_a         
+            lines = fInfoScore.read.split('\n')
 
-            lines[ligneModif] = ""
-            for i in 0..14 do
-                if(i == niveau.mode[4, 5].to_i)
-                    lines[ligneModif] = lines[ligneModif].concat(valeurModif.to_s, " ")
-                else
-                    lines[ligneModif] = lines[ligneModif].concat("0 ")
-                end    
-            end
-            lines[ligneModif] = lines[ligneModif].concat("\n")
+            #Modification de la valeur de score
+            # lines[ligneModif] = lines[ligneModif].split(' ')
+            # lines[ligneModif][niveau.id.to_i - 1] = valeurModif.to_s
+            # lines[ligneModif] = lines[ligneModif].join(' ')
 
-            fInfoScore.rewind
-            fInfoScore.write(lines.join)
+            # fInfoScore.rewind() #remise du curseur en haut du fichier
+            # fInfoScore.write(lines.join('\n'))
             fInfoScore.close()
         end
     end

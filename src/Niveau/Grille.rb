@@ -61,7 +61,6 @@ class Grille
             end
         end
         
-        puts "grille fini"
         return true
     end
 
