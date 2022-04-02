@@ -45,7 +45,7 @@ class Historique
     ##
     # Retourne sur le mouvement précédement annulé
     #
-    def retourAvant()
+    def retourAvant
         if(@index < @listeCoups.size)
             
             #Effectuer mouvement

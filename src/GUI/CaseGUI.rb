@@ -1,5 +1,8 @@
 require  'gtk3'
 
+##
+# Représente l'aspect graphique d'une case
+#
 class CaseGUI < Gtk::Button 
 
     ##
@@ -7,6 +10,13 @@ class CaseGUI < Gtk::Button
 
     attr_reader :case
 
+    ##
+    # Constructeur
+    #
+    # === Attributes
+    #
+    # * -c- case représentée par le gui
+    #
     def CaseGUI.creer(c)
         new(c)
     end

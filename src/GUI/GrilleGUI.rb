@@ -6,6 +6,9 @@ require_relative './CaseCliquableGUI.rb'
 
 require 'gtk3'
 
+##
+# Représente l'aspect graphique d'une grille
+#
 class GrilleGUI < Gtk::Grid
 
     ##
@@ -14,6 +17,13 @@ class GrilleGUI < Gtk::Grid
 
     attr_reader :grille, :matriceGUI
 
+    ##
+    # Constructeur
+    #
+    # === Attributes
+    #
+    # * -grille- grille représentée par le gui
+    #
     def GrilleGUI.creer(grille)
         new(grille)
     end
@@ -26,11 +36,12 @@ class GrilleGUI < Gtk::Grid
         @grille = grille
         @matriceGUI = @grille.matrice.map(&:clone)
         initMatriceGui
-        # self.set_raw_homogeneous(true)
-        # self.set_column_homogeneous(true)
 
     end
 
+    ##
+    # Initialise la matrice de CaseGUI a partir de la grille
+    #
     def initMatriceGui
 
         @matriceGUI.each do |line|
@@ -49,6 +60,9 @@ class GrilleGUI < Gtk::Grid
 
     end
 
+    ##
+    # Met à jour les cases de la grille
+    #
     def updateGrille
 
         @matriceGUI.each do |line|

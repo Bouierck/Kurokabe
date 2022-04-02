@@ -3,13 +3,21 @@ require_relative '../Niveau/Chronometre.rb'
 require 'gtk3'
 
 ##
-# Chronomètre donne le temps depuis que le niveau a commencé a être résolue
+# Représente l'aspect graphique du chronomètre
+# c'est lui qui lance le chrono
 #
 class ChronoGUI < Gtk::Label
 
     ##
-    # @chrono
+    # @chrono => chrono représenté par ce gui
 
+    ##
+    # Constructeur
+    #
+    # === Attributes
+    #
+    # * -chrono- chrono représenté par ce gui
+    #
     def ChronoGUI.creer(chrono)
         new(chrono)
     end
@@ -22,7 +30,8 @@ class ChronoGUI < Gtk::Label
     end
 
     ##
-    #Creer un thread qui update le timer
+    # Lance le chrono
+    # creer un thread qui update le timer
     #
     def lancer
 
@@ -39,6 +48,9 @@ class ChronoGUI < Gtk::Label
 
     end
 
+    ##
+    # Met en pause le chrono
+    #
     def stop
         chrono.on(false)
     end

@@ -1,16 +1,12 @@
 class Score
 
-    def Score.creer(score)
-        new(score)
-    end
-
     private_class_method :new
 
-    def initialize(score)
-        @scoreCumul = score
+    ##
+    # Renvoie le nombre d'étoiles obtenue en fonction de la difficulté
+    #
+    def Score.calculer(nbTechnique, timer, mode)
+        #calculer le score (en nombre d'étoile)
     end
 
-    def ajouteScore(score)
-        @scoreCumul += score
-    end
 end 
