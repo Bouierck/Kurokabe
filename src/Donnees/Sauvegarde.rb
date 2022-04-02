@@ -112,15 +112,15 @@ class Sauvegarde
 
             #Ouverture du fichier de score
             fInfoScore = File.open("#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/infosScore.krkb", 'r+')
-            lines = fInfoScore.read.split('\n')
+            lines = fInfoScore.read.split("\n")
 
             #Modification de la valeur de score
-            # lines[ligneModif] = lines[ligneModif].split(' ')
-            # lines[ligneModif][niveau.id.to_i - 1] = valeurModif.to_s
-            # lines[ligneModif] = lines[ligneModif].join(' ')
+            lines[ligneModif] = lines[ligneModif].split(' ')
+            lines[ligneModif][niveau.id.to_i - 1] = valeurModif.to_s
+            lines[ligneModif] = lines[ligneModif].join(' ')
 
-            # fInfoScore.rewind() #remise du curseur en haut du fichier
-            # fInfoScore.write(lines.join('\n'))
+            fInfoScore.rewind() #remise du curseur en haut du fichier
+            fInfoScore.write(lines.join("\n"))
             fInfoScore.close()
         end
     end

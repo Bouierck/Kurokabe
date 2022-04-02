@@ -48,10 +48,10 @@ require_relative '../Donnees/Langue.rb'
                     label.set_markup(Langue.text("jouer"))
                     label.show	})
                 bouton.signal_connect("clicked") { app.menus }
-            bouton.show		}
+                Langue.addListener(bouton, "jouer")
+            bouton.show	}
 
             self.pack_start(btnJouer)
-
 
             #btnClassement=Gtk::Button.new(:label =>"CLASSEMENT")
 
@@ -93,11 +93,13 @@ require_relative '../Donnees/Langue.rb'
             boite.pack_start(Gtk::Button.new.tap { |bouton|
 
                 bouton.set_image(Gtk::Image.new("francais.png"))
+                bouton.signal_connect("clicked") { Langue.changerLangue(0) }
                 bouton.show
             })
             boite.pack_start(Gtk::Button.new.tap { |bouton|
 
                 bouton.set_image(Gtk::Image.new("anglais.png"))
+                bouton.signal_connect("clicked") { Langue.changerLangue(1)}
                 bouton.show
             })
             boite.show
