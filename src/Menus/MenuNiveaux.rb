@@ -411,16 +411,14 @@ require_relative '../Niveau/Niveau.rb'
 			mode = "Classe"
 		end
 
-        Sauvegarde.creer("Stun")
-
-        fichierName = __dir__ + "/../../profile/Stun/levels/" + mode + "/level" + niv.to_s + ".krkb"
+        fichierName = __dir__ + "/../../profile/" + @app.user.nom + "/levels/" + mode + "/level" + niv.to_s + ".krkb"
 
         if(File.exist?(fichierName))
             fichier = File.open(fichierName, "r")
             niveau = Marshal.load(fichier)
             fichier.close
         else
-            niveau = Niveau.creer(niv.to_s, Utilisateur.creer("Stun", 0), mode)
+            niveau = Niveau.creer(niv.to_s, @app.user, mode)
         end
 
         @app.lanceNiveau( NiveauGUI.creer(@app, niveau))
