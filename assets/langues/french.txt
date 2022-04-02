@@ -1,0 +1,3 @@
+jouer: JOUER
+clasement: CLASSEMENT
+truc: BonjourRTALCa va ?
