@@ -18,6 +18,9 @@ class Grille
     # * -nomGrille- Nom de la grille étant le nom du fichier où se trouve la sauvegarde
     # * -mode- Mode de jeu de la grille
     #
+
+    attr_reader :matrice, :matriceCorrigee
+    
     def Grille.creer(matrice, matriceCorrigee)
         new(matrice, matriceCorrigee)
     end
@@ -39,7 +42,6 @@ class Grille
         end
     end
 
-    attr_reader :matrice, :matriceCorrigee
 
     def resetGrille
         puts "resetGrille"

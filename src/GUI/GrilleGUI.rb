@@ -12,6 +12,8 @@ class GrilleGUI < Gtk::Grid
     # @grille => grille reprséenté par ce GUI
     # @matriceGUI => matrice contenant les boutons de la grille
 
+    attr_reader :grille, :matriceGUI
+
     def GrilleGUI.creer(grille)
         new(grille)
     end
