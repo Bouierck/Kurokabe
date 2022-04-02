@@ -9,9 +9,10 @@ class Technique
 
     private_class_method :new 
 
-    def initialize(nom)
+    def initialize(nom, desc)
         @casesChange = []
-        @nom = nom
+        @nom = no
+        @desc = desc
     end
 
     #renvoi un booleen
