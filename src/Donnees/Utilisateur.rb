@@ -22,6 +22,7 @@ class Utilisateur
     private_class_method :new
 
     def initialize(unNom, uneLangue)
+        Sauvegarde.creer(unNom)
         @nom = unNom
         @langue = uneLangue
         @nbEtoiles = Sauvegarde.nbEtoiles()

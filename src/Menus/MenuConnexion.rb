@@ -4,8 +4,6 @@ require 'gtk3'
 ##
 # Fenêtre permettant de choisir un utilisateur ou d'en créer un.
 class MenuConnexion < Gtk::Dialog
-    
-       attr:user,true
         
         ##
         # Crée la fenêtre du sélecteur d'utilisateur.
@@ -57,8 +55,7 @@ class MenuConnexion < Gtk::Dialog
                 case response
                     when Gtk::ResponseType::OK
                         p "OK"
-                        @user = entree.text
-                        #possibilité de créer dossier
+                        app.user = Utilisateur.creer(entree.text, 0)
                         self.destroy
                     when Gtk::ResponseType::CANCEL
                         p "Cancel"

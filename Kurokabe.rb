@@ -18,9 +18,11 @@ class Kurokabe < Gtk::Application
 
 	@@app = nil
     
-    # @grille_actuelle  => GrilleJouable actuelle
-    # @historique       => Historique de la grille actuelle
+    ##
+    # @user => utilisateur log a l'app
 
+    attr_accessor :user
+    
     ##
     # Retourne l'application.
     #
@@ -40,6 +42,8 @@ class Kurokabe < Gtk::Application
         @provider.load(:path => './src/GUI/CSS/case.css')
 
         Gdk::Screen.default.add_style_provider(@provider, 10000000)
+
+        @user = nil
 
         self.signal_connect("activate") do
             @fenetre = Fenetre.new(self)

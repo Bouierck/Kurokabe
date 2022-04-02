@@ -92,13 +92,13 @@ require_relative '../Donnees/Langue.rb'
         langueBox=Gtk::Box.new(:horizontal).tap { |boite|
             boite.pack_start(Gtk::Button.new.tap { |bouton|
 
-                bouton.set_image(Gtk::Image.new("francais.png"))
+                bouton.set_image(Gtk::Image.new(__dir__ + "/../../assets/img/fr_flag.png"))
                 bouton.signal_connect("clicked") { Langue.changerLangue(0) }
                 bouton.show
             })
             boite.pack_start(Gtk::Button.new.tap { |bouton|
 
-                bouton.set_image(Gtk::Image.new("anglais.png"))
+                bouton.set_image(Gtk::Image.new(__dir__ + "/../../assets/img/en_flag.png"))
                 bouton.signal_connect("clicked") { Langue.changerLangue(1)}
                 bouton.show
             })
