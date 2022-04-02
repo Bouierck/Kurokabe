@@ -12,6 +12,8 @@ require_relative './src/Menus/MenuRegles.rb'
 require_relative './src/Menus/MenuTechnique.rb'
 #require_relative 'MenuRegles'
 
+require_relative './src/Donnees/Langue.rb'
+
 class Kurokabe < Gtk::Application
 
 	@@app = nil
@@ -31,6 +33,8 @@ class Kurokabe < Gtk::Application
 
     def initialize
     	super("projet.Nurikabe", :flags_none)
+
+        Langue.init
 
         @provider = Gtk::CssProvider.new
         @provider.load(:path => './src/GUI/CSS/case.css')

@@ -1,0 +1,2 @@
+jouer: PLAY
+classement: LEADERBOARD

@@ -1,5 +1,6 @@
 require 'gtk3'
 require_relative '../Boutons/BoutonRetour.rb'
+require_relative '../Donnees/Langue.rb'
 
     ##
     # Widget graphique représentant l'écran d'accueil.
@@ -44,7 +45,7 @@ require_relative '../Boutons/BoutonRetour.rb'
 
             btnJouer = Gtk::Button.new.tap{|bouton| 
                 bouton.add(Gtk::Label.new.tap{ |label|
-                    label.set_markup("JOUER")
+                    label.set_markup(Langue.text("jouer"))
                     label.show	})
                 bouton.signal_connect("clicked") { app.menus }
             bouton.show		}
