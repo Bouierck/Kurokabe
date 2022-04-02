@@ -98,10 +98,10 @@ class Sauvegarde
         
         #Modification du fichier infosScore.krkb si le niveau sauvegardé est fini
         if(niveau.grille.estFini? == 1)
-            if(mode == "classique")
+            if(niveau.mode == "classique")
                 ligneModif = 0
                 valeurModif = niveau.grille.estFini?
-            elsif(mode == "aventure")
+            elsif(niveau.mode == "aventure")
                 ligneModif = 1
                 valeurModif = nbEtoiles
             else
@@ -114,7 +114,7 @@ class Sauvegarde
 
             lines[ligneModif] = ""
             for i in 0..14 do
-                if(i == niveau[4, 5].to_i)
+                if(i == niveau.mode[4, 5].to_i)
                     lines[ligneModif] = lines[ligneModif].concat(valeurModif.to_s, " ")
                 else
                     lines[ligneModif] = lines[ligneModif].concat("0 ")
