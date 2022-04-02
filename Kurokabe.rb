@@ -31,6 +31,12 @@ class Kurokabe < Gtk::Application
 
     def initialize
     	super("projet.Nurikabe", :flags_none)
+
+        @provider = Gtk::CssProvider.new
+        @provider.load(:path => './src/GUI/CSS/case.css')
+
+        Gdk::Screen.default.add_style_provider(@provider, 10000000)
+
         self.signal_connect("activate") do
             @fenetre = Fenetre.new(self)
             self.accueil
