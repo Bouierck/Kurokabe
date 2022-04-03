@@ -39,6 +39,7 @@ class NiveauGUI < Gtk::Box
         
         @niveau = niveau
         @grilleGUI = GrilleGUI.creer(@niveau.grille)
+        @app = app;
         initGUI
 
     end
@@ -127,6 +128,6 @@ class NiveauGUI < Gtk::Box
     # !!!!!!!!! A MODIFIER !!!!!!!!!!
     #
     def QuitterFenetre()
-        Gtk.main_quit
+        @app.quit
     end 
 end
