@@ -62,15 +62,19 @@ class CaseCliquableGUI < CaseGUI
 
         case @case.etat
             when 0
+                self.label = ""
                 self.style_context.remove_class("case-mur")
+                self.style_context.remove_class("case-point")
                 self.style_context.add_class("case-vide")
             when 1
                 self.label = "●"
                 self.style_context.remove_class("case-vide")
+                self.style_context.remove_class("case-mur")
                 self.style_context.add_class("case-point")
             when 2
                 self.label = ""
                 self.style_context.remove_class("case-point")
+                self.style_context.remove_class("case-vide")
                 self.style_context.add_class("case-mur")
         end
         
