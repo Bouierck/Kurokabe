@@ -30,14 +30,14 @@ class Technique
     # Renvoie le non de la technique
     #
     def to_s
-        "Techique : " + nom + " peut être appliqué"
+        "Techique : " + @nom + " peut être appliqué"
     end
 
     ##
     # Renvoie la description de la technique
     #
     def to_s_desc
-        nom + ": " + desc
+        @nom + ": " + @desc
     end
 
 end
