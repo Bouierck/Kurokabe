@@ -1,5 +1,9 @@
 require 'gtk3'
+
 require_relative '../Boutons/BoutonRetour.rb'
+require_relative '../Boutons/BoutonMenu.rb'
+
+require_relative '../Donnees/Langue.rb'
 
 ##
 # Widget graphique représentant l'écran d'accueil.
@@ -15,13 +19,8 @@ class MenuRegles < Gtk::Box
         label.show 
         }
 
-        btnRegles = Gtk::Button.new.tap{|bouton| 
-                bouton.add(Gtk::Label.new.tap{ |label|
-                    label.set_markup("Techniques")
-                    label.show	})
-                bouton.signal_connect("clicked") { app.techniquemenus }
-            bouton.show		}
-
+        btnRegles = BoutonMenu.creer("TECHNIQUE", 10, 10, MenuTechnique.method(:new), app)
+        btnRegles.show
 
 
         topbox=Gtk::Box.new(:vertical).tap { |boite|

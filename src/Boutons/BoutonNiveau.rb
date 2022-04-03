@@ -37,7 +37,9 @@ class BoutonNiveau < Bouton
                 niveau = Niveau.creer(id, app.user, mode[menuNiveau.mode - 1])
             end
     
-            app.lanceNiveau( NiveauGUI.creer(app, niveau))
+            n = NiveauGUI.creer(app, niveau)
+            app.fenetre.remove(app.fenetre.child) if(app.fenetre.child)
+            app.fenetre.child = n
 
         }
     end

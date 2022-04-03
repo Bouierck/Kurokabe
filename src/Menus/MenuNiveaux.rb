@@ -223,8 +223,7 @@ require_relative '../Niveau/Niveau.rb'
         boite.show
         }
 
-
-
+        
         @@ary.push(niv11)
         @@ary.push(niv12)
         @@ary.push(niv13)
@@ -240,11 +239,6 @@ require_relative '../Niveau/Niveau.rb'
         @@ary.push(niv33)
         @@ary.push(niv34)
         @@ary.push(niv35)
-
-
-
-
-
 
 
         self.pack_start(facileBox)

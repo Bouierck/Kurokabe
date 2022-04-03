@@ -12,19 +12,22 @@ class BoutonMenu < Bouton
     ##
     #@menu Menu à lancé à l'appuie du bouton
 
-    def BoutonMenu.creer(uneEtiquette, uneLongueur, uneLargeur, unMenu)
-        new(uneEtiquette, uneLongueur, uneLargeur, unMenu)
+    def BoutonMenu.creer(uneEtiquette, uneLongueur, uneLargeur, unMenu, app)
+        new(uneEtiquette, uneLongueur, uneLargeur, unMenu, app)
     end
 
     private_class_method :new
 
-    def initialize(uneEtiquette, uneLongueur, uneLargeur, unMenu)
+    def initialize(uneEtiquette, uneLongueur, uneLargeur, unMenu, app)
 
         super(uneEtiquette, uneLongueur, uneLargeur)
         @menu = unMenu
 
         self.signal_connect('clicked'){
-            @menu.lancerMenu
+            m = @menu.call(app)
+            app.fenetre.remove(app.fenetre.child) if(app.fenetre.child)
+            app.fenetre.child = m
+            app.fenetre.titlebar = m.titlebar
         }
 
     end
