@@ -1,5 +1,6 @@
 require 'gtk3'
 load "../src/Niveau/Grille.rb"
+load "../src/GUI/GrilleGUI.rb"
 load "../src/Donnees/Utilisateur.rb"
 load "../src/Niveau/Historique.rb"
 
@@ -26,8 +27,9 @@ monApp.set_window_position(Gtk::WindowPosition::CENTER_ALWAYS)
 frame=Gtk::Box.new(:vertical, 4)
 monApp.add(frame)
 
-g = Grille.creer(Utilisateur.creer("Stun", "") ,"level1", "aventure")
-frame.add(g)
+# niveau = Niveau.creer("4", "Stun", "aventure");
+# niveauGUI = NiveauGUI.creer(niveau);
+# frame.add(niveauGUI)
 
 btnRetour=Gtk::Button.new(:label=>"retour")
 btnRetour.signal_connect('clicked') { g.historique.retourArriere }

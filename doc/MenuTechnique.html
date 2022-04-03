@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class MenuTechnique - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">Gtk::Box
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-updateBack">#updateBack</a>
+    
+    <li ><a href="#method-i-updateFront">#updateFront</a>
+    
+    <li ><a href="#method-i-updateLabelPage">#updateLabelPage</a>
+    
+    <li ><a href="#method-i-updatePage">#updatePage</a>
+    
+    <li ><a href="#method-i-updateSensitive">#updateSensitive</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-MenuTechnique">
+  <h1 id="class-MenuTechnique" class="class">
+    class MenuTechnique
+  </h1>
+
+  <section class="description">
+    
+<p>Widget graphique représentant l&#39;écran d&#39;accueil.</p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-titlebar" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">titlebar</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(app)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File src/Menus/MenuTechnique.rb, line 9</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">app</span>)
+        <span class="ruby-keyword">super</span>(<span class="ruby-value">:vertical</span>, <span class="ruby-value">10</span>)
+
+        <span class="ruby-ivar">@page</span> = <span class="ruby-value">1</span>
+        <span class="ruby-ivar">@text1</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;This is sparta&quot;</span>)
+        <span class="ruby-ivar">@text2</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;This is sparta&quot;</span>)
+        <span class="ruby-ivar">@image11</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/01.png&#39;</span>)
+        <span class="ruby-ivar">@image12</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/02.png&#39;</span>)
+        <span class="ruby-ivar">@image21</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/11.png&#39;</span>)
+        <span class="ruby-ivar">@image22</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/12.png&#39;</span>)
+
+        <span class="ruby-identifier">labelPage</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Page&quot;</span>)
+
+            <span class="ruby-ivar">@boutonRetour</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;&lt;&quot;</span>)
+            <span class="ruby-ivar">@boutonAvance</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;&gt;&quot;</span>)
+
+
+                
+        <span class="ruby-identifier">labelPage</span>.<span class="ruby-identifier">tap</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">label</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">label</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;Page&quot;</span>)
+        <span class="ruby-identifier">label</span>.<span class="ruby-identifier">show</span> 
+        }
+
+        <span class="ruby-ivar">@boutonRetour</span>.<span class="ruby-identifier">tap</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span> 
+                <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { 
+                    <span class="ruby-ivar">@page</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+                    <span class="ruby-identifier">updateLabelPage</span>(<span class="ruby-identifier">labelPage</span>)
+                }
+            <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">show</span>         }
+        <span class="ruby-ivar">@boutonAvance</span>.<span class="ruby-identifier">tap</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span> 
+            <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { 
+                <span class="ruby-ivar">@page</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+                <span class="ruby-identifier">updateLabelPage</span>(<span class="ruby-identifier">labelPage</span>)
+            }
+        <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">show</span>             }
+
+
+
+        <span class="ruby-identifier">topbox</span>=<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>).<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">boite</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@boutonRetour</span>)
+            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">labelPage</span>)
+            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@boutonAvance</span>)
+            
+            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">show</span>
+        }
+
+        <span class="ruby-ivar">@image11</span>.<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">img</span><span class="ruby-operator">|</span> <span class="ruby-identifier">img</span>.<span class="ruby-identifier">show</span> }
+        <span class="ruby-ivar">@image12</span>.<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">img</span><span class="ruby-operator">|</span> <span class="ruby-identifier">img</span>.<span class="ruby-identifier">show</span> }
+
+        <span class="ruby-ivar">@image21</span>.<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">img</span><span class="ruby-operator">|</span> <span class="ruby-identifier">img</span>.<span class="ruby-identifier">show</span> }
+        <span class="ruby-ivar">@image22</span>.<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">img</span><span class="ruby-operator">|</span> <span class="ruby-identifier">img</span>.<span class="ruby-identifier">show</span> }
+
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">topbox</span>)
+        
+        <span class="ruby-ivar">@text1</span>.<span class="ruby-identifier">tap</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">label</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">label</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;les techs
+                    &quot;</span>)
+        <span class="ruby-identifier">label</span>.<span class="ruby-identifier">show</span> 
+        }
+        <span class="ruby-ivar">@text2</span>.<span class="ruby-identifier">tap</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">label</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">label</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;les techs
+                    &quot;</span>)
+        <span class="ruby-identifier">label</span>.<span class="ruby-identifier">show</span> 
+        }
+
+        <span class="ruby-identifier">imgBox1</span>=<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>).<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">boite</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@image11</span>)
+            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@image12</span>)
+            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">show</span>
+        }
+
+        <span class="ruby-identifier">imgBox2</span>=<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>).<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">boite</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@image21</span>)
+            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@image22</span>)
+            
+            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">show</span>
+        }
+
+        <span class="ruby-identifier">midbox</span>=<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>).<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">boite</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@text1</span>)
+            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">imgBox1</span>)
+            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@text2</span>)
+            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">imgBox2</span>)
+            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">show</span>
+        }
+
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">midbox</span>)
+
+
+        <span class="ruby-ivar">@boutonRetour</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { 
+                        <span class="ruby-identifier">updateBack</span>()
+                        <span class="ruby-identifier">updateSensitive</span>()
+                        <span class="ruby-identifier">updatePage</span>()
+                        <span class="ruby-identifier">updateLabelPage</span>(<span class="ruby-identifier">labelPage</span>)
+                        
+        }
+        <span class="ruby-ivar">@boutonAvance</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { 
+                <span class="ruby-identifier">updateFront</span>()
+                <span class="ruby-identifier">updateSensitive</span>()
+                <span class="ruby-identifier">updatePage</span>()
+                        <span class="ruby-identifier">updateLabelPage</span>(<span class="ruby-identifier">labelPage</span>)
+                        
+        }    
+
+<span class="ruby-comment"># ------------------------------------------TEXT TECHNIQUES-----------------------------------------------------------------------</span>
+
+<span class="ruby-comment">#       TECH 0</span>
+<span class="ruby-ivar">@textIle0</span> = <span class="ruby-string">&quot;
+Nurikabe est un puzzle de formation d&#39;îles basé sur une grille rectangulaire avec des indices à différents endroits. 
+
+Le but est de créer des îles en séparant les indices par des murs, de sorte que chaque île contienne exactement un indice 
+et que le nombre de cases de chaque île soit égal à la valeur de l&#39;indice. En outre, toutes les îles sont isolées les unes des autres horizontalement et verticalement, 
+il n&#39;y a pas de murs de 2x2 ou plus, et tous les murs forment un chemin continu lorsque le puzzle est terminé. 
+Dans l&#39;exemple ci-dessous, nous avons un puzzle Nurikabe 6x6 avec six colonnes et six rangées. 
+
+Nous devons maintenant entourer les indices avec des murs selon les règles ci-dessus... mais comment ?
+&quot;</span>
+
+
+
+<span class="ruby-comment">#       #TECH 1</span>
+<span class="ruby-ivar">@textIle1</span> = <span class="ruby-string">&quot;
+    1. Island of 1
+
+Comme il s&#39;agit d&#39;une île avec un seul carré, nous pouvons l&#39;entourer de murs en ombrant les carrés adjacents horizontalement et verticalement. 
+et verticalement adjacents.
+
+    &quot;</span>
+
+
+
+<span class="ruby-comment">#TECH 2</span>
+<span class="ruby-ivar">@textIle2</span> = <span class="ruby-string">&quot;2. Indices séparés par un carré
+
+Selon les règles du Nurikabe, tous les indices doivent être séparés les uns des autres par des murs. 
+Par conséquent, lorsque deux indices se trouvent sur la même ligne ou colonne et sont séparés par une case, 
+la case intermédiaire doit être un mur.
+
+&quot;</span>
+
+
+
+
+<span class="ruby-comment">#TECH 3</span>
+<span class="ruby-ivar">@textIle3</span> = <span class="ruby-string">&quot;
+
+
+
+3. Indices adjacents en diagonale
+
+Comme dans l&#39;exemple précédent, lorsque deux indices sont adjacents en diagonale, 
+chacune des cases touchant les deux indices doit faire partie d&#39;un mur.
+
+&quot;</span>
+
+
+
+<span class="ruby-comment">#TECH 4</span>
+<span class="ruby-ivar">@textIle4</span> = <span class="ruby-string">&quot;Techniques de base
+
+Nous poursuivons maintenant avec les techniques de base, où il est généralement facile de voir quelles cases font partie d&#39;un mur et doivent être ombrées, 
+et quelles cases font partie d&#39;une île et doivent être marquées d&#39;un point. Voici quelques façons d&#39;utiliser les techniques de base :
+1. Carré entouré
+
+Après avoir résolu les premières étapes en utilisant les techniques de base décrites ci-dessus, le puzzle du diagramme de gauche ci-dessous comporte 
+deux carrés entourés surlignés en rouge. Comme ces carrés sont entourés de murs horizontalement et verticalement, ils ne peuvent pas appartenir à une île et doivent donc 
+être ombrés pour faire partie d&#39;un mur.
+
+&quot;</span>
+
+<span class="ruby-comment">#TECH 5</span>
+<span class="ruby-ivar">@textIle5</span> = <span class="ruby-string">&quot;
+2. L&#39;expansion des murs
+
+Selon les règles du Nurikabe, tous les murs doivent former un seul chemin continu. Si l&#39;on regarde 
+le mur à un seul carré dans le diagramme de gauche ci-dessous, la seule façon de le relier aux autres murs est de l&#39;agrandir avec trois carrés sur sa droite, 
+comme indiqué dans le diagramme de droite.
+
+
+&quot;</span>
+
+
+
+<span class="ruby-comment">#TECH 6</span>
+<span class="ruby-ivar">@textIle6</span> = <span class="ruby-string">&quot;3. Continuité du mur
+
+Dans le puzzle ci-dessous, si le carré en surbrillance fait partie d&#39;une île, le mur du haut sera cloisonné. 
+Par conséquent, pour maintenir la continuité du mur selon les règles du Nurikabe, cette case doit faire partie d&#39;un mur.
+&quot;</span>
+
+<span class="ruby-comment">#TECH 7</span>
+<span class="ruby-ivar">@textIle7</span> = <span class="ruby-string">&quot;
+4. Agrandissement d&#39;une île à partir d&#39;un indice
+
+Dans de nombreux cas, la façon dont une île peut être agrandie directement à partir d&#39;un indice est claire. Dans le diagramme ci-dessous, l&#39;île du 3 
+ne peut être agrandie que vers le haut et l&#39;île du 7 ne peut être agrandie que vers la gauche. Nous allons marquer ces carrés avec des points pour montrer 
+qu&#39;ils font partie des îles respectives et ne peuvent pas faire partie d&#39;un mur.
+
+
+&quot;</span>
+
+
+
+<span class="ruby-comment">#TECH 8</span>
+<span class="ruby-ivar">@textIle8</span> = <span class="ruby-string">&quot;5. Île extensible uniquement dans deux directions
+
+Dans certains cas, une île de 2 ou la dernière case d&#39;une île plus grande ne peut être agrandie que dans deux directions perpendiculaires. 
+Dans ce cas, quelle que soit la direction dans laquelle l&#39;extension de l&#39;îlot aura lieu, la case diagonale doit faire partie d&#39;un mur et est 
+donc grisée comme indiqué dans le schéma de droite ci-dessous.
+
+&quot;</span>
+
+<span class="ruby-comment">#TECH 9</span>
+<span class="ruby-ivar">@textIle9</span> = <span class="ruby-string">&quot;6. Extension des îles cachées
+
+Parfois, une île est trop grande pour tenir dans une zone donnée. Dans le puzzle partiellement résolu ci-dessous, 
+l&#39;île de 12 ne peut pas tenir dans la zone du haut et doit donc s&#39;étendre vers le bas, comme indiqué par un point dans le diagramme de droite. 
+Notez que la case située à gauche de ce point ne peut appartenir à aucune île et qu&#39;elle est donc ombragée pour faire partie d&#39;un mur.
+
+&quot;</span>
+
+
+<span class="ruby-comment">#TECH 10</span>
+<span class="ruby-ivar">@textIle10</span> = <span class="ruby-string">&quot;7. Continuité de l&#39;îlot
+
+La case marquée d&#39;un point rouge dans le schéma de gauche ci-dessous doit faire partie d&#39;une île pour éviter une surface de mur de 2x2. 
+Cela signifie que la case située à sa gauche doit également faire partie de la même île et est donc également marquée d&#39;un point. 
+L&#39;île de 3 est maintenant terminée et nous pouvons l&#39;entourer d&#39;un mur.
+
+&quot;</span>
+<span class="ruby-comment">#TECH 11</span>
+<span class="ruby-ivar">@textIle11</span> = <span class="ruby-string">&quot;8. Entourer une île terminée
+
+Dans l&#39;énigme partiellement résolue ci-dessous, l&#39;île de 3 a été complétée comme le montre la zone en surbrillance. 
+Nous pouvons maintenant entourer cette île de murs adjacents horizontalement et verticalement, comme le montre l&#39;image de droite.
+
+&quot;</span>
+<span class="ruby-comment">#TECH 12</span>
+<span class="ruby-ivar">@textIle12</span> = <span class="ruby-string">&quot;9. Éviter les surfaces murales de 2x2
+
+Selon les règles, il est interdit d&#39;avoir des murs de 2x2 ou plus. Par conséquent, 
+le carré surligné ci-dessous ne peut pas faire partie du mur et est marqué d&#39;un point indiquant qu&#39;il appartient à l&#39;une des îles.
+
+&quot;</span>
+<span class="ruby-comment">#TECH 13</span>
+<span class="ruby-ivar">@textIle13</span> = <span class="ruby-string">&quot;10. Carré inaccessible
+
+Dans certains cas, une case ne peut appartenir à aucune île, tout simplement parce qu&#39;aucun indice ne peut l&#39;atteindre. 
+Dans l&#39;exemple ci-dessous, les deux cases surlignées sont trop éloignées des indices et ne peuvent faire partie d&#39;aucune île. 
+Elles sont donc ombragées pour indiquer qu&#39;elles doivent faire partie d&#39;un mur.
+
+&quot;</span>
+
+
+
+<span class="ruby-comment"># ------------------------------------------FIN TEXT TECHNIQUES-----------------------------------------------------------------------</span>
+
+
+<span class="ruby-ivar">@image11</span>.<span class="ruby-identifier">clear</span>()
+<span class="ruby-ivar">@image21</span>.<span class="ruby-identifier">clear</span>()
+<span class="ruby-ivar">@image21</span>.<span class="ruby-identifier">clear</span>()
+<span class="ruby-ivar">@image22</span>.<span class="ruby-identifier">clear</span>()
+
+        <span class="ruby-identifier">updateLabelPage</span>(<span class="ruby-identifier">labelPage</span>)
+            <span class="ruby-identifier">updateSensitive</span>()
+            <span class="ruby-identifier">updatePage</span>()
+
+
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">show</span>
+
+        <span class="ruby-ivar">@titlebar</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">HeaderBar</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">barre</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">barre</span>.<span class="ruby-identifier">title</span> = <span class="ruby-string">&quot;Nurikabe&quot;</span>
+                <span class="ruby-identifier">barre</span>.<span class="ruby-identifier">show_close_button</span> = <span class="ruby-keyword">true</span>
+                <span class="ruby-identifier">barre</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-constant">BoutonRetour</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span>
+                    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">sensitive</span> = <span class="ruby-keyword">true</span>
+                    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { <span class="ruby-identifier">app</span>.<span class="ruby-identifier">regles</span> }
+                })
+                <span class="ruby-identifier">barre</span>.<span class="ruby-identifier">show</span>
+            }
+
+    <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-updateBack" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">updateBack</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="updateBack-source">
+            <pre><span class="ruby-comment"># File src/Menus/MenuTechnique.rb, line 380</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">updateBack</span>()
+        <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@page</span><span class="ruby-operator">&lt;=</span><span class="ruby-value">1</span>) <span class="ruby-keyword">then</span>
+                <span class="ruby-ivar">@boutonRetour</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">false</span>)
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-ivar">@boutonRetour</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">true</span>)
+                <span class="ruby-ivar">@page</span> = <span class="ruby-ivar">@page</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-updateFront" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">updateFront</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="updateFront-source">
+            <pre><span class="ruby-comment"># File src/Menus/MenuTechnique.rb, line 371</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">updateFront</span>()
+        <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@page</span><span class="ruby-operator">&gt;=</span><span class="ruby-value">7</span>) <span class="ruby-keyword">then</span>
+                <span class="ruby-ivar">@boutonAvance</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">false</span>)
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-ivar">@boutonAvance</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">true</span>)
+                <span class="ruby-ivar">@page</span> = <span class="ruby-ivar">@page</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-updateLabelPage" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">updateLabelPage</span><span
+            class="method-args">(labelPage)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="updateLabelPage-source">
+            <pre><span class="ruby-comment"># File src/Menus/MenuTechnique.rb, line 366</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">updateLabelPage</span>(<span class="ruby-identifier">labelPage</span>)
+        <span class="ruby-identifier">s</span> = <span class="ruby-string">&quot;Page &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">to_s</span>
+        <span class="ruby-identifier">labelPage</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-identifier">s</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-updatePage" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">updatePage</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <hr>
+          
+          
+
+          
+          <div class="method-source-code" id="updatePage-source">
+            <pre><span class="ruby-comment"># File src/Menus/MenuTechnique.rb, line 295</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">updatePage</span>()
+            <span class="ruby-identifier">puts</span> <span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/01.png&#39;</span>
+            <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@page</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>) <span class="ruby-keyword">then</span>
+                    <span class="ruby-ivar">@text1</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-ivar">@textIle0</span>)
+                    <span class="ruby-ivar">@image11</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/01.png&#39;</span>)
+                    <span class="ruby-ivar">@image12</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/02.png&#39;</span>)
+                    <span class="ruby-ivar">@text2</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-ivar">@textIle1</span>)
+                    <span class="ruby-ivar">@image21</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/11.png&#39;</span>)
+                    <span class="ruby-ivar">@image22</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/12.png&#39;</span>)
+            <span class="ruby-keyword">elsif</span>(<span class="ruby-ivar">@page</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span>) <span class="ruby-keyword">then</span> 
+                    <span class="ruby-ivar">@text1</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-ivar">@textIle2</span>)
+                    <span class="ruby-ivar">@image11</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/21.png&#39;</span>)
+                    <span class="ruby-ivar">@image12</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/22.png&#39;</span>)
+                    <span class="ruby-ivar">@text2</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-ivar">@textIle3</span>)
+                    <span class="ruby-ivar">@image21</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/31.png&#39;</span>)
+                    <span class="ruby-ivar">@image22</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/32.png&#39;</span>)
+            <span class="ruby-keyword">elsif</span>(<span class="ruby-ivar">@page</span> <span class="ruby-operator">==</span> <span class="ruby-value">3</span>) <span class="ruby-keyword">then</span> 
+                    <span class="ruby-ivar">@text1</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-ivar">@textIle4</span>)
+                    <span class="ruby-ivar">@image11</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/41.png&#39;</span>)
+                    <span class="ruby-ivar">@image12</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/42.png&#39;</span>)
+                    <span class="ruby-ivar">@text2</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-ivar">@textIle5</span>)
+                    <span class="ruby-ivar">@image21</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/52.png&#39;</span>)
+                    <span class="ruby-ivar">@image22</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/52.png&#39;</span>)
+            <span class="ruby-keyword">elsif</span>(<span class="ruby-ivar">@page</span> <span class="ruby-operator">==</span> <span class="ruby-value">4</span>) <span class="ruby-keyword">then</span> 
+                    <span class="ruby-ivar">@text1</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-ivar">@textIle6</span>)
+                    <span class="ruby-ivar">@image11</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/61.png&#39;</span>)
+                    <span class="ruby-ivar">@image12</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/62.png&#39;</span>)
+                    <span class="ruby-ivar">@text2</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-ivar">@textIle7</span>)
+                    <span class="ruby-ivar">@image21</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/72.png&#39;</span>)
+                    <span class="ruby-ivar">@image22</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/72.png&#39;</span>)
+            <span class="ruby-keyword">elsif</span>(<span class="ruby-ivar">@page</span> <span class="ruby-operator">==</span> <span class="ruby-value">5</span>) <span class="ruby-keyword">then</span> 
+                    <span class="ruby-ivar">@text1</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-ivar">@textIle8</span>)
+                    <span class="ruby-ivar">@image11</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/81.png&#39;</span>)
+                    <span class="ruby-ivar">@image12</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/82.png&#39;</span>)
+                    <span class="ruby-ivar">@text2</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-ivar">@textIle9</span>)
+                    <span class="ruby-ivar">@image21</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/92.png&#39;</span>)
+                    <span class="ruby-ivar">@image22</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/92.png&#39;</span>)
+            <span class="ruby-keyword">elsif</span>(<span class="ruby-ivar">@page</span> <span class="ruby-operator">==</span> <span class="ruby-value">6</span>) <span class="ruby-keyword">then</span> 
+                    <span class="ruby-ivar">@text1</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-ivar">@textIle10</span>)
+                    <span class="ruby-ivar">@image11</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/101.png&#39;</span>)
+                    <span class="ruby-ivar">@image12</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/102.png&#39;</span>)
+                    <span class="ruby-ivar">@text2</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-ivar">@textIle11</span>)
+                    <span class="ruby-ivar">@image21</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/111.png&#39;</span>)
+                    <span class="ruby-ivar">@image22</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/112.png&#39;</span>)
+            <span class="ruby-keyword">elsif</span>(<span class="ruby-ivar">@page</span> <span class="ruby-operator">==</span> <span class="ruby-value">7</span>) <span class="ruby-keyword">then</span> 
+                    <span class="ruby-ivar">@text1</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-ivar">@textIle12</span>)
+                    <span class="ruby-ivar">@image11</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/121.png&#39;</span>)
+                    <span class="ruby-ivar">@image12</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/122.png&#39;</span>)
+                    <span class="ruby-ivar">@text2</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-ivar">@textIle13</span>)
+                    <span class="ruby-ivar">@image21</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/131.png&#39;</span>)
+                    <span class="ruby-ivar">@image22</span>.<span class="ruby-identifier">set_from_file</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/Tech/132.png&#39;</span>)
+            <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-updateSensitive" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">updateSensitive</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <hr>
+          
+          
+
+          
+          <div class="method-source-code" id="updateSensitive-source">
+            <pre><span class="ruby-comment"># File src/Menus/MenuTechnique.rb, line 353</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">updateSensitive</span>()
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@page</span> <span class="ruby-operator">&lt;=</span><span class="ruby-value">1</span> <span class="ruby-keyword">then</span>
+                <span class="ruby-ivar">@boutonRetour</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">false</span>)
+                <span class="ruby-ivar">@boutonAvance</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">true</span>)
+        <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@page</span><span class="ruby-operator">&gt;=</span><span class="ruby-value">7</span> <span class="ruby-keyword">then</span>
+                <span class="ruby-ivar">@boutonAvance</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">false</span>)
+                <span class="ruby-ivar">@boutonRetour</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">true</span>)
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-ivar">@boutonAvance</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">true</span>)
+                <span class="ruby-ivar">@boutonRetour</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">true</span>)
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

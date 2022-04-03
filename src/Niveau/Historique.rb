@@ -1,5 +1,5 @@
 ##
-# L'historique stock les coups de l'utilisateur pour permttre de faire des retours en arrière / en avant
+# L'historique stock les coups de l'utilisateur pour permettre de faire des retours en arrière / en avant
 #
 class Historique
 
@@ -39,18 +39,28 @@ class Historique
             #Effectuer mouvement inverse
             2.times { @listeCoups[@index].changeEtat }
 
+            return true
         end
+        return false
     end
 
     ##
     # Retourne sur le mouvement précédement annulé
     #
-    def retourAvant()
+    def retourAvant
         if(@index < @listeCoups.size)
             
             #Effectuer mouvement
             @listeCoups[@index].changeEtat
             @index += 1
+
+            return true
         end
-    end 
+        return false
+    end
+
+    def reinitialiserGrille
+        while(retourArriere)
+        end
+    end
 end

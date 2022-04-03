@@ -26,11 +26,10 @@ class CaseChiffre < Case
     def initialize(x, y, chiffre)
         super(x, y)
         @chiffre = chiffre
-        self.label= @chiffre.to_s
     end
 
     def to_s
-        return "*" + @chiffre.to_s + "*"
+        super() + " | " + chiffre.to_s
     end
     
 end

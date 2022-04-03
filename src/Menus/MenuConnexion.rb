@@ -1,47 +1,75 @@
-# encoding: UTF-8
-
-##
-# Auteur Pierre Jacoboni
-# Version 0.1 : Date : Wed Dec 19 15:38:33 CET 2018
-#
 require 'gtk3'
 
-class Builder < Gtk::Builder
+    
+##
+# Fenêtre permettant de choisir un utilisateur ou d'en créer un.
+class MenuConnexion < Gtk::Dialog
+        
+        ##
+        # Crée la fenêtre du sélecteur d'utilisateur.
+        #
+        # Paramètres :
+        # [+parent+]        Fenêtre parente au sélecteur d'utilisateur
+        # [+app+]           Application (Nurikabe)
+        def initialize(parent, app = nil)
+            super(title: "Nouvel utilisateur", parent: parent,
+            flags: Gtk::DialogFlags::USE_HEADER_BAR |
+            Gtk::DialogFlags::MODAL |
+            Gtk::DialogFlags::DESTROY_WITH_PARENT)
 
-	def initialize 
-	    super()
-	    self.add_from_file(__FILE__.sub(".rb",".glade"))
-		# Creation d'une variable d'instance par composant identifié dans glade
-		puts "Création des variables d'instances"
-		self.objects.each() { |p| 	
-				unless p.builder_name.start_with?("___object") 
-					puts "\tCreation de la variable d'instance @#{p.builder_name}"
-					instance_variable_set("@#{p.builder_name}".intern, self[p.builder_name]) 
-				end
-		}
-		@menuConnexion.show_all
-		@menuConnexion.signal_connect('destroy') { puts "Au Revoir !!!"; Gtk.main_quit }
-		# On connecte les signaux aux méthodes (qui doivent exister)
-		puts "\nConnexion des signaux"
-		self.connect_signals { |handler| 
-				puts "\tConnection du signal #{handler}"
-				begin
-					method(handler) 
-				rescue	
-					puts "\t\t[Attention] Vous devez definir la methode #{handler} :\n\t\t\tdef #{handler}\n\t\t\t\t....\n\t\t\tend\n"
-					self.class.send( :define_method, handler.intern) {
-						puts "La methode #{handler} n'est pas encore définie.. Arrêt"
-						Gtk.main_quit
-					}
-					retry
-				end
-		}	
-	end
+            self.title = "Connexion"
+            self.set_default_size(300, 200)
+            self.child.add(Gtk::Label.new("Connexion"))
 
-	# A partir d'ici on écrit le code
-	
+            entree = Gtk::Entry.new.tap { |entree|
+                entree.signal_connect("activate") {
+                        self.signal_emit("response", 1)
+                    }
+                    entree.show
+                }
+
+            self.content_area.add(
+                    Gtk::Box.new(:horizontal).tap { |boite|
+                    boite.pack_start(
+                        Gtk::Image.new('teub.png').tap { |img|
+                        img.show
+                    })
+                    boite.add(Gtk::Box.new(:vertical).tap { |boite2|
+
+                    boite2.pack_start(Gtk::Label.new(
+                            "Entrez votre pseudo:").tap { |label|
+
+                            label.show
+                        })
+                        boite2.pack_start(entree)
+                        boite2.show
+                    })
+                    boite.show
+                })
+            self.add_button("OK", Gtk::ResponseType::OK)
+            self.add_button(Gtk::Stock::CANCEL, Gtk::ResponseType::CANCEL)
+            self.add_button(Gtk::Stock::CLOSE, Gtk::ResponseType::CLOSE)
+            self.set_default_response(Gtk::ResponseType::CANCEL)
+
+            self.signal_connect("response") do |widget, response|
+                case response
+                    when Gtk::ResponseType::OK
+                        p "OK"
+                        app.user = Utilisateur.creer(entree.text, 0)
+                        self.destroy
+                    when Gtk::ResponseType::CANCEL
+                        p "Cancel"
+                        entree.set_text("")
+                    when Gtk::ResponseType::CLOSE
+                        p "Close"
+                        self.destroy
+                        parent.destroy
+                end
+            end
+            self.show
+
+
+        end
+        
+    
 end
-
-# On lance l'application
-builder = Builder.new()
-Gtk.main

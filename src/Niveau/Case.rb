@@ -1,9 +1,7 @@
-require 'gtk3'
-
 ##
 # Représente une case de la grille
 #
-class Case < Gtk::Button 
+class Case
 
     ##
     # @x => position x de la case dans la grille
@@ -15,9 +13,12 @@ class Case < Gtk::Button
     private_class_method :new
 
     def initialize(x, y)
-        super()
         @x, @y = x, y
         @cliquable = false
+    end
+
+    def to_s
+        self.class.name + ": " + @x.to_s + ", " + @y.to_s
     end
 
 end
