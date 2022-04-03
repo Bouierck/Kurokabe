@@ -8,10 +8,9 @@ class AvWA2x2 < Technique
         new(grille)
     end
 
-    def initialize(grille)
+    def initialize
         
-        super(grille)
-        @nom = "Pas de mur 2x2";
+        super("AvWA2x2","Pas de mur 2x2")
 
     end
 
@@ -23,54 +22,19 @@ class AvWA2x2 < Technique
 
                 if(c.is_a?(CaseCliquable) && c.etat == 0)
 
+                    if (( @grille.matrice[c.y + 1][c.x].is_a?(CaseCliquable) && @grille.matrice[c.y + 1][c.x].etat == 2) &&
+                        ( ( @grille.matrice[c.y + 1][c.x - 1].is_a?(CaseCliquable) && @grille.matrice[c.y + 1][c.x - 1].etat == 2 ) && 
+                        ( @grille.matrice[c.y][c.x - 1].is_a?(CaseCliquable) && @grille.matrice[c.y ][c.x - 1].etat == 2 ) ) || 
+                        ( ( @grille.matrice[c.y + 1][c.x + 1].is_a?(CaseCliquable) && @grille.matrice[c.y + 1][c.x + 1].etat == 2 ) && 
+                        ( @grille.matrice[c.y][c.x + 1].is_a?(CaseCliquable) && @grille.matrice[c.y ][c.x + 1].etat == 2 ) )) 
+                            return true if @casesChange.empty? == false
 
-                    if ((@grille.matrice[c.y + 1][c.x].is_a?(CaseCliquable) && @grille.matrice[c.y + 1][c.x].etat == 2) && 
-                        (@grille.matrice[c.y + 1][c.x + 1].is_a?(CaseCliquable) && @grille.matrice[c.y + 1][c.x + 1].etat == 2) && 
-                        (@grille.matrice[c.y][c.x + 1].is_a?(CaseCliquable) && @grille.matrice[c.y][c.x + 1].etat == 2))
-                        @casesChange << c
-                        return true if @casesChange.empty? == false
-
-                    elsif ((@grille.matrice[c.y + 1][c.x + 1].is_a?(CaseCliquable) && @grille.matrice[c.y + 1][c.x + 1].etat == 2) && 
-                        (@grille.matrice[c.y][c.x + 1].is_a?(CaseCliquable) && @grille.matrice[c.y][c.x + 1].etat == 2) && 
-                        (@grille.matrice[c.y - 1][c.x + 1].is_a?(CaseCliquable) && @grille.matrice[c.y - 1][c.x + 1].etat == 2))
-                        @casesChange << c
-                        return true if @casesChange.empty? == false
-
-                    elsif ((@grille.matrice[c.y][c.x + 1].is_a?(CaseCliquable) && @grille.matrice[c.y][c.x + 1].etat == 2) && 
-                        (@grille.matrice[c.y - 1][c.x + 1].is_a?(CaseCliquable) && @grille.matrice[c.y - 1][c.x + 1].etat == 2) && 
-                        (@grille.matrice[c.y - 1][c.x].is_a?(CaseCliquable) && @grille.matrice[c.y - 1][c.x].etat == 2))
-                        @casesChange << c
-                        return true if @casesChange.empty? == false
-
-                    elsif ((@grille.matrice[c.y - 1][c.x + 1].is_a?(CaseCliquable) && @grille.matrice[c.y - 1][c.x + 1].etat == 2) && 
-                        (@grille.matrice[c.y - 1][c.x].is_a?(CaseCliquable) && @grille.matrice[c.y - 1][c.x].etat == 2) && 
-                        (@grille.matrice[c.y - 1][c.x - 1].is_a?(CaseCliquable) && @grille.matrice[c.y - 1][c.x - 1].etat == 2))
-                        @casesChange << c
-                        return true if @casesChange.empty? == false
-
-                    elsif ((@grille.matrice[c.y - 1][c.x].is_a?(CaseCliquable) && @grille.matrice[c.y - 1][c.x].etat == 2) && 
-                        (@grille.matrice[c.y - 1][c.x - 1].is_a?(CaseCliquable) && @grille.matrice[c.y - 1][c.x - 1].etat == 2) && 
-                        (@grille.matrice[c.y][c.x - 1].is_a?(CaseCliquable) && @grille.matrice[c.y][c.x - 1].etat == 2))
-                        @casesChange << c
-                        return true if @casesChange.empty? == false 
-
-                    elsif ((@grille.matrice[c.y - 1][c.x- 1].is_a?(CaseCliquable) && @grille.matrice[c.y - 1][c.x - 1].etat == 2) && 
-                        (@grille.matrice[c.y][c.x - 1].is_a?(CaseCliquable) && @grille.matrice[c.y][c.x - 1].etat == 2) && 
-                        (@grille.matrice[c.y + 1][c.x - 1].is_a?(CaseCliquable) && @grille.matrice[c.y + 1][c.x - 1].etat == 2))
-                        @casesChange << c
-                        return true if @casesChange.empty? == false
-
-                    elsif ((@grille.matrice[c.y][c.x - 1].is_a?(CaseCliquable) && @grille.matrice[c.y][c.x - 1].etat == 2) && 
-                        (@grille.matrice[c.y + 1][c.x - 1].is_a?(CaseCliquable) && @grille.matrice[c.y + 1][c.x - 1].etat == 2) && 
-                        (@grille.matrice[c.y + 1][c.x].is_a?(CaseCliquable) && @grille.matrice[c.y + 1][c.x].etat == 2))
-                        @casesChange << c
-                        return true if @casesChange.empty? == false
-
-                    elsif ((@grille.matrice[c.y + 1][c.x - 1].is_a?(CaseCliquable) && @grille.matrice[c.y + 1][c.x - 1].etat == 2) && 
-                        (@grille.matrice[c.y + 1][c.x].is_a?(CaseCliquable) && @grille.matrice[c.y + 1][c.x].etat == 2) && 
-                        (@grille.matrice[c.y + 1][c.x + 1].is_a?(CaseCliquable) && @grille.matrice[c.y + 1][c.x + 1].etat == 2))
-                        @casesChange << c
-                        return true if @casesChange.empty? == false
+                    if (( @grille.matrice[c.y - 1][c.x].is_a?(CaseCliquable) && @grille.matrice[c.y - 1][c.x].etat == 2) &&
+                       ( ( @grille.matrice[c.y - 1][c.x - 1].is_a?(CaseCliquable) && @grille.matrice[c.y - 1][c.x - 1].etat == 2 ) && 
+                        ( @grille.matrice[c.y][c.x - 1].is_a?(CaseCliquable) && @grille.matrice[c.y ][c.x - 1].etat == 2 ) ) || 
+                        ( ( @grille.matrice[c.y - 1][c.x + 1].is_a?(CaseCliquable) && @grille.matrice[c.y - 1][c.x + 1].etat == 2 ) && 
+                        ( @grille.matrice[c.y][c.x + 1].is_a?(CaseCliquable) && @grille.matrice[c.y ][c.x + 1].etat == 2 ) )) 
+                            return true if @casesChange.empty? == false
                     end         
 
                 end
