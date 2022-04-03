@@ -26,7 +26,14 @@ class MenuConnexion < Gtk::Dialog
                         self.signal_emit("response", 1)
                     }
                     entree.show
-                }
+            }
+            entree.signal_connect('key-press-event') { |w, e|
+                if(e.keyval == Gdk::Keyval::KEY_Return)
+                    p "OK"
+                    app.user = Utilisateur.creer(entree.text, 0)
+                    self.destroy
+                end
+            }
 
             self.content_area.add(
                     Gtk::Box.new(:horizontal).tap { |boite|
@@ -51,6 +58,8 @@ class MenuConnexion < Gtk::Dialog
             self.add_button(Gtk::Stock::CLOSE, Gtk::ResponseType::CLOSE)
             self.set_default_response(Gtk::ResponseType::CANCEL)
 
+            
+
             self.signal_connect("response") do |widget, response|
                 case response
                     when Gtk::ResponseType::OK
@@ -66,10 +75,7 @@ class MenuConnexion < Gtk::Dialog
                         parent.destroy
                 end
             end
+
             self.show
-
-
-        end
-        
-    
+        end    
 end
