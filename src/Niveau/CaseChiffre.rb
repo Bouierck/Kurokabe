@@ -28,8 +28,8 @@ class CaseChiffre < Case
         @chiffre = chiffre
     end
 
-    # def to_s
-    #     return "*" + @chiffre.to_s + "*"
-    # end
+    def to_s
+        super() + " | " + chiffre.to_s
+    end
     
 end

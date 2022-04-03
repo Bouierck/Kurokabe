@@ -50,7 +50,7 @@ class CaseCliquable < Case
         
     end
 
-    # def to_s
-    #     return "~" + @etat.to_s + "~"
-    # end
+    def to_s
+        super() + " | " + etat.to_s
+    end
 end
