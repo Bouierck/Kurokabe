@@ -3,7 +3,9 @@
 # et de sauvegarder ou de récupérer les informations sur l'utilisateur 
 #
 require 'fileutils'
+
 require_relative '../Niveau/Niveau.rb'
+require_relative '../Niveau/Score.rb'
 
 class Sauvegarde
 
@@ -104,7 +106,7 @@ class Sauvegarde
                 valeurModif = 1 if niveau.grille.estFini?
             elsif(niveau.mode == "Aventure")
                 ligneModif = 1
-                valeurModif = nbEtoiles
+                valeurModif = Score.calculer(niveau.resolveur.nbAppel, niveau.chrono.timer, (niveau.id-1/5) + 1)
             else
                 ligneModif = 2
                 valeurModif = niveau.chrono.timer
