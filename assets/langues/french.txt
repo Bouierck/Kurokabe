@@ -1,9 +1,4 @@
 jouer: JOUER
 clasement: CLASSEMENT
-regles: Chaque puzzle contient ue grille constituée d'indices disposés à différents endroits.RTAL
-L'objectif du Nurikabe est de créer des îlots regroupés avec les indices et séparés par des murs, donc:RTAL
- - Chaque îles contient exactement un indiceRTAL
- - Le nombre de carré dans chaque îles est égale a la valeur de l'indiceRTAL
- - Il n'est pas possible de constituer un mur 2x2 (donc un carré) ou plusRTAL
- - Une fois le niveau terminé tous les murs constituent un chemin continu
+regles: Chaque puzzle contient ue grille constituée d'indices disposés à différents endroits.RTALL'objectif du Nurikabe est de créer des îlots regroupés avec les indices et séparés par des murs, donc:RTAL- Chaque îles contient exactement un indiceRTAL- Le nombre de carré dans chaque îles est égale a la valeur de l'indiceRTAL- Il n'est pas possible de constituer un mur 2x2 (donc un carré) ou plusRTAL- Une fois le niveau terminé tous les murs constituent un chemin continu
 quitter: QUITTER
