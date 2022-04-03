@@ -5,6 +5,7 @@ require_relative './Techniques/SurndSqr.rb'
 require_relative './Techniques/UnreachSqr.rb'
 require_relative './Techniques/WallExp.rb'
 require_relative './Techniques/AvWA2x2.rb'
+require_relative './Techniques/IslandExp.rb'
 
 ##
 # Le resolveur permet de trouver des technique à appliqué sur la grille afin d'aider l'utilisateur
@@ -19,7 +20,7 @@ class Resolveur
 
     def initialize
         @listTech = Array.new
-        @listTech << Island.new << SquareSepa.new << Diagonal.new << SurndSqr.new << WallExp.new << UnreachSqr.new << AvWA2x2.new
+        @listTech << Island.new << SquareSepa.new << Diagonal.new << SurndSqr.new << WallExp.new << UnreachSqr.new << IslandExp.new << AvWA2x2.new
         @nbAppel = 0
     end
 
