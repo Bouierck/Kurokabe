@@ -2,6 +2,7 @@ require_relative './Techniques/Island.rb'
 require_relative './Techniques/SquareSepa.rb'
 require_relative './Techniques/Diagonal.rb'
 require_relative './Techniques/SurndSqr.rb'
+require_relative './Techniques/UnreachSqr.rb'
 
 ##
 # Le resolveur permet de trouver des technique à appliqué sur la grille afin d'aider l'utilisateur
@@ -13,7 +14,7 @@ class Resolveur
 
     def initialize
         @listTech = Array.new
-        @listTech << Island.new << SquareSepa.new << Diagonal.new << SurndSqr.new
+        @listTech << Island.new << SquareSepa.new << Diagonal.new << SurndSqr.new << UnreachSqr.new
         puts @listTech
     end
 
