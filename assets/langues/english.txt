@@ -1,2 +1,10 @@
 jouer: PLAY
 classement: LEADERBOARD
+regles: Each puzzle consists of a grid containing clues in various places.RTAL
+The objective is to create islandes by partitioning between clues with walls so:RTAL
+ - Each island contains exactly one clueRTAL
+ - The number of squares in each island equals the value of the clueRTAL
+ - All island are isolated from each other horizontally and verticallyRTAL
+ - There are no wall areas of 2x2 (so a square) or largerRTAL
+ - When completed, all walls form a continuous path
+quitter: QUIT
