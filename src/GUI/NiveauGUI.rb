@@ -68,7 +68,7 @@ class NiveauGUI < Gtk::Box
         boutonArriere= BoutonSpecial.creer("↶", 1, 1, self.method(:clickRetourArriere))
         boutonAvant = BoutonSpecial.creer("↷", 2, 2, self.method(:clickRetourAvant))
         boutonReinitialiser = BoutonSpecial.creer("↻", 2, 2, @niveau.grille.method(:resetGrille))
-        boutonCheck = BoutonSpecial.creer("👁️", 2, 2, @niveau.grille.method(:compareGrille))
+        boutonCheck = BoutonSpecial.creer("👁️", 2, 2, self.method(:check))
         boutonIndice = BoutonSpecial.creer("💡", 2, 2, self.method(:appelResoudreGrille))
         
         boxFonction.add(boutonArriere)
@@ -95,6 +95,8 @@ class NiveauGUI < Gtk::Box
 
     end
 
+    private
+
     ##
     # Fait un retour arrière
     # puis update l'affichage de la grille
@@ -114,6 +116,18 @@ class NiveauGUI < Gtk::Box
     end
 
     ##
+    # Surbrille les endroit ou il y a des erreurs
+    #
+    def check
+
+       erreurs =  @niveau.grille.compareGrille
+       erreurs.each do |c|
+            @grilleGUI.matriceGUI[c.y][c.x].style_context.add_class("erreur")
+       end
+
+    end
+
+    ##
     # Regarde s'il y a des techniques
     # puis update l'affichage de la grille
     #
@@ -125,7 +139,7 @@ class NiveauGUI < Gtk::Box
     end
 
     ##
-    # !!!!!!!!! A MODIFIER !!!!!!!!!!
+    # Quitte l'application
     #
     def QuitterFenetre()
         @app.quit

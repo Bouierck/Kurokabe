@@ -59,6 +59,7 @@ class CaseCliquableGUI < CaseGUI
     def updateCaseGUI
 
         self.style_context.remove_class("indice")
+        self.style_context.remove_class("erreur")
 
         case @case.etat
             when 0
