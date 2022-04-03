@@ -58,7 +58,7 @@ class NiveauGUI < Gtk::Box
 
         #Ajout des boutons du menu
 
-        boutonMenu = BoutonMenu.creer("Menu", 2, 10, Menu.new)
+        boutonMenu = BoutonMenu.creer("Menu", 2, 10, @app.menus)
         boutonPause = BoutonPause.creer("Pause", 2, 10, Menu.new, @niveau)
         boutonQuitter = BoutonSpecial.creer("quitter", 2, 20, self.method(:QuitterFenetre))
 
