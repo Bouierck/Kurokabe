@@ -67,7 +67,7 @@ class NiveauGUI < Gtk::Box
 
         boutonArriere= BoutonSpecial.creer("↶", 1, 1, self.method(:clickRetourArriere))
         boutonAvant = BoutonSpecial.creer("↷", 2, 2, self.method(:clickRetourAvant))
-        boutonReinitialiser = BoutonSpecial.creer("↻", 2, 2, @niveau.grille.method(:resetGrille))
+        boutonReinitialiser = BoutonSpecial.creer("↻", 2, 2, self.method(:clickReinitialiserGrille))
         boutonCheck = BoutonSpecial.creer("👁️", 2, 2, self.method(:check))
         boutonIndice = BoutonSpecial.creer("💡", 2, 2, self.method(:appelResoudreGrille))
         
@@ -102,8 +102,10 @@ class NiveauGUI < Gtk::Box
     # puis update l'affichage de la grille
     #
     def clickRetourArriere
-        @niveau.historique.retourArriere
-        @grilleGUI.updateGrille
+        if @niveau.grille.estFini? == false
+            @niveau.historique.retourArriere
+            @grilleGUI.updateGrille
+        end
     end
 
     ##
@@ -111,20 +113,33 @@ class NiveauGUI < Gtk::Box
     # puis update l'affichage de la grille
     #
     def clickRetourAvant
-        @niveau.historique.retourAvant
-        @grilleGUI.updateGrille
+        if @niveau.grille.estFini? == false
+            @niveau.historique.retourAvant
+            @grilleGUI.updateGrille
+        end
+    end
+
+    ##
+    # Reinitialise la grille
+    # puis update l'affichage de la grille
+    #
+    def clickReinitialiserGrille
+        if @niveau.grille.estFini? == false
+            @niveau.historique.reinitialiserGrille
+            @grilleGUI.updateGrille
+        end
     end
 
     ##
     # Surbrille les endroit ou il y a des erreurs
     #
     def check
-
-       erreurs =  @niveau.grille.compareGrille
-       erreurs.each do |c|
-            @grilleGUI.matriceGUI[c.y][c.x].style_context.add_class("erreur")
-       end
-
+        if @niveau.grille.estFini? == false
+            erreurs =  @niveau.grille.compareGrille
+            erreurs.each do |c|
+                @grilleGUI.matriceGUI[c.y][c.x].style_context.add_class("erreur")
+            end
+        end
     end
 
     ##
@@ -132,10 +147,12 @@ class NiveauGUI < Gtk::Box
     # puis update l'affichage de la grille
     #
     def appelResoudreGrille
-        indice = @niveau.resolveur.resoudreGrille(@grilleGUI.grille)
-        indice.each{ |c|
-           @grilleGUI.matriceGUI[c.y][c.x].style_context.add_class("indice")
-        }
+        if @niveau.grille.estFini? == false
+            indice = @niveau.resolveur.resoudreGrille(@grilleGUI.grille)
+            indice.each{ |c|
+                @grilleGUI.matriceGUI[c.y][c.x].style_context.add_class("indice")
+            }
+        end
     end
 
     ##
