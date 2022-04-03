@@ -1,5 +1,8 @@
 require 'gtk3'
 require_relative '../Boutons/BoutonRetour.rb'
+require_relative '../Boutons/BoutonMenu.rb'
+require_relative '../Boutons/BoutonLangue.rb'
+
 require_relative '../Donnees/Langue.rb'
 
     ##
@@ -41,86 +44,54 @@ require_relative '../Donnees/Langue.rb'
 
             self.pack_start(lbl)
 
-            #btnJouer=Gtk::Button.new.tap(:label =>"JOUER")
-
-            btnJouer = Gtk::Button.new.tap{|bouton| 
-                bouton.add(Gtk::Label.new.tap{ |label|
-                    label.set_markup(Langue.text("jouer"))
-                    label.show	})
-                bouton.signal_connect("clicked") { app.menus }
-                Langue.addListener(bouton, "jouer")
-            bouton.show	}
+            btnJouer = BoutonMenu.creer(Langue.text("jouer"), 10, 10, MenuNiveaux.method(:new), app)
+            Langue.addListener(btnJouer, "jouer")
+            btnJouer.show
 
             self.pack_start(btnJouer)
 
-            #btnClassement=Gtk::Button.new(:label =>"CLASSEMENT")
+            # btnClassement = BoutonMenu.creer("CLASSEMENT", 10, 10, MenuClassement.method(:new), app)
+            # #Langue.addListener(btnClassement, "classement")
+            # btnJouer.show
 
-            btnClassement = Gtk::Button.new.tap{|bouton| 
-                bouton.add(Gtk::Label.new.tap{ |label|
-                    label.set_markup("CLASSEMENT")
-                    label.show	})
-                bouton.signal_connect("clicked") { p 'bite' }
-            bouton.show		}
+            # self.pack_start(btnClassement)
 
-            self.pack_start(btnClassement)
-
-
-            #btnRegles=Gtk::Button.new(:label =>"REGLES")
-
-            btnRegles = Gtk::Button.new.tap{|bouton| 
-                bouton.add(Gtk::Label.new.tap{ |label|
-                    label.set_markup("REGLES")
-                    label.show	})
-                bouton.signal_connect("clicked") { app.regles }
-            bouton.show		}
+            btnRegles = BoutonMenu.creer("REGLES", 10, 10, MenuRegles.method(:new), app)
+            #Langue.addListener(btnRegles, "regles")
+            btnRegles.show
 
             self.pack_start(btnRegles)
             
             #btnQuitter=Gtk::Button.new(:label =>"QUITTER")
 
-            btnQuitter = Gtk::Button.new.tap{|bouton| 
-                bouton.add(Gtk::Label.new.tap{ |label|
-                    label.set_markup("QUITTER")
-                    label.show	})
-                bouton.signal_connect("clicked") { app.closeApp }
-            bouton.show		}
+            btnQuitter = BoutonSpecial.creer("QUITTER", 10, 10, app.method(:closeApp))
+            #Langue.addListener(btnQuitter, "quitter")
+            btnQuitter.show
 
             self.pack_start(btnQuitter)
 
 
 
         langueBox=Gtk::Box.new(:horizontal).tap { |boite|
-            boite.pack_start(Gtk::Button.new.tap { |bouton|
-
-                bouton.set_image(Gtk::Image.new(__dir__ + "/../../assets/img/fr_flag.png"))
-                bouton.signal_connect("clicked") { Langue.changerLangue(0) }
-                bouton.show
-            })
-            boite.pack_start(Gtk::Button.new.tap { |bouton|
-
-                bouton.set_image(Gtk::Image.new(__dir__ + "/../../assets/img/en_flag.png"))
-                bouton.signal_connect("clicked") { Langue.changerLangue(1)}
-                bouton.show
-            })
+            boite.pack_start(BoutonLangue.creer("/../../assets/img/fr_flag.png", 10, 10, 0).show)
+            boite.pack_start(BoutonLangue.creer("/../../assets/img/en_flag.png", 10, 10, 1).show)
             boite.show
         }
 
         self.pack_start(langueBox)
 
-
-
-
-            self.show
-            
-            @titlebar = Gtk::HeaderBar.new.tap { |barre|
-                barre.title = "Nurikabe"
-                barre.show_close_button = true
-                barre.pack_start(BoutonRetour.new.tap { |bouton|
-                    bouton.sensitive = false
-                })
-                barre.show
-            }
-        end
+        self.show
+        
+        @titlebar = Gtk::HeaderBar.new.tap { |barre|
+            barre.title = "Nurikabe"
+            barre.show_close_button = true
+            barre.pack_start(BoutonRetour.new.tap { |bouton|
+                bouton.sensitive = false
+            })
+            barre.show
+        }
+        
+    end
     
 
 end

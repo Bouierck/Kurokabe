@@ -20,8 +20,9 @@ class Kurokabe < Gtk::Application
     
     ##
     # @user => utilisateur log a l'app
+    # @fenetre => fenetre de l'applicaation
 
-    attr_accessor :user
+    attr_accessor :user, :fenetre
     
     ##
     # Retourne l'application.
@@ -59,28 +60,6 @@ class Kurokabe < Gtk::Application
         @fenetre.remove(@fenetre.child) if(@fenetre.child)
         @fenetre.child = accueil
         @fenetre.titlebar = accueil.titlebar
-        return self
-    end
-
-    def menus
-        menu = MenuNiveaux.new(self)
-        @fenetre.remove(@fenetre.child) if(@fenetre.child)
-        @fenetre.child = menu
-        @fenetre.titlebar = menu.titlebar
-        return self
-    end
-
-    def lanceNiveau(niveau)
-        @fenetre.remove(@fenetre.child) if(@fenetre.child)
-        @fenetre.child = niveau
-        return self
-    end
-
-    def regles  
-        regle = MenuRegles.new(self)
-        @fenetre.remove(@fenetre.child) if(@fenetre.child)
-        @fenetre.child = regle
-        @fenetre.titlebar = regle.titlebar
         return self
     end
 

@@ -3,6 +3,8 @@
 
 require_relative "./Bouton.rb"
 
+require_relative "../Donnees/Langue.rb"
+
 require 'gtk3'
 
 ##
@@ -10,19 +12,18 @@ require 'gtk3'
 #
 class BoutonLangue < Bouton
 
-    def BoutonLangue.creer(uneEtiquette, uneLongueur, uneLargeur, uneLangue)
-        new(uneEtiquette, uneLongueur, uneLargeur, uneLangue)
+    def BoutonLangue.creer(dirImg, uneLongueur, uneLargeur, uneLangue)
+        new(dirImg, uneLongueur, uneLargeur, uneLangue)
     end
 
-    def initialize(uneEtiquette, uneLongueur, uneLargeur, uneLangue)
+    def initialize(dirImg, uneLongueur, uneLargeur, uneLangue)
         
-        super(uneEtiquette, uneLongueur, uneLargeur)
-        @langue = uneLangue
+        super("", uneLongueur, uneLargeur)
 
+        self.set_image(Gtk::Image.new(__dir__ + dirImg))
 
         self.signal_connect('clicked'){
-            @langue.changerLangue
-            #Changement de la langue
+            Langue.changerLangue(uneLangue)
         }
 
     end

@@ -279,10 +279,10 @@ Elles sont donc ombragées pour indiquer qu'elles doivent faire partie d'un mur.
         @titlebar = Gtk::HeaderBar.new.tap { |barre|
                 barre.title = "Nurikabe"
                 barre.show_close_button = true
-                barre.pack_start(BoutonRetour.new.tap { |bouton|
-                    bouton.sensitive = true
-                    bouton.signal_connect("clicked") { app.regles }
-                })
+                barre.pack_start(BoutonMenu.creer("⌫", 10, 10, MenuRegles.method(:new), app).tap { |bouton| 
+					bouton.sensitive = true
+					bouton.show
+				})
                 barre.show
             }
 
