@@ -1,17 +1,16 @@
-##
-# Test unitaire de l'affichage du chronomètre
-#
-
-load '../src/Niveau/Chronometre.rb'
-
 require 'gtk3'
 
-chrono = Chronometre.creerChrono()
-
 window = Gtk::Window.new
-window.add(chrono)
+window.signal_connect('destroy') {
+   Gtk.main_quit
+}
 
-chrono.lancer
+entry = Gtk::Entry.new
+entry.signal_connect('key_press_event') {|w, e|
+    puts(e.keyval)
+}
 
-window.show_all
+entry.show
+window.add(entry)
+window.show
 Gtk.main
