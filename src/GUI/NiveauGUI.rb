@@ -116,7 +116,7 @@ class NiveauGUI < Gtk::Box
     end
 
     ##
-    # Surbrille les endroit ou il y a des erreurs
+    # Surbrille les endroits ou il y a des erreurs
     #
     def check
 

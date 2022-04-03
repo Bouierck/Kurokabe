@@ -382,7 +382,7 @@ require_relative '../Niveau/Niveau.rb'
 
 
 		# Chargement fichier
-		file = File.open(__dir__ + "/score.txt")
+		file = File.open(__dir__ + "/../../profile/" + @app.user.nom + "/infosScore.krkb")
 		file_data = file.read.split(" ")
 #		p file_data
 
