@@ -31,7 +31,7 @@ class MenuConnexion < Gtk::Dialog
             self.content_area.add(
                     Gtk::Box.new(:horizontal).tap { |boite|
                     boite.pack_start(
-                        Gtk::Image.new('teub.png').tap { |img|
+                        Gtk::Image.new(__dir__ + '/../../assets/img/user.png').tap { |img|
                         img.show
                     })
                     boite.add(Gtk::Box.new(:vertical).tap { |boite2|

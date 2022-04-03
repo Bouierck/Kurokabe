@@ -293,7 +293,6 @@ Elles sont donc ombragées pour indiquer qu'elles doivent faire partie d'un mur.
 
 
     def updatePage()
-		puts __dir__ + '/../../assets/img/Tech/01.png'
 		if(@page == 1) then
 			@text1.set_label(@textIle0)
 			@image11.set_from_file(__dir__ + '/../../assets/img/Tech/01.png')
