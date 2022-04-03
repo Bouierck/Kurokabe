@@ -48,13 +48,6 @@ class Grille
     end
 
     ##
-    # Remet la grille à zéro
-    #
-    def resetGrille
-        puts "resetGrille"
-    end
-
-    ##
     # Méthode de vérification de la validité de la grille avec le corrigé.
     # Retourne Vrai si la grille est terminée, faux sinon
     # 
