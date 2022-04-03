@@ -18,6 +18,7 @@ class IslandExp < Technique
 
                 @casesChange = []
 
+                #Si la case est un chiffre et a qu'une sortie possible à l'état 0, alors on peut la compléter par un point (état 1)
                 if(c.is_a?(CaseChiffre) && c.chiffre > 1)
                     @casesChange << @grille.matrice[c.y][c.x - 1] if ((c.x - 1 >= 0) && @grille.matrice[c.y][c.x - 1].is_a?(CaseCliquable) && @grille.matrice[c.y][c.x - 1].etat == 0)
                     @casesChange << @grille.matrice[c.y][c.x + 1] if ((c.x + 1 < line.length) && @grille.matrice[c.y][c.x + 1].is_a?(CaseCliquable) && @grille.matrice[c.y][c.x + 1].etat == 0)

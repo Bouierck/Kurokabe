@@ -61,6 +61,9 @@ class Historique
         return false
     end
 
+    ##
+    # Reinitialise la grille
+    #
     def reinitialiserGrille
         while(retourArriere)
         end

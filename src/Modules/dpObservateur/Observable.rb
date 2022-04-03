@@ -14,7 +14,7 @@ module Observable
     end
 
     ##
-    # Notifie tu les observeurs
+    # Notifie tous les observeurs
     #
     def notifObservateurs
         @observateurs.each do |observateur|
