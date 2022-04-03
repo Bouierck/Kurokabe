@@ -8,7 +8,7 @@ class BoutonRetour < Gtk::Button
     ##
     # Crée un bouton de retour.
     def initialize
-        super(icon_name: 'draw-arrow-back')
+        super(label: "↶")
         self.show
     end
     
