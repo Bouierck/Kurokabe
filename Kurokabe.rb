@@ -41,8 +41,16 @@ class Kurokabe < Gtk::Application
 
         @provider = Gtk::CssProvider.new
         @provider.load(:path => './src/GUI/CSS/case.css')
+        
+        @provider2 = Gtk::CssProvider.new
+        @provider2.load(:path => './src/GUI/CSS/menus.css')
+        
+        @provider3 = Gtk::CssProvider.new
+        @provider3.load(:path => './src/GUI/CSS/regles.css')
 
         Gdk::Screen.default.add_style_provider(@provider, 10000000)
+        Gdk::Screen.default.add_style_provider(@provider2, 10000100)
+        Gdk::Screen.default.add_style_provider(@provider3, 10000200)
 
         @user = nil
 
