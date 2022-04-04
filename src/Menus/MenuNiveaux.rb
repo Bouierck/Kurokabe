@@ -353,16 +353,4 @@ require_relative '../Niveau/Niveau.rb'
 
 	end
 
-    def load_image(img)
-        begin
-            # deprecated -> image = Gtk::Image.new "redrock.png"
-            image = Gtk::Image.new(:file => img)
-
-        rescue
-            puts "cannot load image"
-            exit
-        end
-    end
-
-
 end

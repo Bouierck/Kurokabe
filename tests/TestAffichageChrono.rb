@@ -5,10 +5,13 @@ window.signal_connect('destroy') {
    Gtk.main_quit
 }
 
+wvol=Gtk::Window.new(Gtk::Window::POPUP)
+
 entry = Gtk::Entry.new
 entry.signal_connect('key_press_event') {|w, e|
-    puts(e.keyval)
+    wvol.show
 }
+
 
 entry.show
 window.add(entry)
