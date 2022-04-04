@@ -49,11 +49,14 @@ class NiveauGUI < Gtk::Box
     #
     def initGUI
 
+        self.valign = Gtk::Align::CENTER
+        self.halign = Gtk::Align::CENTER	
+        
         #Box du menu
         boxMenu = Gtk::Box.new(:vertical,6)
 
         #label du niveau
-        niveauLabel = Gtk::Label.new("Niveau #{@idNiveau}")
+        niveauLabel = Gtk::Label.new("Niveau #{@niveau.id}")
         chronoLabel = ChronoGUI.creer(@niveau.chrono)
 
         #Ajout des boutons du menu
@@ -148,11 +151,26 @@ class NiveauGUI < Gtk::Box
     #
     def appelResoudreGrille
         if @niveau.grille.estFini? == false
+
             indice = @niveau.resolveur.resoudreGrille(@grilleGUI.grille)
-            indice.each{ |c|
-                @grilleGUI.matriceGUI[c.y][c.x].style_context.add_class("indice")
-            }
+            popup(indice[:text])
+
+            if(indice[:response] == ReponseType::ARRAY)
+                indice[:cases].each{ |c|
+                    @grilleGUI.matriceGUI[c.y][c.x].style_context.add_class("indice")
+                }
+            end
+
         end
+    end
+
+    def popup(msg)
+
+        pop = Gtk::Popover.new()
+        pop.set_relative_to(@grilleGUI)
+        pop.add(Gtk::Label.new(msg).show)
+        pop.popup
+
     end
 
     ##
