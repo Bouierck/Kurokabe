@@ -16,7 +16,7 @@ require 'gtk3'
 # contient le GUI de la grille
 # ainsi que les différent boutons
 #
-class NiveauGUI < Gtk::Box
+class NiveauReduitGUI < Gtk::Box
 
     ##
     # @niveau => niveau représenté par ce GUI
@@ -29,19 +29,21 @@ class NiveauGUI < Gtk::Box
     # * -app- fenetre de l'application
     # * -niveau- niveau représenté par ce GUI
     #
-    def NiveauGUI.creer(app, niveau)
-        new(app, niveau)
-    end
+    # def NiveauReduitGUI.creer(app, niveau)
+    #     new(app, niveau)
+    # end
+    def NiveauReduitGUI.creer(app,niveau){
+      new(app,niveau)
+    }
 
     def initialize(app, niveau)
 
-        super(:horizontal,2)
+        super(:vertical,3)
 
         @niveau = niveau
         @grilleGUI = GrilleGUI.creer(@niveau.grille)
         @app = app;
         initGUI
-        @taille = false
 
     end
 
@@ -50,23 +52,16 @@ class NiveauGUI < Gtk::Box
     #
     def initGUI
 
-      @app.fenetre.signal_connect('size_allocate'){|w,e|
-        if(e.width < 578)
-          NiveauReduitGUI.creer(app,niveau)
-        end
-      }
 
-
-        #Box du menu
-        boxMenu = Gtk::Box.new(:vertical,6)
+        #Box du menu en haut
+        boxMenu = Gtk::Box.new(:horizontal,3)
 
         #label du niveau
         niveauLabel = Gtk::Label.new("Niveau #{@idNiveau}")
-        chronoLabel = ChronoGUI.creer(@niveau.chrono)
 
         #Ajout des boutons du menu
 
-        boutonMenu = BoutonMenu.crNiveauGUIeer("Menu", 2, 10, MenuNiveaux.method(:new), @app)
+        boutonMenu = BoutonMenu.creer("Menu", 2, 10, MenuNiveaux.method(:new), @app)
         #boutonPause = BoutonPause.creer("Pause", 2, 10, Menu.new, @niveau)
         boutonQuitter = BoutonSpecial.creer("quitter", 2, 20, self.method(:QuitterFenetre))
 
@@ -85,17 +80,16 @@ class NiveauGUI < Gtk::Box
         boxFonction.add(boutonCheck)
         boxFonction.add(boutonIndice)
 
-        boxMenu.add(niveauLabel)
-        boxMenu.add(chronoLabel)
         boxMenu.add(boutonMenu)
-        #boxMenu.add(boutonPause)
-        boxMenu.add(boxFonction)
-        boxMenu.add(boutonQuitter)
+        boxMenu.add(chronoLabel)
+        boxMenu.add(niveauLabel)
 
-        #Ajout des deux composant de la box du niveau
+
+        # Ajout des deux composant de la box du niveau
         # self.set_homogeneous(true)
-        self.add(@grilleGUI)
         self.add(boxMenu)
+        self.add(@grilleGUI)
+        self.add(boxFonction)
 
         chronoLabel.lancer if @niveau.grille.estFini? == false
 
