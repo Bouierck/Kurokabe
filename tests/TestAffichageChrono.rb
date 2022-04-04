@@ -5,15 +5,14 @@ window.signal_connect('destroy') {
    Gtk.main_quit
 }
 
-wvol=Gtk::Window.new(Gtk::Window::POPUP)
+pop = Gtk::Popover.new
 
-entry = Gtk::Entry.new
-entry.signal_connect('key_press_event') {|w, e|
-    wvol.show
+window.signal_connect('key_press_event') {|w, e|
+    pop.popup
 }
 
+pop.set_relative_to(window)
+window.add(pop)
 
-entry.show
-window.add(entry)
 window.show
 Gtk.main
