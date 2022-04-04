@@ -25,13 +25,29 @@ class Island2Cases < Technique
                 if(c.is_a?(CaseChiffre) && c.chiffre == 2)
                     
                     #Case en diagonale haut gauche
-                    @casesChange.push(@grille.matrice[c.y + 1][c.x - 1]) if @grille.matrice[c.y][c.x + 1].etat == 2 && @grille.matrice[c.y - 1][c.x].etat == 2 && @grille.matrice[c.y][c.x - 1].etat == 0 && @grille.matrice[c.y + 1][c.x].etat == 0 && @grille.matrice[c.y + 1][c.x - 1].etat == 0
+                    @casesChange.push(@grille.matrice[c.y + 1][c.x - 1]) if @grille.matrice[c.y][c.x + 1].is_a?(CaseCliquable) &&  @grille.matrice[c.y][c.x + 1].etat == 2 &&
+                                                                            @grille.matrice[c.y - 1][c.x].is_a?(CaseCliquable) && @grille.matrice[c.y - 1][c.x].etat == 2 && 
+                                                                            @grille.matrice[c.y][c.x - 1].is_a?(CaseCliquable) && @grille.matrice[c.y][c.x - 1].etat == 0 && 
+                                                                            @grille.matrice[c.y + 1][c.x1].is_a?(CaseCliquable) && @grille.matrice[c.y + 1][c.x].etat == 0 && 
+                                                                            @grille.matrice[c.y + 1][c.x - 1].is_a?(CaseCliquable) && @grille.matrice[c.y + 1][c.x - 1].etat == 0
                     #Case en diagonale bas gauche
-                    @casesChange.push(@grille.matrice[c.y - 1][c.x - 1]) if @grille.matrice[c.y][c.x + 1].etat == 2 && @grille.matrice[c.y + 1][c.x].etat == 2 && @grille.matrice[c.y][c.x - 1].etat == 0 && @grille.matrice[c.y - 1][c.x].etat == 0 && @grille.matrice[c.y - 1][c.x - 1].etat == 0
+                    @casesChange.push(@grille.matrice[c.y - 1][c.x - 1]) if @grille.matrice[c.y][c.x + 1].is_a?(CaseCliquable) && @grille.matrice[c.y][c.x + 1].etat == 2 && 
+                                                                            @grille.matrice[c.y + 1][c.x].is_a?(CaseCliquable) && @grille.matrice[c.y + 1][c.x].etat == 2 && 
+                                                                            @grille.matrice[c.y][c.x - 1].is_a?(CaseCliquable) && @grille.matrice[c.y][c.x - 1].etat == 0 && 
+                                                                            @grille.matrice[c.y - 1][c.x].is_a?(CaseCliquable) && @grille.matrice[c.y - 1][c.x].etat == 0 && 
+                                                                            @grille.matrice[c.y - 1][c.x - 1].is_a?(CaseCliquable) && @grille.matrice[c.y - 1][c.x - 1].etat == 0
                     #Case en diagonale bas droite
-                    @casesChange.push(@grille.matrice[c.y - 1][c.x + 1]) if @grille.matrice[c.y][c.x - 1].etat == 2 && @grille.matrice[c.y + 1][c.x].etat == 2 && @grille.matrice[c.y][c.x + 1].etat == 0 && @grille.matrice[c.y - 1][c.x].etat == 0 && @grille.matrice[c.y - 1][c.x + 1].etat == 0
+                    @casesChange.push(@grille.matrice[c.y - 1][c.x + 1]) if @grille.matrice[c.y][c.x - 1].is_a?(CaseCliquable) && @grille.matrice[c.y][c.x - 1].etat == 2 && 
+                                                                            @grille.matrice[c.y + 1][c.x].is_a?(CaseCliquable) && @grille.matrice[c.y + 1][c.x].etat == 2 && 
+                                                                            @grille.matrice[c.y][c.x + 1].is_a?(CaseCliquable) && @grille.matrice[c.y][c.x + 1].etat == 0 && 
+                                                                            @grille.matrice[c.y - 1][c.x].is_a?(CaseCliquable) && @grille.matrice[c.y - 1][c.x].etat == 0 && 
+                                                                            @grille.matrice[c.y - 1][c.x + 1].is_a?(CaseCliquable) && @grille.matrice[c.y - 1][c.x + 1].etat == 0
                     #Case en diagonale haut droite
-                    @casesChange.push(@grille.matrice[c.y + 1][c.x + 1]) if @grille.matrice[c.y][c.x - 1].etat == 2 && @grille.matrice[c.y - 1][c.x].etat == 2 && @grille.matrice[c.y][c.x + 1].etat == 0 && @grille.matrice[c.y + 1][c.x].etat == 0 && @grille.matrice[c.y + 1][c.x + 1].etat == 0
+                    @casesChange.push(@grille.matrice[c.y + 1][c.x + 1]) if @grille.matrice[c.y][c.x - 1].is_a?(CaseCliquable) && @grille.matrice[c.y][c.x - 1].etat == 2 && 
+                                                                            @grille.matrice[c.y - 1][c.x].is_a?(CaseCliquable) && @grille.matrice[c.y - 1][c.x].etat == 2 && 
+                                                                            @grille.matrice[c.y][c.x + 1].is_a?(CaseCliquable) && @grille.matrice[c.y][c.x + 1].etat == 0 && 
+                                                                            @grille.matrice[c.y + 1][c.x].is_a?(CaseCliquable) && @grille.matrice[c.y + 1][c.x].etat == 0 && 
+                                                                            @grille.matrice[c.y + 1][c.x + 1].is_a?(CaseCliquable) && @grille.matrice[c.y + 1][c.x + 1].etat == 0
 
                 end
 

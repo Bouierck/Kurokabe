@@ -2,16 +2,18 @@ require_relative './Technique.rb'
 require_relative '../../Niveau/CaseCliquable.rb'
 require_relative '../../Niveau/CaseChiffre.rb'
 
-class Island2Cases < Technique
+class SrndCompIsland < Technique
 
-    def Island2Cases.creer(grille)
+     n = 0
+
+    def SrndCompIsland.creer(grille)
         new(grille)
     end
 
     def initialize(grille)
         
         super(grille)
-        @nom = "Ile de 2";
+        @nom = "Fermeture ile";
 
     end
 
@@ -22,16 +24,49 @@ class Island2Cases < Technique
  
                 @casesChange = []
 
-                if(c.is_a?(CaseChiffre) && c.chiffre == 2)
-                    
-                    #Case en diagonale haut gauche
-                    @casesChange.push(@grille.matrice[c.y + 1][c.x - 1]) if @grille.matrice[c.y][c.x + 1].etat == 2 && @grille.matrice[c.y - 1][c.x].etat == 2 && @grille.matrice[c.y][c.x - 1].etat == 0 && @grille.matrice[c.y + 1][c.x].etat == 0 && @grille.matrice[c.y + 1][c.x - 1].etat == 0
-                    #Case en diagonale bas gauche
-                    @casesChange.push(@grille.matrice[c.y - 1][c.x - 1]) if @grille.matrice[c.y][c.x + 1].etat == 2 && @grille.matrice[c.y + 1][c.x].etat == 2 && @grille.matrice[c.y][c.x - 1].etat == 0 && @grille.matrice[c.y - 1][c.x].etat == 0 && @grille.matrice[c.y - 1][c.x - 1].etat == 0
-                    #Case en diagonale bas droite
-                    @casesChange.push(@grille.matrice[c.y - 1][c.x + 1]) if @grille.matrice[c.y][c.x - 1].etat == 2 && @grille.matrice[c.y + 1][c.x].etat == 2 && @grille.matrice[c.y][c.x + 1].etat == 0 && @grille.matrice[c.y - 1][c.x].etat == 0 && @grille.matrice[c.y - 1][c.x + 1].etat == 0
-                    #Case en diagonale haut droite
-                    @casesChange.push(@grille.matrice[c.y + 1][c.x + 1]) if @grille.matrice[c.y][c.x - 1].etat == 2 && @grille.matrice[c.y - 1][c.x].etat == 2 && @grille.matrice[c.y][c.x + 1].etat == 0 && @grille.matrice[c.y + 1][c.x].etat == 0 && @grille.matrice[c.y + 1][c.x + 1].etat == 0
+                if(c.is_a?(CaseChiffre) && c.chiffre == 3)
+                    caseD = c
+                    puts c.chiffre
+                    while n <= c.chiffre - 1 # Tant que n est inférieur ou égal au chiffre, le code est exécuté.
+                        
+                        #Case en haut 
+                        if (@grille.matrice[c.y + 1][c.x].is_a?(CaseCliquable) && @grille.matrice[c.y + 1][c.x].etat == 1)
+                            @casesChange.push(@grille.matrice[c.y + 1][c.x]) 
+                            caseD = c
+                            n+=1 
+                        #Case à droite
+                        elsif (@grille.matrice[c.y][c.x + 1].is_a?(CaseCliquable) && @grille.matrice[c.y][c.x + 1].etat == 1)
+                            @casesChange.push(@grille.matrice[c.y][c.x + 1])
+                            caseD = c
+                            n+=1
+                        #Case en bas
+                        elsif (@grille.matrice[c.y - 1][c.x].is_a?(CaseCliquable) && @grille.matrice[c.y - 1][c.x].etat == 1)
+                            @casesChange.push(@grille.matrice[c.y - 1][c.x])
+                            caseD = c
+                            n+=1  
+                        #Case à gauche
+                        elsif (@grille.matrice[c.y][c.x - 1].is_a?(CaseCliquable) && @grille.matrice[c.y][c.x - 1].etat == 1)
+                            @casesChange.push(@grille.matrice[c.y][c.x - 1])
+                            caseD = c  
+                            n+=1
+                        end
+                    end
+                    #Verifie la case en haut 
+                    if(@grille.matrice[c.y + 1][c.x].is_a?(CaseCliquable) && @grille.matrice[c.y + 1][c.x].etat == 0)
+                        @casesChange.push(@grille.matrice[c.y + 1][c.x])
+                    end
+                    #Verifie la case à droite
+                    if(@grille.matrice[c.y][c.x + 1].is_a?(CaseCliquable) && @grille.matrice[c.y][c.x + 1].etat == 0)
+                        @casesChange.push(@grille.matrice[c.y][c.x + 1])
+                    end
+                    #Verifie la case en bas
+                    if(@grille.matrice[c.y - 1][c.x].is_a?(CaseCliquable) && @grille.matrice[c.y - 1][c.x].etat == 0)
+                        @casesChange.push(@grille.matrice[c.y - 1][c.x]) 
+                    end
+                    #Verifie la case à gauche
+                    if(@grille.matrice[c.y][c.x - 1].is_a?(CaseCliquable) && @grille.matrice[c.y][c.x - 1].etat == 0)
+                        @casesChange.push(@grille.matrice[c.y][c.x - 1]) 
+                    end
 
                 end
 
