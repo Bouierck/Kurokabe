@@ -39,7 +39,7 @@ class Langue
         arr.each { |text|
             text[1].gsub!(/RTAL/, "\n")
         }
-        
+
         trad = arr.to_h
 
         file.close()
