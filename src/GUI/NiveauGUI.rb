@@ -61,31 +61,31 @@ class NiveauGUI < Gtk::Box
 
         #Ajout des boutons du menu
 
-        boutonMenu = BoutonMenu.creer("Menu", 2, 10, MenuNiveaux.method(:new), @app)
-        #boutonPause = BoutonPause.creer("Pause", 2, 10, Menu.new, @niveau)
-        boutonQuitter = BoutonSpecial.creer("quitter", 2, 20, self.method(:QuitterFenetre))
+        #@boutonMenu = BoutonMenu.creer("Menu", 2, 10, MenuNiveaux.method(:new), @app)
+        #@boutonPause = BoutonPause.creer("Pause", 2, 10, Menu.new, @niveau)
+        @boutonQuitter = BoutonSpecial.creer("quitter", 2, 20, self.method(:QuitterFenetre))
 
         #bouton fonction
         boxFonction = Gtk::Box.new(:horizontal,5)
 
-        boutonArriere= BoutonSpecial.creer("↶", 1, 1, self.method(:clickRetourArriere))
-        boutonAvant = BoutonSpecial.creer("↷", 2, 2, self.method(:clickRetourAvant))
-        boutonReinitialiser = BoutonSpecial.creer("↻", 2, 2, self.method(:clickReinitialiserGrille))
-        boutonCheck = BoutonSpecial.creer("👁️", 2, 2, self.method(:check))
-        boutonIndice = BoutonSpecial.creer("💡", 2, 2, self.method(:appelResoudreGrille))
+        @boutonArriere= BoutonSpecial.creer("↶", 1, 1, self.method(:clickRetourArriere))
+        @boutonAvant = BoutonSpecial.creer("↷", 2, 2, self.method(:clickRetourAvant))
+        @boutonReinitialiser = BoutonSpecial.creer("↻", 2, 2, self.method(:clickReinitialiserGrille))
+        @boutonCheck = BoutonSpecial.creer("👁️", 2, 2, self.method(:check))
+        @boutonIndice = BoutonSpecial.creer("💡", 2, 2, self.method(:appelResoudreGrille))
         
-        boxFonction.add(boutonArriere)
-        boxFonction.add(boutonAvant)
-        boxFonction.add(boutonReinitialiser)
-        boxFonction.add(boutonCheck)
-        boxFonction.add(boutonIndice)
+        boxFonction.add(@boutonArriere)
+        boxFonction.add(@boutonAvant)
+        boxFonction.add(@boutonReinitialiser)
+        boxFonction.add(@boutonCheck)
+        boxFonction.add(@boutonIndice)
 
         boxMenu.add(niveauLabel)
         boxMenu.add(chronoLabel)
-        boxMenu.add(boutonMenu)
-        #boxMenu.add(boutonPause)
+        #boxMenu.add(@boutonMenu)
+        #boxMenu.add(@boutonPause)
         boxMenu.add(boxFonction)
-        boxMenu.add(boutonQuitter)
+        boxMenu.add(@boutonQuitter)
 
         #Ajout des deux composant de la box du niveau
         # self.set_homogeneous(true)        
@@ -153,7 +153,7 @@ class NiveauGUI < Gtk::Box
         if @niveau.grille.estFini? == false
 
             indice = @niveau.resolveur.resoudreGrille(@grilleGUI.grille)
-            popup(indice[:text])
+            popup(@grilleGUI, indice[:text])
 
             if(indice[:response] == ReponseType::ARRAY)
                 indice[:cases].each{ |c|
@@ -164,10 +164,10 @@ class NiveauGUI < Gtk::Box
         end
     end
 
-    def popup(msg)
+    def popup(relative, msg)
 
         pop = Gtk::Popover.new()
-        pop.set_relative_to(@grilleGUI)
+        pop.set_relative_to(relative)
         pop.add(Gtk::Label.new(msg).show)
         pop.popup
 
