@@ -20,21 +20,7 @@ require_relative '../Donnees/Langue.rb'
             super(:vertical, 10)
             
             self.valign = Gtk::Align::CENTER
-            self.halign = Gtk::Align::CENTER
-            
-#             self.pack_start(Gtk::Button.new.tap { |bouton|
-#                 bouton.add(Gtk::Label.new.tap { |label|
-#                     label.set_markup("<b>Tutoriel</b>")
-#                     label.show
-#                 })
-#                 bouton.height_request = 64
-#                 bouton.width_request = 400
-#                 bouton.margin_bottom = 10
-#                 bouton.signal_connect("clicked") { app.tutoriel }
-#                 bouton.show
-#             }, :expand => true, :fill => true, :padding => 0)
-
-			
+            self.halign = Gtk::Align::CENTER			
 
             lbl = Gtk::Label.new.tap{ |label|
                 label.set_markup("Kurokabe")

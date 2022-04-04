@@ -62,14 +62,6 @@ class Kurokabe < Gtk::Application
         @fenetre.titlebar = accueil.titlebar
         return self
     end
-
-    def techniquemenus
-        techniquemenu = MenuTechnique.new(self)
-        @fenetre.remove(@fenetre.child) if(@fenetre.child)
-        @fenetre.child = techniquemenu
-        @fenetre.titlebar = techniquemenu.titlebar
-        return self
-    end
     
     def closeApp
         @@app.quit
