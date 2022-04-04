@@ -97,9 +97,7 @@ require_relative '../Niveau/Niveau.rb'
             barre.title = "Nurikabe"
             barre.subtitle = "Grilles "
             barre.show_close_button = true
-            barre.pack_start(BoutonRetour.new.tap { |bouton|
-                bouton.signal_connect("clicked") { app.accueil }
-            })
+            barre.pack_start(BoutonRetour.creer(MenuPrincipal.method(:new), app))
             barre.show
         }
 

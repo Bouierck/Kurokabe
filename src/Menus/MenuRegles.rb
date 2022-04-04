@@ -5,6 +5,8 @@ require_relative '../Boutons/BoutonMenu.rb'
 
 require_relative '../Donnees/Langue.rb'
 
+require_relative './MenuPrincipal.rb'
+
 ##
 # Widget graphique représentant l'écran d'accueil.
 class MenuRegles < Gtk::Box
@@ -55,9 +57,8 @@ class MenuRegles < Gtk::Box
         @titlebar = Gtk::HeaderBar.new.tap { |barre|
                 barre.title = "Nurikabe"
                 barre.show_close_button = true
-                barre.pack_start(BoutonRetour.new.tap { |bouton|
+                barre.pack_start(BoutonRetour.creer(MenuPrincipal.method(:new), app).tap { |bouton|
                     bouton.sensitive = true
-                    bouton.signal_connect("clicked") { app.accueil }
                 })
                 barre.show
             }

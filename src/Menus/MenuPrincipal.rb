@@ -1,7 +1,9 @@
 require 'gtk3'
-require_relative '../Boutons/BoutonRetour.rb'
+
 require_relative '../Boutons/BoutonMenu.rb'
 require_relative '../Boutons/BoutonLangue.rb'
+
+require_relative './MenuClassement.rb'
 
 require_relative '../Donnees/Langue.rb'
 
@@ -43,19 +45,14 @@ require_relative '../Donnees/Langue.rb'
 
             self.pack_start(btnJouer)
 
-            # btnClassement = BoutonMenu.creer("CLASSEMENT", 10, 10, MenuClassement.method(:new), app)
-            # #Langue.addListener(btnClassement, "classement")
-            # btnJouer.show
+            btnClassement = BoutonMenu.creer("CLASSEMENT", 10, 10, MenuClassement.method(:new), app)
+            #Langue.addListener(btnClassement, "classement")
+            btnClassement.style_context.add_class("bouton")
+            btnClassement.show
 
             # self.pack_start(btnClassement)
 
-            #FAIRE LE BOUTON CLASSEMENT
-            btnRegles = BoutonMenu.creer("CLASSEMENT", 10, 10, MenuRegles.method(:new), app)
-            #Langue.addListener(btnRegles, "regles")
-            btnRegles.style_context.add_class("bouton")
-            btnRegles.show
-
-            self.pack_start(btnRegles)
+            self.pack_start(btnClassement)
                       
                       
             btnRegles = BoutonMenu.creer("REGLES", 10, 10, MenuRegles.method(:new), app)
@@ -110,9 +107,6 @@ require_relative '../Donnees/Langue.rb'
         @titlebar = Gtk::HeaderBar.new.tap { |barre|
             barre.title = "Nurikabe"
             barre.show_close_button = true
-            barre.pack_start(BoutonRetour.new.tap { |bouton|
-                bouton.sensitive = false
-            })
             barre.show
         }
         

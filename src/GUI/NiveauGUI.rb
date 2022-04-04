@@ -1,6 +1,7 @@
 require_relative '../Niveau/Niveau.rb'
 
-require_relative '../Menus/Menu.rb'
+require_relative '../Menus/MenuNiveaux.rb'
+
 require_relative '../Boutons/BoutonSpecial.rb'
 require_relative '../Boutons/BoutonPause.rb'
 require_relative '../Boutons/BoutonNiveau.rb'
@@ -49,9 +50,20 @@ class NiveauGUI < Gtk::Box
     #
     def initGUI
 
+        #Centre les éléments
         self.valign = Gtk::Align::CENTER
         self.halign = Gtk::Align::CENTER	
         
+        #title bar et bouton retour
+        @titlebar = Gtk::HeaderBar.new
+        @titlebar.title = "Nurikabe"
+        @titlebar.show_close_button = true
+        @titlebar.pack_start(BoutonRetour.creer(MenuNiveaux.method(:new), @app).tap {|b|
+            b.sensitive = true
+            b.show
+        })
+        @titlebar.show
+
         #Box du menu
         boxMenu = Gtk::Box.new(:vertical,6)
 
