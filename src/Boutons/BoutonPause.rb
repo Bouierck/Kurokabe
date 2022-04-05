@@ -7,24 +7,24 @@ require 'gtk3'
 ##
 # Lance le menu pause et stop le chronometre du niveau
 #
-class BoutonPause < BoutonMenu
+class BoutonPause < Bouton
 
     ##
     #@niveau niveau mis en pause
 
     private_class_method :new
 
-    def BoutonPause.creer(uneEtiquette, uneLongueur, uneLargeur, unMenu, unNiveau)
-        new(uneEtiquette, uneLongueur, uneLargeur, unMenu, unNiveau)
+    def BoutonPause.creer(uneEtiquette, uneLongueur, uneLargeur, unNiveau)
+        new(uneEtiquette, uneLongueur, uneLargeur, unNiveau)
     end
 
-    def initialize(uneEtiquette, uneLongueur, uneLargeur, unMenu, unNiveau)
-        super(uneEtiquette, uneLongueur, uneLargeur, unMenu)
+    def initialize(uneEtiquette, uneLongueur, uneLargeur, unNiveau)
+        super(uneEtiquette, uneLongueur, uneLargeur)
         @niveau = unNiveau
 
         self.signal_connect('clicked'){
-            @menu.lancerMenu
-            @niveau.chrono.on(false)
+            @niveau.modePause
+
         }
     end
 
