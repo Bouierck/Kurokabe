@@ -1,22 +1,29 @@
 require_relative "../Donnees/Utilisateur.rb"
 
+require_relative "../Modules/dpObservateur/Observable.rb"
+require_relative "../Modules/dpObservateur/Observateur.rb"
+
 require_relative "./CaseChiffre.rb"
 require_relative "./CaseCliquable.rb"
 
 class Grille
+
+    include Observable
+    include Observateur
+
     ##
-    # @utilisateur Utilisateur propriétaire de la grille.
     # @matrice Matrice représentant la grille, composée de CaseChiffre et de CaseCliquable.
     # @matriceCorrigee Matrice représentant la grille corrigée avec les états finaux, composée de CaseChiffre et de CaseCliquable.
+
+    attr_reader :matrice, :matriceCorrigee
 
     ##
     # Constructeur de Grille
     #
     # ==== Attributes
     #
-    # * -utilisateur- Utilisateur propriétaire de la grille
-    # * -nomGrille- Nom de la grille étant le nom du fichier où se trouve la sauvegarde
-    # * -mode- Mode de jeu de la grille
+    # * -matrice- matrice vide de la grille
+    # * -matriceCorrigee- solution de la grille
     #
     def Grille.creer(matrice, matriceCorrigee)
         new(matrice, matriceCorrigee)
@@ -30,6 +37,7 @@ class Grille
         @matrice = matrice
         @matriceCorrigee = matriceCorrigee
 
+        #Ajout au case de la grille, la grille comme observateur
         @matrice.each do |line|
             line.each do |c|
                 if(c.is_a?(CaseCliquable))
@@ -39,16 +47,9 @@ class Grille
         end
     end
 
-    attr_reader :matrice, :matriceCorrigee
-
-    def resetGrille
-        puts "resetGrille"
-    end
-
     ##
     # Méthode de vérification de la validité de la grille avec le corrigé.
-    #
-    # @return Vrai si la grille est terminée, faux sinon
+    # Retourne Vrai si la grille est terminée, faux sinon
     # 
     def estFini?
         if compareGrille != []
@@ -61,14 +62,12 @@ class Grille
             end
         end
         
-        puts "grille fini"
         return true
     end
 
     ##
     # Compare la grille courante et la correction
-    #
-    # @return Tableau contenant les cases éronnées
+    # Retourne Tableau contenant les cases éronnées
     #
     def compareGrille
         
@@ -82,16 +81,6 @@ class Grille
         
         return erreurs
         
-    end
-
-    def ajouteObservateur(observateur)
-        @observateurs << observateur
-    end
-
-    def notifObservateurs
-        @observateurs.each do |observateur|
-            observateur.update
-        end
     end
 
     def update

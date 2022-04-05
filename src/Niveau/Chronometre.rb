@@ -30,7 +30,7 @@ class Chronometre
     end
  
     ##
-    # Arreter ou lance le timer du chrono
+    # Arrete ou lance le timer du chrono
     # 
     # ==== Attributes
     #
@@ -65,6 +65,9 @@ class Chronometre
 
     end
 
+    ##
+    # Vrai si le timer est lancé faux sinon
+    #
     def estLance?
         return @estLance
     end

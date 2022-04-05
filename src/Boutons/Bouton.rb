@@ -22,6 +22,8 @@ class Bouton < Gtk::Button
         @longueur = uneLongueur
         @largeur = uneLargeur
 
+        self.show
+
     end
     
 end

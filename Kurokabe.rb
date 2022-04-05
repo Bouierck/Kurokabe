@@ -12,13 +12,18 @@ require_relative './src/Menus/MenuRegles.rb'
 require_relative './src/Menus/MenuTechnique.rb'
 #require_relative 'MenuRegles'
 
+require_relative './src/Donnees/Langue.rb'
+
 class Kurokabe < Gtk::Application
 
 	@@app = nil
     
-    # @grille_actuelle  => GrilleJouable actuelle
-    # @historique       => Historique de la grille actuelle
+    ##
+    # @user => utilisateur log a l'app
+    # @fenetre => fenetre de l'applicaation
 
+    attr_accessor :user, :fenetre
+    
     ##
     # Retourne l'application.
     #
@@ -32,10 +37,22 @@ class Kurokabe < Gtk::Application
     def initialize
     	super("projet.Nurikabe", :flags_none)
 
+        Langue.init
+
         @provider = Gtk::CssProvider.new
         @provider.load(:path => './src/GUI/CSS/case.css')
+        
+        @provider2 = Gtk::CssProvider.new
+        @provider2.load(:path => './src/GUI/CSS/menus.css')
+        
+        @provider3 = Gtk::CssProvider.new
+        @provider3.load(:path => './src/GUI/CSS/regles.css')
 
         Gdk::Screen.default.add_style_provider(@provider, 10000000)
+        Gdk::Screen.default.add_style_provider(@provider2, 10000100)
+        Gdk::Screen.default.add_style_provider(@provider3, 10000200)
+
+        @user = nil
 
         self.signal_connect("activate") do
             @fenetre = Fenetre.new(self)
@@ -51,36 +68,6 @@ class Kurokabe < Gtk::Application
         @fenetre.remove(@fenetre.child) if(@fenetre.child)
         @fenetre.child = accueil
         @fenetre.titlebar = accueil.titlebar
-        return self
-    end
-
-    def menus
-        menu = MenuNiveaux.new(self)
-        @fenetre.remove(@fenetre.child) if(@fenetre.child)
-        @fenetre.child = menu
-        @fenetre.titlebar = menu.titlebar
-        return self
-    end
-
-    def lanceNiveau(niveau)
-        @fenetre.remove(@fenetre.child) if(@fenetre.child)
-        @fenetre.child = niveau
-        return self
-    end
-
-    def regles  
-        regle = MenuRegles.new(self)
-        @fenetre.remove(@fenetre.child) if(@fenetre.child)
-        @fenetre.child = regle
-        @fenetre.titlebar = regle.titlebar
-        return self
-    end
-
-    def techniquemenus
-        techniquemenu = MenuTechnique.new(self)
-        @fenetre.remove(@fenetre.child) if(@fenetre.child)
-        @fenetre.child = techniquemenu
-        @fenetre.titlebar = techniquemenu.titlebar
         return self
     end
     

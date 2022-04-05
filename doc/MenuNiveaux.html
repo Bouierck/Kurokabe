@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class MenuNiveaux - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">Gtk::Box
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-affichageMode">#affichageMode</a>
+    
+    <li ><a href="#method-i-jeu">#jeu</a>
+    
+    <li ><a href="#method-i-load_image">#load_image</a>
+    
+    <li ><a href="#method-i-onEvt">#onEvt</a>
+    
+    <li ><a href="#method-i-updateButton">#updateButton</a>
+    
+    <li ><a href="#method-i-validate">#validate</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-MenuNiveaux">
+  <h1 id="class-MenuNiveaux" class="class">
+    class MenuNiveaux
+  </h1>
+
+  <section class="description">
+    
+<p>Widget graphique représentant l&#39;écran d&#39;accueil.</p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-titlebar" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">titlebar</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(app)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File src/Menus/MenuNiveaux.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">app</span>)
+    <span class="ruby-keyword">super</span>(<span class="ruby-value">:vertical</span>, <span class="ruby-value">10</span>)
+
+    <span class="ruby-identifier">@@btnClassiqueActive</span> = <span class="ruby-value">1</span>
+    <span class="ruby-identifier">@@btnClasseActive</span> = <span class="ruby-value">0</span>
+    <span class="ruby-identifier">@@btnAventureActive</span> = <span class="ruby-value">0</span>
+    <span class="ruby-identifier">@@path</span> = <span class="ruby-string">&quot;../../profile/&quot;</span>
+
+    <span class="ruby-ivar">@app</span> = <span class="ruby-identifier">app</span>
+
+    <span class="ruby-ivar">@btnAventure</span>= <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-ivar">@btnClasse</span>= <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-ivar">@btnClassique</span>= <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">valign</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Align</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">halign</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Align</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>
+
+
+
+
+        <span class="ruby-ivar">@btnClassique</span>.<span class="ruby-identifier">tap</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span> 
+            <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">label</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">label</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;CLASSIQUE&quot;</span>)
+                <span class="ruby-identifier">label</span>.<span class="ruby-identifier">show</span>  })
+            <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { 
+                <span class="ruby-identifier">updateButton</span>(<span class="ruby-value">1</span>)
+                <span class="ruby-identifier">affichageMode</span>()
+            }
+        <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">show</span>         }
+
+
+        <span class="ruby-ivar">@btnAventure</span>.<span class="ruby-identifier">tap</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span> 
+            <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">label</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">label</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;AVENTURE&quot;</span>)
+                <span class="ruby-identifier">label</span>.<span class="ruby-identifier">show</span>  })
+            <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { 
+                <span class="ruby-identifier">updateButton</span>(<span class="ruby-value">2</span>)
+                <span class="ruby-identifier">affichageMode</span>()
+            }
+                
+               
+        <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">show</span>         }
+
+        
+
+
+        <span class="ruby-ivar">@btnClasse</span>.<span class="ruby-identifier">tap</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span> 
+            <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">label</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">label</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;CLASSÉ&quot;</span>)
+                <span class="ruby-identifier">label</span>.<span class="ruby-identifier">show</span>  })
+            <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { 
+                <span class="ruby-identifier">updateButton</span>(<span class="ruby-value">3</span>)
+                <span class="ruby-identifier">affichageMode</span>()
+            }
+               
+        <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">show</span>         }
+        
+
+
+
+
+
+        <span class="ruby-identifier">boiteMode</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>).<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">boite</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@btnClassique</span>)
+            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@btnAventure</span>)
+            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@btnClasse</span>)
+            
+            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">show</span>
+        }
+
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">boiteMode</span>)
+
+    
+
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">show</span>
+    <span class="ruby-ivar">@titlebar</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">HeaderBar</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">barre</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">barre</span>.<span class="ruby-identifier">title</span> = <span class="ruby-string">&quot;Nurikabe&quot;</span>
+        <span class="ruby-identifier">barre</span>.<span class="ruby-identifier">subtitle</span> = <span class="ruby-string">&quot;Grilles &quot;</span>
+        <span class="ruby-identifier">barre</span>.<span class="ruby-identifier">show_close_button</span> = <span class="ruby-keyword">true</span>
+        <span class="ruby-identifier">barre</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-constant">BoutonRetour</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { <span class="ruby-identifier">app</span>.<span class="ruby-identifier">accueil</span> }
+        })
+        <span class="ruby-identifier">barre</span>.<span class="ruby-identifier">show</span>
+    }
+
+    <span class="ruby-identifier">@@mode</span> = <span class="ruby-value">1</span> <span class="ruby-comment"># 1 = Classique, 2 = Aventure, 3 = Classe</span>
+
+    <span class="ruby-ivar">@btnClassique</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">false</span>)
+
+    <span class="ruby-identifier">@@ary</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+
+
+            
+    <span class="ruby-comment"># ----------------    #Label Header des boites main ------------------------</span>
+
+    <span class="ruby-identifier">facileLabel</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">label</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">label</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;FACILE&quot;</span>)
+        <span class="ruby-identifier">label</span>.<span class="ruby-identifier">show</span> 
+    }
+    <span class="ruby-identifier">moyenLabel</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">label</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">label</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;MOYEN&quot;</span>)
+        <span class="ruby-identifier">label</span>.<span class="ruby-identifier">show</span> 
+    }
+    <span class="ruby-identifier">difficileLabel</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">label</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">label</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;DIFFICILE&quot;</span>)
+        <span class="ruby-identifier">label</span>.<span class="ruby-identifier">show</span> 
+    }
+
+
+
+    <span class="ruby-comment"># ----------------    Boutons niveaux ------------------------</span>
+
+    <span class="ruby-identifier">niv11</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span> 
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-string">&quot;Jouer&quot;</span>)
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { <span class="ruby-identifier">jeu</span>(<span class="ruby-value">1</span>) }
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">show</span>             }
+
+    <span class="ruby-identifier">niv12</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span> 
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-string">&quot;Jouer&quot;</span>)
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { <span class="ruby-identifier">jeu</span>(<span class="ruby-value">2</span>) }
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">show</span>             }
+
+    <span class="ruby-identifier">niv13</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span> 
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-string">&quot;Jouer&quot;</span>)
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { <span class="ruby-identifier">jeu</span>(<span class="ruby-value">3</span>) }
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">show</span>             }
+
+    <span class="ruby-identifier">niv14</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span> 
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-string">&quot;Jouer&quot;</span>)
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { <span class="ruby-identifier">jeu</span>(<span class="ruby-value">4</span>) }
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">show</span>             }
+
+    <span class="ruby-identifier">niv15</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span> 
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-string">&quot;Jouer&quot;</span>)
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { <span class="ruby-identifier">jeu</span>(<span class="ruby-value">5</span>) }
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">show</span>             }
+
+    <span class="ruby-identifier">niv21</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span> 
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-string">&quot;Jouer&quot;</span>)
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { <span class="ruby-identifier">jeu</span>(<span class="ruby-value">6</span>) }
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">show</span>             }
+
+    <span class="ruby-identifier">niv22</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span> 
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-string">&quot;Jouer&quot;</span>)
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { <span class="ruby-identifier">jeu</span>(<span class="ruby-value">7</span>) }
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">show</span>             }
+
+    <span class="ruby-identifier">niv23</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span> 
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-string">&quot;Jouer&quot;</span>)
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { <span class="ruby-identifier">jeu</span>(<span class="ruby-value">8</span>) }
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">show</span>             }
+
+    <span class="ruby-identifier">niv24</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span> 
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-string">&quot;Jouer&quot;</span>)
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { <span class="ruby-identifier">jeu</span>(<span class="ruby-value">9</span>) }
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">show</span>             }
+
+    <span class="ruby-identifier">niv25</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span> 
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-string">&quot;Jouer&quot;</span>)
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { <span class="ruby-identifier">jeu</span>(<span class="ruby-value">10</span>) }
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">show</span>             }
+
+    <span class="ruby-identifier">niv31</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span> 
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-string">&quot;Jouer&quot;</span>)
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { <span class="ruby-identifier">jeu</span>(<span class="ruby-value">11</span>) }
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">show</span>             }
+
+    <span class="ruby-identifier">niv32</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span> 
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-string">&quot;Jouer&quot;</span>)
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { <span class="ruby-identifier">jeu</span>(<span class="ruby-value">12</span>) }
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">show</span>             }
+
+    <span class="ruby-identifier">niv33</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span> 
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-string">&quot;Jouer&quot;</span>)
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { <span class="ruby-identifier">jeu</span>(<span class="ruby-value">13</span>) }
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">show</span>             }
+
+    <span class="ruby-identifier">niv34</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span> 
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-string">&quot;Jouer&quot;</span>)
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { <span class="ruby-identifier">jeu</span>(<span class="ruby-value">14</span>) }
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">show</span>             }
+
+    <span class="ruby-identifier">niv35</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span> 
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-string">&quot;Jouer&quot;</span>)
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { <span class="ruby-identifier">jeu</span>(<span class="ruby-value">15</span>) }
+    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">show</span>             }
+
+
+
+    <span class="ruby-comment"># ----------------    Boite regroupant boutons  ------------------------</span>
+
+    <span class="ruby-identifier">facileBtnBox</span>=<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>).<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">boite</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">niv11</span>)
+    <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">niv12</span>)
+    <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">niv13</span>)
+    <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">niv14</span>)
+    <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">niv15</span>)
+
+    <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">show</span>
+    }
+    <span class="ruby-identifier">moyenBtnBox</span>=<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>).<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">boite</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">niv21</span>)
+    <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">niv22</span>)
+    <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">niv23</span>)
+    <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">niv24</span>)
+    <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">niv25</span>)
+    <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">show</span>
+    }
+    <span class="ruby-identifier">difficileBtnBox</span>=<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>).<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">boite</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">niv31</span>)
+    <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">niv32</span>)
+    <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">niv33</span>)
+    <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">niv34</span>)
+    <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">niv35</span>)
+    <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">show</span>
+    }
+
+    <span class="ruby-comment"># ----------------    Boite regroupant label + boite ------------------------</span>
+
+    <span class="ruby-identifier">facileBox</span>=<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>).<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">boite</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">facileLabel</span>)
+    <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">facileBtnBox</span>)
+    <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">show</span>
+    }
+    <span class="ruby-identifier">moyenBox</span>=<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>).<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">boite</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">moyenLabel</span>)
+    <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">moyenBtnBox</span>)
+    <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">show</span>
+    }
+    <span class="ruby-identifier">difficileBox</span>=<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>).<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">boite</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">difficileLabel</span>)
+    <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">difficileBtnBox</span>)
+    <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">show</span>
+    }
+
+
+
+    <span class="ruby-identifier">@@ary</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">niv11</span>)
+    <span class="ruby-identifier">@@ary</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">niv12</span>)
+    <span class="ruby-identifier">@@ary</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">niv13</span>)
+    <span class="ruby-identifier">@@ary</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">niv14</span>)
+    <span class="ruby-identifier">@@ary</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">niv15</span>)
+    <span class="ruby-identifier">@@ary</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">niv21</span>)
+    <span class="ruby-identifier">@@ary</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">niv22</span>)
+    <span class="ruby-identifier">@@ary</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">niv23</span>)
+    <span class="ruby-identifier">@@ary</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">niv24</span>)
+    <span class="ruby-identifier">@@ary</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">niv25</span>)
+    <span class="ruby-identifier">@@ary</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">niv31</span>)
+    <span class="ruby-identifier">@@ary</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">niv32</span>)
+    <span class="ruby-identifier">@@ary</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">niv33</span>)
+    <span class="ruby-identifier">@@ary</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">niv34</span>)
+    <span class="ruby-identifier">@@ary</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">niv35</span>)
+
+
+
+
+
+
+
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">facileBox</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">moyenBox</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">difficileBox</span>)
+
+    <span class="ruby-identifier">affichageMode</span>()
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-affichageMode" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">affichageMode</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="affichageMode-source">
+            <pre><span class="ruby-comment"># File src/Menus/MenuNiveaux.rb, line 381</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">affichageMode</span>()
+
+
+                <span class="ruby-comment"># Chargement fichier</span>
+                <span class="ruby-identifier">file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;/score.txt&quot;</span>)
+                <span class="ruby-identifier">file_data</span> = <span class="ruby-identifier">file</span>.<span class="ruby-identifier">read</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot; &quot;</span>)
+<span class="ruby-comment">#               p file_data</span>
+
+                <span class="ruby-identifier">x</span> = <span class="ruby-value">11</span>
+                <span class="ruby-identifier">y</span> = <span class="ruby-value">0</span>
+                <span class="ruby-keyword">while</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">!=</span> <span class="ruby-value">26</span>
+                        <span class="ruby-identifier">validate</span>(<span class="ruby-identifier">@@ary</span>[<span class="ruby-identifier">y</span>],<span class="ruby-identifier">x</span>,<span class="ruby-identifier">file_data</span>)
+                        <span class="ruby-identifier">x</span> = <span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+                        <span class="ruby-identifier">y</span> = <span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+<span class="ruby-comment">#                       if x == 16 then</span>
+<span class="ruby-comment">#                               x = 21</span>
+<span class="ruby-comment">#                       elsif x == 26 then</span>
+<span class="ruby-comment">#                               x = 31</span>
+<span class="ruby-comment">#                       end</span>
+                <span class="ruby-keyword">end</span>
+
+        <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-jeu" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">jeu</span><span
+            class="method-args">(niv)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="jeu-source">
+            <pre><span class="ruby-comment"># File src/Menus/MenuNiveaux.rb, line 404</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">jeu</span>(<span class="ruby-identifier">niv</span>)
+    
+            <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@mode</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span>
+                    <span class="ruby-identifier">mode</span> = <span class="ruby-string">&quot;Classique&quot;</span>
+            <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">@@mode</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span>
+                    <span class="ruby-identifier">mode</span> = <span class="ruby-string">&quot;Aventure&quot;</span>
+            <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">@@mode</span> <span class="ruby-operator">==</span> <span class="ruby-value">3</span> <span class="ruby-keyword">then</span>
+                    <span class="ruby-identifier">mode</span> = <span class="ruby-string">&quot;Classe&quot;</span>
+            <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">fichierName</span> = <span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;/../../profile/&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@app</span>.<span class="ruby-identifier">user</span>.<span class="ruby-identifier">nom</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;/levels/&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">mode</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;/level&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">niv</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;.krkb&quot;</span>
+
+    <span class="ruby-keyword">if</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">fichierName</span>))
+        <span class="ruby-identifier">fichier</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">fichierName</span>, <span class="ruby-string">&quot;r&quot;</span>)
+        <span class="ruby-identifier">niveau</span> = <span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">fichier</span>)
+        <span class="ruby-identifier">fichier</span>.<span class="ruby-identifier">close</span>
+    <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">niveau</span> = <span class="ruby-constant">Niveau</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">niv</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-ivar">@app</span>.<span class="ruby-identifier">user</span>, <span class="ruby-identifier">mode</span>)
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-ivar">@app</span>.<span class="ruby-identifier">lanceNiveau</span>( <span class="ruby-constant">NiveauGUI</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-ivar">@app</span>, <span class="ruby-identifier">niveau</span>))
+
+    <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-load_image" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">load_image</span><span
+            class="method-args">(img)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="load_image-source">
+            <pre><span class="ruby-comment"># File src/Menus/MenuNiveaux.rb, line 428</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">load_image</span>(<span class="ruby-identifier">img</span>)
+    <span class="ruby-keyword">begin</span>
+        <span class="ruby-comment"># deprecated -&gt; image = Gtk::Image.new &quot;redrock.png&quot;</span>
+        <span class="ruby-identifier">image</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">img</span>)
+
+    <span class="ruby-keyword">rescue</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;cannot load image&quot;</span>
+        <span class="ruby-identifier">exit</span>
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-onEvt" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">onEvt</span><span
+            class="method-args">(label,message)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="onEvt-source">
+            <pre><span class="ruby-comment"># File src/Menus/MenuNiveaux.rb, line 287</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">onEvt</span>(<span class="ruby-identifier">label</span>,<span class="ruby-identifier">message</span>)
+    <span class="ruby-identifier">puts</span> <span class="ruby-identifier">message</span>
+    <span class="ruby-identifier">label</span>.<span class="ruby-identifier">set_text</span>(<span class="ruby-identifier">message</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-updateButton" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">updateButton</span><span
+            class="method-args">(nb)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="updateButton-source">
+            <pre><span class="ruby-comment"># File src/Menus/MenuNiveaux.rb, line 292</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">updateButton</span>(<span class="ruby-identifier">nb</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">nb</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@btnClassiqueActive</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
+            <span class="ruby-ivar">@btnClassique</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">false</span>)
+            <span class="ruby-ivar">@btnClasse</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">true</span>)
+            <span class="ruby-ivar">@btnAventure</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">true</span>)
+            <span class="ruby-identifier">@@btnClasseActive</span> = <span class="ruby-value">0</span>
+            <span class="ruby-identifier">@@btnAventureActive</span> = <span class="ruby-value">0</span>
+            <span class="ruby-identifier">@@mode</span> = <span class="ruby-value">1</span>
+
+        <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">nb</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@btnAventureActive</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
+            <span class="ruby-ivar">@btnAventure</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">false</span>)
+            <span class="ruby-ivar">@btnClassique</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">true</span>)
+            <span class="ruby-ivar">@btnClasse</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">true</span>)
+            <span class="ruby-identifier">@@btnClassiqueActive</span> = <span class="ruby-value">0</span>
+            <span class="ruby-identifier">@@btnClasseActive</span> = <span class="ruby-value">0</span>
+            <span class="ruby-identifier">@@mode</span> = <span class="ruby-value">2</span>
+
+        <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">nb</span> <span class="ruby-operator">==</span> <span class="ruby-value">3</span> <span class="ruby-keyword">then</span> 
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@btnClasseActive</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
+            <span class="ruby-identifier">@@btnClassiqueActive</span> = <span class="ruby-value">0</span>
+            <span class="ruby-identifier">@@btnAventureActive</span> = <span class="ruby-value">0</span>
+            <span class="ruby-ivar">@btnClassique</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">true</span>)
+            <span class="ruby-ivar">@btnAventure</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">true</span>)
+            <span class="ruby-ivar">@btnClasse</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">false</span>)
+            <span class="ruby-identifier">@@mode</span> = <span class="ruby-value">3</span>
+
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-validate" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">validate</span><span
+            class="method-args">(btn,niv,file_data)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="validate-source">
+            <pre><span class="ruby-comment"># File src/Menus/MenuNiveaux.rb, line 328</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">validate</span>(<span class="ruby-identifier">btn</span>,<span class="ruby-identifier">niv</span>,<span class="ruby-identifier">file_data</span>)
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@mode</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span>
+<span class="ruby-comment">#                       p &quot;1&quot;</span>
+<span class="ruby-comment">#                       btn.set_label(&quot; &quot;+file_data[niv-11]+&quot; &quot;)</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">file_data</span>[<span class="ruby-identifier">niv</span><span class="ruby-value">-11</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;1&quot;</span>
+                                <span class="ruby-identifier">btn</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-string">&quot;  ✓  &quot;</span>)
+                        <span class="ruby-keyword">else</span>
+                                <span class="ruby-identifier">btn</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-string">&quot;     &quot;</span>);
+                        <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@mode</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span>
+<span class="ruby-comment">#                       p &quot;2&quot;</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">file_data</span>[<span class="ruby-identifier">niv</span><span class="ruby-value">+4</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;1&quot;</span>
+                                <span class="ruby-identifier">btn</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-string">&quot;★☆☆&quot;</span>)
+                        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">file_data</span>[<span class="ruby-identifier">niv</span><span class="ruby-value">+4</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;2&quot;</span>
+                                <span class="ruby-identifier">btn</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-string">&quot;★★☆&quot;</span>);
+                        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">file_data</span>[<span class="ruby-identifier">niv</span><span class="ruby-value">+4</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;3&quot;</span>
+                                <span class="ruby-identifier">btn</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-string">&quot;★★★&quot;</span>);
+                        <span class="ruby-keyword">else</span>
+                                <span class="ruby-identifier">btn</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-string">&quot;☆☆☆&quot;</span>);
+                        <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@mode</span> <span class="ruby-operator">==</span> <span class="ruby-value">3</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">file_data</span>[<span class="ruby-identifier">niv</span><span class="ruby-value">+19</span>]<span class="ruby-operator">!=</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
+<span class="ruby-comment">#                       p &quot;3&quot;</span>
+                        <span class="ruby-identifier">m</span> = <span class="ruby-value">0</span>
+                        <span class="ruby-identifier">s</span> = <span class="ruby-value">0</span>
+                        <span class="ruby-identifier">strs</span> = <span class="ruby-string">&quot;&quot;</span>
+                        <span class="ruby-identifier">total</span> = <span class="ruby-identifier">file_data</span>[<span class="ruby-identifier">niv</span><span class="ruby-value">+19</span>].<span class="ruby-identifier">to_i</span>
+                        <span class="ruby-identifier">str</span> = <span class="ruby-string">&quot;&quot;</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">file_data</span>[<span class="ruby-identifier">niv</span><span class="ruby-value">+19</span>].<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">60</span> <span class="ruby-keyword">then</span>
+                                <span class="ruby-identifier">m</span> = <span class="ruby-identifier">file_data</span>[<span class="ruby-identifier">niv</span><span class="ruby-value">+19</span>].<span class="ruby-identifier">to_i</span><span class="ruby-operator">/</span><span class="ruby-value">60</span>
+                                <span class="ruby-identifier">total</span> = <span class="ruby-identifier">total</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">m</span><span class="ruby-operator">*</span><span class="ruby-value">60</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">file_data</span>[<span class="ruby-identifier">niv</span><span class="ruby-value">+19</span>].<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
+                                <span class="ruby-identifier">s</span> = <span class="ruby-identifier">total</span>
+                                <span class="ruby-keyword">if</span> <span class="ruby-identifier">s</span><span class="ruby-operator">&lt;</span><span class="ruby-value">10</span> <span class="ruby-keyword">then</span>
+                                        <span class="ruby-identifier">str</span> = <span class="ruby-identifier">m</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;:&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;0&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">to_s</span>
+                                <span class="ruby-keyword">else</span>
+                                        <span class="ruby-identifier">str</span> = <span class="ruby-identifier">m</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;:&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">to_s</span>
+                                <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-identifier">btn</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-identifier">str</span>)
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

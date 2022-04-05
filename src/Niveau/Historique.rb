@@ -1,11 +1,13 @@
 ##
-# L'historique stock les coups de l'utilisateur pour permttre de faire des retours en arrière / en avant
+# L'historique stock les coups de l'utilisateur pour permettre de faire des retours en arrière / en avant
 #
 class Historique
 
     ##
     # @listeCoups => Liste contenant les coups effectués
     # @index => coup actuel
+
+    attr_reader :index
 
     def initialize
         @listeCoups = Array.new()
@@ -29,7 +31,7 @@ class Historique
     end
     
     ##
-    # Retourne sur le mouvement précédent
+    # Retourne vrai si le retour en arrière a été effectué
     #
     def retourArriere
 
@@ -39,18 +41,32 @@ class Historique
             #Effectuer mouvement inverse
             2.times { @listeCoups[@index].changeEtat }
 
+            return true
         end
+        return false
     end
 
     ##
-    # Retourne sur le mouvement précédement annulé
+    # Retourne vrai si le retour en avant a été effectué
     #
-    def retourAvant()
+    def retourAvant
         if(@index < @listeCoups.size)
             
             #Effectuer mouvement
             @listeCoups[@index].changeEtat
             @index += 1
+
+            return true
         end
-    end 
+        return false
+    end
+
+    ##
+    # Reinitialise la grille
+    #
+    def reinitialiserGrille
+        while(retourArriere)
+        end
+    end
+
 end

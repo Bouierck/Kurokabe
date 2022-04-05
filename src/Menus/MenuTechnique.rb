@@ -113,16 +113,7 @@ class MenuTechnique < Gtk::Box
 # ------------------------------------------TEXT TECHNIQUES-----------------------------------------------------------------------
 
 #	TECH 0
-@textIle0 = "
-Nurikabe est un puzzle de formation d'îles basé sur une grille rectangulaire avec des indices à différents endroits. 
-
-Le but est de créer des îles en séparant les indices par des murs, de sorte que chaque île contienne exactement un indice 
-et que le nombre de cases de chaque île soit égal à la valeur de l'indice. En outre, toutes les îles sont isolées les unes des autres horizontalement et verticalement, 
-il n'y a pas de murs de 2x2 ou plus, et tous les murs forment un chemin continu lorsque le puzzle est terminé. 
-Dans l'exemple ci-dessous, nous avons un puzzle Nurikabe 6x6 avec six colonnes et six rangées. 
-
-Nous devons maintenant entourer les indices avec des murs selon les règles ci-dessus... mais comment ?
-"
+@textIle0 = Langue.text("tech0")
 
 
 
@@ -279,10 +270,10 @@ Elles sont donc ombragées pour indiquer qu'elles doivent faire partie d'un mur.
         @titlebar = Gtk::HeaderBar.new.tap { |barre|
                 barre.title = "Nurikabe"
                 barre.show_close_button = true
-                barre.pack_start(BoutonRetour.new.tap { |bouton|
-                    bouton.sensitive = true
-                    bouton.signal_connect("clicked") { app.regles }
-                })
+                barre.pack_start(BoutonRetour.creer(MenuRegles.method(:new), app).tap { |bouton| 
+					bouton.sensitive = true
+					bouton.show
+				})
                 barre.show
             }
 
@@ -293,7 +284,6 @@ Elles sont donc ombragées pour indiquer qu'elles doivent faire partie d'un mur.
 
 
     def updatePage()
-		puts __dir__ + '/../../assets/img/Tech/01.png'
 		if(@page == 1) then
 			@text1.set_label(@textIle0)
 			@image11.set_from_file(__dir__ + '/../../assets/img/Tech/01.png')

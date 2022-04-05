@@ -4,6 +4,7 @@ require 'fileutils'
 require_relative '../Donnees/Sauvegarde.rb'
 
 require_relative '../Boutons/BoutonRetour.rb'
+require_relative '../Boutons/BoutonNiveau.rb'
 
 require_relative '../GUI/NiveauGUI.rb'
 
@@ -15,7 +16,7 @@ require_relative '../Niveau/Niveau.rb'
     
 
         
-    attr_reader :titlebar
+    attr_reader :titlebar, :mode
     
 
     def initialize(app)
@@ -96,13 +97,11 @@ require_relative '../Niveau/Niveau.rb'
             barre.title = "Nurikabe"
             barre.subtitle = "Grilles "
             barre.show_close_button = true
-            barre.pack_start(BoutonRetour.new.tap { |bouton|
-                bouton.signal_connect("clicked") { app.accueil }
-            })
+            barre.pack_start(BoutonRetour.creer(MenuPrincipal.method(:new), app))
             barre.show
         }
 
-        @@mode = 1 # 1 = Classique, 2 = Aventure, 3 = Classe
+        @mode = 1 # 1 = Classique, 2 = Aventure, 3 = Classe
 
         @btnClassique.set_sensitive(false)
 
@@ -129,80 +128,50 @@ require_relative '../Niveau/Niveau.rb'
 
         # ----------------    Boutons niveaux ------------------------
 
-        niv11 = Gtk::Button.new.tap{|bouton| 
-        bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(11) }
-        bouton.show		}
+        niv11 = BoutonNiveau.creer("level 1", 10, 10, 1, self, @app)
+        niv11.show
 
-        niv12 = Gtk::Button.new.tap{|bouton| 
-        bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(12) }
-        bouton.show		}
+        niv12 = BoutonNiveau.creer("level 2", 10, 10, 2, self, @app)
+        niv12.show
 
-        niv13 = Gtk::Button.new.tap{|bouton| 
-        bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(13) }
-        bouton.show		}
+        niv13 = BoutonNiveau.creer("level 3", 10, 10, 3, self, @app)
+        niv13.show
 
-        niv14 = Gtk::Button.new.tap{|bouton| 
-        bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(14) }
-        bouton.show		}
+        niv14 = BoutonNiveau.creer("level 4", 10, 10, 4, self, @app)
+        niv14.show
 
-        niv15 = Gtk::Button.new.tap{|bouton| 
-        bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(15) }
-        bouton.show		}
+        niv15 = BoutonNiveau.creer("level 5", 10, 10, 5, self, @app)
+        niv15.show
 
-        niv21 = Gtk::Button.new.tap{|bouton| 
-        bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(21) }
-        bouton.show		}
+        niv21 = BoutonNiveau.creer("level 6", 10, 10, 6, self, @app)
+        niv21.show
 
-        niv22 = Gtk::Button.new.tap{|bouton| 
-        bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(22) }
-        bouton.show		}
+        niv22 = BoutonNiveau.creer("level 7", 10, 10, 7, self, @app)
+        niv22.show
 
-        niv23 = Gtk::Button.new.tap{|bouton| 
-        bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(23) }
-        bouton.show		}
+        niv23 = BoutonNiveau.creer("level 8", 10, 10, 8, self, @app)
+        niv23.show
 
-        niv24 = Gtk::Button.new.tap{|bouton| 
-        bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(24) }
-        bouton.show		}
+        niv24 = BoutonNiveau.creer("level 9", 10, 10, 9, self, @app)
+        niv24.show
 
-        niv25 = Gtk::Button.new.tap{|bouton| 
-        bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(25) }
-        bouton.show		}
+        niv25 = BoutonNiveau.creer("level 10", 10, 10, 10, self, @app)
+        niv25.show
 
-        niv31 = Gtk::Button.new.tap{|bouton| 
-        bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(31) }
-        bouton.show		}
+        niv31 = BoutonNiveau.creer("level 11", 10, 10, 11, self, @app)
+        niv31.show
 
-        niv32 = Gtk::Button.new.tap{|bouton| 
-        bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(32) }
-        bouton.show		}
+        niv32 = BoutonNiveau.creer("level 12", 10, 10, 12, self, @app)
+        niv32.show
 
-        niv33 = Gtk::Button.new.tap{|bouton| 
-        bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(33) }
-        bouton.show		}
+        niv33 = BoutonNiveau.creer("level 13", 10, 10, 13, self, @app)
+        niv33.show
 
-        niv34 = Gtk::Button.new.tap{|bouton| 
-        bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(34) }
-        bouton.show		}
+        niv34 = BoutonNiveau.creer("level 14", 10, 10, 14, self, @app)
+        niv34.show
 
-        niv35 = Gtk::Button.new.tap{|bouton| 
-        bouton.set_label("Jouer")
-        bouton.signal_connect("clicked") { jeu(35) }
-        bouton.show		}
+        niv35 = BoutonNiveau.creer("level 15", 10, 10, 15, self, @app)
+        niv35.show
 
 
 
@@ -252,8 +221,7 @@ require_relative '../Niveau/Niveau.rb'
         boite.show
         }
 
-
-
+        
         @@ary.push(niv11)
         @@ary.push(niv12)
         @@ary.push(niv13)
@@ -269,11 +237,6 @@ require_relative '../Niveau/Niveau.rb'
         @@ary.push(niv33)
         @@ary.push(niv34)
         @@ary.push(niv35)
-
-
-
-
-
 
 
         self.pack_start(facileBox)
@@ -297,7 +260,7 @@ require_relative '../Niveau/Niveau.rb'
                 @btnAventure.set_sensitive(true)
                 @@btnClasseActive = 0
                 @@btnAventureActive = 0
-                @@mode = 1
+                @mode = 1
 
             end
 
@@ -308,7 +271,7 @@ require_relative '../Niveau/Niveau.rb'
                 @btnClasse.set_sensitive(true)
                 @@btnClassiqueActive = 0
                 @@btnClasseActive = 0
-                @@mode = 2
+                @mode = 2
 
             end
 
@@ -319,14 +282,14 @@ require_relative '../Niveau/Niveau.rb'
                 @btnClassique.set_sensitive(true)
                 @btnAventure.set_sensitive(true)
                 @btnClasse.set_sensitive(false)
-                @@mode = 3
+                @mode = 3
 
             end
         end
     end
 
     def validate(btn,niv,file_data)
-		if @@mode == 1 then
+		if @mode == 1 then
 #			p "1"
 # 			btn.set_label(" "+file_data[niv-11]+" ")
 			if file_data[niv-11] == "1"
@@ -335,7 +298,7 @@ require_relative '../Niveau/Niveau.rb'
 				btn.set_label("     ");
 			end
 		end
-		if @@mode == 2 then
+		if @mode == 2 then
 #			p "2"
 			if file_data[niv+4] == "1"
 				btn.set_label("★☆☆")
@@ -347,7 +310,7 @@ require_relative '../Niveau/Niveau.rb'
 				btn.set_label("☆☆☆");
 			end
 		end
-		if @@mode == 3 && file_data[niv+19]!= 0 then
+		if @mode == 3 && file_data[niv+19]!= 0 then
 #			p "3"
 			m = 0
 			s = 0
@@ -370,19 +333,11 @@ require_relative '../Niveau/Niveau.rb'
 		end
 	end
 
-
-
-
-
-
-
-
-
     def affichageMode()
 
 
 		# Chargement fichier
-		file = File.open(__dir__ + "/score.txt")
+		file = File.open(__dir__ + "/../../profile/" + @app.user.nom + "/infosScore.krkb")
 		file_data = file.read.split(" ")
 #		p file_data
 
@@ -392,51 +347,8 @@ require_relative '../Niveau/Niveau.rb'
 			validate(@@ary[y],x,file_data)
 			x = x + 1
 			y = y + 1
-# 			if x == 16 then
-# 				x = 21
-# 			elsif x == 26 then
-# 				x = 31
-# 			end
 		end
 
 	end
-
-    def jeu(niv)
-	
-		if @@mode == 1 then
-			mode = "Classique"
-		elsif @@mode == 2 then
-			mode = "Aventure"
-		elsif @@mode == 3 then
-			mode = "Classe"
-		end
-
-        Sauvegarde.creer("Stun")
-
-        fichierName = __dir__ + "/../../profile/Stun/levels/" + mode + "/level" + niv.to_s + ".krkb"
-
-        if(File.exist?(fichierName))
-            fichier = File.open(fichierName, "r")
-            niveau = Marshal.load(fichier)
-            fichier.close
-        else
-            niveau = Niveau.creer(niv.to_s, Utilisateur.creer("Stun", 0), mode)
-        end
-
-        @app.lanceNiveau( NiveauGUI.creer(@app, niveau))
-
-	end
-
-    def load_image(img)
-        begin
-            # deprecated -> image = Gtk::Image.new "redrock.png"
-            image = Gtk::Image.new(:file => img)
-
-        rescue
-            puts "cannot load image"
-            exit
-        end
-    end
-
 
 end

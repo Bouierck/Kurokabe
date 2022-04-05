@@ -1,9 +1,13 @@
 require_relative '../Aide/Resolveur.rb'
 
+require_relative "../Modules/dpObservateur/Observable.rb"
+
 require_relative './Grille.rb'
 require_relative './Chronometre.rb'
 
 class Niveau
+
+    include Observateur
 
     ##
     # @id => Numero du niveau 
@@ -17,7 +21,14 @@ class Niveau
     attr_reader :chrono, :grille, :mode, :id, :utilisateur, :resolveur, :historique
 
     ##
-    #Constructeur du niveau
+    # Constructeur du niveau
+    #
+    # === Attributes
+    #
+    # * -id- numéro du niveau
+    # * -utilisateur- utilisateur connecté
+    # * -mode- mode du niveau
+    #
     def Niveau.creer(id, utilisateur, mode)
         new(id, utilisateur, mode)
     end
@@ -31,6 +42,9 @@ class Niveau
         @resolveur = Resolveur.new
         @historique = Historique.new
         
+        ##
+        # Lecture du fichiers contenant les informations de la grille
+        ##
         fichierMap = File.open(__dir__ + "/../../assets/levels/#{@mode}/level#{@id}.krkb")
 
         donnees = fichierMap.read.split("\n")
@@ -53,6 +67,9 @@ class Niveau
             y += 1 if x == 0
         end
 
+        ##
+        # Lecture du fichiers contenant les informations de la grille solution
+        ##
         fichierMapCorrigee = File.open(__dir__ + "/../../assets/levels/#{@mode}/level#{@id}_corrige.krkb")
         donnees = fichierMapCorrigee.read.split("\n")
         tailleGrilleX = donnees[0].to_i
@@ -73,14 +90,17 @@ class Niveau
             y += 1 if x == 0
         end
 
+        #Création de la grille
         @grille = Grille.creer(matrice, matriceCorrigee)
         @grille.ajouteObservateur(self)
 
     end
 
+    ##
+    # Arrete le chrono du niveau si il est fini
+    # Sauvegarde le niveau dans le fichier correspondant
     def update
         @chrono.on(false) if @grille.estFini?
-        puts @grille
         Sauvegarde.sauvNiveau(@utilisateur.nom, self, @utilisateur.nbEtoiles)
     end
 
