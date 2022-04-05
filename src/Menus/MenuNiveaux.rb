@@ -97,9 +97,7 @@ require_relative '../Niveau/Niveau.rb'
             barre.title = "Nurikabe"
             barre.subtitle = "Grilles "
             barre.show_close_button = true
-            barre.pack_start(BoutonRetour.new.tap { |bouton|
-                bouton.signal_connect("clicked") { app.accueil }
-            })
+            barre.pack_start(BoutonRetour.creer(MenuPrincipal.method(:new), app))
             barre.show
         }
 
@@ -352,17 +350,5 @@ require_relative '../Niveau/Niveau.rb'
 		end
 
 	end
-
-    def load_image(img)
-        begin
-            # deprecated -> image = Gtk::Image.new "redrock.png"
-            image = Gtk::Image.new(:file => img)
-
-        rescue
-            puts "cannot load image"
-            exit
-        end
-    end
-
 
 end

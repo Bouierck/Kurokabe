@@ -1,7 +1,9 @@
 require 'gtk3'
-require_relative '../Boutons/BoutonRetour.rb'
+
 require_relative '../Boutons/BoutonMenu.rb'
 require_relative '../Boutons/BoutonLangue.rb'
+
+require_relative './MenuClassement.rb'
 
 require_relative '../Donnees/Langue.rb'
 
@@ -20,24 +22,16 @@ require_relative '../Donnees/Langue.rb'
             super(:vertical, 10)
             
             self.valign = Gtk::Align::CENTER
-            self.halign = Gtk::Align::CENTER
+            self.halign = Gtk::Align::CENTER		
             
-#             self.pack_start(Gtk::Button.new.tap { |bouton|
-#                 bouton.add(Gtk::Label.new.tap { |label|
-#                     label.set_markup("<b>Tutoriel</b>")
-#                     label.show
-#                 })
-#                 bouton.height_request = 64
-#                 bouton.width_request = 400
-#                 bouton.margin_bottom = 10
-#                 bouton.signal_connect("clicked") { app.tutoriel }
-#                 bouton.show
-#             }, :expand => true, :fill => true, :padding => 0)
-
-			
+            self.style_context.add_class("margin-left")
+            self.style_context.add_class("margin-right")
 
             lbl = Gtk::Label.new.tap{ |label|
-                label.set_markup("Kurokabe")
+                label.set_markup("KUROKABE")
+                label.style_context.add_class("titre")
+                label.style_context.add_class("margin-bot")
+                label.style_context.add_class("margin-bigtop")
                 label.show 
             }
 
@@ -46,18 +40,32 @@ require_relative '../Donnees/Langue.rb'
 
             btnJouer = BoutonMenu.creer(Langue.text("jouer"), 10, 10, MenuNiveaux.method(:new), app)
             Langue.addListener(btnJouer, "jouer")
+            btnJouer.style_context.add_class("bouton")
             btnJouer.show
 
             self.pack_start(btnJouer)
 
-            # btnClassement = BoutonMenu.creer("CLASSEMENT", 10, 10, MenuClassement.method(:new), app)
-            # #Langue.addListener(btnClassement, "classement")
-            # btnJouer.show
+            btnClassement = BoutonMenu.creer("CLASSEMENT", 10, 10, MenuClassement.method(:new), app)
+            #Langue.addListener(btnClassement, "classement")
+            btnClassement.style_context.add_class("bouton")
+            btnClassement.show
 
             # self.pack_start(btnClassement)
 
+            self.pack_start(btnClassement)
+                      
+                      
             btnRegles = BoutonMenu.creer("REGLES", 10, 10, MenuRegles.method(:new), app)
             #Langue.addListener(btnRegles, "regles")
+            btnRegles.style_context.add_class("bouton")
+            btnRegles.show
+
+            self.pack_start(btnRegles)
+            
+            #FAIRE LE BOUTON DIDACTICIEL
+            btnRegles = BoutonMenu.creer("DIDACTICIEL", 10, 10, MenuRegles.method(:new), app)
+            #Langue.addListener(btnRegles, "regles")
+            btnRegles.style_context.add_class("bouton")
             btnRegles.show
 
             self.pack_start(btnRegles)
@@ -66,17 +74,31 @@ require_relative '../Donnees/Langue.rb'
 
             btnQuitter = BoutonSpecial.creer("QUITTER", 10, 10, app.method(:closeApp))
             #Langue.addListener(btnQuitter, "quitter")
+            btnQuitter.style_context.add_class("bouton")
+            btnQuitter.style_context.add_class("margin-top")
+            btnQuitter.style_context.add_class("margin-bot")
+            
             btnQuitter.show
 
             self.pack_start(btnQuitter)
 
 
 
-        langueBox=Gtk::Box.new(:horizontal).tap { |boite|
-            boite.pack_start(BoutonLangue.creer("/../../assets/img/fr_flag.png", 10, 10, 0).show)
-            boite.pack_start(BoutonLangue.creer("/../../assets/img/en_flag.png", 10, 10, 1).show)
-            boite.show
-        }
+            francais = BoutonLangue.creer("", 10, 10, 0)
+            francais.set_image(Gtk::Image.new(__dir__+"/../../assets/img/fr_flag.png"))
+            francais.style_context.add_class("btn-langue-fr")
+            
+            anglais = BoutonLangue.creer("", 10, 10, 1)
+            anglais.set_image(Gtk::Image.new(__dir__+"/../../assets/img/en_flag.png"))
+            anglais.style_context.add_class("btn-langue-en")
+    
+    
+            langueBox=Gtk::Box.new(:horizontal).tap { |boite|
+                boite.pack_start(francais.show)
+                boite.pack_start(anglais.show)
+                boite.style_context.add_class("margin-bigbot")
+                boite.show
+            }
 
         self.pack_start(langueBox)
 
@@ -85,9 +107,6 @@ require_relative '../Donnees/Langue.rb'
         @titlebar = Gtk::HeaderBar.new.tap { |barre|
             barre.title = "Nurikabe"
             barre.show_close_button = true
-            barre.pack_start(BoutonRetour.new.tap { |bouton|
-                bouton.sensitive = false
-            })
             barre.show
         }
         

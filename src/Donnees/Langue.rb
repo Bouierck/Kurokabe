@@ -38,8 +38,9 @@ class Langue
 
         arr.each { |text|
             text[1].gsub!(/RTAL/, "\n")
+            text[1].gsub!(/PE/, ": ")
         }
-        
+
         trad = arr.to_h
 
         file.close()

@@ -27,6 +27,9 @@ class MenuConnexion < Gtk::Dialog
                     }
                     entree.show
             }
+            entree.style_context.add_class("entry")
+            entree.style_context.add_class("margin-bot")
+            
             entree.signal_connect('key-press-event') { |w, e|
                 if(e.keyval == Gdk::Keyval::KEY_Return)
                     p "OK"
@@ -36,16 +39,17 @@ class MenuConnexion < Gtk::Dialog
             }
 
             self.content_area.add(
-                    Gtk::Box.new(:horizontal).tap { |boite|
+                    Gtk::Box.new(:vertical).tap { |boite|
                     boite.pack_start(
                         Gtk::Image.new(__dir__ + '/../../assets/img/user.png').tap { |img|
+                        img.style_context.add_class("margin-top")
                         img.show
                     })
                     boite.add(Gtk::Box.new(:vertical).tap { |boite2|
 
                     boite2.pack_start(Gtk::Label.new(
-                            "Entrez votre pseudo:").tap { |label|
-
+                            "ENTREZ VOTRE NOM :").tap { |label|
+                            label.style_context.add_class("titre1")
                             label.show
                         })
                         boite2.pack_start(entree)
@@ -53,9 +57,9 @@ class MenuConnexion < Gtk::Dialog
                     })
                     boite.show
                 })
-            self.add_button("OK", Gtk::ResponseType::OK)
-            self.add_button(Gtk::Stock::CANCEL, Gtk::ResponseType::CANCEL)
-            self.add_button(Gtk::Stock::CLOSE, Gtk::ResponseType::CLOSE)
+            self.add_button("OK", Gtk::ResponseType::OK).style_context.add_class("btn-ok")
+            self.add_button(Gtk::Stock::CANCEL, Gtk::ResponseType::CANCEL).style_context.add_class("btn-cancel")
+            self.add_button(Gtk::Stock::CLOSE, Gtk::ResponseType::CLOSE).style_context.add_class("btn-close")
             self.set_default_response(Gtk::ResponseType::CANCEL)
 
             

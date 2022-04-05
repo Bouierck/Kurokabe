@@ -7,6 +7,8 @@ class Historique
     # @listeCoups => Liste contenant les coups effectués
     # @index => coup actuel
 
+    attr_reader :index
+
     def initialize
         @listeCoups = Array.new()
         @index = 0
@@ -29,7 +31,7 @@ class Historique
     end
     
     ##
-    # Retourne sur le mouvement précédent
+    # Retourne vrai si le retour en arrière a été effectué
     #
     def retourArriere
 
@@ -45,7 +47,7 @@ class Historique
     end
 
     ##
-    # Retourne sur le mouvement précédement annulé
+    # Retourne vrai si le retour en avant a été effectué
     #
     def retourAvant
         if(@index < @listeCoups.size)
@@ -66,4 +68,5 @@ class Historique
         while(retourArriere)
         end
     end
+
 end
