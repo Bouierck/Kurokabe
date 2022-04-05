@@ -26,17 +26,13 @@ class Didacticiel < NiveauGUI
 
     def initGUI
         super
-        @app.add(self)
-        @app.show_all
-
-        @app.signal_connect('destroy') {onDestroy}
 
         @grilleGUI.matriceGUI.each do |line|
             line.each do |c|
                 c.set_sensitive(false)
             end
         end 
-        #@boutonMenu.set_sensitive(false)
+        @boutonMenu.set_sensitive(false)
         #@boutonPause.set_sensitive(false)
         @boutonQuitter.set_sensitive(false)
 
