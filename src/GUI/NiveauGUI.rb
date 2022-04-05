@@ -43,6 +43,7 @@ class NiveauGUI < Gtk::Box
         @niveau = niveau
         @grilleGUI = GrilleGUI.creer(@niveau.grille)
         @app = app;
+        @pause = false
         initGUI
 
     end
@@ -67,16 +68,16 @@ class NiveauGUI < Gtk::Box
         @titlebar.show
 
         #Box du menu
-        boxMenu = Gtk::Box.new(:vertical,6)
+        @boxMenu = Gtk::Box.new(:vertical,6)
 
         #label du niveau
         niveauLabel = Gtk::Label.new(Langue.text("ingameNiveau") + " " + @niveau.id.to_s)
-        chronoLabel = ChronoGUI.creer(@niveau.chrono)
+        @chronoLabel = ChronoGUI.creer(@niveau.chrono)
 
         #Ajout des boutons du menu
 
         @boutonMenu = BoutonMenu.creer("Menu", 2, 10, MenuNiveaux.method(:new), @app)
-        #boutonPause = BoutonPause.creer("Pause", 2, 10, Menu.new, @niveau)
+        boutonPause = BoutonPause.creer("Pause", 2, 10, self)
         @boutonQuitter = BoutonSpecial.creer(Langue.text("quitter"), 2, 20, self.method(:QuitterFenetre))
 
         #bouton fonction
@@ -94,22 +95,76 @@ class NiveauGUI < Gtk::Box
         boxFonction.add(@boutonCheck)
         boxFonction.add(@boutonIndice)
 
-        boxMenu.add(niveauLabel)
-        boxMenu.add(chronoLabel)
-        boxMenu.add(@boutonMenu)
-        #boxMenu.add(@boutonPause)
-        boxMenu.add(boxFonction)
-        boxMenu.add(@boutonQuitter)
+        @boxMenu.add(niveauLabel)
+        @boxMenu.add(@chronoLabel)
+        @boxMenu.add(@boutonMenu)
+        @boxMenu.add(boutonPause)
+        @boxMenu.add(boxFonction)
+        @boxMenu.add(@boutonQuitter)
 
-        #Ajout des deux composant de la box du niveau
-        # self.set_homogeneous(true)        
+        #Ajout des deux composant de la box du niveau       
         self.add(@grilleGUI)
-        self.add(boxMenu)
+        self.add(@boxMenu)
 
-        chronoLabel.lancer if @niveau.grille.estFini? == false
+        @chronoLabel.lancer if @niveau.grille.estFini? == false
 
         self.show_all
 
+        #Box représentant la pause
+        @boxPause = Gtk::Box.new(:vertical,5)
+            
+        lbl = Gtk::Label.new.tap{ |label|
+            label.set_markup("PAUSE")
+            label.style_context.add_class("pause")
+            label.show 
+        }
+
+        niveauLabelPause = Gtk::Label.new.tap{ |label|
+            label.set_markup("Niveau #{@niveau.id}")
+            label.style_context.add_class("pause")
+            label.show 
+        }
+
+        boutonReprendre = BoutonPause.creer("Reprendre", 2, 10, self)
+        boutonMenuPause = BoutonMenu.creer("Menu", 2, 10, MenuNiveaux.method(:new), @app)
+        boutonQuitterPause = BoutonSpecial.creer("Quitter", 2, 20, self.method(:QuitterFenetre))
+
+        @boxPause.add(niveauLabelPause)
+        @boxPause.add(lbl)
+        @boxPause.add(boutonReprendre)
+        @boxPause.add(boutonMenuPause)
+        @boxPause.add(boutonQuitterPause)
+
+    end
+
+    def modePause()
+        if(@pause == false)
+            @pause = true
+            @chronoLabel.stop
+
+            self.remove(@grilleGUI)
+            self.remove(@boxMenu)
+
+            box = Gtk::Box.new(:vertical,2)
+
+            box.add(Gtk::Label.new(@niveau.chrono.to_s))
+            box.add(@boxPause)
+
+            self.add(box)
+
+            self.show_all
+        else
+            @pause = false
+            @niveau.chrono.on(true)
+            @chronoLabel.lancer
+
+            self.remove(@boxPause)
+
+            self.add(@grilleGUI)
+            self.add(@boxMenu)
+
+            self.show_all
+        end
     end
 
     private
