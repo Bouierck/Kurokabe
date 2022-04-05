@@ -26,4 +26,7 @@ tech10: 7. Continuité de l'îlotRTALRTAL    La case marquée d'un point rouge d
 tech11: 8. Entourer une île terminéeRTALRTAL    Dans l'énigme partiellement résolue ci-dessous, l'île de 3 a été complétée comme le montre la zone en surbrillance. RTAL    Nous pouvons maintenant entourer cette île de murs adjacents horizontalement et verticalement, comme le montre l'image de droite.
 tech12: 9. Éviter les surfaces murales de 2x2RTALRTAL    Selon les règles, il est interdit d'avoir des murs de 2x2 ou plus. Par conséquent, RTAL    le carré surligné ci-dessous ne peut pas faire partie du mur et est marqué d'un point indiquant qu'il appartient à l'une des îles.
 tech13: 10. Carré inaccessibleRTALRTAL    Dans certains cas, une case ne peut appartenir à aucune île, tout simplement parce qu'aucun indice ne peut l'atteindre. RTAL    Dans l'exemple ci-dessous, les deux cases surlignées sont trop éloignées des indices et ne peuvent faire partie d'aucune île. RTAL    Elles sont donc ombragées pour indiquer qu'elles doivent faire partie d'un mur.
+didacticiel: DIDACTICIEL
 quitter: QUITTER
+continuer: CONTINUER
+voirtech: VOIR LES TECHNIQUES

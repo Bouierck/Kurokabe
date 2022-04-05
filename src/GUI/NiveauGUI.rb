@@ -22,6 +22,8 @@ class NiveauGUI < Gtk::Box
     ##
     # @niveau => niveau représenté par ce GUI
 
+    attr_reader :titlebar
+
     ##
     # Constructeur du niveau
     #
@@ -69,36 +71,36 @@ class NiveauGUI < Gtk::Box
         @boxMenu = Gtk::Box.new(:vertical,6)
 
         #label du niveau
-        niveauLabel = Gtk::Label.new("Niveau #{@niveau.id}")
+        niveauLabel = Gtk::Label.new(Langue.text("ingameNiveau") + " " + @niveau.id.to_s)
         @chronoLabel = ChronoGUI.creer(@niveau.chrono)
 
         #Ajout des boutons du menu
 
-        boutonMenu = BoutonMenu.creer("Menu", 2, 10, MenuNiveaux.method(:new), @app)
+        @boutonMenu = BoutonMenu.creer("Menu", 2, 10, MenuNiveaux.method(:new), @app)
         boutonPause = BoutonPause.creer("Pause", 2, 10, self)
-        boutonQuitter = BoutonSpecial.creer("Quitter", 2, 20, self.method(:QuitterFenetre))
+        @boutonQuitter = BoutonSpecial.creer(Langue.text("quitter"), 2, 20, self.method(:QuitterFenetre))
 
         #bouton fonction
         boxFonction = Gtk::Box.new(:horizontal,5)
 
-        boutonArriere= BoutonSpecial.creer("↶", 1, 1, self.method(:clickRetourArriere))
-        boutonAvant = BoutonSpecial.creer("↷", 2, 2, self.method(:clickRetourAvant))
-        boutonReinitialiser = BoutonSpecial.creer("↻", 2, 2, self.method(:clickReinitialiserGrille))
-        boutonCheck = BoutonSpecial.creer("👁️", 2, 2, self.method(:check))
-        boutonIndice = BoutonSpecial.creer("💡", 2, 2, self.method(:appelResoudreGrille))
+        @boutonArriere= BoutonSpecial.creer("↶", 1, 1, self.method(:clickRetourArriere))
+        @boutonAvant = BoutonSpecial.creer("↷", 2, 2, self.method(:clickRetourAvant))
+        @boutonReinitialiser = BoutonSpecial.creer("↻", 2, 2, self.method(:clickReinitialiserGrille))
+        @boutonCheck = BoutonSpecial.creer("👁️", 2, 2, self.method(:check))
+        @boutonIndice = BoutonSpecial.creer("💡", 2, 2, self.method(:appelResoudreGrille))
         
-        boxFonction.add(boutonArriere)
-        boxFonction.add(boutonAvant)
-        boxFonction.add(boutonReinitialiser)
-        boxFonction.add(boutonCheck)
-        boxFonction.add(boutonIndice)
+        boxFonction.add(@boutonArriere)
+        boxFonction.add(@boutonAvant)
+        boxFonction.add(@boutonReinitialiser)
+        boxFonction.add(@boutonCheck)
+        boxFonction.add(@boutonIndice)
 
         @boxMenu.add(niveauLabel)
         @boxMenu.add(@chronoLabel)
-        @boxMenu.add(boutonMenu)
+        @boxMenu.add(@boutonMenu)
         @boxMenu.add(boutonPause)
         @boxMenu.add(boxFonction)
-        @boxMenu.add(boutonQuitter)
+        @boxMenu.add(@boutonQuitter)
 
         #Ajout des deux composant de la box du niveau       
         self.add(@grilleGUI)
@@ -220,7 +222,7 @@ class NiveauGUI < Gtk::Box
         if @niveau.grille.estFini? == false
 
             indice = @niveau.resolveur.resoudreGrille(@grilleGUI.grille)
-            popup(indice[:text])
+            popup(@grilleGUI, indice[:text])
 
             if(indice[:response] == ReponseType::ARRAY)
                 indice[:cases].each{ |c|
@@ -231,10 +233,10 @@ class NiveauGUI < Gtk::Box
         end
     end
 
-    def popup(msg)
+    def popup(relative, msg)
 
         pop = Gtk::Popover.new()
-        pop.set_relative_to(@grilleGUI)
+        pop.set_relative_to(relative)
         pop.add(Gtk::Label.new(msg).show)
         pop.popup
 

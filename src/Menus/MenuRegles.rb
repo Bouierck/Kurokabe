@@ -19,13 +19,13 @@ class MenuRegles < Gtk::Box
         
 
         lbl = Gtk::Label.new.tap{ |label|
-            label.set_markup("REGLES")
+            label.set_markup(Langue.text("menuRegles"))
         label.style_context.add_class("titre1")
         label.style_context.add_class("margin-bigleft")
         label.show 
         }
 
-        btnRegles = BoutonMenu.creer("VOIR LES TECHNIQUES", 10, 10, MenuTechnique.method(:new), app)
+        btnRegles = BoutonMenu.creer(Langue.text("voirtech"), 10, 10, MenuTechnique.method(:new), app)
         btnRegles.style_context.add_class("bouton")
         btnRegles.style_context.add_class("margin-left2")
         btnRegles.style_context.add_class("margin-right2")

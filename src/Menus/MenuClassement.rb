@@ -211,22 +211,22 @@ class MenuClassement < Gtk::Box
 # -------------------- Creation des labels ---------------------------
 
         topLabel = Gtk::Label.new.tap{ |label|
-            label.set_markup("Classement")
+            label.set_markup(Langue.text("classement"))
             label.show 
         }
 
         facileLabel = Gtk::Label.new.tap{ |label|
-            label.set_markup("FACILE")
+            label.set_markup(Langue.text("difficulteFacile"))
             label.show 
         }
 
         mediumLabel = Gtk::Label.new.tap{ |label|
-            label.set_markup("MOYEN")
+            label.set_markup(Langue.text("difficulteMoyen"))
             label.show 
         }
 
         difficileLabel = Gtk::Label.new.tap{ |label|
-            label.set_markup("DIFFICILE")
+            label.set_markup(Langue.text("difficulteDifficile"))
             label.show 
         }
 
