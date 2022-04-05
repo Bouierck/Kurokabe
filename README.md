@@ -23,6 +23,8 @@ Ressources utilisés :
 [Diagramme de Gantt](https://docs.google.com/spreadsheets/d/19JpsNgYenO6e5OJJh9Wqvrw7NUWOYOXc-5A1ql4AVF8/edit#gid=0),
 [Trello](https://trello.com/b/AYIpps7L/jacoding).
 
+Fichier définitif sous format .iso (VirtualBox image) : [Image]()
+
 # Objectifs
 
 - Apprendre à s'organiser, concevoir et travailler en équipe
