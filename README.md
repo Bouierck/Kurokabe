@@ -46,4 +46,4 @@ Puis, exécuter : `svn export https://github.com/Bouierck/Kurokabe`
 
 # Lancer l'application
 
-- Une fois dans le dossier du projet, exécuter `./Kurokabe.rb` ou `ruby Kurokabe.rb`
+- Une fois dans le dossier du projet, exécuter `ruby Kurokabe.rb`
