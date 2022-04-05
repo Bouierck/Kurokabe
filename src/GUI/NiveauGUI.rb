@@ -145,12 +145,12 @@ class NiveauGUI < Gtk::Box
             self.remove(@grilleGUI)
             self.remove(@boxMenu)
 
-            box = Gtk::Box.new(:vertical,2)
+            # box = Gtk::Box.new(:vertical,2)
 
-            box.add(Gtk::Label.new(@niveau.chrono.to_s))
-            box.add(@boxPause)
+            # box.add(Gtk::Label.new(@niveau.chrono.to_s))
+            # box.add(@boxPause)
 
-            self.add(box)
+            self.add(@boxPause)
 
             self.show_all
         else
