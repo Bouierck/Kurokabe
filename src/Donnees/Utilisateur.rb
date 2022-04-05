@@ -26,12 +26,19 @@ class Utilisateur
 
     private_class_method :new
 
+<<<<<<< HEAD
     def initialize(nom, langue)
        # Sauvegarde.creer(nom)
         @nom = nom
         @langue = langue
         #@nbEtoiles = Sauvegarde.nbEtoiles()
 
+=======
+    def initialize(unNom, uneLangue)
+        @nom = unNom
+        @langue = uneLangue
+        @nbEtoiles = Sauvegarde.nbEtoiles()
+>>>>>>> 5b57d37473ad881ec77224d685bd9ec3bd5747bf
     end
 
 end # Marqueur de fin de classe
