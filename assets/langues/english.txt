@@ -26,4 +26,7 @@ tech10: 7. Island continuityRTALRTAL    The square marked with a red dot in the 
 tech11: 8. Surrounding a completed islandRTALRTAL    In the partially solved puzzle below, the island of 3 has been completed as shown in the highlighted area. RTAL    We can now surround this island with horizontally and vertically adjacent walls as shown in the right image.
 tech12: 9. Avoiding wall area of 2x2RTALRTAL    According to the rules it is not allowed to have wall areas of 2x2 or larger. Therefore RTAL    the highlighted square below cannot be part of the wall and is marked with a dot showing it belongs to one of the islands.
 tech13: 10. Unreachable squareRTALRTAL    In some cases a square cannot belong to any island simply because no clue can “reach” it. RTAL    In the example below the two highlighted squares are too far from the clues and cannot be part of any island. RTAL    They are therefore shaded to indicate they must be part of a wall.
+didacticiel: TUTORIAL
 quitter: QUIT
+contiuer: CONTINUE
+voirtech: SEE TECHNICS

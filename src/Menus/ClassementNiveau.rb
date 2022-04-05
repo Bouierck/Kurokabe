@@ -12,7 +12,7 @@ class ClassementNiveau < Gtk::Box
 
     def initialize(app,datas)
 
-        path_to_profile = "./profile/"
+        path_to_profile = __dir__ + "/../../profile/"
 
 
         super(:vertical, 10)

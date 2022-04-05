@@ -40,6 +40,7 @@ class BoutonNiveau < Bouton
             n = NiveauGUI.creer(app, niveau)
             app.fenetre.remove(app.fenetre.child) if(app.fenetre.child)
             app.fenetre.child = n
+            app.fenetre.titlebar = n.titlebar
 
         }
     end

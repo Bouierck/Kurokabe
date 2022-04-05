@@ -22,6 +22,8 @@ class NiveauGUI < Gtk::Box
     ##
     # @niveau => niveau représenté par ce GUI
 
+    attr_reader :titlebar
+
     ##
     # Constructeur du niveau
     #
@@ -68,14 +70,14 @@ class NiveauGUI < Gtk::Box
         boxMenu = Gtk::Box.new(:vertical,6)
 
         #label du niveau
-        niveauLabel = Gtk::Label.new("Niveau #{@niveau.id}")
+        niveauLabel = Gtk::Label.new(Langue.text("ingameNiveau") + " " + @niveau.id.to_s)
         chronoLabel = ChronoGUI.creer(@niveau.chrono)
 
         #Ajout des boutons du menu
 
-        #@boutonMenu = BoutonMenu.creer("Menu", 2, 10, MenuNiveaux.method(:new), @app)
-        #@boutonPause = BoutonPause.creer("Pause", 2, 10, Menu.new, @niveau)
-        @boutonQuitter = BoutonSpecial.creer("quitter", 2, 20, self.method(:QuitterFenetre))
+        boutonMenu = BoutonMenu.creer("Menu", 2, 10, MenuNiveaux.method(:new), @app)
+        #boutonPause = BoutonPause.creer("Pause", 2, 10, Menu.new, @niveau)
+        boutonQuitter = BoutonSpecial.creer(Langue.text("quitter"), 2, 20, self.method(:QuitterFenetre))
 
         #bouton fonction
         boxFonction = Gtk::Box.new(:horizontal,5)
