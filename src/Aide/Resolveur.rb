@@ -62,7 +62,7 @@ class Resolveur
 
         end
 
-        return []
+        return {:response => ReponseType::TEXT, :text => "Erreur dans la grille"}
 
     end
 
