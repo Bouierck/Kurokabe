@@ -18,7 +18,7 @@ class WallExp < Technique
 
                 @casesChange = []
                 
-                if(c.is_a?(CaseCliquable) && c.etat == 2)
+                if(c.is_a?(CaseCliquable) && c.etat == TypeCase::MUR)
                     
                     ca = c
 
@@ -29,39 +29,39 @@ class WallExp < Technique
 
 
                         #On check si la case noir est toute seul
-                        reliee = true if(isInGrid(grille.matrice, ca.x - 1, ca.y) && @casesChange.include?(grille.matrice[ca.y][ca.x - 1]) == false && grille.matrice[ca.y][ca.x - 1].is_a?(CaseCliquable) && grille.matrice[ca.y][ca.x - 1].etat == 2)
+                        reliee = true if(isInGrid(grille.matrice, ca.x - 1, ca.y) && @casesChange.include?(grille.matrice[ca.y][ca.x - 1]) == false && grille.matrice[ca.y][ca.x - 1].is_a?(CaseCliquable) && grille.matrice[ca.y][ca.x - 1].etat == TypeCase::MUR)
 
-                        reliee = true if(isInGrid(grille.matrice, ca.x, ca.y - 1) && @casesChange.include?(grille.matrice[ca.y - 1][ca.x]) == false && grille.matrice[ca.y - 1][ca.x].is_a?(CaseCliquable) && grille.matrice[ca.y - 1][ca.x].etat == 2)
+                        reliee = true if(isInGrid(grille.matrice, ca.x, ca.y - 1) && @casesChange.include?(grille.matrice[ca.y - 1][ca.x]) == false && grille.matrice[ca.y - 1][ca.x].is_a?(CaseCliquable) && grille.matrice[ca.y - 1][ca.x].etat == TypeCase::MUR)
 
-                        reliee = true if(isInGrid(grille.matrice, ca.x, ca.y + 1) && @casesChange.include?(grille.matrice[ca.y + 1][ca.x]) == false && grille.matrice[ca.y + 1][ca.x].is_a?(CaseCliquable) && grille.matrice[ca.y + 1][ca.x].etat == 2)
+                        reliee = true if(isInGrid(grille.matrice, ca.x, ca.y + 1) && @casesChange.include?(grille.matrice[ca.y + 1][ca.x]) == false && grille.matrice[ca.y + 1][ca.x].is_a?(CaseCliquable) && grille.matrice[ca.y + 1][ca.x].etat == TypeCase::MUR)
 
-                        reliee = true if(isInGrid(grille.matrice, ca.x + 1, ca.y) && @casesChange.include?(grille.matrice[ca.y][ca.x + 1]) == false && grille.matrice[ca.y][ca.x + 1].is_a?(CaseCliquable) && grille.matrice[ca.y][ca.x + 1].etat == 2)
+                        reliee = true if(isInGrid(grille.matrice, ca.x + 1, ca.y) && @casesChange.include?(grille.matrice[ca.y][ca.x + 1]) == false && grille.matrice[ca.y][ca.x + 1].is_a?(CaseCliquable) && grille.matrice[ca.y][ca.x + 1].etat == TypeCase::MUR)
 
                         #Si elle est toute seul on regarde si elle n'a qu'ene seul possibilité de sortie
                         if(reliee == false)
                             
-                            if(isInGrid(grille.matrice, ca.x - 1, ca.y) && @casesChange.include?(grille.matrice[ca.y][ca.x - 1]) == false && grille.matrice[ca.y][ca.x - 1].is_a?(CaseCliquable) && grille.matrice[ca.y][ca.x - 1].etat == 0)
+                            if(isInGrid(grille.matrice, ca.x - 1, ca.y) && @casesChange.include?(grille.matrice[ca.y][ca.x - 1]) == false && grille.matrice[ca.y][ca.x - 1].is_a?(CaseCliquable) && grille.matrice[ca.y][ca.x - 1].etat == TypeCase::VIDE)
                             
                                 countPossible += 1
                                 cs = grille.matrice[ca.y][ca.x - 1]
 
                             end
 
-                            if(isInGrid(grille.matrice, ca.x, ca.y - 1) && @casesChange.include?(grille.matrice[ca.y - 1][ca.x]) == false && grille.matrice[ca.y - 1][ca.x].is_a?(CaseCliquable) && grille.matrice[ca.y - 1][ca.x].etat == 0)
+                            if(isInGrid(grille.matrice, ca.x, ca.y - 1) && @casesChange.include?(grille.matrice[ca.y - 1][ca.x]) == false && grille.matrice[ca.y - 1][ca.x].is_a?(CaseCliquable) && grille.matrice[ca.y - 1][ca.x].etat == TypeCase::VIDE)
 
                                 countPossible += 1
                                 cs = grille.matrice[ca.y - 1][ca.x]
 
                             end
 
-                            if(isInGrid(grille.matrice, ca.x, ca.y + 1) && @casesChange.include?(grille.matrice[ca.y + 1][ca.x]) == false && grille.matrice[ca.y + 1][ca.x].is_a?(CaseCliquable) && grille.matrice[ca.y + 1][ca.x].etat == 0)
+                            if(isInGrid(grille.matrice, ca.x, ca.y + 1) && @casesChange.include?(grille.matrice[ca.y + 1][ca.x]) == false && grille.matrice[ca.y + 1][ca.x].is_a?(CaseCliquable) && grille.matrice[ca.y + 1][ca.x].etat == TypeCase::VIDE)
 
                                 countPossible += 1
                                 cs = grille.matrice[ca.y + 1][ca.x]
 
                             end
 
-                            if(isInGrid(grille.matrice, ca.x + 1, ca.y) && @casesChange.include?(grille.matrice[ca.y][ca.x + 1]) == false && grille.matrice[ca.y][ca.x + 1].is_a?(CaseCliquable) && grille.matrice[ca.y][ca.x + 1].etat == 0)
+                            if(isInGrid(grille.matrice, ca.x + 1, ca.y) && @casesChange.include?(grille.matrice[ca.y][ca.x + 1]) == false && grille.matrice[ca.y][ca.x + 1].is_a?(CaseCliquable) && grille.matrice[ca.y][ca.x + 1].etat == TypeCase::VIDE)
 
                                 countPossible += 1
                                 cs = grille.matrice[ca.y][ca.x + 1]

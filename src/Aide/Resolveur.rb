@@ -44,7 +44,7 @@ class Resolveur
             @listTech.each{ |tech|
 
                 if tech.verifieTech(grille)
-                    p tech
+                    
                     if(@nbAppel % 3 == 0)
                         rep = {:response => ReponseType::TEXT, :text => tech.to_s}
                     elsif(@nbAppel % 3 == 1)
