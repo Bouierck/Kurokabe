@@ -8,6 +8,7 @@ class Chronometre
     # @estLance => vrai si le chrono est lancé faux sinon
 
     attr_reader :timer
+    attr_writer :grilleFini
 
     ##
     # Constructeur de chronometre 
@@ -26,6 +27,7 @@ class Chronometre
 
         @timer = temps
         @estLance = false
+        @grilleFini = false
 
     end
  
@@ -53,6 +55,7 @@ class Chronometre
 
     end
 
+
     ##
     # Format des secondes en minutes:secondes
     #
@@ -61,7 +64,10 @@ class Chronometre
         min = @timer / 60
         sec = @timer % 60
 
-        return "#{min}:#{sec}"
+        s = "#{min}:#{sec}" 
+        s += " ✔" if @grilleFini
+
+        return s
 
     end
 
