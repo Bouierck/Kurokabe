@@ -26,9 +26,15 @@ class Didacticiel < NiveauGUI
 
     def initGUI
         super
-        # @boutonMenu = BoutonMenu.creer("Menu", 2, 10, MenuPrincipal.method(:new), @app)
 
-        # @boutonMenuPause = BoutonMenu.creer("Menu", 2, 10, MenuPrincipal.method(:new), @app)
+        @titlebar = Gtk::HeaderBar.new
+        @titlebar.title = "Nurikabe"
+        @titlebar.show_close_button = true
+        @titlebar.pack_start(BoutonRetour.creer(MenuPrincipal.method(:new), @app).tap {|b|
+            b.sensitive = true
+            b.show
+        })
+        @titlebar.show
 
         @didactEnCours = true
         @boutonMenu.set_sensitive(false)
