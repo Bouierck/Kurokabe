@@ -23,6 +23,9 @@ class BoutonNiveau < Bouton
     def initialize(uneEtiquette, uneLongueur, uneLargeur, id, menuNiveau, app)
         super(uneEtiquette, uneLongueur, uneLargeur)
 
+        self.width_request = 79
+        self.height_request = 50
+
         mode = ["Classique", "Aventure", "Classe"]
 
         self.signal_connect('clicked'){

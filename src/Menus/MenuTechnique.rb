@@ -8,6 +8,7 @@ class MenuTechnique < Gtk::Box
     attr_reader :titlebar
     def initialize(app)
         super(:vertical, 10)
+		app.fenetre.resize(1300,750)
 
         @page = 1
         @text1 = Gtk::Label.new("This is sparta")
@@ -17,15 +18,22 @@ class MenuTechnique < Gtk::Box
         @image21 = Gtk::Image.new(__dir__ + '/../../assets/img/Tech/11.png')
         @image22 = Gtk::Image.new(__dir__ + '/../../assets/img/Tech/12.png')
 
-        labelPage = Gtk::Label.new("Page")
+        labelPage = Gtk::Label.new("PAGE")
+		labelPage.style_context.add_class("titre2")
 
-	    @boutonRetour = Gtk::Button.new("<")
-	    @boutonAvance = Gtk::Button.new(">")
+	    @boutonRetour = Gtk::Button.new("❮")
+	    @boutonAvance = Gtk::Button.new("❯")
+
+		@boutonRetour.style_context.add_class("bouton")
+		@boutonRetour.style_context.add_class("btn-left")
+
+	    @boutonAvance.style_context.add_class("bouton")
+	    @boutonAvance.style_context.add_class("btn-right")
 
 
 		
         labelPage.tap{ |label|
-            label.set_markup("Page")
+            label.set_markup("PAGE")
         label.show 
         }
 
@@ -51,6 +59,9 @@ class MenuTechnique < Gtk::Box
             
             boite.show
         }
+		topbox.set_homogeneous(true)
+		topbox.style_context.add_class("margin-top")
+		topbox.style_context.add_class("margin-bot")
 
         @image11.tap { |img| img.show }
         @image12.tap { |img| img.show }
@@ -86,12 +97,19 @@ class MenuTechnique < Gtk::Box
 
         midbox=Gtk::Box.new(:vertical).tap { |boite|
             boite.pack_start(@text1)
+
+			imgBox1.halign = Gtk::Align::CENTER
             boite.pack_start(imgBox1)
+
             boite.pack_start(@text2)
+
+			imgBox2.halign = Gtk::Align::CENTER
             boite.pack_start(imgBox2)
             boite.show
         }
 
+		midbox.valign = Gtk::Align::CENTER
+        midbox.halign = Gtk::Align::CENTER
         self.pack_start(midbox)
 
 
@@ -171,9 +189,8 @@ deux carrés entourés surlignés en rouge. Comme ces carrés sont entourés de 
 @textIle5 = "
 2. L'expansion des murs
 
-Selon les règles du Nurikabe, tous les murs doivent former un seul chemin continu. Si l'on regarde 
-le mur à un seul carré dans le diagramme de gauche ci-dessous, la seule façon de le relier aux autres murs est de l'agrandir avec trois carrés sur sa droite, 
-comme indiqué dans le diagramme de droite.
+Selon les règles du Nurikabe, tous les murs doivent former un seul chemin continu. Si l'on regarde le mur à un seul carré dans le diagramme de gauche ci-dessous, 
+la seule façon de le relier aux autres murs est de l'agrandir avec trois carrés sur sa droite, comme indiqué dans le diagramme de droite.
 
 
 "
@@ -334,6 +351,9 @@ Elles sont donc ombragées pour indiquer qu'elles doivent faire partie d'un mur.
 			@image21.set_from_file(__dir__ + '/../../assets/img/Tech/131.png')
 			@image22.set_from_file(__dir__ + '/../../assets/img/Tech/132.png')
 		end
+
+		@text1.style_context.add_class("texte")
+		@text2.style_context.add_class("texte")
 	end
 
 
@@ -354,7 +374,7 @@ Elles sont donc ombragées pour indiquer qu'elles doivent faire partie d'un mur.
 	   	end
 
 		def updateLabelPage(labelPage)
-			s = "Page " + @page.to_s
+			s = "PAGE " + @page.to_s
 			labelPage.set_label(s)
 		end
 

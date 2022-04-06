@@ -18,6 +18,8 @@ require_relative '../Donnees/Langue.rb'
         # [+app+]   Application (Nurikabe)
         def initialize(app)
             super(:vertical, 10)
+
+            app.fenetre.resize(50,50)
             
             self.valign = Gtk::Align::CENTER
             self.halign = Gtk::Align::CENTER		

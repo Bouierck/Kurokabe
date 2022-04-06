@@ -1,6 +1,6 @@
 
 .margin-bigleft{
-    margin-left: 90px;
+    margin-left: 320px;
 }
 
 .margin-top2{
@@ -26,4 +26,18 @@
 
 .texte{
     color: black;
+}
+
+.titre2{
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn-left{
+    margin-right: -200px;
+}
+
+.btn-right{
+    margin-left: -200px;
 }

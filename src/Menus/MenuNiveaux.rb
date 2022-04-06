@@ -29,9 +29,27 @@ require_relative '../Niveau/Niveau.rb'
 
         @app = app
 
+        lbl = Gtk::Label.new.tap{ |label|
+            label.set_markup("NIVEAUX")
+            label.style_context.add_class("titre")
+            label.style_context.add_class("margin-bot")
+            label.show 
+        }
+
+        self.pack_start(lbl)
+
         @btnAventure= Gtk::Button.new
+        @btnAventure.style_context.add_class("bouton")
+        @btnAventure.style_context.add_class("margin2")
+
         @btnClasse= Gtk::Button.new
+        @btnClasse.style_context.add_class("bouton")
+        @btnClasse.style_context.add_class("margin2")
+
         @btnClassique= Gtk::Button.new
+        @btnClassique.style_context.add_class("bouton")
+        @btnClassique.style_context.add_class("margin2")
+
             self.valign = Gtk::Align::CENTER
             self.halign = Gtk::Align::CENTER
 
@@ -60,7 +78,6 @@ require_relative '../Niveau/Niveau.rb'
                     
                    
             bouton.show		}
-
             
 
 
@@ -75,10 +92,6 @@ require_relative '../Niveau/Niveau.rb'
                    
             bouton.show		}
             
-
-
-
-
 
             boiteMode = Gtk::Box.new(:horizontal).tap { |boite|
                 boite.pack_start(@btnClassique)
@@ -115,14 +128,17 @@ require_relative '../Niveau/Niveau.rb'
 
         facileLabel = Gtk::Label.new.tap{ |label|
             label.set_markup("FACILE")
+            label.style_context.add_class("difficulte")
             label.show 
         }
         moyenLabel = Gtk::Label.new.tap{ |label|
             label.set_markup("MOYEN")
+            label.style_context.add_class("difficulte")
             label.show 
         }
         difficileLabel = Gtk::Label.new.tap{ |label|
             label.set_markup("DIFFICILE")
+            label.style_context.add_class("difficulte")
             label.show 
         }
 
@@ -174,6 +190,22 @@ require_relative '../Niveau/Niveau.rb'
 
         niv35 = BoutonNiveau.creer("level 15", 10, 10, 15, self, @app)
         niv35.show
+
+        niv11.style_context.add_class("niveau")
+        niv12.style_context.add_class("niveau")
+        niv13.style_context.add_class("niveau")
+        niv14.style_context.add_class("niveau")
+        niv15.style_context.add_class("niveau")
+        niv21.style_context.add_class("niveau")
+        niv22.style_context.add_class("niveau")
+        niv23.style_context.add_class("niveau")
+        niv24.style_context.add_class("niveau")
+        niv25.style_context.add_class("niveau")
+        niv31.style_context.add_class("niveau")
+        niv32.style_context.add_class("niveau")
+        niv33.style_context.add_class("niveau")
+        niv34.style_context.add_class("niveau")
+        niv35.style_context.add_class("niveau")
 
 
 
