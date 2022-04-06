@@ -21,8 +21,6 @@
 <link href="./css/rdoc.css" rel="stylesheet">
 
 
-
-
 <body id="top" role="document" class="class">
 <nav role="navigation">
   <div id="project-navigation">
@@ -59,24 +57,22 @@
 
   <div id="class-metadata">
     
-    <div id="parent-class-section" class="nav-section">
+    
+<div id="parent-class-section" class="nav-section">
   <h3>Parent</h3>
 
-  
   <p class="link">Gtk::Box
-  
 </div>
 
     
     
-    <!-- Method Quickref -->
+    
+<!-- Method Quickref -->
 <div id="method-list-section" class="nav-section">
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
-    
     <li class="calls-super" ><a href="#method-c-new">::new</a>
-    
   </ul>
 </div>
 
@@ -90,25 +86,19 @@
 
   <section class="description">
     
-<p>Widget graphique représentant l&#39;écran d&#39;accueil.</p>
+<p>Widget graphique représentant l’écran d’accueil.</p>
 
   </section>
 
-  
   <section id="5Buntitled-5D" class="documentation-section">
-    
 
-    
 
-    
 
-    
     <section class="attribute-method-details" class="method-section">
       <header>
         <h3>Attributes</h3>
       </header>
 
-      
       <div id="attribute-i-mode" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">mode</span><span
@@ -117,11 +107,8 @@
 
         <div class="method-description">
         
-        
-        
         </div>
       </div>
-      
       <div id="attribute-i-titlebar" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">titlebar</span><span
@@ -130,54 +117,42 @@
 
         <div class="method-description">
         
-        
-        
         </div>
       </div>
-      
     </section>
-    
 
-    
+
      <section id="public-class-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Class Methods</h3>
        </header>
 
-    
       <div id="method-c-new" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">new</span><span
             class="method-args">(app)</span>
-          
           <span class="method-click-advice">click to toggle source</span>
-          
         </div>
-        
 
         <div class="method-description">
-          
-          <p>Méthode permettant de créer l&#39;écran d&#39;accueil.</p>
+          <p>Méthode permettant de créer l’écran d’accueil.</p>
 
 <p>Paramètres :</p>
 <dl class="rdoc-list label-list"><dt><code>app</code>
 <dd>
 <p>Application (Nurikabe)</p>
 </dd></dl>
-          
-          
             <div class="method-calls-super">
               Calls superclass method
               
             </div>
-          
 
-          
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File src/Menus/MenuPrincipal.rb, line 22</span>
     <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">app</span>)
         <span class="ruby-keyword">super</span>(<span class="ruby-value">:vertical</span>, <span class="ruby-value">10</span>)
+
+        <span class="ruby-identifier">app</span>.<span class="ruby-identifier">fenetre</span>.<span class="ruby-identifier">resize</span>(<span class="ruby-value">700</span>,<span class="ruby-value">700</span>)
         
         <span class="ruby-ivar">@mode</span> = <span class="ruby-value">1</span> <span class="ruby-comment"># pour le didacticiel</span>
 
@@ -191,7 +166,6 @@
             <span class="ruby-identifier">label</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;KUROKABE&quot;</span>)
             <span class="ruby-identifier">label</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;titre&quot;</span>)
             <span class="ruby-identifier">label</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-bot&quot;</span>)
-            <span class="ruby-identifier">label</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-bigtop&quot;</span>)
             <span class="ruby-identifier">label</span>.<span class="ruby-identifier">show</span> 
         }
 
@@ -252,9 +226,10 @@
         <span class="ruby-identifier">langueBox</span>=<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>).<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">boite</span><span class="ruby-operator">|</span>
             <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">francais</span>.<span class="ruby-identifier">show</span>)
             <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">anglais</span>.<span class="ruby-identifier">show</span>)
-            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-bigbot&quot;</span>)
             <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">show</span>
         }
+
+        <span class="ruby-identifier">langueBox</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-top&quot;</span>)
 
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">langueBox</span>)
 
@@ -268,25 +243,20 @@
     
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
     </section>
-  
-  </section>
 
+  </section>
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.4.0.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

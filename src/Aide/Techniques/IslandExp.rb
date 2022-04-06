@@ -7,7 +7,7 @@ class IslandExp < Technique
     public_class_method :new
     
     def initialize
-        super("Expansion d'ilot.", "")
+        super("Expansion d'ilot", "Les chiffres entourés de murs peuvent forcément s'étendre")
     end 
 
     def verifieTech(grille)

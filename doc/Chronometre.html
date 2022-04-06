@@ -21,8 +21,6 @@
 <link href="./css/rdoc.css" rel="stylesheet">
 
 
-
-
 <body id="top" role="document" class="class">
 <nav role="navigation">
   <div id="project-navigation">
@@ -59,34 +57,27 @@
 
   <div id="class-metadata">
     
-    <div id="parent-class-section" class="nav-section">
+    
+<div id="parent-class-section" class="nav-section">
   <h3>Parent</h3>
 
-  
   <p class="link"><a href="Object.html">Object</a>
-  
 </div>
 
     
     
-    <!-- Method Quickref -->
+    
+<!-- Method Quickref -->
 <div id="method-list-section" class="nav-section">
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
-    
     <li ><a href="#method-c-creerChrono">::creerChrono</a>
-    
     <li ><a href="#method-c-new">::new</a>
-    
     <li ><a href="#method-i-estLance-3F">#estLance?</a>
-    
     <li ><a href="#method-i-on">#on</a>
-    
     <li ><a href="#method-i-to_s">#to_s</a>
-    
     <li ><a href="#method-i-update">#update</a>
-    
   </ul>
 </div>
 
@@ -104,21 +95,25 @@
 
   </section>
 
-  
   <section id="5Buntitled-5D" class="documentation-section">
-    
 
-    
 
-    
 
-    
     <section class="attribute-method-details" class="method-section">
       <header>
         <h3>Attributes</h3>
       </header>
 
-      
+      <div id="attribute-i-grilleFini" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">grilleFini</span><span
+            class="attribute-access-type">[W]</span>
+        </div>
+
+        <div class="method-description">
+        
+        </div>
+      </div>
       <div id="attribute-i-timer" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">timer</span><span
@@ -126,162 +121,113 @@
         </div>
 
         <div class="method-description">
-        
         <p>@timer =&gt; temps en seconde depuis le début de la grille @estLance =&gt; vrai si le chrono est lancé faux sinon</p>
-        
         </div>
       </div>
-      
     </section>
-    
 
-    
+
      <section id="public-class-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Class Methods</h3>
        </header>
 
-    
       <div id="method-c-creerChrono" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">creerChrono</span><span
             class="method-args">(temps = 0)</span>
-          
           <span class="method-click-advice">click to toggle source</span>
-          
         </div>
-        
 
         <div class="method-description">
-          
           <p>Constructeur de chronometre </p>
 
 <h3 id="method-c-creerChrono-label-Attributes+-3D-3D-3D">Attributes ===<span><a href="#method-c-creerChrono-label-Attributes+-3D-3D-3D">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
 <p>-temps- temps avec lequel le chrono va démarer</p>
 </li></ul>
-          
-          
 
-          
           <div class="method-source-code" id="creerChrono-source">
-            <pre><span class="ruby-comment"># File src/Niveau/Chronometre.rb, line 19</span>
+            <pre><span class="ruby-comment"># File src/Niveau/Chronometre.rb, line 20</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Chronometre</span>.<span class="ruby-identifier ruby-title">creerChrono</span>(<span class="ruby-identifier">temps</span> = <span class="ruby-value">0</span>)
     <span class="ruby-identifier">new</span>(<span class="ruby-identifier">temps</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-c-new" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">new</span><span
             class="method-args">(temps)</span>
-          
           <span class="method-click-advice">click to toggle source</span>
-          
         </div>
-        
 
         <div class="method-description">
           
-          
-          
-          
 
-          
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File src/Niveau/Chronometre.rb, line 25</span>
+            <pre><span class="ruby-comment"># File src/Niveau/Chronometre.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">temps</span>)
 
     <span class="ruby-ivar">@timer</span> = <span class="ruby-identifier">temps</span>
     <span class="ruby-ivar">@estLance</span> = <span class="ruby-keyword">false</span>
+    <span class="ruby-ivar">@grilleFini</span> = <span class="ruby-keyword">false</span>
 
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
     </section>
-  
+
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Instance Methods</h3>
        </header>
 
-    
       <div id="method-i-estLance-3F" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">estLance?</span><span
             class="method-args">()</span>
-          
           <span class="method-click-advice">click to toggle source</span>
-          
         </div>
-        
 
         <div class="method-description">
-          
           <p>Vrai si le timer est lancé faux sinon</p>
-          
-          
 
-          
           <div class="method-source-code" id="estLance-3F-source">
-            <pre><span class="ruby-comment"># File src/Niveau/Chronometre.rb, line 71</span>
+            <pre><span class="ruby-comment"># File src/Niveau/Chronometre.rb, line 77</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estLance?</span>
     <span class="ruby-keyword">return</span> <span class="ruby-ivar">@estLance</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-on" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">on</span><span
             class="method-args">(bool = true)</span>
-          
           <span class="method-click-advice">click to toggle source</span>
-          
         </div>
-        
 
         <div class="method-description">
-          
           <p>Arrete ou lance le timer du chrono</p>
 
 <h4 id="method-i-on-label-Attributes">Attributes<span><a href="#method-i-on-label-Attributes">&para;</a> <a href="#top">&uarr;</a></span></h4>
 <ul><li>
-<p>-bool- true pour lancer le chrono false pour l&#39;arreter</p>
+<p>-bool- true pour lancer le chrono false pour l’arreter</p>
 </li></ul>
-          
-          
 
-          
           <div class="method-source-code" id="on-source">
-            <pre><span class="ruby-comment"># File src/Niveau/Chronometre.rb, line 39</span>
+            <pre><span class="ruby-comment"># File src/Niveau/Chronometre.rb, line 41</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">on</span>(<span class="ruby-identifier">bool</span> = <span class="ruby-keyword">true</span>)
 
     <span class="ruby-ivar">@estLance</span> = <span class="ruby-identifier">bool</span>
@@ -289,73 +235,52 @@
 
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-to_s" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">to_s</span><span
             class="method-args">()</span>
-          
           <span class="method-click-advice">click to toggle source</span>
-          
         </div>
-        
 
         <div class="method-description">
-          
           <p>Format des secondes en minutes:secondes</p>
-          
-          
 
-          
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File src/Niveau/Chronometre.rb, line 59</span>
+            <pre><span class="ruby-comment"># File src/Niveau/Chronometre.rb, line 62</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
 
     <span class="ruby-identifier">min</span> = <span class="ruby-ivar">@timer</span> <span class="ruby-operator">/</span> <span class="ruby-value">60</span>
     <span class="ruby-identifier">sec</span> = <span class="ruby-ivar">@timer</span> <span class="ruby-operator">%</span> <span class="ruby-value">60</span>
 
-    <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;#{min}:#{sec}&quot;</span>
+    <span class="ruby-identifier">s</span> = <span class="ruby-node">&quot;#{min}:#{sec}&quot;</span> 
+    <span class="ruby-identifier">s</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot; ✔&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@grilleFini</span>
+
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">s</span>
 
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-update" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">update</span><span
             class="method-args">()</span>
-          
           <span class="method-click-advice">click to toggle source</span>
-          
         </div>
-        
 
         <div class="method-description">
-          
-          <p>Update le timer et l&#39;affichage</p>
-          
-          
+          <p>Update le timer et l’affichage</p>
 
-          
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File src/Niveau/Chronometre.rb, line 49</span>
+            <pre><span class="ruby-comment"># File src/Niveau/Chronometre.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>
 
     <span class="ruby-ivar">@timer</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
@@ -363,25 +288,20 @@
 
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
     </section>
-  
-  </section>
 
+  </section>
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.4.0.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

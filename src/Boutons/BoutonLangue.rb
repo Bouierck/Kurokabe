@@ -8,10 +8,19 @@ require_relative "../Donnees/Langue.rb"
 require 'gtk3'
 
 ##
-# Chaange la langue de l'application
+# Change la langue de l'application
 #
 class BoutonLangue < Bouton
 
+    ##
+    # Constructeur
+    #
+    # === Attributes
+    #
+    # * -uneEtiquette- étiquette du bouton
+    # * -uneLongueur- longueur du bouton
+    # * -uneLargeur- largeur du bouton
+    # * -uneLangue- langue du bouton
     def BoutonLangue.creer(dirImg, uneLongueur, uneLargeur, uneLangue)
         new(dirImg, uneLongueur, uneLargeur, uneLangue)
     end

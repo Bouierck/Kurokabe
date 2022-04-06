@@ -12,6 +12,16 @@ class BoutonMenu < Bouton
     ##
     #@menu Menu à lancé à l'appuie du bouton
 
+    ##
+    # Constructeur
+    #
+    # === Attributes
+    #
+    # * -uneEtiquette- étiquette du bouton
+    # * -uneLongueur- longueur du bouton
+    # * -uneLargeur- largeur du bouton
+    # * -unMenu- menu à lancer
+    # * -app- application
     def BoutonMenu.creer(uneEtiquette, uneLongueur, uneLargeur, unMenu, app)
         new(uneEtiquette, uneLongueur, uneLargeur, unMenu, app)
     end
