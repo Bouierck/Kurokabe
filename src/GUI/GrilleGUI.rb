@@ -44,11 +44,13 @@ class GrilleGUI < Gtk::Grid
     #
     def initMatriceGui
 
+        @nbCase = @matriceGUI.length * @matriceGUI.length
+
         @matriceGUI.each do |line|
             line.each do |c|
 
                 if(c.is_a?(CaseCliquable))
-                    @matriceGUI[c.y][c.x] = CaseCliquableGUI.creer(c, @grille)
+                    @matriceGUI[c.y][c.x] = CaseCliquableGUI.creer(c, @grille, @nbCase)
                 else
                     @matriceGUI[c.y][c.x] = CaseChiffreGUI.creer(c)
                 end
