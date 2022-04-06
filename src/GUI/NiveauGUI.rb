@@ -170,20 +170,20 @@ class NiveauGUI < Gtk::Box
             label.show 
         }
 
-        boutonReprendre = BoutonPause.creer("Reprendre", 2, 10, self)
-        boutonReprendre.style_context.add_class("bouton")
+        @boutonReprendre = BoutonPause.creer("Reprendre", 2, 10, self)
+        @boutonReprendre.style_context.add_class("bouton")
 
-        boutonMenuPause = BoutonMenu.creer("Menu", 2, 10, MenuNiveaux.method(:new), @app)
-        boutonMenuPause.style_context.add_class("bouton")
+        @boutonMenuPause = BoutonMenu.creer("Menu", 2, 10, MenuNiveaux.method(:new), @app)
+        @boutonMenuPause.style_context.add_class("bouton")
 
-        boutonQuitterPause = BoutonSpecial.creer("Quitter", 2, 20, self.method(:QuitterFenetre))
-        boutonQuitterPause.style_context.add_class("bouton")
+        @boutonQuitterPause = BoutonSpecial.creer("Quitter", 2, 20, self.method(:QuitterFenetre))
+        @boutonQuitterPause.style_context.add_class("bouton")
 
         @boxPause.add(niveauLabelPause)
         @boxPause.add(lbl)
-        @boxPause.add(boutonReprendre)
-        @boxPause.add(boutonMenuPause)
-        @boxPause.add(boutonQuitterPause)
+        @boxPause.add(@boutonReprendre)
+        @boxPause.add(@boutonMenuPause)
+        @boxPause.add(@boutonQuitterPause)
 
 
 
@@ -275,7 +275,7 @@ class NiveauGUI < Gtk::Box
         if @niveau.grille.estFini? == false
 
             indice = @niveau.resolveur.resoudreGrille(@grilleGUI.grille)
-            popup(@grilleGUI, indice[:text])
+            popup(@grilleGUI, indice[:text], Gtk::PositionType::TOP)
 
             if(indice[:response] == ReponseType::ARRAY)
                 indice[:cases].each{ |c|
@@ -286,12 +286,13 @@ class NiveauGUI < Gtk::Box
         end
     end
 
-    def popup(relative, msg)
+    def popup(relative, msg, position)
 
         pop = Gtk::Popover.new()
         pop.set_relative_to(relative)
         pop.add(Gtk::Label.new(msg).show)
         pop.popup
+        pop.set_position(position)
 
     end
 
