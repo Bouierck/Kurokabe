@@ -26,7 +26,31 @@ tech10: 7. Continuité de l'îlotRTALRTAL    La case marquée d'un point rouge d
 tech11: 8. Entourer une île terminéeRTALRTAL    Dans l'énigme partiellement résolue ci-dessous, l'île de 3 a été complétée comme le montre la zone en surbrillance. RTAL    Nous pouvons maintenant entourer cette île de murs adjacents horizontalement et verticalement, comme le montre l'image de droite.
 tech12: 9. Éviter les surfaces murales de 2x2RTALRTAL    Selon les règles, il est interdit d'avoir des murs de 2x2 ou plus. Par conséquent, RTAL    le carré surligné ci-dessous ne peut pas faire partie du mur et est marqué d'un point indiquant qu'il appartient à l'une des îles.
 tech13: 10. Carré inaccessibleRTALRTAL    Dans certains cas, une case ne peut appartenir à aucune île, tout simplement parce qu'aucun indice ne peut l'atteindre. RTAL    Dans l'exemple ci-dessous, les deux cases surlignées sont trop éloignées des indices et ne peuvent faire partie d'aucune île. RTAL    Elles sont donc ombragées pour indiquer qu'elles doivent faire partie d'un mur.
+AvWA2x2: AvWA2x2
+AvWA2x2Desc: Pas de mur 2x2
+Diagonal: Diagonal de chiffre
+DiagonalDesc: Deux chiffre en diagonal forme un carré avec 2 murs
+Island: Ile de 1
+IslandDesc: Les cases 1 sont forcément entouré de murs
+Island2Cases: Ile de 2
+Island2CasesDesc: Un 2 possède deux murs voisins et à donc un mur en diagonale à l'opposé
+IslandContinuity: Expansion d'ilot
+IslandContinuityDesc: Un point isolé entouré de mur doit rejoindre un autre point ou un nombre
+IslandExp: Expansion d'ilot
+IslandExpDesc: Un nombre >1 entouré de mur voit son ilot s'étendre
+SquareSepa: Séparation d'une case
+SquareSepaDesc: Deux chiffres séparé par une case sont forcément séparé d'un mur
+SrndCompIsland: Fermeture ile
+SrndCompIslandDesc: On ferme les iles quand elles sont finit
+SurndSqr: Case blanche entourée
+SurndSqrDesc: Une case blanche entouré de mur est forcément un mur
+technique:  peut être appliquée
+UnreachSqr: Case inatteignable
+UnreachSqrDesc: Une case inatteignable par un nombre est forcément un mur
+WallExp: Expansion de mur
+WallExpDesc: Un mur seul doit toujours être connecté aux autres murs
 didacticiel: DIDACTICIEL
 quitter: QUITTER
 continuer: CONTINUER
 voirtech: VOIR LES TECHNIQUES
+resolveur: Aucune technique n'a été trouvé ou erreur dans la grille
