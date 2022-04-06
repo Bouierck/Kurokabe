@@ -26,7 +26,31 @@ tech10: 7. Island continuityRTALRTAL    The square marked with a red dot in the 
 tech11: 8. Surrounding a completed islandRTALRTAL    In the partially solved puzzle below, the island of 3 has been completed as shown in the highlighted area. RTAL    We can now surround this island with horizontally and vertically adjacent walls as shown in the right image.
 tech12: 9. Avoiding wall area of 2x2RTALRTAL    According to the rules it is not allowed to have wall areas of 2x2 or larger. Therefore RTAL    the highlighted square below cannot be part of the wall and is marked with a dot showing it belongs to one of the islands.
 tech13: 10. Unreachable squareRTALRTAL    In some cases a square cannot belong to any island simply because no clue can “reach” it. RTAL    In the example below the two highlighted squares are too far from the clues and cannot be part of any island. RTAL    They are therefore shaded to indicate they must be part of a wall.
+AvWA2x2: AvWA2x2
+AvWA2x2Desc: No 2x2 wall
+Diagonal: Diagonal of number
+DiagonalDesc: Two diagonal figures form a square with 2 walls
+Island: Island of 1
+IslandDesc: Boxes 1 are necessarily surrounded by walls
+Island2Cases: Island of 2
+Island2CasesDesc: A 2 has two adjacent walls and therefore has a diagonal wall on the opposite side
+IslandContinuity: Block Expansion
+IslandContinuityDesc: An isolated point surrounded by a wall must join another point or a number
+IslandExp: Block Expansion
+IslandExpDesc: A number >1 surrounded by a wall has its island extended
+SquareSepa: Separation of a box
+SquareSepaDesc: Two numbers separated by a square are necessarily separated by a wall
+SrndCompIsland: Island closure
+SrndCompIslandDesc: We close the islands when they are finished
+SurndSqr: White box circled
+SurndSqrDesc: A white box surrounded by a wall is necessarily a wall
+technique:  can be applied
+UnreachSqr: Unreachable box
+UnreachSqrDesc: A square that cannot be reached by a number is necessarily a wall
+WallExp: Wall Expansion
+WallExpDesc: A single wall must always be connected to other walls
 didacticiel: TUTORIAL
 quitter: QUIT
 continuer: RESUME
 voirtech: SEE TECHNICS
+resolveur: No technique was found or error in the grid

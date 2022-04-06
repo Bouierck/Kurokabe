@@ -17,7 +17,7 @@ class BoutonLangue < Bouton
     #
     # === Attributes
     #
-    # * -uneEtiquette- étiquette du bouton
+    # * -dirImg- localisation de l'image du bouton
     # * -uneLongueur- longueur du bouton
     # * -uneLargeur- largeur du bouton
     # * -uneLangue- langue du bouton

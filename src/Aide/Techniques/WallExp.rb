@@ -7,7 +7,7 @@ class WallExp < Technique
 
     def initialize
         
-        super("Expansion de mur", "")
+        super(Langue.text("WallExp"), Langue.text("WallExpDesc"))
 
     end
 

@@ -8,7 +8,7 @@ class Diagonal < Technique
 
     def initialize
         
-        super("Diagonal de chiffre", "Deux chiffre en diagonal forme un carré avec 2 murs")
+        super(Langue.text("Diagonal"), Langue.text("DiagonalDesc"))
 
     end
 
