@@ -48,7 +48,7 @@ technique:  peut être appliquée
 UnreachSqr: Case inatteignable
 UnreachSqrDesc: Une case inatteignable par un nombre est forcément un mur
 WallExp: Expansion de mur
-WallExpDesc : Un mur seul doit toujours être connecté aux autres murs
+WallExpDesc: Un mur seul doit toujours être connecté aux autres murs
 didacticiel: DIDACTICIEL
 quitter: QUITTER
 continuer: CONTINUER
