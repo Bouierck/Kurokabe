@@ -109,6 +109,19 @@
       </header>
 
       
+      <div id="attribute-i-mode" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">mode</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
       <div id="attribute-i-titlebar" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">titlebar</span><span
@@ -162,115 +175,98 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File src/Menus/MenuPrincipal.rb, line 16</span>
-        <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">app</span>)
-            <span class="ruby-keyword">super</span>(<span class="ruby-value">:vertical</span>, <span class="ruby-value">10</span>)
-            
-            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">valign</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Align</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>
-            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">halign</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Align</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>
-            
-<span class="ruby-comment">#             self.pack_start(Gtk::Button.new.tap { |bouton|</span>
-<span class="ruby-comment">#                 bouton.add(Gtk::Label.new.tap { |label|</span>
-<span class="ruby-comment">#                     label.set_markup(&quot;&lt;b&gt;Tutoriel&lt;/b&gt;&quot;)</span>
-<span class="ruby-comment">#                     label.show</span>
-<span class="ruby-comment">#                 })</span>
-<span class="ruby-comment">#                 bouton.height_request = 64</span>
-<span class="ruby-comment">#                 bouton.width_request = 400</span>
-<span class="ruby-comment">#                 bouton.margin_bottom = 10</span>
-<span class="ruby-comment">#                 bouton.signal_connect(&quot;clicked&quot;) { app.tutoriel }</span>
-<span class="ruby-comment">#                 bouton.show</span>
-<span class="ruby-comment">#             }, :expand =&gt; true, :fill =&gt; true, :padding =&gt; 0)</span>
+            <pre><span class="ruby-comment"># File src/Menus/MenuPrincipal.rb, line 22</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">app</span>)
+        <span class="ruby-keyword">super</span>(<span class="ruby-value">:vertical</span>, <span class="ruby-value">10</span>)
+        
+        <span class="ruby-ivar">@mode</span> = <span class="ruby-value">1</span> <span class="ruby-comment"># pour le didacticiel</span>
 
-                        
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">valign</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Align</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">halign</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Align</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>            
+        
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-left&quot;</span>)
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-right&quot;</span>)
 
-            <span class="ruby-identifier">lbl</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">label</span><span class="ruby-operator">|</span>
-                <span class="ruby-identifier">label</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;Kurokabe&quot;</span>)
-                <span class="ruby-identifier">label</span>.<span class="ruby-identifier">show</span> 
-            }
+        <span class="ruby-identifier">lbl</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">label</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">label</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;KUROKABE&quot;</span>)
+            <span class="ruby-identifier">label</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;titre&quot;</span>)
+            <span class="ruby-identifier">label</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-bot&quot;</span>)
+            <span class="ruby-identifier">label</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-bigtop&quot;</span>)
+            <span class="ruby-identifier">label</span>.<span class="ruby-identifier">show</span> 
+        }
 
 
-            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">lbl</span>)
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">lbl</span>)
 
-            <span class="ruby-comment">#btnJouer=Gtk::Button.new.tap(:label =&gt;&quot;JOUER&quot;)</span>
+        <span class="ruby-identifier">btnJouer</span> = <span class="ruby-constant">BoutonMenu</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-constant">Langue</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;jouer&quot;</span>), <span class="ruby-value">10</span>, <span class="ruby-value">10</span>, <span class="ruby-constant">MenuNiveaux</span>.<span class="ruby-identifier">method</span>(<span class="ruby-value">:new</span>), <span class="ruby-identifier">app</span>)
+        <span class="ruby-constant">Langue</span>.<span class="ruby-identifier">addListener</span>(<span class="ruby-identifier">btnJouer</span>, <span class="ruby-string">&quot;jouer&quot;</span>)
+        <span class="ruby-identifier">btnJouer</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;bouton&quot;</span>)
+        <span class="ruby-identifier">btnJouer</span>.<span class="ruby-identifier">show</span>
 
-            <span class="ruby-identifier">btnJouer</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span> 
-                <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">label</span><span class="ruby-operator">|</span>
-                    <span class="ruby-identifier">label</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-constant">Langue</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;jouer&quot;</span>))
-                    <span class="ruby-identifier">label</span>.<span class="ruby-identifier">show</span>  })
-                <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { <span class="ruby-identifier">app</span>.<span class="ruby-identifier">menus</span> }
-                <span class="ruby-constant">Langue</span>.<span class="ruby-identifier">addListener</span>(<span class="ruby-identifier">bouton</span>, <span class="ruby-string">&quot;jouer&quot;</span>)
-            <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">show</span> }
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">btnJouer</span>)
 
-            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">btnJouer</span>)
+        <span class="ruby-identifier">btnClassement</span> = <span class="ruby-constant">BoutonMenu</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-constant">Langue</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;classement&quot;</span>), <span class="ruby-value">10</span>, <span class="ruby-value">10</span>, <span class="ruby-constant">MenuClassement</span>.<span class="ruby-identifier">method</span>(<span class="ruby-value">:new</span>), <span class="ruby-identifier">app</span>)
+        <span class="ruby-constant">Langue</span>.<span class="ruby-identifier">addListener</span>(<span class="ruby-identifier">btnClassement</span>, <span class="ruby-string">&quot;classement&quot;</span>)
+        <span class="ruby-identifier">btnClassement</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;bouton&quot;</span>)
+        <span class="ruby-identifier">btnClassement</span>.<span class="ruby-identifier">show</span>
 
-            <span class="ruby-comment">#btnClassement=Gtk::Button.new(:label =&gt;&quot;CLASSEMENT&quot;)</span>
+        <span class="ruby-comment"># self.pack_start(btnClassement)</span>
 
-            <span class="ruby-identifier">btnClassement</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span> 
-                <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">label</span><span class="ruby-operator">|</span>
-                    <span class="ruby-identifier">label</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;CLASSEMENT&quot;</span>)
-                    <span class="ruby-identifier">label</span>.<span class="ruby-identifier">show</span>  })
-                <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { <span class="ruby-identifier">p</span> <span class="ruby-string">&#39;bite&#39;</span> }
-            <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">show</span>         }
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">btnClassement</span>)
+                  
+        <span class="ruby-identifier">btnRegles</span> = <span class="ruby-constant">BoutonMenu</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-constant">Langue</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;menuRegles&quot;</span>), <span class="ruby-value">10</span>, <span class="ruby-value">10</span>, <span class="ruby-constant">MenuRegles</span>.<span class="ruby-identifier">method</span>(<span class="ruby-value">:new</span>), <span class="ruby-identifier">app</span>)
+        <span class="ruby-constant">Langue</span>.<span class="ruby-identifier">addListener</span>(<span class="ruby-identifier">btnRegles</span>, <span class="ruby-string">&quot;menuRegles&quot;</span>)
+        <span class="ruby-identifier">btnRegles</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;bouton&quot;</span>)
+        <span class="ruby-identifier">btnRegles</span>.<span class="ruby-identifier">show</span>
 
-            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">btnClassement</span>)
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">btnRegles</span>)
+        
+        <span class="ruby-identifier">btnRegles</span> = <span class="ruby-constant">BoutonDidacticiel</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-constant">Langue</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;didacticiel&quot;</span>), <span class="ruby-value">10</span>, <span class="ruby-value">10</span>, <span class="ruby-identifier">app</span>)
+        <span class="ruby-constant">Langue</span>.<span class="ruby-identifier">addListener</span>(<span class="ruby-identifier">btnRegles</span>, <span class="ruby-string">&quot;didacticiel&quot;</span>)
+        <span class="ruby-identifier">btnRegles</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;bouton&quot;</span>)
+        <span class="ruby-identifier">btnRegles</span>.<span class="ruby-identifier">show</span>
+
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">btnRegles</span>)
+
+        <span class="ruby-identifier">btnQuitter</span> = <span class="ruby-constant">BoutonSpecial</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-constant">Langue</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;quitter&quot;</span>), <span class="ruby-value">10</span>, <span class="ruby-value">10</span>, <span class="ruby-identifier">app</span>.<span class="ruby-identifier">method</span>(<span class="ruby-value">:closeApp</span>))
+        <span class="ruby-constant">Langue</span>.<span class="ruby-identifier">addListener</span>(<span class="ruby-identifier">btnQuitter</span>, <span class="ruby-string">&quot;quitter&quot;</span>)
+        <span class="ruby-identifier">btnQuitter</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;bouton&quot;</span>)
+        <span class="ruby-identifier">btnQuitter</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-top&quot;</span>)
+        <span class="ruby-identifier">btnQuitter</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-bot&quot;</span>)
+        
+        <span class="ruby-identifier">btnQuitter</span>.<span class="ruby-identifier">show</span>
+
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">btnQuitter</span>)
 
 
-            <span class="ruby-comment">#btnRegles=Gtk::Button.new(:label =&gt;&quot;REGLES&quot;)</span>
 
-            <span class="ruby-identifier">btnRegles</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span> 
-                <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">label</span><span class="ruby-operator">|</span>
-                    <span class="ruby-identifier">label</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;REGLES&quot;</span>)
-                    <span class="ruby-identifier">label</span>.<span class="ruby-identifier">show</span>  })
-                <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { <span class="ruby-identifier">app</span>.<span class="ruby-identifier">regles</span> }
-            <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">show</span>         }
-
-            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">btnRegles</span>)
-            
-            <span class="ruby-comment">#btnQuitter=Gtk::Button.new(:label =&gt;&quot;QUITTER&quot;)</span>
-
-            <span class="ruby-identifier">btnQuitter</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span> 
-                <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">label</span><span class="ruby-operator">|</span>
-                    <span class="ruby-identifier">label</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;QUITTER&quot;</span>)
-                    <span class="ruby-identifier">label</span>.<span class="ruby-identifier">show</span>  })
-                <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { <span class="ruby-identifier">app</span>.<span class="ruby-identifier">closeApp</span> }
-            <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">show</span>         }
-
-            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">btnQuitter</span>)
-
+        <span class="ruby-identifier">francais</span> = <span class="ruby-constant">BoutonLangue</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-string">&quot;&quot;</span>, <span class="ruby-value">10</span>, <span class="ruby-value">10</span>, <span class="ruby-value">0</span>)
+        <span class="ruby-identifier">francais</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">__dir__</span><span class="ruby-string">+&quot;/../../assets/img/fr_flag.png&quot;</span>))
+        <span class="ruby-identifier">francais</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;btn-langue-fr&quot;</span>)
+        
+        <span class="ruby-identifier">anglais</span> = <span class="ruby-constant">BoutonLangue</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-string">&quot;&quot;</span>, <span class="ruby-value">10</span>, <span class="ruby-value">10</span>, <span class="ruby-value">1</span>)
+        <span class="ruby-identifier">anglais</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">__dir__</span><span class="ruby-string">+&quot;/../../assets/img/en_flag.png&quot;</span>))
+        <span class="ruby-identifier">anglais</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;btn-langue-en&quot;</span>)
 
 
         <span class="ruby-identifier">langueBox</span>=<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>).<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">boite</span><span class="ruby-operator">|</span>
-            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span>
-
-                <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;/../../assets/img/fr_flag.png&quot;</span>))
-                <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { <span class="ruby-constant">Langue</span>.<span class="ruby-identifier">changerLangue</span>(<span class="ruby-value">0</span>) }
-                <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">show</span>
-            })
-            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span>
-
-                <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;/../../assets/img/en_flag.png&quot;</span>))
-                <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { <span class="ruby-constant">Langue</span>.<span class="ruby-identifier">changerLangue</span>(<span class="ruby-value">1</span>)}
-                <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">show</span>
-            })
+            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">francais</span>.<span class="ruby-identifier">show</span>)
+            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">anglais</span>.<span class="ruby-identifier">show</span>)
+            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-bigbot&quot;</span>)
             <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">show</span>
         }
 
-        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">langueBox</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">langueBox</span>)
 
-
-
-
-            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">show</span>
-            
-            <span class="ruby-ivar">@titlebar</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">HeaderBar</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">barre</span><span class="ruby-operator">|</span>
-                <span class="ruby-identifier">barre</span>.<span class="ruby-identifier">title</span> = <span class="ruby-string">&quot;Nurikabe&quot;</span>
-                <span class="ruby-identifier">barre</span>.<span class="ruby-identifier">show_close_button</span> = <span class="ruby-keyword">true</span>
-                <span class="ruby-identifier">barre</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-constant">BoutonRetour</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span>
-                    <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">sensitive</span> = <span class="ruby-keyword">false</span>
-                })
-                <span class="ruby-identifier">barre</span>.<span class="ruby-identifier">show</span>
-            }
-        <span class="ruby-keyword">end</span></pre>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">show</span>
+    
+    <span class="ruby-ivar">@titlebar</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">HeaderBar</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">barre</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">barre</span>.<span class="ruby-identifier">title</span> = <span class="ruby-string">&quot;Nurikabe&quot;</span>
+        <span class="ruby-identifier">barre</span>.<span class="ruby-identifier">show_close_button</span> = <span class="ruby-keyword">true</span>
+        <span class="ruby-identifier">barre</span>.<span class="ruby-identifier">show</span>
+    }
+    
+<span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>

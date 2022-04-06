@@ -117,7 +117,7 @@
         
         <div class="method-heading">
           <span class="method-name">creer</span><span
-            class="method-args">(uneEtiquette, uneLongueur, uneLargeur, unNiveau)</span>
+            class="method-args">(uneEtiquette, uneLongueur, uneLargeur, id, mode, app)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -132,9 +132,9 @@
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File src/Boutons/BoutonNiveau.rb, line 16</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">BoutonNiveau</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">uneEtiquette</span>, <span class="ruby-identifier">uneLongueur</span>, <span class="ruby-identifier">uneLargeur</span>, <span class="ruby-identifier">unNiveau</span>)
-    <span class="ruby-identifier">new</span>(<span class="ruby-identifier">uneEtiquette</span>, <span class="ruby-identifier">uneLongueur</span>, <span class="ruby-identifier">uneLargeur</span>, <span class="ruby-identifier">unNiveau</span>)
+            <pre><span class="ruby-comment"># File src/Boutons/BoutonNiveau.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">BoutonNiveau</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">uneEtiquette</span>, <span class="ruby-identifier">uneLongueur</span>, <span class="ruby-identifier">uneLargeur</span>, <span class="ruby-identifier">id</span>, <span class="ruby-identifier">mode</span>, <span class="ruby-identifier">app</span>)
+    <span class="ruby-identifier">new</span>(<span class="ruby-identifier">uneEtiquette</span>, <span class="ruby-identifier">uneLongueur</span>, <span class="ruby-identifier">uneLargeur</span>, <span class="ruby-identifier">id</span>, <span class="ruby-identifier">mode</span>, <span class="ruby-identifier">app</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -150,7 +150,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(uneEtiquette, uneLongueur, uneLargeur, unNiveau)</span>
+            class="method-args">(uneEtiquette, uneLongueur, uneLargeur, id, menuNiveau, app)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -170,13 +170,29 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File src/Boutons/BoutonNiveau.rb, line 22</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">uneEtiquette</span>, <span class="ruby-identifier">uneLongueur</span>, <span class="ruby-identifier">uneLargeur</span>, <span class="ruby-identifier">unNiveau</span>)
+            <pre><span class="ruby-comment"># File src/Boutons/BoutonNiveau.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">uneEtiquette</span>, <span class="ruby-identifier">uneLongueur</span>, <span class="ruby-identifier">uneLargeur</span>, <span class="ruby-identifier">id</span>, <span class="ruby-identifier">menuNiveau</span>, <span class="ruby-identifier">app</span>)
     <span class="ruby-keyword">super</span>(<span class="ruby-identifier">uneEtiquette</span>, <span class="ruby-identifier">uneLongueur</span>, <span class="ruby-identifier">uneLargeur</span>)
-    <span class="ruby-ivar">@niveau</span> = <span class="ruby-identifier">unNiveau</span>
+
+    <span class="ruby-identifier">mode</span> = [<span class="ruby-string">&quot;Classique&quot;</span>, <span class="ruby-string">&quot;Aventure&quot;</span>, <span class="ruby-string">&quot;Classe&quot;</span>]
 
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
-        <span class="ruby-ivar">@niveau</span>.<span class="ruby-constant">NiveauAffiche</span>
+
+        <span class="ruby-identifier">fichierName</span> = <span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;/../../profile/&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">app</span>.<span class="ruby-identifier">user</span>.<span class="ruby-identifier">nom</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;/levels/&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">mode</span>[<span class="ruby-identifier">menuNiveau</span>.<span class="ruby-identifier">mode</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>] <span class="ruby-operator">+</span> <span class="ruby-string">&quot;/level&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;.krkb&quot;</span>
+
+        <span class="ruby-keyword">if</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">fichierName</span>))
+            <span class="ruby-identifier">fichier</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">fichierName</span>, <span class="ruby-string">&quot;r&quot;</span>)
+            <span class="ruby-identifier">niveau</span> = <span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">fichier</span>)
+            <span class="ruby-identifier">fichier</span>.<span class="ruby-identifier">close</span>
+        <span class="ruby-keyword">else</span>
+            <span class="ruby-identifier">niveau</span> = <span class="ruby-constant">Niveau</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">app</span>.<span class="ruby-identifier">user</span>, <span class="ruby-identifier">mode</span>[<span class="ruby-identifier">menuNiveau</span>.<span class="ruby-identifier">mode</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>])
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-identifier">n</span> = <span class="ruby-constant">NiveauGUI</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">app</span>, <span class="ruby-identifier">niveau</span>)
+        <span class="ruby-identifier">app</span>.<span class="ruby-identifier">fenetre</span>.<span class="ruby-identifier">remove</span>(<span class="ruby-identifier">app</span>.<span class="ruby-identifier">fenetre</span>.<span class="ruby-identifier">child</span>) <span class="ruby-keyword">if</span>(<span class="ruby-identifier">app</span>.<span class="ruby-identifier">fenetre</span>.<span class="ruby-identifier">child</span>)
+        <span class="ruby-identifier">app</span>.<span class="ruby-identifier">fenetre</span>.<span class="ruby-identifier">child</span> = <span class="ruby-identifier">n</span>
+        <span class="ruby-identifier">app</span>.<span class="ruby-identifier">fenetre</span>.<span class="ruby-identifier">titlebar</span> = <span class="ruby-identifier">n</span>.<span class="ruby-identifier">titlebar</span>
+
     }
 <span class="ruby-keyword">end</span></pre>
           </div>

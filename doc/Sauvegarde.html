@@ -136,7 +136,7 @@
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File src/Donnees/Sauvegarde.rb, line 17</span>
+            <pre><span class="ruby-comment"># File src/Donnees/Sauvegarde.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">unNom</span>)
     <span class="ruby-identifier">new</span>(<span class="ruby-identifier">unNom</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -169,7 +169,7 @@
 
           
           <div class="method-source-code" id="langue-source">
-            <pre><span class="ruby-comment"># File src/Donnees/Sauvegarde.rb, line 68</span>
+            <pre><span class="ruby-comment"># File src/Donnees/Sauvegarde.rb, line 70</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier ruby-title">langue</span>()
     <span class="ruby-identifier">fInfoUtilisateur</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/infosUtilisateur.krkb&quot;</span>, <span class="ruby-string">&quot;r&quot;</span>)
     <span class="ruby-identifier">langue</span> = <span class="ruby-identifier">fInfoUtilisateur</span>.<span class="ruby-identifier">read</span>.<span class="ruby-identifier">split</span>[<span class="ruby-value">0</span>]
@@ -205,7 +205,7 @@
 
           
           <div class="method-source-code" id="nbEtoiles-source">
-            <pre><span class="ruby-comment"># File src/Donnees/Sauvegarde.rb, line 78</span>
+            <pre><span class="ruby-comment"># File src/Donnees/Sauvegarde.rb, line 80</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier ruby-title">nbEtoiles</span>()
     <span class="ruby-identifier">fInfoUtilisateur</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/infosUtilisateur.krkb&quot;</span>, <span class="ruby-string">&quot;r&quot;</span>)
     <span class="ruby-identifier">nbEtoiles</span> = <span class="ruby-identifier">fInfoUtilisateur</span>.<span class="ruby-identifier">read</span>.<span class="ruby-identifier">split</span>[<span class="ruby-value">1</span>]
@@ -245,7 +245,7 @@
 
           
           <div class="method-source-code" id="sauvInfosUtilisateur-source">
-            <pre><span class="ruby-comment"># File src/Donnees/Sauvegarde.rb, line 59</span>
+            <pre><span class="ruby-comment"># File src/Donnees/Sauvegarde.rb, line 61</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier ruby-title">sauvInfosUtilisateur</span>(<span class="ruby-identifier">uneLangue</span>, <span class="ruby-identifier">nbEtoiles</span>)
     <span class="ruby-identifier">fInfoUtilisateur</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/infosUtilisateur.krkb&quot;</span>, <span class="ruby-string">&quot;w&quot;</span>)
     <span class="ruby-identifier">fInfoUtilisateur</span>.<span class="ruby-identifier">write</span>(<span class="ruby-node">&quot;#{uneLangue}\n#{nbEtoiles}&quot;</span>)
@@ -284,7 +284,7 @@
 
           
           <div class="method-source-code" id="sauvNiveau-source">
-            <pre><span class="ruby-comment"># File src/Donnees/Sauvegarde.rb, line 94</span>
+            <pre><span class="ruby-comment"># File src/Donnees/Sauvegarde.rb, line 96</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier ruby-title">sauvNiveau</span>(<span class="ruby-identifier">nomUtilisateur</span>, <span class="ruby-identifier">niveau</span>, <span class="ruby-identifier">nbEtoiles</span>)
     <span class="ruby-identifier">fichier</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/levels/#{niveau.mode}/level#{niveau.id}.krkb&quot;</span>, <span class="ruby-string">&quot;w+&quot;</span>)
     <span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-identifier">niveau</span>,<span class="ruby-identifier">fichier</span>)
@@ -298,7 +298,7 @@
             <span class="ruby-identifier">valeurModif</span> = <span class="ruby-value">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">niveau</span>.<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">estFini?</span>
         <span class="ruby-keyword">elsif</span>(<span class="ruby-identifier">niveau</span>.<span class="ruby-identifier">mode</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;Aventure&quot;</span>)
             <span class="ruby-identifier">ligneModif</span> = <span class="ruby-value">1</span>
-            <span class="ruby-identifier">valeurModif</span> = <span class="ruby-identifier">nbEtoiles</span>
+            <span class="ruby-identifier">valeurModif</span> = <span class="ruby-constant">Score</span>.<span class="ruby-identifier">calculer</span>(<span class="ruby-identifier">niveau</span>.<span class="ruby-identifier">resolveur</span>.<span class="ruby-identifier">nbAppel</span>, <span class="ruby-identifier">niveau</span>.<span class="ruby-identifier">chrono</span>.<span class="ruby-identifier">timer</span>, (<span class="ruby-identifier">niveau</span>.<span class="ruby-identifier">id</span><span class="ruby-value">-1</span><span class="ruby-operator">/</span><span class="ruby-value">5</span>) <span class="ruby-operator">+</span> <span class="ruby-value">1</span>)
         <span class="ruby-keyword">else</span>
             <span class="ruby-identifier">ligneModif</span> = <span class="ruby-value">2</span>
             <span class="ruby-identifier">valeurModif</span> = <span class="ruby-identifier">niveau</span>.<span class="ruby-identifier">chrono</span>.<span class="ruby-identifier">timer</span>

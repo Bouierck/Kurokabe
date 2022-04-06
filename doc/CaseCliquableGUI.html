@@ -276,18 +276,23 @@
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">updateCaseGUI</span>
 
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">remove_class</span>(<span class="ruby-string">&quot;indice&quot;</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">remove_class</span>(<span class="ruby-string">&quot;erreur&quot;</span>)
 
     <span class="ruby-keyword">case</span> <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">etat</span>
         <span class="ruby-keyword">when</span> <span class="ruby-value">0</span>
+            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">label</span> = <span class="ruby-string">&quot;&quot;</span>
             <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">remove_class</span>(<span class="ruby-string">&quot;case-mur&quot;</span>)
+            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">remove_class</span>(<span class="ruby-string">&quot;case-point&quot;</span>)
             <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;case-vide&quot;</span>)
         <span class="ruby-keyword">when</span> <span class="ruby-value">1</span>
             <span class="ruby-keyword">self</span>.<span class="ruby-identifier">label</span> = <span class="ruby-string">&quot;●&quot;</span>
             <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">remove_class</span>(<span class="ruby-string">&quot;case-vide&quot;</span>)
+            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">remove_class</span>(<span class="ruby-string">&quot;case-mur&quot;</span>)
             <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;case-point&quot;</span>)
         <span class="ruby-keyword">when</span> <span class="ruby-value">2</span>
             <span class="ruby-keyword">self</span>.<span class="ruby-identifier">label</span> = <span class="ruby-string">&quot;&quot;</span>
             <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">remove_class</span>(<span class="ruby-string">&quot;case-point&quot;</span>)
+            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">remove_class</span>(<span class="ruby-string">&quot;case-vide&quot;</span>)
             <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;case-mur&quot;</span>)
     <span class="ruby-keyword">end</span>
     
