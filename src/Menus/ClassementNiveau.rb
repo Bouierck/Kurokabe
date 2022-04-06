@@ -34,7 +34,7 @@ class ClassementNiveau < Gtk::Box
 
 
         users = Dir.entries(path_to_profile).select { |f| 
-            if(f!="." && f!="..") then 
+            if(f.start_with?(".") == false) then 
                 f 
             end}
 

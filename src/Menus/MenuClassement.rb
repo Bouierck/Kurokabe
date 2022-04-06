@@ -252,7 +252,11 @@ class MenuClassement < Gtk::Box
     end
 
     def open_with_datas(datas)
-        #@app.classementniveau(datas)
+        mc = ClassementNiveau.new(@app, datas)
+        @app.fenetre.remove(@app.fenetre.child) if(@app.fenetre.child)
+        @app.fenetre.child = mc
+        @app.fenetre.titlebar = mc.titlebar
+        return @app.fenetre
     end
 
 
