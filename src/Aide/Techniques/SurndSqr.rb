@@ -7,7 +7,7 @@ class SurndSqr < Technique
     public_class_method :new
 
     def initialize
-        super("Case blanche entourée", "Une case blanche entouré de mur est forcément un mur")
+        super(Langue.text("SurndSqr"), Langue.text("SurndSqrDesc"))
     end
 
     def verifieTech(grille)

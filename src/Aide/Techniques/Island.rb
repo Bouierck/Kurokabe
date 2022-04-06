@@ -7,7 +7,7 @@ class Island < Technique
     public_class_method :new
 
     def initialize
-        super("Ile de 1", "Les case 1 sont forcément entouré de murs");
+        super(Langue.text("Island"), Langue.text("IslandDesc"));
     end
 
     def verifieTech(grille)
