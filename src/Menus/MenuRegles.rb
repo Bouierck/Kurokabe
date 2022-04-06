@@ -16,6 +16,7 @@ class MenuRegles < Gtk::Box
         super(:vertical, 10)
 
         self.halign = Gtk::Align::CENTER
+		app.fenetre.resize(1300,750)
         
 
         lbl = Gtk::Label.new.tap{ |label|
