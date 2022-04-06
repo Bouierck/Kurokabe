@@ -17,10 +17,16 @@ class ClassementNiveau < Gtk::Box
 
         super(:vertical, 10)
 
+        
+        self.halign = Gtk::Align::CENTER
+
+        app.fenetre.resize(700,700)
+
         s = datas.to_s.split("")
 
         topLabel = Gtk::Label.new.tap{ |label|
             label.set_markup("Classement du niveau : " + s[0] + "." + s[1])
+            label.style_context.add_class("titre1")
             label.show 
         }
 
@@ -67,12 +73,18 @@ class ClassementNiveau < Gtk::Box
 
         }
 
-        sortedTable = sortedUser.sort_by {|k,v| v}.reverse
+        sortedTable = sortedUser.sort_by {|k,v| v}
 
+        i = 0
         sortedTable.each{ |k,v|
-            @totals += k + " : " + v.to_s + "\n"
+            min = v / 60
+            sec = v % 60
+            i+=1
+            @totals += i.to_s + " -  " + k + " : " + "#{min}:#{sec}" + "\n"
     }
         classmLabel.set_markup(@totals)
+        classmLabel.style_context.add_class("margin-top")
+        classmLabel.style_context.add_class("titre2")
         
 
         self.show

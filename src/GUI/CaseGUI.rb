@@ -27,6 +27,11 @@ class CaseGUI < Gtk::Button
         super()
         @case = c
         self.style_context.add_class("case")
+
+        self.width_request = 75
+        self.height_request = 75
+
+
     end
 
 end

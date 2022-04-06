@@ -22,7 +22,7 @@ require_relative '../Donnees/Langue.rb'
         def initialize(app)
             super(:vertical, 10)
 
-            app.fenetre.resize(50,50)
+            app.fenetre.resize(700,700)
             
             @mode = 1 # pour le didacticiel
 
@@ -36,7 +36,6 @@ require_relative '../Donnees/Langue.rb'
                 label.set_markup("KUROKABE")
                 label.style_context.add_class("titre")
                 label.style_context.add_class("margin-bot")
-                label.style_context.add_class("margin-bigtop")
                 label.show 
             }
 
@@ -97,9 +96,10 @@ require_relative '../Donnees/Langue.rb'
             langueBox=Gtk::Box.new(:horizontal).tap { |boite|
                 boite.pack_start(francais.show)
                 boite.pack_start(anglais.show)
-                boite.style_context.add_class("margin-bigbot")
                 boite.show
             }
+
+            langueBox.style_context.add_class("margin-top")
 
         self.pack_start(langueBox)
 

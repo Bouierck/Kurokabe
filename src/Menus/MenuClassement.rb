@@ -16,6 +16,10 @@ class MenuClassement < Gtk::Box
         super(:vertical, 10)
 
         @app = app
+        @app.fenetre.resize(700,700)
+
+        self.valign = Gtk::Align::CENTER
+        self.halign = Gtk::Align::CENTER
 
 # -------------------Load buttons Facile --------------------------------
 
@@ -27,6 +31,7 @@ class MenuClassement < Gtk::Box
             button.signal_connect("clicked") { 
             open_with_datas(11)
         }
+        #niv11.style_context.add_class("bouton")
         button.show
     }
         
@@ -37,6 +42,7 @@ class MenuClassement < Gtk::Box
                 button.signal_connect("clicked") { 
             open_with_datas(12)
         }
+        #niv12.style_context.add_class("bouton")
         button.show
     }
 
@@ -47,6 +53,7 @@ class MenuClassement < Gtk::Box
                 button.signal_connect("clicked") { 
             open_with_datas(13)
         }
+        #niv13.style_context.add_class("bouton")
         button.show
     }
 
@@ -57,6 +64,7 @@ class MenuClassement < Gtk::Box
                 button.signal_connect("clicked") { 
             open_with_datas(14)
         }
+        #niv14.style_context.add_class("bouton")
         button.show
     }
 
@@ -67,6 +75,7 @@ class MenuClassement < Gtk::Box
                 button.signal_connect("clicked") { 
             open_with_datas(15)
         }
+        #niv15.style_context.add_class("bouton")
         button.show
     }
 
@@ -79,6 +88,7 @@ class MenuClassement < Gtk::Box
             button.signal_connect("clicked") { 
             open_with_datas(21)
         }
+        #niv21.style_context.add_class("bouton")
         button.show
     }
         
@@ -89,6 +99,7 @@ class MenuClassement < Gtk::Box
             button.signal_connect("clicked") { 
             open_with_datas(22)
         }
+        #niv22.style_context.add_class("bouton")
         button.show
     }
 
@@ -99,6 +110,7 @@ class MenuClassement < Gtk::Box
             button.signal_connect("clicked") { 
             open_with_datas(23)
         }
+        #niv23.style_context.add_class("bouton")
         button.show
     }
 
@@ -109,6 +121,7 @@ class MenuClassement < Gtk::Box
             button.signal_connect("clicked") { 
             open_with_datas(24)
         }
+        #niv24.style_context.add_class("bouton")
         button.show
     }
 
@@ -119,6 +132,7 @@ class MenuClassement < Gtk::Box
             button.signal_connect("clicked") { 
             open_with_datas(25)
         }
+        #niv25.style_context.add_class("bouton")
         button.show
     }
         
@@ -132,6 +146,7 @@ class MenuClassement < Gtk::Box
             button.signal_connect("clicked") { 
             open_with_datas(31)
         }
+        #niv31.style_context.add_class("bouton")
         button.show
     }
 
@@ -142,6 +157,7 @@ class MenuClassement < Gtk::Box
             button.signal_connect("clicked") { 
             open_with_datas(32)
         }
+        #niv32.style_context.add_class("bouton")
         button.show
     }
 
@@ -152,6 +168,7 @@ class MenuClassement < Gtk::Box
           button.signal_connect("clicked") { 
          open_with_datas(33)
         }
+        #niv33.style_context.add_class("bouton")
         button.show
     }
 
@@ -162,6 +179,7 @@ class MenuClassement < Gtk::Box
            button.signal_connect("clicked") { 
            open_with_datas(34)
         }
+        #niv34.style_context.add_class("bouton")
         button.show
     }
 
@@ -172,6 +190,7 @@ class MenuClassement < Gtk::Box
         button.signal_connect("clicked") { 
             open_with_datas(35)
         }
+        #niv35.style_context.add_class("bouton")
         button.show
     }
         
@@ -179,6 +198,68 @@ class MenuClassement < Gtk::Box
 
 
 # ------------ Creation des boites -----------------------
+
+        niv11.style_context.add_class("bouton")
+        niv11.width_request = 79
+        niv11.height_request = 55
+
+        niv12.style_context.add_class("bouton")
+        niv12.width_request = 79
+        niv12.height_request = 55
+
+        niv13.style_context.add_class("bouton")
+        niv13.width_request = 79
+        niv13.height_request = 55
+
+        niv14.style_context.add_class("bouton")
+        niv14.width_request = 79
+        niv14.height_request = 55
+
+        niv15.style_context.add_class("bouton")
+        niv15.width_request = 79
+        niv15.height_request = 55
+        
+        niv21.style_context.add_class("bouton")
+        niv21.width_request = 79
+        niv21.height_request = 55
+
+        niv22.style_context.add_class("bouton")
+        niv22.width_request = 79
+        niv22.height_request = 55
+
+        niv23.style_context.add_class("bouton")
+        niv23.width_request = 79
+        niv23.height_request = 55
+
+        niv24.style_context.add_class("bouton")
+        niv24.width_request = 79
+        niv24.height_request = 55
+
+        niv25.style_context.add_class("bouton")
+        niv25.width_request = 79
+        niv25.height_request = 55
+
+        
+        niv31.style_context.add_class("bouton")
+        niv31.width_request = 79
+        niv31.height_request = 55
+
+        niv32.style_context.add_class("bouton")
+        niv32.width_request = 79
+        niv32.height_request = 55
+
+        niv33.style_context.add_class("bouton")
+        niv33.width_request = 79
+        niv33.height_request = 55
+
+        niv34.style_context.add_class("bouton")
+        niv34.width_request = 79
+        niv34.height_request = 55
+
+        niv35.style_context.add_class("bouton")
+        niv35.width_request = 79
+        niv35.height_request = 55
+
 
         nivFacileBox=Gtk::Box.new(:horizontal).tap { |boite|
             boite.pack_start(niv11)
@@ -212,21 +293,26 @@ class MenuClassement < Gtk::Box
 
         topLabel = Gtk::Label.new.tap{ |label|
             label.set_markup(Langue.text("classement"))
+            label.style_context.add_class("titre")
+            label.style_context.add_class("margin-bot")
             label.show 
         }
 
         facileLabel = Gtk::Label.new.tap{ |label|
             label.set_markup(Langue.text("difficulteFacile"))
+            label.style_context.add_class("difficulte")
             label.show 
         }
 
         mediumLabel = Gtk::Label.new.tap{ |label|
             label.set_markup(Langue.text("difficulteMoyen"))
+            label.style_context.add_class("difficulte")
             label.show 
         }
 
         difficileLabel = Gtk::Label.new.tap{ |label|
             label.set_markup(Langue.text("difficulteDifficile"))
+            label.style_context.add_class("difficulte")
             label.show 
         }
 

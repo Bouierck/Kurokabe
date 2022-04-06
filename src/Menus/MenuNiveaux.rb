@@ -28,6 +28,7 @@ require_relative '../Niveau/Niveau.rb'
         @@path = "../../profile/"
 
         @app = app
+        @app.fenetre.resize(700,700)
 
         lbl = Gtk::Label.new.tap{ |label|
             label.set_markup("NIVEAUX")
