@@ -6,7 +6,7 @@ class IslandExp < Technique
     public_class_method :new
     
     def initialize
-        super("Expansion d'ilot.", "")
+        super(Langue.text("IslandExp"), Langue.text("IslandExpDesc"))
     end 
 
     def verifieTech(grille)

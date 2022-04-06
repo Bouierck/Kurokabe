@@ -8,7 +8,7 @@ class UnreachSqr < Technique
 
     def initialize
         
-        super("Case inatteignable", "")
+        super(Langue.text("UnreachSqr"), Langue.text("UnreachSqrDesc"))
  
     end
 

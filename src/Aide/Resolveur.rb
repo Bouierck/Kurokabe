@@ -62,7 +62,7 @@ class Resolveur
 
         end
 
-        return {:response => ReponseType::TEXT, :text => "Aucune technique n'a été trouvé ou erreur dans la grille"}
+        return {:response => ReponseType::TEXT, :text => Langue.text("resolveur")}
 
     end
 
