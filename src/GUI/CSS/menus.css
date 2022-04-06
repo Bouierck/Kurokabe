@@ -1,0 +1,201 @@
+
+.bg{
+    background-color: white;
+}
+
+.titre{
+    color: black;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.chrono{
+    color: black;
+    font-size: 28px;
+    margin-bottom: 50px;
+}
+
+.titre1{
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.margin-top{
+    margin-top: 30px;
+}
+
+.margin-bot{
+    margin-bottom: 30px;
+}
+
+.margin-bigtop{
+    margin-top: 150px;
+}
+
+.margin-bigbot{
+    margin-bottom: 150px;
+}
+
+.margin-left{
+    margin-left: 200px;
+}
+
+.margin-right{
+    margin-right: 200px;
+}
+
+.bouton{
+    border-radius: 0;
+    border-color: black;
+    border-width: 3px;
+    color: black;
+    font-size: 20px;
+    padding: 5px 15px;
+    margin: 1px;
+}
+
+.bouton:hover{
+    background: #999999;
+}
+
+.bouton-quitter{
+    border-radius: 0;
+    border-color: black;
+    border-width: 3px;
+    color: black;
+    font-size: 20px;
+    padding: 5px 15px;
+    margin-top: 30px;
+}
+
+.bouton-quitter:hover{
+    background: #999999;
+}
+
+.bouton-pause{
+    border-radius: 0;
+    border-color: black;
+    border-width: 3px;
+    color: black;
+    font-size: 20px;
+    padding: 5px 15px;
+    margin-bottom: 30px;
+}
+
+.bouton-pause:hover{
+    background: #999999;
+}
+
+.btn-ok{
+    border-radius: 0;
+    border-color: black;
+    border-width: 3px;
+    color: black;
+    font-size: 20px;
+    padding: 5px 15px;
+    margin-left: 50px;
+    margin-bottom: 30px;
+}
+
+.btn-ok:hover{
+    background: #999999;
+}
+
+.btn-cancel{
+    border-radius: 0;
+    border-color: black;
+    border-width: 3px;
+    color: black;
+    font-size: 20px;
+    padding: 5px 15px;
+    margin-bottom: 30px;
+}
+
+.btn-cancel:hover{
+    background: #999999;
+}
+
+.btn-close{
+    border-radius: 0;
+    border-color: black;
+    border-width: 3px;
+    color: black;
+    font-size: 20px;
+    padding: 5px 15px;
+    margin-right: 50px;
+    margin-bottom: 30px;
+}
+
+.btn-close:hover{
+    background: #999999;
+}
+
+.entry{
+    border-radius: 0px;
+    border-width: 3px;
+    border-color: black;
+    padding: 5px 15px;
+    font-size: 16px;
+    margin: 0 50px;
+    margin-bottom: 30px;
+}
+
+
+.btn-langue-fr{
+    border-radius: 0px;
+    border-width: 0px;
+    padding: 5px 20px;
+    background: url("../../../assets/img/fr_flag.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 1;
+    margin-left: 28px;
+}
+
+.btn-langue-en{
+    border-radius: 0px;
+    border-width: 0px;
+    padding: 5px 20px;
+    background: url("../../../assets/img/en_flag.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 1;
+    margin-left: 10px;
+}
+
+.btn-langue-fr:hover{
+    opacity: .5;
+}
+
+.btn-langue-en:hover{
+    opacity: .5;
+}
+
+.niveau{
+    padding: 15px 15px;
+    border-radius: 0;
+    border-color: black;
+    border-width: 3px;
+    color: black;
+    font-size: 20px;
+    margin: 2px;
+    font-size: 15px;
+}
+
+.niveau:hover{
+    background: #999999;
+}
+
+.difficulte{
+    color: black;
+    font-size: 16px;
+    margin-bottom: 20px;
+    margin-top: 15px;
+}
+
+.margin2{
+    margin: 2px;
+}
+

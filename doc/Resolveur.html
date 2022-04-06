@@ -105,6 +105,27 @@
     
 
     
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-nbAppel" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">nbAppel</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>@listTech =&gt; liste des technique a appelé pour donner des indices @nbAppel =&gt; nombre d&#39;aide demandé</p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
 
     
      <section id="public-class-5Buntitled-5D-method-details" class="method-section">
@@ -126,16 +147,17 @@
 
         <div class="method-description">
           
-          <p>@listTech =&gt; liste des technique a appelé pour donner des indices</p>
+          
           
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File src/Aide/Resolveur.rb, line 11</span>
+            <pre><span class="ruby-comment"># File src/Aide/Resolveur.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>
     <span class="ruby-ivar">@listTech</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
-    <span class="ruby-ivar">@listTech</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Island</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-ivar">@listTech</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Island</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">SquareSepa</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Diagonal</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">SurndSqr</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">WallExp</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">UnreachSqr</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">IslandExp</span>.<span class="ruby-identifier">new</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">AvWA2x2</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-ivar">@nbAppel</span> = <span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -179,18 +201,33 @@
 
           
           <div class="method-source-code" id="resoudreGrille-source">
-            <pre><span class="ruby-comment"># File src/Aide/Resolveur.rb, line 24</span>
+            <pre><span class="ruby-comment"># File src/Aide/Resolveur.rb, line 40</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">resoudreGrille</span>(<span class="ruby-identifier">grille</span>)
     
     <span class="ruby-keyword">if</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">compareGrille</span> <span class="ruby-operator">==</span> []) <span class="ruby-comment">#La grille ne comporte pas d&#39;erreur</span>
 
         <span class="ruby-ivar">@listTech</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">tech</span><span class="ruby-operator">|</span>
-            <span class="ruby-keyword">return</span> <span class="ruby-identifier">tech</span>.<span class="ruby-identifier">casesChange</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">tech</span>.<span class="ruby-identifier">verifieTech</span>(<span class="ruby-identifier">grille</span>)
+
+            <span class="ruby-keyword">if</span> <span class="ruby-identifier">tech</span>.<span class="ruby-identifier">verifieTech</span>(<span class="ruby-identifier">grille</span>)
+
+                <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@nbAppel</span> <span class="ruby-operator">%</span> <span class="ruby-value">3</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
+                    <span class="ruby-identifier">rep</span> = {<span class="ruby-value">:response</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">ReponseType</span><span class="ruby-operator">::</span><span class="ruby-constant">TEXT</span>, <span class="ruby-value">:text</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">tech</span>.<span class="ruby-identifier">to_s</span>}
+                <span class="ruby-keyword">elsif</span>(<span class="ruby-ivar">@nbAppel</span> <span class="ruby-operator">%</span> <span class="ruby-value">3</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>)
+                    <span class="ruby-identifier">rep</span> = {<span class="ruby-value">:response</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">ReponseType</span><span class="ruby-operator">::</span><span class="ruby-constant">TEXT</span>, <span class="ruby-value">:text</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">tech</span>.<span class="ruby-identifier">to_s_desc</span>}
+                <span class="ruby-keyword">else</span>
+                    <span class="ruby-identifier">rep</span> = {<span class="ruby-value">:response</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">ReponseType</span><span class="ruby-operator">::</span><span class="ruby-constant">ARRAY</span>, <span class="ruby-value">:text</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">tech</span>.<span class="ruby-identifier">to_s_desc</span>, <span class="ruby-value">:cases</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">tech</span>.<span class="ruby-identifier">casesChange</span>}
+                <span class="ruby-keyword">end</span>
+
+                <span class="ruby-ivar">@nbAppel</span> = (<span class="ruby-ivar">@nbAppel</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>) <span class="ruby-operator">%</span> <span class="ruby-value">3</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">rep</span>
+
+            <span class="ruby-keyword">end</span>
+
         }
 
     <span class="ruby-keyword">end</span>
 
-    <span class="ruby-keyword">return</span> []
+    <span class="ruby-keyword">return</span> {<span class="ruby-value">:response</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">ReponseType</span><span class="ruby-operator">::</span><span class="ruby-constant">TEXT</span>, <span class="ruby-value">:text</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&quot;Erreur dans la grille&quot;</span>}
 
 <span class="ruby-keyword">end</span></pre>
           </div>

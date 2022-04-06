@@ -23,6 +23,8 @@ Ressources utilisés :
 [Diagramme de Gantt](https://docs.google.com/spreadsheets/d/19JpsNgYenO6e5OJJh9Wqvrw7NUWOYOXc-5A1ql4AVF8/edit#gid=0),
 [Trello](https://trello.com/b/AYIpps7L/jacoding).
 
+Fichier définitif sous format .iso (VirtualBox image) : [Image]()
+
 # Objectifs
 
 - Apprendre à s'organiser, concevoir et travailler en équipe
@@ -39,11 +41,11 @@ Ressources utilisés :
 
 # Installation 
 
-- **ZIP** : Cliquer sur Code au dessus de la liste des fichiers de cette page github, appuyer sur "Download ZIP"
+- **ZIP** : Cliquer sur Code au dessus de la liste des fichiers de cette page github, appuyer sur "Download ZIP" (Pour le bon fonctionnement de l'application, assurer-vous d'avoir donné les droits d'écriture sur le dossier)
 - **Git** : pour cloner se projet dans votre repo `git clone https://github.com/Bouierck/Kurokabe.git`
 - **Terminal** : Installer le module **subversion** avec `sudo apt install subversion` par exemple.
 Puis, exécuter : `svn export https://github.com/Bouierck/Kurokabe`
 
 # Lancer l'application
 
-- Une fois dans le dossier du projet, exécuter `./Kurokabe.rb` ou `ruby Kurokabe.rb`
+- Une fois dans le dossier du projet, exécuter `ruby Kurokabe.rb`

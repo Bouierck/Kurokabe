@@ -7,6 +7,11 @@ require_relative './Techniques/WallExp.rb'
 require_relative './Techniques/AvWA2x2.rb'
 require_relative './Techniques/IslandExp.rb'
 
+module ReponseType
+    TEXT = 0
+    ARRAY = 1
+end
+
 ##
 # Le resolveur permet de trouver des technique à appliqué sur la grille afin d'aider l'utilisateur
 #
@@ -37,15 +42,27 @@ class Resolveur
         if(grille.compareGrille == []) #La grille ne comporte pas d'erreur
 
             @listTech.each{ |tech|
+
                 if tech.verifieTech(grille)
-                    @nbAppel += 1
-                    return tech.casesChange 
+
+                    if(@nbAppel % 3 == 0)
+                        rep = {:response => ReponseType::TEXT, :text => tech.to_s}
+                    elsif(@nbAppel % 3 == 1)
+                        rep = {:response => ReponseType::TEXT, :text => tech.to_s_desc}
+                    else
+                        rep = {:response => ReponseType::ARRAY, :text => tech.to_s_desc, :cases => tech.casesChange}
+                    end
+
+                    @nbAppel = (@nbAppel + 1) % 3
+                    return rep
+
                 end
+
             }
 
         end
 
-        return []
+        return {:response => ReponseType::TEXT, :text => "Aucune technique n'a été trouvé ou erreur dans la grille"}
 
     end
 
