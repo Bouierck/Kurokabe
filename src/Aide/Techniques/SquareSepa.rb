@@ -7,7 +7,7 @@ class SquareSepa < Technique
     public_class_method :new
 
     def initialize    
-        super("Séparation d'une case", "Deux ciffre séparé par une case sont forcément séparé d'un mur")
+        super(Langue.text("SquareSepa"), Langue.text("SquareSepaDesc"))
     end
 
     def verifieTech(grille)

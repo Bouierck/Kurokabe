@@ -7,7 +7,7 @@ class AvWA2x2 < Technique
     public_class_method :new
 
     def initialize
-        super("AvWA2x2","Pas de mur 2x2")
+        super(Langue.text("AvWA2x2"),Langue.text("AvWA2x2Desc"))
     end
 
     def verifieTech(grille)
