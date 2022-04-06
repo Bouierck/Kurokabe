@@ -117,7 +117,7 @@
         
         <div class="method-heading">
           <span class="method-name">creer</span><span
-            class="method-args">(uneEtiquette, uneLongueur, uneLargeur, uneLangue)</span>
+            class="method-args">(dirImg, uneLongueur, uneLargeur, uneLangue)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -132,9 +132,9 @@
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File src/Boutons/BoutonLangue.rb, line 13</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">BoutonLangue</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">uneEtiquette</span>, <span class="ruby-identifier">uneLongueur</span>, <span class="ruby-identifier">uneLargeur</span>, <span class="ruby-identifier">uneLangue</span>)
-    <span class="ruby-identifier">new</span>(<span class="ruby-identifier">uneEtiquette</span>, <span class="ruby-identifier">uneLongueur</span>, <span class="ruby-identifier">uneLargeur</span>, <span class="ruby-identifier">uneLangue</span>)
+            <pre><span class="ruby-comment"># File src/Boutons/BoutonLangue.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">BoutonLangue</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">dirImg</span>, <span class="ruby-identifier">uneLongueur</span>, <span class="ruby-identifier">uneLargeur</span>, <span class="ruby-identifier">uneLangue</span>)
+    <span class="ruby-identifier">new</span>(<span class="ruby-identifier">dirImg</span>, <span class="ruby-identifier">uneLongueur</span>, <span class="ruby-identifier">uneLargeur</span>, <span class="ruby-identifier">uneLangue</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -150,7 +150,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(uneEtiquette, uneLongueur, uneLargeur, uneLangue)</span>
+            class="method-args">(dirImg, uneLongueur, uneLargeur, uneLangue)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -170,16 +170,15 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File src/Boutons/BoutonLangue.rb, line 17</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">uneEtiquette</span>, <span class="ruby-identifier">uneLongueur</span>, <span class="ruby-identifier">uneLargeur</span>, <span class="ruby-identifier">uneLangue</span>)
+            <pre><span class="ruby-comment"># File src/Boutons/BoutonLangue.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">dirImg</span>, <span class="ruby-identifier">uneLongueur</span>, <span class="ruby-identifier">uneLargeur</span>, <span class="ruby-identifier">uneLangue</span>)
     
-    <span class="ruby-keyword">super</span>(<span class="ruby-identifier">uneEtiquette</span>, <span class="ruby-identifier">uneLongueur</span>, <span class="ruby-identifier">uneLargeur</span>)
-    <span class="ruby-ivar">@langue</span> = <span class="ruby-identifier">uneLangue</span>
+    <span class="ruby-keyword">super</span>(<span class="ruby-string">&quot;&quot;</span>, <span class="ruby-identifier">uneLongueur</span>, <span class="ruby-identifier">uneLargeur</span>)
 
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">dirImg</span>))
 
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
-        <span class="ruby-ivar">@langue</span>.<span class="ruby-identifier">changerLangue</span>
-        <span class="ruby-comment">#Changement de la langue</span>
+        <span class="ruby-constant">Langue</span>.<span class="ruby-identifier">changerLangue</span>(<span class="ruby-identifier">uneLangue</span>)
     }
 
 <span class="ruby-keyword">end</span></pre>
