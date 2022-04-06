@@ -1,60 +1,51 @@
-#!/usr/bin/env ruby
+require_relative "./Bouton.rb"
+
+require_relative "../GUI/NiveauGUI.rb"
+
+require_relative "../Niveau/Niveau.rb"
 
 require 'gtk3'
 
+##
+# Lance un niveau
+#
+class BoutonNiveau < Bouton
 
-class BoutonNiveau implements Bouton
-    
+    ##
+    #@niveau Niveaau qui se lance au clque sur le bouton
+
+    def BoutonNiveau.creer(uneEtiquette, uneLongueur, uneLargeur, id, mode, app)
+        new(uneEtiquette, uneLongueur, uneLargeur, id, mode, app)
+    end
 
     private_class_method :new
 
-    def initialize(unNiveau)
-        @niveau = unNiveau
+    def initialize(uneEtiquette, uneLongueur, uneLargeur, id, menuNiveau, app)
+        super(uneEtiquette, uneLongueur, uneLargeur)
+
+        self.width_request = 79
+        self.height_request = 50
+
+        mode = ["Classique", "Aventure", "Classe"]
+
+        self.signal_connect('clicked'){
+
+            fichierName = __dir__ + "/../../profile/" + app.user.nom + "/levels/" + mode[menuNiveau.mode - 1] + "/level" + id.to_s + ".krkb"
+    
+            if(File.exist?(fichierName))
+                fichier = File.open(fichierName, "r")
+                niveau = Marshal.load(fichier)
+                fichier.close
+            else
+                niveau = Niveau.creer(id, app.user, mode[menuNiveau.mode - 1])
+            end
+    
+            n = NiveauGUI.creer(app, niveau)
+            app.fenetre.remove(app.fenetre.child) if(app.fenetre.child)
+            app.fenetre.child = n
+            app.fenetre.titlebar = n.titlebar
+
+        }
     end
-
-    def niveau()
-        return @niveau
-    end
-
-    def BoutonNiveau.creer()
-        new()
-    end
-
-    def lanceNiveau()
-
-    end
-
-    def onDestroy
-        puts "Fin de l'appli"
-        Gtk.main_quit
-    end
-    
-    monBoutonNiveau = Gtk::Button.new
-    
-    #titre fenetre
-    monBoutonNiveau.set_title("Bouton Niveau")
-    
-    #taille de la fenetre
-    monBoutonNiveau.set_default_size(300,100)
-    
-    #bordure
-    monBoutonNiveau.border_width = 5
-    
-    #redimensionnement
-    monBoutonNiveau.set_resizable(true)
-    
-    #Création des boxs
-    box = Gtk::Box.new(false,6)
-    B4 = Gtk::ToggleButton.new('Niveau')
-    box.pack_start(B4)
-    B4.active = true
-    box.pack_start(B4)
-    
-    monBoutonNiveau.add(box)
-    monBoutonNiveau.show_all
-    
-    #fenetre detruite = quitter
-    monBoutonNiveau.signal_connect('destroy') {onDestroy}
-    Gtk.main
-
 end
+  

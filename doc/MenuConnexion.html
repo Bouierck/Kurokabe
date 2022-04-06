@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class MenuConnexion - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">Gtk::Dialog
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-MenuConnexion">
+  <h1 id="class-MenuConnexion" class="class">
+    class MenuConnexion
+  </h1>
+
+  <section class="description">
+    
+<p>Fenêtre permettant de choisir un utilisateur ou d&#39;en créer un.</p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(parent, app = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Crée la fenêtre du sélecteur d&#39;utilisateur.</p>
+
+<p>Paramètres :</p>
+<dl class="rdoc-list label-list"><dt><code>parent</code>
+<dd>
+<p>Fenêtre parente au sélecteur d&#39;utilisateur</p>
+</dd><dt><code>app</code>
+<dd>
+<p>Application (Nurikabe)</p>
+</dd></dl>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File src/Menus/MenuConnexion.rb, line 14</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">app</span> = <span class="ruby-keyword">nil</span>)
+    <span class="ruby-keyword">super</span>(<span class="ruby-value">title:</span> <span class="ruby-string">&quot;Nouvel utilisateur&quot;</span>, <span class="ruby-value">parent:</span> <span class="ruby-identifier">parent</span>,
+    <span class="ruby-value">flags:</span> <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">DialogFlags</span><span class="ruby-operator">::</span><span class="ruby-constant">USE_HEADER_BAR</span> <span class="ruby-operator">|</span>
+    <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">DialogFlags</span><span class="ruby-operator">::</span><span class="ruby-constant">MODAL</span> <span class="ruby-operator">|</span>
+    <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">DialogFlags</span><span class="ruby-operator">::</span><span class="ruby-constant">DESTROY_WITH_PARENT</span>)
+
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">title</span> = <span class="ruby-string">&quot;Connexion&quot;</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">set_default_size</span>(<span class="ruby-value">300</span>, <span class="ruby-value">200</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">child</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Connexion&quot;</span>))
+
+    <span class="ruby-identifier">entree</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Entry</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">entree</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">entree</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;activate&quot;</span>) {
+                <span class="ruby-keyword">self</span>.<span class="ruby-identifier">signal_emit</span>(<span class="ruby-string">&quot;response&quot;</span>, <span class="ruby-value">1</span>)
+            }
+            <span class="ruby-identifier">entree</span>.<span class="ruby-identifier">show</span>
+    }
+    <span class="ruby-identifier">entree</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;entry&quot;</span>)
+    <span class="ruby-identifier">entree</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-bot&quot;</span>)
+    
+    <span class="ruby-identifier">entree</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;key-press-event&#39;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">w</span>, <span class="ruby-identifier">e</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">e</span>.<span class="ruby-identifier">keyval</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Gdk</span><span class="ruby-operator">::</span><span class="ruby-constant">Keyval</span><span class="ruby-operator">::</span><span class="ruby-constant">KEY_Return</span>)
+            <span class="ruby-identifier">p</span> <span class="ruby-string">&quot;OK&quot;</span>
+            <span class="ruby-identifier">app</span>.<span class="ruby-identifier">user</span> = <span class="ruby-constant">Utilisateur</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">entree</span>.<span class="ruby-identifier">text</span>, <span class="ruby-value">0</span>)
+            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">destroy</span>
+        <span class="ruby-keyword">end</span>
+    }
+
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">content_area</span>.<span class="ruby-identifier">add</span>(
+            <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>).<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">boite</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(
+                <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">__dir__</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/../../assets/img/user.png&#39;</span>).<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">img</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">img</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-top&quot;</span>)
+                <span class="ruby-identifier">img</span>.<span class="ruby-identifier">show</span>
+            })
+            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>).<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">boite2</span><span class="ruby-operator">|</span>
+
+            <span class="ruby-identifier">boite2</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(
+                    <span class="ruby-string">&quot;ENTREZ VOTRE NOM :&quot;</span>).<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">label</span><span class="ruby-operator">|</span>
+                    <span class="ruby-identifier">label</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;titre1&quot;</span>)
+                    <span class="ruby-identifier">label</span>.<span class="ruby-identifier">show</span>
+                })
+                <span class="ruby-identifier">boite2</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">entree</span>)
+                <span class="ruby-identifier">boite2</span>.<span class="ruby-identifier">show</span>
+            })
+            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">show</span>
+        })
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">add_button</span>(<span class="ruby-string">&quot;OK&quot;</span>, <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ResponseType</span><span class="ruby-operator">::</span><span class="ruby-constant">OK</span>).<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;btn-ok&quot;</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">add_button</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Stock</span><span class="ruby-operator">::</span><span class="ruby-constant">CANCEL</span>, <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ResponseType</span><span class="ruby-operator">::</span><span class="ruby-constant">CANCEL</span>).<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;btn-cancel&quot;</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">add_button</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Stock</span><span class="ruby-operator">::</span><span class="ruby-constant">CLOSE</span>, <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ResponseType</span><span class="ruby-operator">::</span><span class="ruby-constant">CLOSE</span>).<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;btn-close&quot;</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">set_default_response</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ResponseType</span><span class="ruby-operator">::</span><span class="ruby-constant">CANCEL</span>)
+
+    
+
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;response&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">widget</span>, <span class="ruby-identifier">response</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">case</span> <span class="ruby-identifier">response</span>
+            <span class="ruby-keyword">when</span> <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ResponseType</span><span class="ruby-operator">::</span><span class="ruby-constant">OK</span>
+                <span class="ruby-identifier">p</span> <span class="ruby-string">&quot;OK&quot;</span>
+                <span class="ruby-identifier">app</span>.<span class="ruby-identifier">user</span> = <span class="ruby-constant">Utilisateur</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">entree</span>.<span class="ruby-identifier">text</span>, <span class="ruby-value">0</span>)
+                <span class="ruby-keyword">self</span>.<span class="ruby-identifier">destroy</span>
+            <span class="ruby-keyword">when</span> <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ResponseType</span><span class="ruby-operator">::</span><span class="ruby-constant">CANCEL</span>
+                <span class="ruby-identifier">p</span> <span class="ruby-string">&quot;Cancel&quot;</span>
+                <span class="ruby-identifier">entree</span>.<span class="ruby-identifier">set_text</span>(<span class="ruby-string">&quot;&quot;</span>)
+            <span class="ruby-keyword">when</span> <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ResponseType</span><span class="ruby-operator">::</span><span class="ruby-constant">CLOSE</span>
+                <span class="ruby-identifier">p</span> <span class="ruby-string">&quot;Close&quot;</span>
+                <span class="ruby-keyword">self</span>.<span class="ruby-identifier">destroy</span>
+                <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">destroy</span>
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">show</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

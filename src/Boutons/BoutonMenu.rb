@@ -1,57 +1,36 @@
 #!/usr/bin/env ruby
 
-require 'gtk3'
-Gtk.init
+require_relative "./Bouton.rb"
 
-class BoutonMenu
+require 'gtk3'
+
+##
+# Lance un menu
+#
+class BoutonMenu < Bouton
+    
+    ##
+    #@menu Menu à lancé à l'appuie du bouton
+
+    def BoutonMenu.creer(uneEtiquette, uneLongueur, uneLargeur, unMenu, app)
+        new(uneEtiquette, uneLongueur, uneLargeur, unMenu, app)
+    end
+
     private_class_method :new
 
-    window = Gtk::Window.new
-    window.signal_connect('destroy') {
-        Gtk.main_quit
-    }
+    def initialize(uneEtiquette, uneLongueur, uneLargeur, unMenu, app)
 
-
-    def initialize(unMenu)
+        super(uneEtiquette, uneLongueur, uneLargeur)
         @menu = unMenu
-    end
 
-    def menu()
-        return @menu
-    end
-
-    def BoutonMenu.creer()
-        new()
-    end
-
-    def lanceMenu()
-        monBoutonMenu.signal_connect('clicked') {
-            print"Bonsoir"
+        self.signal_connect('clicked'){
+            m = @menu.call(app)
+            app.fenetre.remove(app.fenetre.child) if(app.fenetre.child)
+            app.fenetre.child = m
+            app.fenetre.titlebar = m.titlebar
         }
-    
+
     end
-
-    def onDestroy
-        puts "Fin de l'appli"
-        Gtk.main_quit
-    end
-
-    
-    monBoutonMenu = Gtk::Button.new("Menu 1")
-    monBoutonMenu.active=true
-    hb.pack_start(monBoutonMenu)
-
-    window = Gtk::Window.new
-    window.signal_connect('destroy') {
-        Gtk.main_quit
-    }
-
-    window.add(hb)
-
-    window.show_all
-    Gtk.main
-
-
-
-
 end
+
+   

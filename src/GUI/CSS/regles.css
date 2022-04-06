@@ -1,0 +1,43 @@
+
+.margin-bigleft{
+    margin-left: 320px;
+}
+
+.margin-top2{
+    margin-top: 50px;
+}
+
+.margin-bot2{
+    margin-bottom: 50px;
+}
+
+.margin-bottom2{
+    margin-bottom: 20px;
+}
+
+.margin-left2{
+    margin-left: 50px;
+}
+
+.margin-right2{
+    margin-right: 50px;
+}
+
+
+.texte{
+    color: black;
+}
+
+.titre2{
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn-left{
+    margin-right: -200px;
+}
+
+.btn-right{
+    margin-left: -200px;
+}

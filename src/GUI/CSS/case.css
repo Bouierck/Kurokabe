@@ -1,0 +1,46 @@
+.case{
+
+    background: none;
+    color: black;
+    border-radius: 0;
+    text-decoration: none;
+    border-color: black;
+    font-size: 24px;
+    font-weight: bold;
+    border-width: 1px;
+
+}
+
+.case-clic:hover {
+    background-color: #999999;;
+}
+
+.case-vide{
+    background-color: white;
+}
+
+.case-point{
+    background-color: white;
+}
+
+.case-mur{
+    background-color: black;
+}
+
+.case-mur:hover{
+    background-color: #292929;
+}
+
+.indice{
+    background-color: rgb(173, 253, 183);
+}
+
+.erreur{
+    background-color: rgb(253, 173, 173);
+}
+
+.grille{
+    border-width: 10px;
+    border-color: black;
+    background: black;
+}

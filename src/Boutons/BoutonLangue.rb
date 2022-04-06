@@ -1,43 +1,31 @@
+
 #!/usr/bin/env ruby
 
+require_relative "./Bouton.rb"
+
+require_relative "../Donnees/Langue.rb"
+
 require 'gtk3'
-Gtk.init
 
-class BoutonLangue
+##
+# Chaange la langue de l'application
+#
+class BoutonLangue < Bouton
 
-    private_class_method :new
-
-    def initialize(uneLangue)
-        @langue = uneLangue
+    def BoutonLangue.creer(dirImg, uneLongueur, uneLargeur, uneLangue)
+        new(dirImg, uneLongueur, uneLargeur, uneLangue)
     end
 
-    def langue()
-        return @langue
+    def initialize(dirImg, uneLongueur, uneLargeur, uneLangue)
+        
+        super("", uneLongueur, uneLargeur)
+
+        self.set_image(Gtk::Image.new(__dir__ + dirImg))
+
+        self.signal_connect('clicked'){
+            Langue.changerLangue(uneLangue)
+        }
+
     end
-
-    def BoutonLangue.creer()
-        new()
-    end
-
-    def changeLangue()
-
-    end
-
-    def onDestroy
-        puts "Fin de l'appli"
-        Gtk.main_quit
-    end  
-
-    fenetre = Gtk::Window.new
-    fenetre.signal_connect('destroy') {
-        Gtk.main_quit
-    }
-
-    monBoutonLangue = Gtk::Button.new("Changement de la langue")
-
-    fenetre.add(monBoutonLangue)
-
-    fenetre.show_all
-    Gtk.main
 
 end

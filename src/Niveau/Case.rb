@@ -1,34 +1,24 @@
+##
+# Représente une case de la grille
+#
 class Case
 
     ##
     # @x => position x de la case dans la grille
     # @y => position y de la case dans la grille
-    # @etat => etat actuel dela case
+    # @clicable => si la case est clicable ou pas
 
-    ##
-    # Constructeur de Case
-    #
-    # ==== Attributes
-    #
-    # * -x- Position x dans la grille
-    # * -y- Position y dans la grille
-    #
-    def Case.creer(x, y):
-        new(x, y)
-    end
+    attr_reader :x, :y
 
     private_class_method :new
 
-    def initialize(x, y):
+    def initialize(x, y)
         @x, @y = x, y
-        @etat = 0
+        @cliquable = false
     end
 
-    ##
-    # Met l'etat de la case à l'etat suivant
-    #
-    def changeEtat:
-        @etat = (@etat + 1) % 3
+    def to_s
+        self.class.name + ": " + @x.to_s + ", " + @y.to_s
     end
 
 end

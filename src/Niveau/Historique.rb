@@ -1,10 +1,15 @@
+##
+# L'historique stock les coups de l'utilisateur pour permettre de faire des retours en arrière / en avant
+#
 class Historique
 
     ##
     # @listeCoups => Liste contenant les coups effectués
     # @index => coup actuel
 
-    def initialize:
+    attr_reader :index
+
+    def initialize
         @listeCoups = Array.new()
         @index = 0
     end
@@ -13,40 +18,54 @@ class Historique
     # Ajoute un nouveau coup dans l'historique
     # Le retour en avant n'est plus possible après un nouveau coup !
     #
-    def nouveauCoup(x, y):
+    def nouveauCoup(c)
 
-        if(@index + 1 < @listeCoups.size)
-            @listeCoups = @listeCoups.take(@index + 1)
+        #S'il y avait des coups après on les enlève
+        if(@index < @listeCoups.size)
+            @listeCoups = @listeCoups.take(@index)
         end
  
-        @index++
-        @listeCoups.push([x, y])
-
-        return
+        @index += 1
+        @listeCoups.push(c)
 
     end
     
     ##
-    # Retourne sur le mouvement précédent
+    # Retourne vrai si le retour en arrière a été effectué
     #
-    def retourArriere:
-        if(@index > 0)
+    def retourArriere
+
+        if(@index > 0) #On est pas au début de la liste de coups
             @index -= 1
-            
-            #TODO
+
             #Effectuer mouvement inverse
+            2.times { @listeCoups[@index].changeEtat }
+
+            return true
         end
+        return false
     end
 
     ##
-    # Retourne sur le mouvement précédent
+    # Retourne vrai si le retour en avant a été effectué
     #
-    def retourAvant:
-        if(@index < @listeCoups.size - 1)
+    def retourAvant
+        if(@index < @listeCoups.size)
+            
+            #Effectuer mouvement
+            @listeCoups[@index].changeEtat
             @index += 1
 
-            #TODO
-            #Effectuer mouvement
+            return true
+        end
+        return false
+    end
+
+    ##
+    # Reinitialise la grille
+    #
+    def reinitialiserGrille
+        while(retourArriere)
         end
     end
 

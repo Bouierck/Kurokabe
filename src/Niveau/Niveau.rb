@@ -1,31 +1,113 @@
-##
-# Auteur Jérémy Bourgouin & Oussama Belkadi
-# Date : Vendredi 25/02 2022 11:36
-#
+require_relative '../Aide/Resolveur.rb'
+
+require_relative "../Modules/dpObservateur/Observable.rb"
+require_relative "../Donnees/Sauvegarde.rb"
+
+require_relative './Grille.rb'
+require_relative './Chronometre.rb'
 
 class Niveau
 
-    ##
-    #@idNiveau => Numero du niveau 
-    #@grille => Bouton pour accéder a la grille
-    #@typeFenetre => Booleen qui definit si la fenetre est en grande ou en petite 
-    #@listBoutonSpe => de type BoutonSpecial qui correspond aux différents boutons dans le niveau
-    #@Chrono => ce type int qui correspond au chronometre du niveau
+    include Observateur
 
-    def initialize(idNiveau,uneGrille,typeFenetre,listBoutonSpe,unChronometre)
-        @idNiveau = idNiveau
-        @grille = uneGrille
-        @typeFenetre = false
-        @listBoutonSpe = Array.new()
+    ##
+    # @id => Numero du niveau 
+    # @utilisaaateur => l'utilisateur en cours sur le niveau
+    # @mode => mode du niveau( classement, survie, etc..)
+    # @grille => grille du niveau
+    # @chrono => chronometre du niveau
+    # @resolveur => resolveur du niveau
+    # @historisque => historique du niveau
+    
+    attr_reader :chrono, :grille, :mode, :id, :utilisateur, :resolveur, :historique
+
+    ##
+    # Constructeur du niveau
+    #
+    # === Attributes
+    #
+    # * -id- numéro du niveau
+    # * -utilisateur- utilisateur connecté
+    # * -mode- mode du niveau
+    #
+    def Niveau.creer(id, utilisateur, mode)
+        new(id, utilisateur, mode)
     end
 
-    #Action lors de clique sur un bouton special comme pause
-    def LancerBoutonSpe()
+    def initialize(id, utilisateur, mode)
         
-    end 
+        @id = id
+        @utilisateur = utilisateur
+        @mode = mode
+        @chrono = Chronometre.creerChrono
+        @resolveur = Resolveur.new
+        @historique = Historique.new
+        
+        ##
+        # Lecture du fichiers contenant les informations de la grille
+        ##
+        fichierMap = File.open(__dir__ + "/../../assets/levels/#{@mode}/level#{@id}.krkb")
 
-    #changement de la représentation en fonction de la taille de la fenetre 
-    def FenetreTaille()
-    
-    end 
-end # Marqueur de fin de classe
+        donnees = fichierMap.read.split("\n")
+        tailleGrilleX = donnees[0].to_i
+        tailleGrilleY = donnees[1].to_i
+        donneesCases = donnees[2].split(" ")
+        donneesHistorique = donnees[3].split(" ")
+
+        
+        matrice = Array.new(tailleGrilleY) { Array.new(tailleGrilleX) { 0 } }
+
+        x, y = 0, 0
+        for chiffre in donneesCases do
+            if chiffre.to_i < 0
+                matrice[y][x] = (CaseCliquable.creer(x, y, @historique))
+            else
+                matrice[y][x] = (CaseChiffre.creer(x, y, chiffre.to_i))
+            end
+            x = (x+1)%tailleGrilleX
+            y += 1 if x == 0
+        end
+
+        ##
+        # Lecture du fichiers contenant les informations de la grille solution
+        ##
+        fichierMapCorrigee = File.open(__dir__ + "/../../assets/levels/#{@mode}/level#{@id}_corrige.krkb")
+        donnees = fichierMapCorrigee.read.split("\n")
+        tailleGrilleX = donnees[0].to_i
+        tailleGrilleY = donnees[1].to_i
+        donneesCases = donnees[2].split(" ")
+
+         
+        matriceCorrigee = Array.new(tailleGrilleY) { Array.new(tailleGrilleX) { 0 } }
+
+        x, y = 0, 0
+        for chiffre in donneesCases do
+            if chiffre.to_i < 0
+                matriceCorrigee[y][x] = (CaseCliquable.creer(x, y, @historique, chiffre.to_i.abs-1))
+            else
+                matriceCorrigee[y][x] = (CaseChiffre.creer(x, y, chiffre.to_i))
+            end
+            x = (x+1)%tailleGrilleX
+            y += 1 if x == 0
+        end
+
+        #Création de la grille
+        @grille = Grille.creer(matrice, matriceCorrigee)
+        @grille.ajouteObservateur(self)
+
+    end
+
+    ##
+    # Arrete le chrono du niveau si il est fini
+    # Sauvegarde le niveau dans le fichier correspondant
+    def update
+        @chrono.on(false) if @grille.estFini?
+        @chrono.grilleFini = true if @grille.estFini?
+        Sauvegarde.sauvNiveau(@utilisateur.nom, self, @utilisateur.nbEtoiles)
+    end
+
+    def to_s
+        "grille: " + @grille.to_s + " chrono: " + @chrono.to_s
+    end
+
+end

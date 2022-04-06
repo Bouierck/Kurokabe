@@ -9,28 +9,28 @@ class Utilisateur
     #@nom => Nom de l'utilisateur
     #@langue => Langue choisi de type Langue
     #@nbEtoiles => Nombre d'étoile obtenu dans le mode aventure
-    #@sauvegarde => Sauvegarde de l'utilisateur
+
+    attr_reader :nom, :langue, :nbEtoiles
 
     ##
-    # Constructeur de Sauvegarde
+    # Constructeur
     #
-    def Utilisateur.creer(unNom, uneLangue)
-        new(unNom, uneLangue)
-    end
-
-    def initialize(unNom, uneLangue)
-        @nom = unNom
-        @langue = uneLangue
-        @sauvegarde = new Sauvegarde(unNom)
-        @nbEtoiles = unInt.nbEtoiles()
+    # === Attributes
+    #
+    # * -nom- nom de l'utilisateur
+    # * -langue- langue de l'utilisateur
+    #
+    def Utilisateur.creer(nom, langue)
+        new(nom, langue)
     end
 
     private_class_method :new
 
-    ##
-    # Retourne le nombre d'étoiles
-    #
-    def getNbEtoiles()
-        return @nbEtoiles
+    def initialize(nom, langue)
+        Sauvegarde.creer(nom)
+        @nom = nom
+        @langue = langue
+        @nbEtoiles = Sauvegarde.nbEtoiles()
     end
+
 end # Marqueur de fin de classe
