@@ -141,7 +141,7 @@
 
           
           <div class="method-source-code" id="addListener-source">
-            <pre><span class="ruby-comment"># File src/Donnees/Langue.rb, line 68</span>
+            <pre><span class="ruby-comment"># File src/Donnees/Langue.rb, line 69</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">addListener</span>(<span class="ruby-identifier">listener</span>, <span class="ruby-identifier">text</span>)
     <span class="ruby-identifier">@@listeners</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">listener</span>, <span class="ruby-identifier">text</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -196,8 +196,9 @@
 
     <span class="ruby-identifier">arr</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">text</span><span class="ruby-operator">|</span>
         <span class="ruby-identifier">text</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp">/RTAL/</span>, <span class="ruby-string">&quot;\n&quot;</span>)
+        <span class="ruby-identifier">text</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp">/PE/</span>, <span class="ruby-string">&quot;: &quot;</span>)
     }
-    
+
     <span class="ruby-identifier">trad</span> = <span class="ruby-identifier">arr</span>.<span class="ruby-identifier">to_h</span>
 
     <span class="ruby-identifier">file</span>.<span class="ruby-identifier">close</span>()
@@ -268,7 +269,7 @@
 
           
           <div class="method-source-code" id="text-source">
-            <pre><span class="ruby-comment"># File src/Donnees/Langue.rb, line 55</span>
+            <pre><span class="ruby-comment"># File src/Donnees/Langue.rb, line 56</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">text</span>(<span class="ruby-identifier">key</span>)
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">@@trad</span>[<span class="ruby-identifier">key</span>]
 <span class="ruby-keyword">end</span></pre>

@@ -28,10 +28,29 @@ require_relative '../Niveau/Niveau.rb'
         @@path = "../../profile/"
 
         @app = app
+        @app.fenetre.resize(700,700)
+
+        lbl = Gtk::Label.new.tap{ |label|
+            label.set_markup("NIVEAUX")
+            label.style_context.add_class("titre")
+            label.style_context.add_class("margin-bot")
+            label.show 
+        }
+
+        self.pack_start(lbl)
 
         @btnAventure= Gtk::Button.new
+        @btnAventure.style_context.add_class("bouton")
+        @btnAventure.style_context.add_class("margin2")
+
         @btnClasse= Gtk::Button.new
+        @btnClasse.style_context.add_class("bouton")
+        @btnClasse.style_context.add_class("margin2")
+
         @btnClassique= Gtk::Button.new
+        @btnClassique.style_context.add_class("bouton")
+        @btnClassique.style_context.add_class("margin2")
+
             self.valign = Gtk::Align::CENTER
             self.halign = Gtk::Align::CENTER
 
@@ -40,7 +59,7 @@ require_relative '../Niveau/Niveau.rb'
 
             @btnClassique.tap{|bouton| 
                 bouton.add(Gtk::Label.new.tap{ |label|
-                    label.set_markup("CLASSIQUE")
+                    label.set_markup(Langue.text("lvlClassique"))
                     label.show	})
                 bouton.signal_connect("clicked") { 
                     updateButton(1)
@@ -51,7 +70,7 @@ require_relative '../Niveau/Niveau.rb'
 
             @btnAventure.tap{|bouton| 
                 bouton.add(Gtk::Label.new.tap{ |label|
-                    label.set_markup("AVENTURE")
+                    label.set_markup(Langue.text("lvlAventure"))
                     label.show	})
                 bouton.signal_connect("clicked") { 
                     updateButton(2)
@@ -60,13 +79,12 @@ require_relative '../Niveau/Niveau.rb'
                     
                    
             bouton.show		}
-
             
 
 
             @btnClasse.tap{|bouton| 
                 bouton.add(Gtk::Label.new.tap{ |label|
-                    label.set_markup("CLASSÉ")
+                    label.set_markup(Langue.text("lvlClasse"))
                     label.show	})
                 bouton.signal_connect("clicked") { 
                     updateButton(3)
@@ -75,10 +93,6 @@ require_relative '../Niveau/Niveau.rb'
                    
             bouton.show		}
             
-
-
-
-
 
             boiteMode = Gtk::Box.new(:horizontal).tap { |boite|
                 boite.pack_start(@btnClassique)
@@ -112,15 +126,18 @@ require_relative '../Niveau/Niveau.rb'
         # ----------------    #Label Header des boites main ------------------------
 
         facileLabel = Gtk::Label.new.tap{ |label|
-            label.set_markup("FACILE")
+            label.set_markup(Langue.text("difficulteFacile"))
+            label.style_context.add_class("difficulte")
             label.show 
         }
         moyenLabel = Gtk::Label.new.tap{ |label|
-            label.set_markup("MOYEN")
+            label.set_markup(Langue.text("difficulteMoyen"))
+            label.style_context.add_class("difficulte")
             label.show 
         }
         difficileLabel = Gtk::Label.new.tap{ |label|
-            label.set_markup("DIFFICILE")
+            label.set_markup(Langue.text("difficulteDifficile"))
+            label.style_context.add_class("difficulte")
             label.show 
         }
 
@@ -172,6 +189,22 @@ require_relative '../Niveau/Niveau.rb'
 
         niv35 = BoutonNiveau.creer("level 15", 10, 10, 15, self, @app)
         niv35.show
+
+        niv11.style_context.add_class("niveau")
+        niv12.style_context.add_class("niveau")
+        niv13.style_context.add_class("niveau")
+        niv14.style_context.add_class("niveau")
+        niv15.style_context.add_class("niveau")
+        niv21.style_context.add_class("niveau")
+        niv22.style_context.add_class("niveau")
+        niv23.style_context.add_class("niveau")
+        niv24.style_context.add_class("niveau")
+        niv25.style_context.add_class("niveau")
+        niv31.style_context.add_class("niveau")
+        niv32.style_context.add_class("niveau")
+        niv33.style_context.add_class("niveau")
+        niv34.style_context.add_class("niveau")
+        niv35.style_context.add_class("niveau")
 
 
 

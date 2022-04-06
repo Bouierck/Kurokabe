@@ -12,15 +12,21 @@ class ClassementNiveau < Gtk::Box
 
     def initialize(app,datas)
 
-        path_to_profile = "./profile/"
+        path_to_profile = __dir__ + "/../../profile/"
 
 
         super(:vertical, 10)
+
+        
+        self.halign = Gtk::Align::CENTER
+
+        app.fenetre.resize(700,700)
 
         s = datas.to_s.split("")
 
         topLabel = Gtk::Label.new.tap{ |label|
             label.set_markup("Classement du niveau : " + s[0] + "." + s[1])
+            label.style_context.add_class("titre1")
             label.show 
         }
 
@@ -34,7 +40,7 @@ class ClassementNiveau < Gtk::Box
 
 
         users = Dir.entries(path_to_profile).select { |f| 
-            if(f!="." && f!="..") then 
+            if(f.start_with?(".") == false) then 
                 f 
             end}
 
@@ -67,12 +73,18 @@ class ClassementNiveau < Gtk::Box
 
         }
 
-        sortedTable = sortedUser.sort_by {|k,v| v}.reverse
+        sortedTable = sortedUser.sort_by {|k,v| v}
 
+        i = 0
         sortedTable.each{ |k,v|
-            @totals += k + " : " + v.to_s + "\n"
+            min = v / 60
+            sec = v % 60
+            i+=1
+            @totals += i.to_s + " -  " + k + " : " + "#{min}:#{sec}" + "\n"
     }
         classmLabel.set_markup(@totals)
+        classmLabel.style_context.add_class("margin-top")
+        classmLabel.style_context.add_class("titre3")
         
 
         self.show

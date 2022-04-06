@@ -79,6 +79,8 @@
     
     <li ><a href="#method-i-nouveauCoup">#nouveauCoup</a>
     
+    <li ><a href="#method-i-reinitialiserGrille">#reinitialiserGrille</a>
+    
     <li ><a href="#method-i-retourArriere">#retourArriere</a>
     
     <li ><a href="#method-i-retourAvant">#retourAvant</a>
@@ -96,7 +98,7 @@
 
   <section class="description">
     
-<p>L&#39;historique stock les coups de l&#39;utilisateur pour permttre de faire des retours en arrière / en avant</p>
+<p>L&#39;historique stock les coups de l&#39;utilisateur pour permettre de faire des retours en arrière / en avant</p>
 
   </section>
 
@@ -108,6 +110,27 @@
 
     
 
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-index" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">index</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>@listeCoups =&gt; Liste contenant les coups effectués @index =&gt; coup actuel</p>
+        
+        </div>
+      </div>
+      
+    </section>
     
 
     
@@ -130,13 +153,13 @@
 
         <div class="method-description">
           
-          <p>@listeCoups =&gt; Liste contenant les coups effectués @index =&gt; coup actuel</p>
+          
           
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File src/Niveau/Historique.rb, line 10</span>
+            <pre><span class="ruby-comment"># File src/Niveau/Historique.rb, line 12</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>
     <span class="ruby-ivar">@listeCoups</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
     <span class="ruby-ivar">@index</span> = <span class="ruby-value">0</span>
@@ -178,7 +201,7 @@
 
           
           <div class="method-source-code" id="nouveauCoup-source">
-            <pre><span class="ruby-comment"># File src/Niveau/Historique.rb, line 19</span>
+            <pre><span class="ruby-comment"># File src/Niveau/Historique.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">nouveauCoup</span>(<span class="ruby-identifier">c</span>)
 
     <span class="ruby-comment">#S&#39;il y avait des coups après on les enlève</span>
@@ -189,6 +212,40 @@
     <span class="ruby-ivar">@index</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
     <span class="ruby-ivar">@listeCoups</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">c</span>)
 
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-reinitialiserGrille" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">reinitialiserGrille</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Reinitialise la grille</p>
+          
+          
+
+          
+          <div class="method-source-code" id="reinitialiserGrille-source">
+            <pre><span class="ruby-comment"># File src/Niveau/Historique.rb, line 67</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">reinitialiserGrille</span>
+    <span class="ruby-keyword">while</span>(<span class="ruby-identifier">retourArriere</span>)
+    <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -213,13 +270,13 @@
 
         <div class="method-description">
           
-          <p>Retourne sur le mouvement précédent</p>
+          <p>Retourne vrai si le retour en arrière a été effectué</p>
           
           
 
           
           <div class="method-source-code" id="retourArriere-source">
-            <pre><span class="ruby-comment"># File src/Niveau/Historique.rb, line 34</span>
+            <pre><span class="ruby-comment"># File src/Niveau/Historique.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retourArriere</span>
 
     <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@index</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>) <span class="ruby-comment">#On est pas au début de la liste de coups</span>
@@ -228,7 +285,9 @@
         <span class="ruby-comment">#Effectuer mouvement inverse</span>
         <span class="ruby-value">2</span>.<span class="ruby-identifier">times</span> { <span class="ruby-ivar">@listeCoups</span>[<span class="ruby-ivar">@index</span>].<span class="ruby-identifier">changeEtat</span> }
 
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
     <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -253,20 +312,23 @@
 
         <div class="method-description">
           
-          <p>Retourne sur le mouvement précédement annulé</p>
+          <p>Retourne vrai si le retour en avant a été effectué</p>
           
           
 
           
           <div class="method-source-code" id="retourAvant-source">
-            <pre><span class="ruby-comment"># File src/Niveau/Historique.rb, line 48</span>
+            <pre><span class="ruby-comment"># File src/Niveau/Historique.rb, line 52</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retourAvant</span>
     <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@index</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@listeCoups</span>.<span class="ruby-identifier">size</span>)
         
         <span class="ruby-comment">#Effectuer mouvement</span>
         <span class="ruby-ivar">@listeCoups</span>[<span class="ruby-ivar">@index</span>].<span class="ruby-identifier">changeEtat</span>
         <span class="ruby-ivar">@index</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
     <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           

@@ -1,6 +1,7 @@
 require 'gtk3'
 
 require_relative '../Boutons/BoutonMenu.rb'
+require_relative '../Boutons/BoutonDidacticiel.rb'
 require_relative '../Boutons/BoutonLangue.rb'
 
 require_relative './MenuClassement.rb'
@@ -11,7 +12,7 @@ require_relative '../Donnees/Langue.rb'
     # Widget graphique représentant l'écran d'accueil.
     class MenuPrincipal < Gtk::Box
         
-        attr_reader :titlebar
+        attr_reader :titlebar, :mode
         
         ##
         # Méthode permettant de créer l'écran d'accueil.
@@ -20,7 +21,11 @@ require_relative '../Donnees/Langue.rb'
         # [+app+]   Application (Nurikabe)
         def initialize(app)
             super(:vertical, 10)
+
+            app.fenetre.resize(700,700)
             
+            @mode = 1 # pour le didacticiel
+
             self.valign = Gtk::Align::CENTER
             self.halign = Gtk::Align::CENTER		
             
@@ -31,7 +36,6 @@ require_relative '../Donnees/Langue.rb'
                 label.set_markup("KUROKABE")
                 label.style_context.add_class("titre")
                 label.style_context.add_class("margin-bot")
-                label.style_context.add_class("margin-bigtop")
                 label.show 
             }
 
@@ -45,8 +49,8 @@ require_relative '../Donnees/Langue.rb'
 
             self.pack_start(btnJouer)
 
-            btnClassement = BoutonMenu.creer("CLASSEMENT", 10, 10, MenuClassement.method(:new), app)
-            #Langue.addListener(btnClassement, "classement")
+            btnClassement = BoutonMenu.creer(Langue.text("classement"), 10, 10, MenuClassement.method(:new), app)
+            Langue.addListener(btnClassement, "classement")
             btnClassement.style_context.add_class("bouton")
             btnClassement.show
 
@@ -54,26 +58,22 @@ require_relative '../Donnees/Langue.rb'
 
             self.pack_start(btnClassement)
                       
-                      
-            btnRegles = BoutonMenu.creer("REGLES", 10, 10, MenuRegles.method(:new), app)
-            #Langue.addListener(btnRegles, "regles")
+            btnRegles = BoutonMenu.creer(Langue.text("menuRegles"), 10, 10, MenuRegles.method(:new), app)
+            Langue.addListener(btnRegles, "menuRegles")
             btnRegles.style_context.add_class("bouton")
             btnRegles.show
 
             self.pack_start(btnRegles)
             
-            #FAIRE LE BOUTON DIDACTICIEL
-            btnRegles = BoutonMenu.creer("DIDACTICIEL", 10, 10, MenuRegles.method(:new), app)
-            #Langue.addListener(btnRegles, "regles")
+            btnRegles = BoutonDidacticiel.creer(Langue.text("didacticiel"), 10, 10, app)
+            Langue.addListener(btnRegles, "didacticiel")
             btnRegles.style_context.add_class("bouton")
             btnRegles.show
 
             self.pack_start(btnRegles)
-            
-            #btnQuitter=Gtk::Button.new(:label =>"QUITTER")
 
-            btnQuitter = BoutonSpecial.creer("QUITTER", 10, 10, app.method(:closeApp))
-            #Langue.addListener(btnQuitter, "quitter")
+            btnQuitter = BoutonSpecial.creer(Langue.text("quitter"), 10, 10, app.method(:closeApp))
+            Langue.addListener(btnQuitter, "quitter")
             btnQuitter.style_context.add_class("bouton")
             btnQuitter.style_context.add_class("margin-top")
             btnQuitter.style_context.add_class("margin-bot")
@@ -96,9 +96,10 @@ require_relative '../Donnees/Langue.rb'
             langueBox=Gtk::Box.new(:horizontal).tap { |boite|
                 boite.pack_start(francais.show)
                 boite.pack_start(anglais.show)
-                boite.style_context.add_class("margin-bigbot")
                 boite.show
             }
+
+            langueBox.style_context.add_class("margin-top")
 
         self.pack_start(langueBox)
 

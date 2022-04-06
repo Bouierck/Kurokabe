@@ -8,6 +8,7 @@ class MenuTechnique < Gtk::Box
     attr_reader :titlebar
     def initialize(app)
         super(:vertical, 10)
+		app.fenetre.resize(1300,750)
 
         @page = 1
         @text1 = Gtk::Label.new("This is sparta")
@@ -17,15 +18,22 @@ class MenuTechnique < Gtk::Box
         @image21 = Gtk::Image.new(__dir__ + '/../../assets/img/Tech/11.png')
         @image22 = Gtk::Image.new(__dir__ + '/../../assets/img/Tech/12.png')
 
-        labelPage = Gtk::Label.new("Page")
+        labelPage = Gtk::Label.new("PAGE")
+		labelPage.style_context.add_class("titre2")
 
-	    @boutonRetour = Gtk::Button.new("<")
-	    @boutonAvance = Gtk::Button.new(">")
+	    @boutonRetour = Gtk::Button.new("❮")
+	    @boutonAvance = Gtk::Button.new("❯")
+
+		@boutonRetour.style_context.add_class("bouton")
+		@boutonRetour.style_context.add_class("btn-left")
+
+	    @boutonAvance.style_context.add_class("bouton")
+	    @boutonAvance.style_context.add_class("btn-right")
 
 
 		
         labelPage.tap{ |label|
-            label.set_markup("Page")
+            label.set_markup("PAGE")
         label.show 
         }
 
@@ -51,6 +59,9 @@ class MenuTechnique < Gtk::Box
             
             boite.show
         }
+		topbox.set_homogeneous(true)
+		topbox.style_context.add_class("margin-top")
+		topbox.style_context.add_class("margin-bot")
 
         @image11.tap { |img| img.show }
         @image12.tap { |img| img.show }
@@ -86,12 +97,19 @@ class MenuTechnique < Gtk::Box
 
         midbox=Gtk::Box.new(:vertical).tap { |boite|
             boite.pack_start(@text1)
+
+			imgBox1.halign = Gtk::Align::CENTER
             boite.pack_start(imgBox1)
+
             boite.pack_start(@text2)
+
+			imgBox2.halign = Gtk::Align::CENTER
             boite.pack_start(imgBox2)
             boite.show
         }
 
+		midbox.valign = Gtk::Align::CENTER
+        midbox.halign = Gtk::Align::CENTER
         self.pack_start(midbox)
 
 
@@ -115,140 +133,44 @@ class MenuTechnique < Gtk::Box
 #	TECH 0
 @textIle0 = Langue.text("tech0")
 
-
-
 # 	#TECH 1
-@textIle1 = "
-    1. Island of 1
-
-Comme il s'agit d'une île avec un seul carré, nous pouvons l'entourer de murs en ombrant les carrés adjacents horizontalement et verticalement. 
-et verticalement adjacents.
-
-    "
-
-
+@textIle1 = Langue.text("tech1")
 
 #TECH 2
-@textIle2 = "2. Indices séparés par un carré
-
-Selon les règles du Nurikabe, tous les indices doivent être séparés les uns des autres par des murs. 
-Par conséquent, lorsque deux indices se trouvent sur la même ligne ou colonne et sont séparés par une case, 
-la case intermédiaire doit être un mur.
-
-"
-
-
-
+@textIle2 = Langue.text("tech2")
 
 #TECH 3
-@textIle3 = "
-
-
-
-3. Indices adjacents en diagonale
-
-Comme dans l'exemple précédent, lorsque deux indices sont adjacents en diagonale, 
-chacune des cases touchant les deux indices doit faire partie d'un mur.
-
-"
-
-
+@textIle3 = Langue.text("tech3")
 
 #TECH 4
-@textIle4 = "Techniques de base
-
-Nous poursuivons maintenant avec les techniques de base, où il est généralement facile de voir quelles cases font partie d'un mur et doivent être ombrées, 
-et quelles cases font partie d'une île et doivent être marquées d'un point. Voici quelques façons d'utiliser les techniques de base :
-1. Carré entouré
-
-Après avoir résolu les premières étapes en utilisant les techniques de base décrites ci-dessus, le puzzle du diagramme de gauche ci-dessous comporte 
-deux carrés entourés surlignés en rouge. Comme ces carrés sont entourés de murs horizontalement et verticalement, ils ne peuvent pas appartenir à une île et doivent donc 
-être ombrés pour faire partie d'un mur.
-
-"
+@textIle4 = Langue.text("tech4")
 
 #TECH 5
-@textIle5 = "
-2. L'expansion des murs
-
-Selon les règles du Nurikabe, tous les murs doivent former un seul chemin continu. Si l'on regarde 
-le mur à un seul carré dans le diagramme de gauche ci-dessous, la seule façon de le relier aux autres murs est de l'agrandir avec trois carrés sur sa droite, 
-comme indiqué dans le diagramme de droite.
-
-
-"
-
-
+@textIle5 = Langue.text("tech5")
 
 #TECH 6
-@textIle6 = "3. Continuité du mur
-
-Dans le puzzle ci-dessous, si le carré en surbrillance fait partie d'une île, le mur du haut sera cloisonné. 
-Par conséquent, pour maintenir la continuité du mur selon les règles du Nurikabe, cette case doit faire partie d'un mur.
-"
+@textIle6 = Langue.text("tech6")
 
 #TECH 7
-@textIle7 = "
-4. Agrandissement d'une île à partir d'un indice
-
-Dans de nombreux cas, la façon dont une île peut être agrandie directement à partir d'un indice est claire. Dans le diagramme ci-dessous, l'île du 3 
-ne peut être agrandie que vers le haut et l'île du 7 ne peut être agrandie que vers la gauche. Nous allons marquer ces carrés avec des points pour montrer 
-qu'ils font partie des îles respectives et ne peuvent pas faire partie d'un mur.
-
-
-"
-
-
+@textIle7 = Langue.text("tech7")
 
 #TECH 8
-@textIle8 = "5. Île extensible uniquement dans deux directions
-
-Dans certains cas, une île de 2 ou la dernière case d'une île plus grande ne peut être agrandie que dans deux directions perpendiculaires. 
-Dans ce cas, quelle que soit la direction dans laquelle l'extension de l'îlot aura lieu, la case diagonale doit faire partie d'un mur et est 
-donc grisée comme indiqué dans le schéma de droite ci-dessous.
-
-"
+@textIle8 = Langue.text("tech8")
 
 #TECH 9
-@textIle9 = "6. Extension des îles cachées
-
-Parfois, une île est trop grande pour tenir dans une zone donnée. Dans le puzzle partiellement résolu ci-dessous, 
-l'île de 12 ne peut pas tenir dans la zone du haut et doit donc s'étendre vers le bas, comme indiqué par un point dans le diagramme de droite. 
-Notez que la case située à gauche de ce point ne peut appartenir à aucune île et qu'elle est donc ombragée pour faire partie d'un mur.
-
-"
-
+@textIle9 = Langue.text("tech9")
 
 #TECH 10
-@textIle10 = "7. Continuité de l'îlot
+@textIle10 = Langue.text("tech10")
 
-La case marquée d'un point rouge dans le schéma de gauche ci-dessous doit faire partie d'une île pour éviter une surface de mur de 2x2. 
-Cela signifie que la case située à sa gauche doit également faire partie de la même île et est donc également marquée d'un point. 
-L'île de 3 est maintenant terminée et nous pouvons l'entourer d'un mur.
-
-"
 #TECH 11
-@textIle11 = "8. Entourer une île terminée
+@textIle11 = Langue.text("tech11")
 
-Dans l'énigme partiellement résolue ci-dessous, l'île de 3 a été complétée comme le montre la zone en surbrillance. 
-Nous pouvons maintenant entourer cette île de murs adjacents horizontalement et verticalement, comme le montre l'image de droite.
-
-"
 #TECH 12
-@textIle12 = "9. Éviter les surfaces murales de 2x2
+@textIle12 = Langue.text("tech12")
 
-Selon les règles, il est interdit d'avoir des murs de 2x2 ou plus. Par conséquent, 
-le carré surligné ci-dessous ne peut pas faire partie du mur et est marqué d'un point indiquant qu'il appartient à l'une des îles.
-
-"
 #TECH 13
-@textIle13 = "10. Carré inaccessible
-
-Dans certains cas, une case ne peut appartenir à aucune île, tout simplement parce qu'aucun indice ne peut l'atteindre. 
-Dans l'exemple ci-dessous, les deux cases surlignées sont trop éloignées des indices et ne peuvent faire partie d'aucune île. 
-Elles sont donc ombragées pour indiquer qu'elles doivent faire partie d'un mur.
-
-"
+@textIle13 = Langue.text("tech13")
 
 
 
@@ -334,6 +256,9 @@ Elles sont donc ombragées pour indiquer qu'elles doivent faire partie d'un mur.
 			@image21.set_from_file(__dir__ + '/../../assets/img/Tech/131.png')
 			@image22.set_from_file(__dir__ + '/../../assets/img/Tech/132.png')
 		end
+
+		@text1.style_context.add_class("texte")
+		@text2.style_context.add_class("texte")
 	end
 
 
@@ -354,7 +279,7 @@ Elles sont donc ombragées pour indiquer qu'elles doivent faire partie d'un mur.
 	   	end
 
 		def updateLabelPage(labelPage)
-			s = "Page " + @page.to_s
+			s = "PAGE " + @page.to_s
 			labelPage.set_label(s)
 		end
 

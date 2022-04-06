@@ -52,7 +52,7 @@ class ChronoGUI < Gtk::Label
     # Met en pause le chrono
     #
     def stop
-        chrono.on(false)
+        @chrono.on(false)
     end
 
     ##

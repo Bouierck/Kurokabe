@@ -92,7 +92,7 @@
     
     <li ><a href="#method-i-changeEtat">#changeEtat</a>
     
-    <li ><a href="#method-i-to_s">#to_s</a>
+    <li class="calls-super" ><a href="#method-i-to_s">#to_s</a>
     
   </ul>
 </div>
@@ -308,12 +308,17 @@
           
           
           
+            <div class="method-calls-super">
+              Calls superclass method
+              <a href="Case.html#method-i-to_s"><code>Case#to_s</code></a>
+            </div>
+          
 
           
           <div class="method-source-code" id="to_s-source">
             <pre><span class="ruby-comment"># File src/Niveau/CaseCliquable.rb, line 53</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;~&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@etat</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;~&quot;</span>
+    <span class="ruby-keyword">super</span>() <span class="ruby-operator">+</span> <span class="ruby-string">&quot; | &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">etat</span>.<span class="ruby-identifier">to_s</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           

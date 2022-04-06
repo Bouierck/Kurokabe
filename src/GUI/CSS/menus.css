@@ -7,7 +7,12 @@
     color: black;
     font-size: 32px;
     font-weight: bold;
-    margin-top: 100px;
+}
+
+.chrono{
+    color: black;
+    font-size: 28px;
+    margin-bottom: 50px;
 }
 
 .titre1{
@@ -15,6 +20,12 @@
     font-size: 24px;
     font-weight: bold;
     margin-top: 30px;
+}
+
+.titre3{
+    color: black;
+    font-size: 24px;
+    margin-top: 10px;
 }
 
 .margin-top{
@@ -48,9 +59,38 @@
     color: black;
     font-size: 20px;
     padding: 5px 15px;
+    margin: 1px;
 }
 
 .bouton:hover{
+    background: #999999;
+}
+
+.bouton-quitter{
+    border-radius: 0;
+    border-color: black;
+    border-width: 3px;
+    color: black;
+    font-size: 20px;
+    padding: 5px 15px;
+    margin-top: 30px;
+}
+
+.bouton-quitter:hover{
+    background: #999999;
+}
+
+.bouton-pause{
+    border-radius: 0;
+    border-color: black;
+    border-width: 3px;
+    color: black;
+    font-size: 20px;
+    padding: 5px 15px;
+    margin-bottom: 30px;
+}
+
+.bouton-pause:hover{
     background: #999999;
 }
 
@@ -139,7 +179,29 @@
     opacity: .5;
 }
 
+.niveau{
+    padding: 15px 15px;
+    border-radius: 0;
+    border-color: black;
+    border-width: 3px;
+    color: black;
+    font-size: 20px;
+    margin: 2px;
+    font-size: 15px;
+}
 
+.niveau:hover{
+    background: #999999;
+}
 
+.difficulte{
+    color: black;
+    font-size: 16px;
+    margin-bottom: 20px;
+    margin-top: 15px;
+}
 
+.margin2{
+    margin: 2px;
+}
 
