@@ -27,13 +27,23 @@ class Didacticiel < NiveauGUI
     def initGUI
         super
 
+        #title bar et bouton retour
+        @titlebar = Gtk::HeaderBar.new
+        @titlebar.title = "Nurikabe"
+        @titlebar.show_close_button = true
+        @titlebar.pack_start(BoutonRetour.creer(MenuPrincipal.method(:new), @app).tap {|b|
+            b.sensitive = true
+            b.show
+        })
+        @titlebar.show
+
         @grilleGUI.matriceGUI.each do |line|
             line.each do |c|
                 c.set_sensitive(false)
             end
         end 
         @boutonMenu.set_sensitive(false)
-        #@boutonPause.set_sensitive(false)
+        @boutonPause.set_sensitive(false)
         @boutonQuitter.set_sensitive(false)
 
         @boutonArriere.set_sensitive(false)
