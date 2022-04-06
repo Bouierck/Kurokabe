@@ -56,19 +56,12 @@ class Kurokabe < Gtk::Application
 
         self.signal_connect("activate") do
             @fenetre = Fenetre.new(self)
-            self.accueil
+            m = MenuPrincipal.new(self)
+            @fenetre.add(m)
+            @fenetre.titlebar = m.titlebar
             selecteur = MenuConnexion.new(@fenetre, self)
             self.add_window(@fenetre)
         end
-    end
- 
-
-    def accueil
-        accueil = MenuPrincipal.new(self)
-        @fenetre.remove(@fenetre.child) if(@fenetre.child)
-        @fenetre.child = accueil
-        @fenetre.titlebar = accueil.titlebar
-        return self
     end
     
     def closeApp

@@ -27,7 +27,7 @@ class UnreachSqr < Technique
                     n = c.chiffre - 1
                     file << [c, n]
                     
-                    while((prof = file.pop)[1] > 0)
+                    while(file.empty? == false && (prof = file.pop)[1] > 0)
 
                         ca = prof[0]
                         ns = prof[1] - 1
