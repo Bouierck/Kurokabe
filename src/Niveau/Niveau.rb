@@ -1,6 +1,7 @@
 require_relative '../Aide/Resolveur.rb'
 
 require_relative "../Modules/dpObservateur/Observable.rb"
+require_relative "../Donnees/Sauvegarde.rb"
 
 require_relative './Grille.rb'
 require_relative './Chronometre.rb'

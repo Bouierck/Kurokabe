@@ -113,7 +113,7 @@
         
         <div class="method-heading">
           <span class="method-name">calculer</span><span
-            class="method-args">(nbTechnique, timer, mode)</span>
+            class="method-args">(nbTechnique, timer, difficulte)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -129,8 +129,13 @@
           
           <div class="method-source-code" id="calculer-source">
             <pre><span class="ruby-comment"># File src/Niveau/Score.rb, line 8</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">Score</span>.<span class="ruby-identifier ruby-title">calculer</span>(<span class="ruby-identifier">nbTechnique</span>, <span class="ruby-identifier">timer</span>, <span class="ruby-identifier">mode</span>)
-    <span class="ruby-comment">#calculer le score (en nombre d&#39;étoile)</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Score</span>.<span class="ruby-identifier ruby-title">calculer</span>(<span class="ruby-identifier">nbTechnique</span>, <span class="ruby-identifier">timer</span>, <span class="ruby-identifier">difficulte</span>)
+
+    <span class="ruby-identifier">score</span> = (<span class="ruby-value">10000</span><span class="ruby-operator">/</span>(<span class="ruby-identifier">nbTechnique</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>) <span class="ruby-operator">-</span> <span class="ruby-identifier">timer</span> <span class="ruby-operator">*</span> <span class="ruby-value">2</span>)<span class="ruby-operator">/</span><span class="ruby-identifier">difficulte</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-value">3</span> <span class="ruby-keyword">if</span>(<span class="ruby-identifier">score</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">2000</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-value">2</span> <span class="ruby-keyword">if</span>(<span class="ruby-identifier">score</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">850</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-value">1</span>
+
 <span class="ruby-keyword">end</span></pre>
           </div>
           

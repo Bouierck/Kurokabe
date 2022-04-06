@@ -14,8 +14,8 @@ class BoutonNiveau < Bouton
     ##
     #@niveau Niveaau qui se lance au clque sur le bouton
 
-    def BoutonNiveau.creer(uneEtiquette, uneLongueur, uneLargeur, id, mode, user)
-        new(uneEtiquette, uneLongueur, uneLargeur, id, mode, user)
+    def BoutonNiveau.creer(uneEtiquette, uneLongueur, uneLargeur, id, mode, app)
+        new(uneEtiquette, uneLongueur, uneLargeur, id, mode, app)
     end
 
     private_class_method :new
@@ -43,6 +43,7 @@ class BoutonNiveau < Bouton
             n = NiveauGUI.creer(app, niveau)
             app.fenetre.remove(app.fenetre.child) if(app.fenetre.child)
             app.fenetre.child = n
+            app.fenetre.titlebar = n.titlebar
 
         }
     end

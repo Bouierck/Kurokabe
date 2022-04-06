@@ -83,14 +83,6 @@
     
     <li ><a href="#method-i-closeApp">#closeApp</a>
     
-    <li ><a href="#method-i-lanceNiveau">#lanceNiveau</a>
-    
-    <li ><a href="#method-i-menus">#menus</a>
-    
-    <li ><a href="#method-i-regles">#regles</a>
-    
-    <li ><a href="#method-i-techniquemenus">#techniquemenus</a>
-    
   </ul>
 </div>
 
@@ -121,6 +113,19 @@
       </header>
 
       
+      <div id="attribute-i-fenetre" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">fenetre</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>@user =&gt; utilisateur log a l&#39;app @fenetre =&gt; fenetre de l&#39;applicaation</p>
+        
+        </div>
+      </div>
+      
       <div id="attribute-i-user" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">user</span><span
@@ -129,7 +134,7 @@
 
         <div class="method-description">
         
-        <p>@user =&gt; utilisateur log a l&#39;app</p>
+        <p>@user =&gt; utilisateur log a l&#39;app @fenetre =&gt; fenetre de l&#39;applicaation</p>
         
         </div>
       </div>
@@ -165,7 +170,7 @@
 
           
           <div class="method-source-code" id="app-source">
-            <pre><span class="ruby-comment"># File Kurokabe.rb, line 30</span>
+            <pre><span class="ruby-comment"># File Kurokabe.rb, line 31</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Kurokabe</span>.<span class="ruby-identifier ruby-title">app</span>
     <span class="ruby-identifier">@@app</span> = <span class="ruby-identifier">new</span> <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@app</span>.<span class="ruby-identifier">nil?</span>)
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">@@app</span>
@@ -204,7 +209,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Kurokabe.rb, line 36</span>
+            <pre><span class="ruby-comment"># File Kurokabe.rb, line 37</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>
     <span class="ruby-keyword">super</span>(<span class="ruby-string">&quot;projet.Nurikabe&quot;</span>, <span class="ruby-value">:flags_none</span>)
 
@@ -212,8 +217,16 @@
 
     <span class="ruby-ivar">@provider</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">CssProvider</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-ivar">@provider</span>.<span class="ruby-identifier">load</span>(<span class="ruby-value">:path</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;./src/GUI/CSS/case.css&#39;</span>)
+    
+    <span class="ruby-ivar">@provider2</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">CssProvider</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-ivar">@provider2</span>.<span class="ruby-identifier">load</span>(<span class="ruby-value">:path</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;./src/GUI/CSS/menus.css&#39;</span>)
+    
+    <span class="ruby-ivar">@provider3</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">CssProvider</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-ivar">@provider3</span>.<span class="ruby-identifier">load</span>(<span class="ruby-value">:path</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;./src/GUI/CSS/regles.css&#39;</span>)
 
     <span class="ruby-constant">Gdk</span><span class="ruby-operator">::</span><span class="ruby-constant">Screen</span>.<span class="ruby-identifier">default</span>.<span class="ruby-identifier">add_style_provider</span>(<span class="ruby-ivar">@provider</span>, <span class="ruby-value">10000000</span>)
+    <span class="ruby-constant">Gdk</span><span class="ruby-operator">::</span><span class="ruby-constant">Screen</span>.<span class="ruby-identifier">default</span>.<span class="ruby-identifier">add_style_provider</span>(<span class="ruby-ivar">@provider2</span>, <span class="ruby-value">10000100</span>)
+    <span class="ruby-constant">Gdk</span><span class="ruby-operator">::</span><span class="ruby-constant">Screen</span>.<span class="ruby-identifier">default</span>.<span class="ruby-identifier">add_style_provider</span>(<span class="ruby-ivar">@provider3</span>, <span class="ruby-value">10000200</span>)
 
     <span class="ruby-ivar">@user</span> = <span class="ruby-keyword">nil</span>
 
@@ -261,7 +274,7 @@
 
           
           <div class="method-source-code" id="accueil-source">
-            <pre><span class="ruby-comment"># File Kurokabe.rb, line 57</span>
+            <pre><span class="ruby-comment"># File Kurokabe.rb, line 66</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">accueil</span>
     <span class="ruby-identifier">accueil</span> = <span class="ruby-constant">MenuPrincipal</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>)
     <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">remove</span>(<span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">child</span>) <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">child</span>)
@@ -298,155 +311,9 @@
 
           
           <div class="method-source-code" id="closeApp-source">
-            <pre><span class="ruby-comment"># File Kurokabe.rb, line 95</span>
+            <pre><span class="ruby-comment"># File Kurokabe.rb, line 74</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">closeApp</span>
     <span class="ruby-identifier">@@app</span>.<span class="ruby-identifier">quit</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-      <div id="method-i-lanceNiveau" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">lanceNiveau</span><span
-            class="method-args">(niveau)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="lanceNiveau-source">
-            <pre><span class="ruby-comment"># File Kurokabe.rb, line 73</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">lanceNiveau</span>(<span class="ruby-identifier">niveau</span>)
-    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">remove</span>(<span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">child</span>) <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">child</span>)
-    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">child</span> = <span class="ruby-identifier">niveau</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-      <div id="method-i-menus" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">menus</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="menus-source">
-            <pre><span class="ruby-comment"># File Kurokabe.rb, line 65</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">menus</span>
-    <span class="ruby-identifier">menu</span> = <span class="ruby-constant">MenuNiveaux</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>)
-    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">remove</span>(<span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">child</span>) <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">child</span>)
-    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">child</span> = <span class="ruby-identifier">menu</span>
-    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">titlebar</span> = <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">titlebar</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-      <div id="method-i-regles" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">regles</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="regles-source">
-            <pre><span class="ruby-comment"># File Kurokabe.rb, line 79</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">regles</span>  
-    <span class="ruby-identifier">regle</span> = <span class="ruby-constant">MenuRegles</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>)
-    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">remove</span>(<span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">child</span>) <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">child</span>)
-    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">child</span> = <span class="ruby-identifier">regle</span>
-    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">titlebar</span> = <span class="ruby-identifier">regle</span>.<span class="ruby-identifier">titlebar</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-      <div id="method-i-techniquemenus" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">techniquemenus</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="techniquemenus-source">
-            <pre><span class="ruby-comment"># File Kurokabe.rb, line 87</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">techniquemenus</span>
-    <span class="ruby-identifier">techniquemenu</span> = <span class="ruby-constant">MenuTechnique</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>)
-    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">remove</span>(<span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">child</span>) <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">child</span>)
-    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">child</span> = <span class="ruby-identifier">techniquemenu</span>
-    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">titlebar</span> = <span class="ruby-identifier">techniquemenu</span>.<span class="ruby-identifier">titlebar</span>
-    <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           

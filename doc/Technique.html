@@ -200,7 +200,7 @@
           <div class="method-source-code" id="to_s-source">
             <pre><span class="ruby-comment"># File src/Aide/Techniques/Technique.rb, line 32</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
-    <span class="ruby-string">&quot;Techique : &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">nom</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; peut être appliqué&quot;</span>
+    <span class="ruby-string">&quot;Techique : &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@nom</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; peut être appliqué&quot;</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -233,7 +233,7 @@
           <div class="method-source-code" id="to_s_desc-source">
             <pre><span class="ruby-comment"># File src/Aide/Techniques/Technique.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s_desc</span>
-    <span class="ruby-identifier">nom</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">desc</span>
+    <span class="ruby-ivar">@nom</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@desc</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           

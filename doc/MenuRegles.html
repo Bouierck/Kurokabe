@@ -156,64 +156,45 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File src/Menus/MenuRegles.rb, line 9</span>
+            <pre><span class="ruby-comment"># File src/Menus/MenuRegles.rb, line 15</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">app</span>)
     <span class="ruby-keyword">super</span>(<span class="ruby-value">:vertical</span>, <span class="ruby-value">10</span>)
 
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">halign</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Align</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>
+    
 
     <span class="ruby-identifier">lbl</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">label</span><span class="ruby-operator">|</span>
-        <span class="ruby-identifier">label</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;REGLES&quot;</span>)
+        <span class="ruby-identifier">label</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-constant">Langue</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;menuRegles&quot;</span>))
+    <span class="ruby-identifier">label</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;titre1&quot;</span>)
+    <span class="ruby-identifier">label</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-bigleft&quot;</span>)
     <span class="ruby-identifier">label</span>.<span class="ruby-identifier">show</span> 
     }
 
-    <span class="ruby-identifier">btnRegles</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span> 
-            <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">add</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">label</span><span class="ruby-operator">|</span>
-                <span class="ruby-identifier">label</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;Techniques&quot;</span>)
-                <span class="ruby-identifier">label</span>.<span class="ruby-identifier">show</span>  })
-            <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { <span class="ruby-identifier">app</span>.<span class="ruby-identifier">techniquemenus</span> }
-        <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">show</span>         }
+    <span class="ruby-identifier">btnRegles</span> = <span class="ruby-constant">BoutonMenu</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-constant">Langue</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;voirtech&quot;</span>), <span class="ruby-value">10</span>, <span class="ruby-value">10</span>, <span class="ruby-constant">MenuTechnique</span>.<span class="ruby-identifier">method</span>(<span class="ruby-value">:new</span>), <span class="ruby-identifier">app</span>)
+    <span class="ruby-identifier">btnRegles</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;bouton&quot;</span>)
+    <span class="ruby-identifier">btnRegles</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-left2&quot;</span>)
+    <span class="ruby-identifier">btnRegles</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-right2&quot;</span>)
+    <span class="ruby-identifier">btnRegles</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-top&quot;</span>)
+    <span class="ruby-identifier">btnRegles</span>.<span class="ruby-identifier">show</span>
 
 
-
-    <span class="ruby-identifier">topbox</span>=<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>).<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">boite</span><span class="ruby-operator">|</span>
-        <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">btnRegles</span>)
+    <span class="ruby-identifier">topbox</span>=<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>).<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">boite</span><span class="ruby-operator">|</span>
         <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">lbl</span>)
+        <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">btnRegles</span>)
         <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">show</span>
     }
+
+    <span class="ruby-identifier">topbox</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-bot&quot;</span>)
+    <span class="ruby-identifier">topbox</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-top&quot;</span>)
 
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">topbox</span>)
     
     <span class="ruby-identifier">textLbl</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">label</span><span class="ruby-operator">|</span>
-        <span class="ruby-identifier">label</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;Nurikabe est un casse-tête de formation d&#39;îles. Contrairement à d&#39;autres puzzles de logique, les Nurikabe sont résolus en cloisonnant 
-        les indices avec des murs selon les règles de sorte que toutes les îles soient isolées et qu&#39;il y ait un chemin continu vers tous les murs.
-
-        Les énigmes de Nurikabe existent en plusieurs tailles et vont de très faciles à extrêmement difficiles, prenant de cinq minutes à plusieurs heures à résoudre. 
-        Cependant, faites une seule erreur et vous vous retrouverez bloqué plus tard alors que vous vous rapprochez de la solution...
-
-
-                Le principe est simple :
-    
-        Vous disposez d&#39;une grille comme celle ci-dessous
-        Le but est de noircir certaines cases, et de garder les autres blanches
-        Vous devez respecter les règles suivantes :
-            Règle 1 : Chaque groupe de cases blanches adjacentes (ayant un côté en commun) doit contenir un et un seul nombre
-            Règle 2 : Le nombre de cases formant un ilot doit être égale au nombre inscrit dans l&#39;ilot
-            Règle 3 : Toutes les cases noires doivent être connectées entre elles
-            Règle 4 : Il ne peut pas y avoir de cases noires qui fassent intégralement le tour d&#39;un ilot
-            Règle 5 : Il ne peut y avoir un carré de 4 cases de couleur noire
-    
-        Il existe des variantes dans les règles qui interdisent les carrés de 4 cases de couleur blanche, 
-        ou qui autorise les boucles sur les cases noires... 
-        J&#39;applique ici les vrais règles &#39;officielles&#39;, c&#39;est à dire les 5 règles précisées au-dessus. 
-        Si vous jouez au Nurikabe ailleurs, vérifiez donc les règles auparavant, sinon les grilles peuvent être impossibles.
-    
-        Le Nurikabe est donc un mélange entre le Mosaiku et le Fillomino.
-                &quot;</span>)
+        <span class="ruby-identifier">label</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-constant">Langue</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;regles&quot;</span>))
+        <span class="ruby-identifier">label</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;texte&quot;</span>)
     <span class="ruby-identifier">label</span>.<span class="ruby-identifier">show</span> 
     }
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">textLbl</span>)
-
-
         
 
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">show</span>
@@ -221,9 +202,8 @@
     <span class="ruby-ivar">@titlebar</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">HeaderBar</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">barre</span><span class="ruby-operator">|</span>
             <span class="ruby-identifier">barre</span>.<span class="ruby-identifier">title</span> = <span class="ruby-string">&quot;Nurikabe&quot;</span>
             <span class="ruby-identifier">barre</span>.<span class="ruby-identifier">show_close_button</span> = <span class="ruby-keyword">true</span>
-            <span class="ruby-identifier">barre</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-constant">BoutonRetour</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">barre</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-constant">BoutonRetour</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-constant">MenuPrincipal</span>.<span class="ruby-identifier">method</span>(<span class="ruby-value">:new</span>), <span class="ruby-identifier">app</span>).<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">bouton</span><span class="ruby-operator">|</span>
                 <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">sensitive</span> = <span class="ruby-keyword">true</span>
-                <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>) { <span class="ruby-identifier">app</span>.<span class="ruby-identifier">accueil</span> }
             })
             <span class="ruby-identifier">barre</span>.<span class="ruby-identifier">show</span>
         }

@@ -58,7 +58,7 @@ require_relative '../Niveau/Niveau.rb'
 
             @btnClassique.tap{|bouton| 
                 bouton.add(Gtk::Label.new.tap{ |label|
-                    label.set_markup("CLASSIQUE")
+                    label.set_markup(Langue.text("lvlClassique"))
                     label.show	})
                 bouton.signal_connect("clicked") { 
                     updateButton(1)
@@ -69,7 +69,7 @@ require_relative '../Niveau/Niveau.rb'
 
             @btnAventure.tap{|bouton| 
                 bouton.add(Gtk::Label.new.tap{ |label|
-                    label.set_markup("AVENTURE")
+                    label.set_markup(Langue.text("lvlAventure"))
                     label.show	})
                 bouton.signal_connect("clicked") { 
                     updateButton(2)
@@ -83,7 +83,7 @@ require_relative '../Niveau/Niveau.rb'
 
             @btnClasse.tap{|bouton| 
                 bouton.add(Gtk::Label.new.tap{ |label|
-                    label.set_markup("CLASSÉ")
+                    label.set_markup(Langue.text("lvlClasse"))
                     label.show	})
                 bouton.signal_connect("clicked") { 
                     updateButton(3)
@@ -110,9 +110,7 @@ require_relative '../Niveau/Niveau.rb'
             barre.title = "Nurikabe"
             barre.subtitle = "Grilles "
             barre.show_close_button = true
-            barre.pack_start(BoutonRetour.new.tap { |bouton|
-                bouton.signal_connect("clicked") { app.accueil }
-            })
+            barre.pack_start(BoutonRetour.creer(MenuPrincipal.method(:new), app))
             barre.show
         }
 
@@ -127,17 +125,17 @@ require_relative '../Niveau/Niveau.rb'
         # ----------------    #Label Header des boites main ------------------------
 
         facileLabel = Gtk::Label.new.tap{ |label|
-            label.set_markup("FACILE")
+            label.set_markup(Langue.text("difficulteFacile"))
             label.style_context.add_class("difficulte")
             label.show 
         }
         moyenLabel = Gtk::Label.new.tap{ |label|
-            label.set_markup("MOYEN")
+            label.set_markup(Langue.text("difficulteMoyen"))
             label.style_context.add_class("difficulte")
             label.show 
         }
         difficileLabel = Gtk::Label.new.tap{ |label|
-            label.set_markup("DIFFICILE")
+            label.set_markup(Langue.text("difficulteDifficile"))
             label.style_context.add_class("difficulte")
             label.show 
         }
