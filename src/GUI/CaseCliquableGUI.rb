@@ -27,17 +27,33 @@ class CaseCliquableGUI < CaseGUI
     # * -c- case représentée par le gui
     # * -grille- grille du niveau
     #
-    def CaseCliquableGUI.creer(c, grille)
-        new(c, grille)
+    def CaseCliquableGUI.creer(c, grille, nb)
+        new(c, grille, nb)
     end
 
     private_class_method :new
 
-    def initialize(c, grille)
+    def initialize(c, grille, nb)
 
         super(c)
 
         @grille = grille
+        @nbCase = nb
+
+        case @nbCase
+        when 25
+            self.width_request = 85
+            self.height_request = 85
+        when 49
+            self.width_request = 75
+            self.height_request = 75
+        when 100
+            self.width_request = 65
+            self.height_request = 65
+        when 225
+            self.width_request = 45
+            self.height_request = 45
+    end
 
         self.style_context.add_class("case-clic")
         self.signal_connect('clicked') { updateCase }
