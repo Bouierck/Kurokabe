@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class WallExp - RDoc Documentation</title>
+<title>class Wallexp - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
@@ -75,11 +75,7 @@
 
   <ul class="link-list" role="directory">
     
-    <li ><a href="#method-c-new">::new</a>
-    
     <li class="calls-super" ><a href="#method-c-new">::new</a>
-    
-    <li ><a href="#method-i-isInGrid">#isInGrid</a>
     
     <li ><a href="#method-i-verifieTech">#verifieTech</a>
     
@@ -89,9 +85,9 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-WallExp">
-  <h1 id="class-WallExp" class="class">
-    class WallExp
+<main role="main" aria-labelledby="class-Wallexp">
+  <h1 id="class-Wallexp" class="class">
+    class Wallexp
   </h1>
 
   <section class="description">
@@ -119,42 +115,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(nom, desc)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File src/Aide/Techniques/Technique.rb, line 12</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">nom</span>, <span class="ruby-identifier">desc</span>)
-    <span class="ruby-ivar">@casesChange</span> = []
-    <span class="ruby-ivar">@nom</span> = <span class="ruby-identifier">nom</span>
-    <span class="ruby-ivar">@desc</span> = <span class="ruby-identifier">desc</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-      <div id="method-c-new" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">new</span><span
-            class="method-args">()</span>
+            class="method-args">(grille)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -174,10 +135,11 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File src/Aide/Techniques/WallExp.rb, line 8</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>
+            <pre><span class="ruby-comment"># File src/Aide/Techniques/WallExp.rb, line 10</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">grille</span>)
     
-    <span class="ruby-keyword">super</span>(<span class="ruby-string">&quot;Expansion de mur&quot;</span>, <span class="ruby-string">&quot;&quot;</span>)
+    <span class="ruby-keyword">super</span>(<span class="ruby-identifier">grille</span>)
+    <span class="ruby-ivar">@nom</span> = <span class="ruby-string">&quot;Expansion de mur&quot;</span>;
 
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -198,44 +160,11 @@
        </header>
 
     
-      <div id="method-i-isInGrid" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">isInGrid</span><span
-            class="method-args">(matrice, x, y)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="isInGrid-source">
-            <pre><span class="ruby-comment"># File src/Aide/Techniques/WallExp.rb, line 96</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">isInGrid</span>(<span class="ruby-identifier">matrice</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
-    <span class="ruby-keyword">return</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">matrice</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">y</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">y</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">matrice</span>.<span class="ruby-identifier">length</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
       <div id="method-i-verifieTech" class="method-detail ">
         
         <div class="method-heading">
           <span class="method-name">verifieTech</span><span
-            class="method-args">(grille)</span>
+            class="method-args">()</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -250,88 +179,41 @@
 
           
           <div class="method-source-code" id="verifieTech-source">
-            <pre><span class="ruby-comment"># File src/Aide/Techniques/WallExp.rb, line 14</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">verifieTech</span>(<span class="ruby-identifier">grille</span>)
+            <pre><span class="ruby-comment"># File src/Aide/Techniques/WallExp.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">verifieTech</span>
 
-    <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+    <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">matrice</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
         <span class="ruby-identifier">line</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
 
-            <span class="ruby-ivar">@casesChange</span> = []
-            
+            <span class="ruby-identifier">reliee</span> = <span class="ruby-keyword">false</span>
+            <span class="ruby-identifier">countPossible</span> = <span class="ruby-value">0</span>
+            <span class="ruby-ivar">@casesChange</span> = [] 
+
             <span class="ruby-keyword">if</span>(<span class="ruby-identifier">c</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseCliquable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span>)
-                
-                <span class="ruby-identifier">ca</span> = <span class="ruby-identifier">c</span>
 
-                <span class="ruby-keyword">while</span>(<span class="ruby-identifier">ca</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
-                
-                    <span class="ruby-identifier">reliee</span> = <span class="ruby-keyword">false</span>
-                    <span class="ruby-identifier">countPossible</span> = <span class="ruby-value">0</span>
+                <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">c</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">c</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseCliquable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">c</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">c</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-value">2</span>) <span class="ruby-identifier">reliee</span> = <span class="ruby-keyword">true</span>
+                <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">c</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">c</span>.<span class="ruby-identifier">x</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseCliquable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">c</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">c</span>.<span class="ruby-identifier">x</span>] <span class="ruby-operator">==</span> <span class="ruby-value">2</span>) <span class="ruby-identifier">reliee</span> = <span class="ruby-keyword">true</span>
+                <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">c</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">c</span>.<span class="ruby-identifier">x</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseCliquable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">c</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">c</span>.<span class="ruby-identifier">x</span>] <span class="ruby-operator">==</span> <span class="ruby-value">2</span>) <span class="ruby-identifier">reliee</span> = <span class="ruby-keyword">true</span>
+                <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">c</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">c</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseCliquable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">c</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">c</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-value">2</span>) <span class="ruby-identifier">reliee</span> = <span class="ruby-keyword">true</span>
 
-
-                    <span class="ruby-comment">#On check si la case noir est toute seul</span>
-                    <span class="ruby-identifier">reliee</span> = <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span>(<span class="ruby-identifier">isInGrid</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>, <span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@casesChange</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>]) <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseCliquable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>].<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span>)
-
-                    <span class="ruby-identifier">reliee</span> = <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span>(<span class="ruby-identifier">isInGrid</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>, <span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span>, <span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@casesChange</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span>]) <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseCliquable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span>].<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span>)
-
-                    <span class="ruby-identifier">reliee</span> = <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span>(<span class="ruby-identifier">isInGrid</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>, <span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span>, <span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@casesChange</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span>]) <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseCliquable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span>].<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span>)
-
-                    <span class="ruby-identifier">reliee</span> = <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span>(<span class="ruby-identifier">isInGrid</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>, <span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@casesChange</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>]) <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseCliquable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>].<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span>)
-
-                    <span class="ruby-comment">#Si elle est toute seul on regarde si elle n&#39;a qu&#39;ene seul possibilité de sortie</span>
-                    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">reliee</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>)
-                        
-                        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">isInGrid</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>, <span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@casesChange</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>]) <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseCliquable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>].<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
-                        
-                            <span class="ruby-identifier">countPossible</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
-                            <span class="ruby-identifier">cs</span> = <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>]
-
-                        <span class="ruby-keyword">end</span>
-
-                        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">isInGrid</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>, <span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span>, <span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@casesChange</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span>]) <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseCliquable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span>].<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
-
-                            <span class="ruby-identifier">countPossible</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
-                            <span class="ruby-identifier">cs</span> = <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span>]
-
-                        <span class="ruby-keyword">end</span>
-
-                        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">isInGrid</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>, <span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span>, <span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@casesChange</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span>]) <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseCliquable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span>].<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
-
-                            <span class="ruby-identifier">countPossible</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
-                            <span class="ruby-identifier">cs</span> = <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span>]
-
-                        <span class="ruby-keyword">end</span>
-
-                        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">isInGrid</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>, <span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@casesChange</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>]) <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseCliquable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>].<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
-
-                            <span class="ruby-identifier">countPossible</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
-                            <span class="ruby-identifier">cs</span> = <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">ca</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>]
-
-                        <span class="ruby-keyword">end</span>
-
-                    <span class="ruby-keyword">end</span>
-
-                    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">countPossible</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>)
-                        <span class="ruby-identifier">ca</span> = <span class="ruby-identifier">cs</span>
-                        <span class="ruby-ivar">@casesChange</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">ca</span>
-                    <span class="ruby-keyword">else</span>
-                        <span class="ruby-identifier">ca</span> = <span class="ruby-keyword">nil</span>
-                    <span class="ruby-keyword">end</span>
-
-                    <span class="ruby-identifier">puts</span>(<span class="ruby-identifier">ca</span>)
+                <span class="ruby-keyword">if</span>(<span class="ruby-identifier">reliee</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>)
+                    
+                    <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">c</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">c</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseCliquable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">c</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">c</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-value">0</span>) <span class="ruby-identifier">countPossible</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                    <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">c</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">c</span>.<span class="ruby-identifier">x</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseCliquable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">c</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">c</span>.<span class="ruby-identifier">x</span>] <span class="ruby-operator">==</span> <span class="ruby-value">0</span>) <span class="ruby-identifier">countPossible</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                    <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">c</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">c</span>.<span class="ruby-identifier">x</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseCliquable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">c</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">c</span>.<span class="ruby-identifier">x</span>] <span class="ruby-operator">==</span> <span class="ruby-value">0</span>) <span class="ruby-identifier">countPossible</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                    <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">c</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">c</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseCliquable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">matrice</span>[<span class="ruby-identifier">c</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">c</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-value">0</span>) <span class="ruby-identifier">countPossible</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
 
                 <span class="ruby-keyword">end</span>
 
             <span class="ruby-keyword">end</span>
 
-            <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@casesChange</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>
-
         <span class="ruby-keyword">end</span>
-
     <span class="ruby-keyword">end</span>
 
-    <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
-    
-<span class="ruby-keyword">end</span></pre>
+            <span class="ruby-keyword">end</span>
+
+        <span class="ruby-keyword">end</span>
+    </pre>
           </div>
           
         </div>
