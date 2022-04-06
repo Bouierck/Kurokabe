@@ -56,17 +56,13 @@ class Resolveur
                     @nbAppel = (@nbAppel + 1) % 3
                     return rep
 
-                else
-
-                    return {:response => ReponseType::TEXT, :text => "Aucune technique n'a été trouvé"}
-
                 end
 
             }
 
         end
 
-        return {:response => ReponseType::TEXT, :text => "Erreur dans la grille"}
+        return {:response => ReponseType::TEXT, :text => "Aucune technique n'a été trouvé ou erreur dans la grille"}
 
     end
 
