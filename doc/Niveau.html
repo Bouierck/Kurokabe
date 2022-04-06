@@ -253,7 +253,7 @@
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File src/Niveau/Niveau.rb, line 32</span>
+            <pre><span class="ruby-comment"># File src/Niveau/Niveau.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Niveau</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">utilisateur</span>, <span class="ruby-identifier">mode</span>)
     <span class="ruby-identifier">new</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">utilisateur</span>, <span class="ruby-identifier">mode</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -286,7 +286,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File src/Niveau/Niveau.rb, line 36</span>
+            <pre><span class="ruby-comment"># File src/Niveau/Niveau.rb, line 37</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">utilisateur</span>, <span class="ruby-identifier">mode</span>)
     
     <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">id</span>
@@ -386,7 +386,7 @@
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File src/Niveau/Niveau.rb, line 104</span>
+            <pre><span class="ruby-comment"># File src/Niveau/Niveau.rb, line 108</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
     <span class="ruby-string">&quot;grille: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; chrono: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">to_s</span>
 <span class="ruby-keyword">end</span></pre>
@@ -413,13 +413,13 @@
 
         <div class="method-description">
           
-          
+          <p>Arrete le chrono du niveau si il est fini <a href="Sauvegarde.html"><code>Sauvegarde</code></a> le niveau dans le fichier correspondant</p>
           
           
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File src/Niveau/Niveau.rb, line 99</span>
+            <pre><span class="ruby-comment"># File src/Niveau/Niveau.rb, line 103</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>
     <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">on</span>(<span class="ruby-keyword">false</span>) <span class="ruby-keyword">if</span> <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">estFini?</span>
     <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier">sauvNiveau</span>(<span class="ruby-ivar">@utilisateur</span>.<span class="ruby-identifier">nom</span>, <span class="ruby-keyword">self</span>, <span class="ruby-ivar">@utilisateur</span>.<span class="ruby-identifier">nbEtoiles</span>)

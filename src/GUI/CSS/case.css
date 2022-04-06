@@ -4,11 +4,15 @@
     color: black;
     border-radius: 0;
     text-decoration: none;
+    border-color: black;
+    font-size: 24px;
+    font-weight: bold;
+    border-width: 1px;
 
 }
 
 .case-clic:hover {
-    background-color: rgb(162, 218, 255);
+    background-color: #999999;;
 }
 
 .case-vide{
@@ -24,7 +28,7 @@
 }
 
 .case-mur:hover{
-    background-color: rgb(7, 40, 61)
+    background-color: #292929;
 }
 
 .indice{
@@ -33,4 +37,10 @@
 
 .erreur{
     background-color: rgb(253, 173, 173);
+}
+
+.grille{
+    border-width: 10px;
+    border-color: black;
+    background: black;
 }

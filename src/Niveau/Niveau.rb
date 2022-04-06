@@ -1,6 +1,7 @@
 require_relative '../Aide/Resolveur.rb'
 
 require_relative "../Modules/dpObservateur/Observable.rb"
+require_relative "../Donnees/Sauvegarde.rb"
 
 require_relative './Grille.rb'
 require_relative './Chronometre.rb'
@@ -101,6 +102,7 @@ class Niveau
     # Sauvegarde le niveau dans le fichier correspondant
     def update
         @chrono.on(false) if @grille.estFini?
+        @chrono.grilleFini = true if @grille.estFini?
         Sauvegarde.sauvNiveau(@utilisateur.nom, self, @utilisateur.nbEtoiles)
     end
 

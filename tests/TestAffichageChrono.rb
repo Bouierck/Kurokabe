@@ -1,3 +1,6 @@
+require_relative '../src/Niveau/Niveau.rb'
+require_relative '../src/GUI/NiveauGUI.rb'
+
 require 'gtk3'
 
 window = Gtk::Window.new
@@ -5,12 +8,17 @@ window.signal_connect('destroy') {
    Gtk.main_quit
 }
 
-entry = Gtk::Entry.new
-entry.signal_connect('key_press_event') {|w, e|
-    puts(e.keyval)
+boutonQuitter = Gtk::Button.new("test")
+boutonQuitter.show
+
+pop = Gtk::Popover.new
+
+window.signal_connect('key_press_event') {|w, e|
+    pop.popup
 }
 
-entry.show
-window.add(entry)
+pop.set_relative_to(boutonQuitter)
+window.add(boutonQuitter)
+
 window.show
 Gtk.main

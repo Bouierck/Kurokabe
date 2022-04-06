@@ -1,6 +1,7 @@
 require_relative '../Niveau/Niveau.rb'
 
-require_relative '../Menus/Menu.rb'
+require_relative '../Menus/MenuNiveaux.rb'
+
 require_relative '../Boutons/BoutonSpecial.rb'
 require_relative '../Boutons/BoutonPause.rb'
 require_relative '../Boutons/BoutonNiveau.rb'
@@ -21,6 +22,8 @@ class NiveauGUI < Gtk::Box
     ##
     # @niveau => niveau représenté par ce GUI
 
+    attr_reader :titlebar
+
     ##
     # Constructeur du niveau
     #
@@ -40,6 +43,7 @@ class NiveauGUI < Gtk::Box
         @niveau = niveau
         @grilleGUI = GrilleGUI.creer(@niveau.grille)
         @app = app;
+        @pause = false
         initGUI
 
     end
@@ -49,50 +53,171 @@ class NiveauGUI < Gtk::Box
     #
     def initGUI
 
+        #Centre les éléments
+        self.valign = Gtk::Align::CENTER
+        self.halign = Gtk::Align::CENTER	
+
+		@app.fenetre.resize(900,700)
+        
+        #title bar et bouton retour
+        @titlebar = Gtk::HeaderBar.new
+        @titlebar.title = "Nurikabe"
+        @titlebar.show_close_button = true
+        @titlebar.pack_start(BoutonRetour.creer(MenuNiveaux.method(:new), @app).tap {|b|
+            b.sensitive = true
+            b.show
+        })
+        @titlebar.show
+
         #Box du menu
-        boxMenu = Gtk::Box.new(:vertical,6)
+        @boxMenu = Gtk::Box.new(:vertical,6)
 
         #label du niveau
-        niveauLabel = Gtk::Label.new("Niveau #{@idNiveau}")
-        chronoLabel = ChronoGUI.creer(@niveau.chrono)
+        niveauLabel = Gtk::Label.new(Langue.text("ingameNiveau") + " " + @niveau.id.to_s)
+        niveauLabel.style_context.add_class("titre")
+
+        @chronoLabel = ChronoGUI.creer(@niveau.chrono)
+        @chronoLabel.style_context.add_class("chrono")
 
         #Ajout des boutons du menu
 
-        boutonMenu = BoutonMenu.creer("Menu", 2, 10, MenuNiveaux.method(:new), @app)
-        #boutonPause = BoutonPause.creer("Pause", 2, 10, Menu.new, @niveau)
-        boutonQuitter = BoutonSpecial.creer("quitter", 2, 20, self.method(:QuitterFenetre))
+        @boutonMenu = BoutonMenu.creer("Menu", 2, 10, MenuNiveaux.method(:new), @app)
+        @boutonMenu.style_context.add_class("bouton")
 
+        @boutonPause = BoutonPause.creer("Pause", 2, 10, self)
+        @boutonPause.style_context.add_class("bouton-pause")
+
+        @boutonQuitter = BoutonSpecial.creer(Langue.text("quitter"), 2, 20, self.method(:QuitterFenetre))
+        @boutonQuitter.style_context.add_class("bouton-quitter")
+        
         #bouton fonction
         boxFonction = Gtk::Box.new(:horizontal,5)
 
-        boutonArriere= BoutonSpecial.creer("↶", 1, 1, self.method(:clickRetourArriere))
-        boutonAvant = BoutonSpecial.creer("↷", 2, 2, self.method(:clickRetourAvant))
-        boutonReinitialiser = BoutonSpecial.creer("↻", 2, 2, self.method(:clickReinitialiserGrille))
-        boutonCheck = BoutonSpecial.creer("👁️", 2, 2, self.method(:check))
-        boutonIndice = BoutonSpecial.creer("💡", 2, 2, self.method(:appelResoudreGrille))
-        
-        boxFonction.add(boutonArriere)
-        boxFonction.add(boutonAvant)
-        boxFonction.add(boutonReinitialiser)
-        boxFonction.add(boutonCheck)
-        boxFonction.add(boutonIndice)
+        @boutonArriere= BoutonSpecial.creer("↶", 1, 1, self.method(:clickRetourArriere))
+        @boutonArriere.style_context.add_class("bouton")
 
-        boxMenu.add(niveauLabel)
-        boxMenu.add(chronoLabel)
-        boxMenu.add(boutonMenu)
-        #boxMenu.add(boutonPause)
-        boxMenu.add(boxFonction)
-        boxMenu.add(boutonQuitter)
+        @boutonAvant = BoutonSpecial.creer("↷", 2, 2, self.method(:clickRetourAvant))
+        @boutonAvant.style_context.add_class("bouton")
+
+        @boutonReinitialiser = BoutonSpecial.creer("↻", 2, 2, self.method(:clickReinitialiserGrille))
+        @boutonReinitialiser.style_context.add_class("bouton")
+
+        @boutonCheck = BoutonSpecial.creer("👁️", 2, 2, self.method(:check))
+        @boutonCheck.style_context.add_class("bouton")
+
+        @boutonIndice = BoutonSpecial.creer("💡", 2, 2, self.method(:appelResoudreGrille))
+        @boutonIndice.style_context.add_class("bouton")
+        
+        boxFonction.add(@boutonArriere)
+        boxFonction.add(@boutonAvant)
+        boxFonction.add(@boutonReinitialiser)
+        boxFonction.add(@boutonCheck)
+        boxFonction.add(@boutonIndice)
+
+        @boxMenu.add(niveauLabel)
+        @boxMenu.add(@chronoLabel)
+        @boxMenu.add(@boutonMenu)
+        @boxMenu.add(@boutonPause)
+        @boxMenu.add(boxFonction)
+        @boxMenu.add(@boutonQuitter)
+        @boxMenu.style_context.add_class("margin-left2")
+
+
+
+
 
         #Ajout des deux composant de la box du niveau
-        # self.set_homogeneous(true)        
-        self.add(@grilleGUI)
-        self.add(boxMenu)
+        #@grilleGUI.style_context.add_class("grille") 
 
-        chronoLabel.lancer if @niveau.grille.estFini? == false
+        @grilleGUI.style_context.add_class("margin-left2")
+        @grilleGUI.valign = Gtk::Align::CENTER
+        self.add(@grilleGUI)
+
+        @boxMenu.style_context.add_class("margin-right2")
+        @boxMenu.valign = Gtk::Align::CENTER
+        self.add(@boxMenu)
+
+
+        @chronoLabel.lancer if @niveau.grille.estFini? == false
+
 
         self.show_all
 
+
+
+
+
+        #Box représentant la pause
+
+
+        @boxPause = Gtk::Box.new(:vertical,5)
+
+        @boxPause.valign = Gtk::Align::CENTER
+        @boxPause.halign = Gtk::Align::CENTER
+            
+        lbl = Gtk::Label.new.tap{ |label|
+            label.set_markup("PAUSE")
+            label.style_context.add_class("pause")
+            label.style_context.add_class("titre")
+            label.show 
+        }
+
+        niveauLabelPause = Gtk::Label.new.tap{ |label|
+            label.set_markup("Niveau #{@niveau.id}")
+            label.style_context.add_class("titre")
+            label.style_context.add_class("margin-bot")
+            label.style_context.add_class("pause")
+            label.show 
+        }
+
+        boutonReprendre = BoutonPause.creer("Reprendre", 2, 10, self)
+        boutonReprendre.style_context.add_class("bouton")
+
+        boutonMenuPause = BoutonMenu.creer("Menu", 2, 10, MenuNiveaux.method(:new), @app)
+        boutonMenuPause.style_context.add_class("bouton")
+
+        boutonQuitterPause = BoutonSpecial.creer("Quitter", 2, 20, self.method(:QuitterFenetre))
+        boutonQuitterPause.style_context.add_class("bouton")
+
+        @boxPause.add(niveauLabelPause)
+        @boxPause.add(lbl)
+        @boxPause.add(boutonReprendre)
+        @boxPause.add(boutonMenuPause)
+        @boxPause.add(boutonQuitterPause)
+
+
+
+
+
+    end
+
+    def modePause()
+        if(@pause == false)
+            @pause = true
+            @chronoLabel.stop
+
+            self.remove(@grilleGUI)
+            self.remove(@boxMenu)
+
+            # box = Gtk::Box.new(:vertical,2)
+
+            # box.add(Gtk::Label.new(@niveau.chrono.to_s))
+            # box.add(@boxPause)
+
+            self.add(@boxPause)
+
+            self.show_all
+        else
+            @pause = false
+            @chronoLabel.lancer if @niveau.grille.estFini? == false
+
+            self.remove(@boxPause)
+
+            self.add(@grilleGUI)
+            self.add(@boxMenu)
+
+            self.show_all
+        end
     end
 
     private
@@ -148,11 +273,26 @@ class NiveauGUI < Gtk::Box
     #
     def appelResoudreGrille
         if @niveau.grille.estFini? == false
+
             indice = @niveau.resolveur.resoudreGrille(@grilleGUI.grille)
-            indice.each{ |c|
-                @grilleGUI.matriceGUI[c.y][c.x].style_context.add_class("indice")
-            }
+            popup(@grilleGUI, indice[:text])
+
+            if(indice[:response] == ReponseType::ARRAY)
+                indice[:cases].each{ |c|
+                    @grilleGUI.matriceGUI[c.y][c.x].style_context.add_class("indice")
+                }
+            end
+
         end
+    end
+
+    def popup(relative, msg)
+
+        pop = Gtk::Popover.new()
+        pop.set_relative_to(relative)
+        pop.add(Gtk::Label.new(msg).show)
+        pop.popup
+
     end
 
     ##

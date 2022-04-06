@@ -16,6 +16,7 @@ class Fenetre < Gtk::Window
     # [+app+]   Application (Nurikabe)
     def initialize(app)
         super()
+        self.style_context.add_class("bg")
         self.default_width = 300
         self.default_height = 500
         self.icon_name = "applications-games"
