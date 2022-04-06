@@ -84,7 +84,7 @@ class ClassementNiveau < Gtk::Box
     }
         classmLabel.set_markup(@totals)
         classmLabel.style_context.add_class("margin-top")
-        classmLabel.style_context.add_class("titre2")
+        classmLabel.style_context.add_class("titre3")
         
 
         self.show

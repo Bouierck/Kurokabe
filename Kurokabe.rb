@@ -51,14 +51,16 @@ class Kurokabe < Gtk::Application
         Gdk::Screen.default.add_style_provider(@provider, 10000000)
         Gdk::Screen.default.add_style_provider(@provider2, 10000100)
         Gdk::Screen.default.add_style_provider(@provider3, 10000200)
-
+        
         @user = nil
-
+        
         self.signal_connect("activate") do
             @fenetre = Fenetre.new(self)
             self.accueil
             selecteur = MenuConnexion.new(@fenetre, self)
             self.add_window(@fenetre)
+            #@fenetre.set_position(1000,1000) 
+            #GTK_WIN_POS_CENTER_ALWAYS
         end
     end
  
