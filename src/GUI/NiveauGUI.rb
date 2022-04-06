@@ -155,8 +155,7 @@ class NiveauGUI < Gtk::Box
             self.show_all
         else
             @pause = false
-            @niveau.chrono.on(true)
-            @chronoLabel.lancer
+            @chronoLabel.lancer if @niveau.grille.estFini? == false
 
             self.remove(@boxPause)
 
