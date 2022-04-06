@@ -102,6 +102,7 @@ class Niveau
     # Sauvegarde le niveau dans le fichier correspondant
     def update
         @chrono.on(false) if @grille.estFini?
+        @chrono.grilleFini = true if @grille.estFini?
         Sauvegarde.sauvNiveau(@utilisateur.nom, self, @utilisateur.nbEtoiles)
     end
 

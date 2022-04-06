@@ -138,11 +138,8 @@ class NiveauGUI < Gtk::Box
         self.add(@boxMenu)
 
 
-
-
-
-
         @chronoLabel.lancer if @niveau.grille.estFini? == false
+
 
         self.show_all
 
