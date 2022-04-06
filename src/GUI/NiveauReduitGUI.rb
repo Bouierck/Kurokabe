@@ -32,9 +32,9 @@ class NiveauReduitGUI < Gtk::Box
     # def NiveauReduitGUI.creer(app, niveau)
     #     new(app, niveau)
     # end
-    def NiveauReduitGUI.creer(app,niveau){
-      new(app,niveau)
-    }
+    def NiveauReduitGUI.creer(app,niveau)
+        new(app,niveau)
+    end
 
     def initialize(app, niveau)
 
@@ -54,16 +54,11 @@ class NiveauReduitGUI < Gtk::Box
 
 
         #Box du menu en haut
-        boxMenu = Gtk::Box.new(:horizontal,3)
+        boxMenu = Gtk::Box.new(:horizontal,2)
 
         #label du niveau
         niveauLabel = Gtk::Label.new("Niveau #{@idNiveau}")
-
-        #Ajout des boutons du menu
-
-        boutonMenu = BoutonMenu.creer("Menu", 2, 10, MenuNiveaux.method(:new), @app)
-        #boutonPause = BoutonPause.creer("Pause", 2, 10, Menu.new, @niveau)
-        boutonQuitter = BoutonSpecial.creer("quitter", 2, 20, self.method(:QuitterFenetre))
+        chronoLabel = ChronoGUI.creer(@niveau.chrono)
 
         #bouton fonction
         boxFonction = Gtk::Box.new(:horizontal,5)
@@ -80,7 +75,6 @@ class NiveauReduitGUI < Gtk::Box
         boxFonction.add(boutonCheck)
         boxFonction.add(boutonIndice)
 
-        boxMenu.add(boutonMenu)
         boxMenu.add(chronoLabel)
         boxMenu.add(niveauLabel)
 

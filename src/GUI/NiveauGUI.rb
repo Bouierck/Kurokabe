@@ -8,6 +8,7 @@ require_relative '../Boutons/BoutonMenu.rb'
 
 require_relative './GrilleGUI.rb'
 require_relative './ChronoGUI.rb'
+require_relative './NiveauReduitGUI.rb'
 
 require 'gtk3'
 
@@ -51,8 +52,10 @@ class NiveauGUI < Gtk::Box
     def initGUI
 
       @app.fenetre.signal_connect('size_allocate'){|w,e|
-        if(e.width < 578)
-          NiveauReduitGUI.creer(app,niveau)
+        puts(e.width,e.height)
+        if(e.width < 580)
+            NiveauReduitGUI.creer(@app,@niveau)
+            NiveauReduitGUI.init
         end
       }
 
@@ -66,7 +69,7 @@ class NiveauGUI < Gtk::Box
 
         #Ajout des boutons du menu
 
-        boutonMenu = BoutonMenu.crNiveauGUIeer("Menu", 2, 10, MenuNiveaux.method(:new), @app)
+        boutonMenu = BoutonMenu.creer("Menu", 2, 10, MenuNiveaux.method(:new), @app)
         #boutonPause = BoutonPause.creer("Pause", 2, 10, Menu.new, @niveau)
         boutonQuitter = BoutonSpecial.creer("quitter", 2, 20, self.method(:QuitterFenetre))
 
