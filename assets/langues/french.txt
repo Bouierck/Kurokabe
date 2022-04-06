@@ -6,8 +6,8 @@ difficulteFacile: FACILE
 difficulteMoyen: MOYEN
 difficulteDifficile: DIFFICILE
 ingameNiveau: Niveau
-ingameMenu: Menu
-ingameQuitter: Quitter
+ingameMenu: MENU
+ingameQuitter: QUITTER
 classement: CLASSEMENT
 menuRegles: REGLES
 menuTechniques: TECHNIQUES

@@ -61,7 +61,7 @@ class NiveauGUI < Gtk::Box
         
         #title bar et bouton retour
         @titlebar = Gtk::HeaderBar.new
-        @titlebar.title = "Nurikabe"
+        @titlebar.title = "Kurokabe"
         @titlebar.show_close_button = true
         @titlebar.pack_start(BoutonRetour.creer(MenuNiveaux.method(:new), @app).tap {|b|
             b.sensitive = true
@@ -81,10 +81,10 @@ class NiveauGUI < Gtk::Box
 
         #Ajout des boutons du menu
 
-        @boutonMenu = BoutonMenu.creer("Menu", 2, 10, MenuNiveaux.method(:new), @app)
+        @boutonMenu = BoutonMenu.creer("MENU", 2, 10, MenuNiveaux.method(:new), @app)
         @boutonMenu.style_context.add_class("bouton")
 
-        @boutonPause = BoutonPause.creer("Pause", 2, 10, self)
+        @boutonPause = BoutonPause.creer("PAUSE", 2, 10, self)
         @boutonPause.style_context.add_class("bouton-pause")
 
         @boutonQuitter = BoutonSpecial.creer(Langue.text("quitter"), 2, 20, self.method(:QuitterFenetre))
@@ -163,20 +163,20 @@ class NiveauGUI < Gtk::Box
         }
 
         niveauLabelPause = Gtk::Label.new.tap{ |label|
-            label.set_markup("Niveau #{@niveau.id}")
+            label.set_markup("#{Langue.text("ingameNiveau")} #{@niveau.id}")
             label.style_context.add_class("titre")
             label.style_context.add_class("margin-bot")
             label.style_context.add_class("pause")
             label.show 
         }
 
-        @boutonReprendre = BoutonPause.creer("Reprendre", 2, 10, self)
+        @boutonReprendre = BoutonPause.creer(Langue.text("continuer"), 2, 10, self)
         @boutonReprendre.style_context.add_class("bouton")
 
-        @boutonMenuPause = BoutonMenu.creer("Menu", 2, 10, MenuNiveaux.method(:new), @app)
+        @boutonMenuPause = BoutonMenu.creer(Langue.text("ingameMenu"), 2, 10, MenuNiveaux.method(:new), @app)
         @boutonMenuPause.style_context.add_class("bouton")
 
-        @boutonQuitterPause = BoutonSpecial.creer("Quitter", 2, 20, self.method(:QuitterFenetre))
+        @boutonQuitterPause = BoutonSpecial.creer(Langue.text("ingameQuitter"), 2, 20, self.method(:QuitterFenetre))
         @boutonQuitterPause.style_context.add_class("bouton")
 
         @boxPause.add(niveauLabelPause)
@@ -184,11 +184,6 @@ class NiveauGUI < Gtk::Box
         @boxPause.add(@boutonReprendre)
         @boxPause.add(@boutonMenuPause)
         @boxPause.add(@boutonQuitterPause)
-
-
-
-
-
     end
 
     def modePause()
