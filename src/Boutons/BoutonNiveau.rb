@@ -14,8 +14,20 @@ class BoutonNiveau < Bouton
     ##
     #@niveau Niveaau qui se lance au clque sur le bouton
 
-    def BoutonNiveau.creer(uneEtiquette, uneLongueur, uneLargeur, id, mode, app)
-        new(uneEtiquette, uneLongueur, uneLargeur, id, mode, app)
+    ##
+    # Constructeur
+    # 
+    # === Attributes
+    # 
+    # * -uneEtiquette- étiquette du bouton
+    # * -uneLongueur- longueur du bouton
+    # * -uneLargeur- largeur du bouton
+    # * -id- Identifiant du niveau
+    # * -menuNiveau- Menu des niveaux
+    # * -app- application
+    #
+    def BoutonNiveau.creer(uneEtiquette, uneLongueur, uneLargeur, id, menuNiveau, app)
+        new(uneEtiquette, uneLongueur, uneLargeur, id, menuNiveau, app)
     end
 
     private_class_method :new
@@ -28,6 +40,7 @@ class BoutonNiveau < Bouton
 
         mode = ["Classique", "Aventure", "Classe"]
 
+        
         self.signal_connect('clicked'){
 
             fichierName = __dir__ + "/../../profile/" + app.user.nom + "/levels/" + mode[menuNiveau.mode - 1] + "/level" + id.to_s + ".krkb"

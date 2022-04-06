@@ -12,8 +12,15 @@ require 'gtk3'
 class BoutonDidacticiel < Bouton
 
     ##
-    #@niveau Niveaau qui se lance au clque sur le bouton
-
+    # Constructeur
+    #
+    # === Attributes
+    #
+    # * -uneEtiquette- étiquette du bouton
+    # * -uneLongueur- longueur du bouton
+    # * -uneLargeur- largeur du bouton
+    # * -app- application
+    #
     def BoutonDidacticiel.creer(uneEtiquette, uneLongueur, uneLargeur, app)
         new(uneEtiquette, uneLongueur, uneLargeur, app)
     end
