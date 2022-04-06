@@ -21,6 +21,11 @@ class Diagonal < Technique
 
                 if(c.is_a?(CaseChiffre))
 
+                    ##
+                    # Pas besoin de regarder les cases au dessus on regarde uniquement en descendant
+                    # Diagonal est un chiffre on check si il y a bien 2 murs sur l'autre diagonal
+                    #
+
                     if(isInGrid(grille.matrice, c.x - 1, c.y + 1) && grille.matrice[c.y + 1][c.x - 1].is_a?(CaseChiffre))
 
                         @casesChange.push(grille.matrice[c.y][c.x - 1]) if grille.matrice[c.y][c.x - 1].etat != TypeCase::MUR
