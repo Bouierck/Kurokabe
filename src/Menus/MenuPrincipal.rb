@@ -65,12 +65,12 @@ require_relative '../Donnees/Langue.rb'
 
             self.pack_start(btnRegles)
             
-            btnRegles = BoutonDidacticiel.creer(Langue.text("didacticiel"), 10, 10, app)
-            Langue.addListener(btnRegles, "didacticiel")
-            btnRegles.style_context.add_class("bouton")
-            btnRegles.show
+            btnTuto = BoutonDidacticiel.creer(Langue.text("didacticiel"), 10, 10, app)
+            Langue.addListener(btnTuto, "didacticiel")
+            btnTuto.style_context.add_class("bouton")
+            btnTuto.show
 
-            self.pack_start(btnRegles)
+            self.pack_start(btnTuto)
 
             btnQuitter = BoutonSpecial.creer(Langue.text("quitter"), 10, 10, app.method(:closeApp))
             Langue.addListener(btnQuitter, "quitter")

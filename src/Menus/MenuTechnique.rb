@@ -8,7 +8,7 @@ class MenuTechnique < Gtk::Box
     attr_reader :titlebar
     def initialize(app)
         super(:vertical, 10)
-		app.fenetre.resize(1300,750)
+		app.fenetre.resize(1250,50)
 
         @page = 1
         @text1 = Gtk::Label.new("This is sparta")
@@ -40,12 +40,14 @@ class MenuTechnique < Gtk::Box
         @boutonRetour.tap{|bouton| 
                 bouton.signal_connect("clicked") { 
                     @page - 1
+					app.fenetre.resize(1250,50)
                     updateLabelPage(labelPage)
                 }
             bouton.show		}
         @boutonAvance.tap{|bouton| 
             bouton.signal_connect("clicked") { 
                 @page - 1
+				app.fenetre.resize(1250,50)
                 updateLabelPage(labelPage)
             }
         bouton.show		}
@@ -110,6 +112,8 @@ class MenuTechnique < Gtk::Box
 
 		midbox.valign = Gtk::Align::CENTER
         midbox.halign = Gtk::Align::CENTER
+		midbox.style_context.add_class("margin-bot")
+
         self.pack_start(midbox)
 
 
@@ -259,6 +263,16 @@ class MenuTechnique < Gtk::Box
 
 		@text1.style_context.add_class("texte")
 		@text2.style_context.add_class("texte")
+
+		@image11.style_context.add_class("margin-bot3")
+		@image12.style_context.add_class("margin-bot3")
+		@image21.style_context.add_class("margin-bot3")
+		@image22.style_context.add_class("margin-bot3")
+
+		@image11.style_context.add_class("margin-top3")
+		@image12.style_context.add_class("margin-top3")
+		@image21.style_context.add_class("margin-top3")
+		@image22.style_context.add_class("margin-top3")
 	end
 
 

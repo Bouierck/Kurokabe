@@ -15,13 +15,11 @@ class MenuRegles < Gtk::Box
     def initialize(app)
         super(:vertical, 10)
 
-        self.halign = Gtk::Align::CENTER
-		app.fenetre.resize(1300,750)
-        
+        self.halign = Gtk::Align::CENTER        
 
         lbl = Gtk::Label.new.tap{ |label|
             label.set_markup(Langue.text("menuRegles"))
-        label.style_context.add_class("titre1")
+        label.style_context.add_class("titre4")
         label.style_context.add_class("margin-bigleft")
         label.show 
         }
@@ -42,6 +40,8 @@ class MenuRegles < Gtk::Box
 
         topbox.style_context.add_class("margin-bot")
         topbox.style_context.add_class("margin-top")
+        topbox.style_context.add_class("margin-left")
+        topbox.style_context.add_class("margin-right")
 
         self.pack_start(topbox)
         
@@ -50,6 +50,8 @@ class MenuRegles < Gtk::Box
             label.style_context.add_class("texte")
         label.show 
         }
+		textLbl.style_context.add_class("margin-bot")
+
         self.pack_start(textLbl)
             
 
