@@ -14,8 +14,8 @@ class ClassementNiveau < Gtk::Box
 
     def initialize(app,datas)
 
+        #Récupère le chemin des profils de joueurs
         path_to_profile = __dir__ + "/../../profile/"
-
 
         super(:vertical, 10)
 
@@ -24,8 +24,12 @@ class ClassementNiveau < Gtk::Box
 
         app.fenetre.resize(700,700)
 
+
+
+
         s = datas.to_s.split("")
 
+        #Affiche le label avec le numéro du niveau sélectionné
         topLabel = Gtk::Label.new.tap{ |label|
             label.set_markup("Classement du niveau : " + s[0] + "." + s[1])
             label.style_context.add_class("titre1")
@@ -50,6 +54,7 @@ class ClassementNiveau < Gtk::Box
         @totals = ""
         sortedUser = Hash.new
 
+        #Récupère le fichier infosScore.krkb de chaque profil
         users.each { |x| 
             str = path_to_profile + x + "/infosScore.krkb"
             file = File.open(str)
@@ -59,9 +64,12 @@ class ClassementNiveau < Gtk::Box
 
             scoreUser = ""
             y = 0
+
+
             if(datasSplitted[0] == "1") then #cas nivFacile
                 scoreUser = file_data[datas+19] #11 - 15 == 31 - 35
             end
+
             if(datasSplitted[0] == "2") then #cas nivMoyen
                 scoreUser = file_data[datas+14] # 21 - 25 == 36 - 40
             end
@@ -76,6 +84,7 @@ class ClassementNiveau < Gtk::Box
 
         }
 
+        #Tri les joueurs en fonction de leur temps effectué
         sortedTable = sortedUser.sort_by {|k,v| v}
 
         i = 0
@@ -83,6 +92,8 @@ class ClassementNiveau < Gtk::Box
             min = v / 60
             sec = v % 60
             i+=1
+
+            #Prépare l'affiche sous forme de "Classement - NomJoueur : Temps"
             @totals += i.to_s + " -  " + k + " : " + "#{min}:#{sec}" + "\n"
         }
         
@@ -90,9 +101,10 @@ class ClassementNiveau < Gtk::Box
         classmLabel.style_context.add_class("margin-top")
         classmLabel.style_context.add_class("titre3")
         
-
         self.show
-        
+
+
+        #Bouton retour de la barre de la fenêtre
         @titlebar = Gtk::HeaderBar.new.tap { |barre|
             barre.title = "Kurokabe"
             barre.show_close_button = true
