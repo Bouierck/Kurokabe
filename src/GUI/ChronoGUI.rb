@@ -42,6 +42,7 @@ class ChronoGUI < Gtk::Label
                 update
                 sleep(1)
             end
+            update
         end
 
         return self
@@ -60,7 +61,8 @@ class ChronoGUI < Gtk::Label
     #
     def update
 
-        @chrono.update
+        @chrono.update if(@chrono.estLance?)     
+
         self.label = @chrono.to_s
         return self
 

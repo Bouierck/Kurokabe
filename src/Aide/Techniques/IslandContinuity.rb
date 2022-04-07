@@ -9,7 +9,7 @@ class IslandContinuity < Technique
 
     def initialize(grille)
         super(grille)
-        @nom = "Expansion d'ilot."
+        @nom = "Expansion d'ilot"
     end 
 
     def verifieTech

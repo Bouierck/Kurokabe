@@ -44,7 +44,7 @@ class Resolveur
             @listTech.each{ |tech|
 
                 if tech.verifieTech(grille)
-
+                    
                     if(@nbAppel % 3 == 0)
                         rep = {:response => ReponseType::TEXT, :text => tech.to_s}
                     elsif(@nbAppel % 3 == 1)
@@ -62,7 +62,7 @@ class Resolveur
 
         end
 
-        return {:response => ReponseType::TEXT, :text => "Aucune technique n'a été trouvé ou erreur dans la grille"}
+        return {:response => ReponseType::TEXT, :text => Langue.text("resolveur")}
 
     end
 

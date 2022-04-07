@@ -7,7 +7,7 @@ class AvWA2x2 < Technique
     public_class_method :new
 
     def initialize
-        super("AvWA2x2","Pas de mur 2x2")
+        super(Langue.text("AvWA2x2"),Langue.text("AvWA2x2Desc"))
     end
 
     def verifieTech(grille)
@@ -16,19 +16,19 @@ class AvWA2x2 < Technique
 
                 @casesChange = []
 
-                if(c.is_a?(CaseCliquable) && c.etat == 0)
+                if(c.is_a?(CaseCliquable) && c.etat == TypeCase::VIDE)
 
-                    if (c.y < grille.matrice.length - 1 && (grille.matrice[c.y + 1][c.x].is_a?(CaseCliquable) && grille.matrice[c.y + 1][c.x].etat == 2))
+                    if (c.y < grille.matrice.length - 1 && (grille.matrice[c.y + 1][c.x].is_a?(CaseCliquable) && grille.matrice[c.y + 1][c.x].etat == TypeCase::MUR))
 
-                        if(c.x > 0 && (grille.matrice[c.y + 1][c.x - 1].is_a?(CaseCliquable) && grille.matrice[c.y + 1][c.x - 1].etat == 2) && 
-                        (grille.matrice[c.y][c.x - 1].is_a?(CaseCliquable) && grille.matrice[c.y ][c.x - 1].etat == 2)) 
+                        if(c.x > 0 && (grille.matrice[c.y + 1][c.x - 1].is_a?(CaseCliquable) && grille.matrice[c.y + 1][c.x - 1].etat == TypeCase::MUR) && 
+                        (grille.matrice[c.y][c.x - 1].is_a?(CaseCliquable) && grille.matrice[c.y ][c.x - 1].etat == TypeCase::MUR)) 
 
                             @casesChange << c
                             return true
 
                         end
-                        if(c.x < line.length - 1 && (grille.matrice[c.y + 1][c.x + 1].is_a?(CaseCliquable) && grille.matrice[c.y + 1][c.x + 1].etat == 2) && 
-                        (grille.matrice[c.y][c.x + 1].is_a?(CaseCliquable) && grille.matrice[c.y ][c.x + 1].etat == 2 ))
+                        if(c.x < line.length - 1 && (grille.matrice[c.y + 1][c.x + 1].is_a?(CaseCliquable) && grille.matrice[c.y + 1][c.x + 1].etat == TypeCase::MUR) && 
+                        (grille.matrice[c.y][c.x + 1].is_a?(CaseCliquable) && grille.matrice[c.y ][c.x + 1].etat == TypeCase::MUR ))
 
                             @casesChange << c
                             return true
@@ -36,17 +36,17 @@ class AvWA2x2 < Technique
                         end
 
                     end
-                    if (c.y > 0 && (grille.matrice[c.y - 1][c.x].is_a?(CaseCliquable) && grille.matrice[c.y - 1][c.x].etat == 2))
+                    if (c.y > 0 && (grille.matrice[c.y - 1][c.x].is_a?(CaseCliquable) && grille.matrice[c.y - 1][c.x].etat == TypeCase::MUR))
 
-                        if(c.x > 0 && (grille.matrice[c.y - 1][c.x - 1].is_a?(CaseCliquable) && grille.matrice[c.y - 1][c.x - 1].etat == 2) && 
-                        (grille.matrice[c.y][c.x - 1].is_a?(CaseCliquable) && grille.matrice[c.y ][c.x - 1].etat == 2))
+                        if(c.x > 0 && (grille.matrice[c.y - 1][c.x - 1].is_a?(CaseCliquable) && grille.matrice[c.y - 1][c.x - 1].etat == TypeCase::MUR) && 
+                        (grille.matrice[c.y][c.x - 1].is_a?(CaseCliquable) && grille.matrice[c.y ][c.x - 1].etat == TypeCase::MUR))
 
                             @casesChange << c
                             return true
 
                         end
-                        if(c.x < line.length - 1 && (grille.matrice[c.y - 1][c.x + 1].is_a?(CaseCliquable) && grille.matrice[c.y - 1][c.x + 1].etat == 2) && 
-                        (grille.matrice[c.y][c.x + 1].is_a?(CaseCliquable) && grille.matrice[c.y ][c.x + 1].etat == 2))
+                        if(c.x < line.length - 1 && (grille.matrice[c.y - 1][c.x + 1].is_a?(CaseCliquable) && grille.matrice[c.y - 1][c.x + 1].etat == TypeCase::MUR) && 
+                        (grille.matrice[c.y][c.x + 1].is_a?(CaseCliquable) && grille.matrice[c.y ][c.x + 1].etat == TypeCase::MUR))
 
                             @casesChange << c
                             return true
