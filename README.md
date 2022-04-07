@@ -23,7 +23,7 @@ Ressources utilisés :
 [Diagramme de Gantt](https://docs.google.com/spreadsheets/d/19JpsNgYenO6e5OJJh9Wqvrw7NUWOYOXc-5A1ql4AVF8/edit#gid=0),
 [Trello](https://trello.com/b/AYIpps7L/jacoding).
 
-Fichier définitif sous format .iso (VirtualBox image) : [Image]()
+Fichier définitif sous format .ova (Open Virtual Machine) : [Image](https://drive.google.com/file/d/139hzmpBx0P3nulAqyx8GK_0FFXXA101j/view?usp=sharing)
 
 # Objectifs
 
