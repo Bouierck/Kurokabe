@@ -30,11 +30,8 @@ class CaseCliquableGUI < CaseGUI
         super(c, grille, grilleGUI)
 
         self.signal_connect('clicked') { updateCase }
-        self.signal_connect('enter-notify-event') { hoverIn }
-        self.signal_connect('leave-notify-event') { hoverOut }
 
         updateCaseGUI
-
 
     end
 
