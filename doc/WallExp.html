@@ -96,6 +96,8 @@
 
   <section class="description">
     
+<p><a href="Technique.html"><code>Technique</code></a> qui consiste à rallonger un mur quand il est forcément coincé par un chiffre</p>
+
   </section>
 
   
@@ -134,7 +136,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File src/Aide/Techniques/Technique.rb, line 12</span>
+            <pre><span class="ruby-comment"># File src/Aide/Techniques/Technique.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">nom</span>, <span class="ruby-identifier">desc</span>)
     <span class="ruby-ivar">@casesChange</span> = []
     <span class="ruby-ivar">@nom</span> = <span class="ruby-identifier">nom</span>
@@ -174,7 +176,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File src/Aide/Techniques/WallExp.rb, line 8</span>
+            <pre><span class="ruby-comment"># File src/Aide/Techniques/WallExp.rb, line 10</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>
     
     <span class="ruby-keyword">super</span>(<span class="ruby-constant">Langue</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;WallExp&quot;</span>), <span class="ruby-constant">Langue</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;WallExpDesc&quot;</span>))
@@ -226,7 +228,7 @@
 
           
           <div class="method-source-code" id="isInGrid-source">
-            <pre><span class="ruby-comment"># File src/Aide/Techniques/WallExp.rb, line 106</span>
+            <pre><span class="ruby-comment"># File src/Aide/Techniques/WallExp.rb, line 108</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">isInGrid</span>(<span class="ruby-identifier">matrice</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">matrice</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">y</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">y</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">matrice</span>.<span class="ruby-identifier">length</span>
 <span class="ruby-keyword">end</span></pre>
@@ -259,7 +261,7 @@
 
           
           <div class="method-source-code" id="verifieTech-source">
-            <pre><span class="ruby-comment"># File src/Aide/Techniques/WallExp.rb, line 14</span>
+            <pre><span class="ruby-comment"># File src/Aide/Techniques/WallExp.rb, line 16</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">verifieTech</span>(<span class="ruby-identifier">grille</span>)
 
     <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>

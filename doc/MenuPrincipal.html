@@ -63,7 +63,7 @@
   <h3>Parent</h3>
 
   
-  <p class="link">Gtk::Box
+  <p class="link"><a href="Menu.html">Menu</a>
   
 </div>
 
@@ -117,7 +117,7 @@
 
         <div class="method-description">
         
-        
+        <p>@titlebar =&gt; Barre de titre @mode =&gt; Mode de jeu</p>
         
         </div>
       </div>
@@ -130,7 +130,7 @@
 
         <div class="method-description">
         
-        
+        <p>@titlebar =&gt; Barre de titre @mode =&gt; Mode de jeu</p>
         
         </div>
       </div>
@@ -175,93 +175,93 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File src/Menus/MenuPrincipal.rb, line 22</span>
-    <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">app</span>)
-        <span class="ruby-keyword">super</span>(<span class="ruby-value">:vertical</span>, <span class="ruby-value">10</span>)
+            <pre><span class="ruby-comment"># File src/Menus/MenuPrincipal.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">app</span>)
+    <span class="ruby-keyword">super</span>(<span class="ruby-value">:vertical</span>, <span class="ruby-value">10</span>)
 
-        <span class="ruby-identifier">app</span>.<span class="ruby-identifier">fenetre</span>.<span class="ruby-identifier">resize</span>(<span class="ruby-value">700</span>,<span class="ruby-value">700</span>)
-        
-        <span class="ruby-ivar">@mode</span> = <span class="ruby-value">1</span> <span class="ruby-comment"># pour le didacticiel</span>
+    <span class="ruby-identifier">app</span>.<span class="ruby-identifier">fenetre</span>.<span class="ruby-identifier">resize</span>(<span class="ruby-value">700</span>,<span class="ruby-value">700</span>)
+    
+    <span class="ruby-ivar">@mode</span> = <span class="ruby-value">1</span> <span class="ruby-comment"># pour le didacticiel</span>
 
-        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">valign</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Align</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>
-        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">halign</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Align</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>            
-        
-        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-left&quot;</span>)
-        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-right&quot;</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">valign</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Align</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">halign</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Align</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>                
+    
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-left&quot;</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-right&quot;</span>)
 
-        <span class="ruby-identifier">lbl</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">label</span><span class="ruby-operator">|</span>
-            <span class="ruby-identifier">label</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;KUROKABE&quot;</span>)
-            <span class="ruby-identifier">label</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;titre&quot;</span>)
-            <span class="ruby-identifier">label</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-bot&quot;</span>)
-            <span class="ruby-identifier">label</span>.<span class="ruby-identifier">show</span> 
-        }
+    <span class="ruby-identifier">lbl</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">tap</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">label</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">label</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;KUROKABE&quot;</span>)
+        <span class="ruby-identifier">label</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;titre&quot;</span>)
+        <span class="ruby-identifier">label</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-bot&quot;</span>)
+        <span class="ruby-identifier">label</span>.<span class="ruby-identifier">show</span> 
+    }
 
-        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">lbl</span>)
-
-
-
-        <span class="ruby-identifier">btnJouer</span> = <span class="ruby-constant">BoutonMenu</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-constant">Langue</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;jouer&quot;</span>), <span class="ruby-constant">MenuNiveaux</span>.<span class="ruby-identifier">method</span>(<span class="ruby-value">:new</span>), <span class="ruby-identifier">app</span>)
-        <span class="ruby-constant">Langue</span>.<span class="ruby-identifier">addListener</span>(<span class="ruby-identifier">btnJouer</span>, <span class="ruby-string">&quot;jouer&quot;</span>)
-        <span class="ruby-identifier">btnJouer</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;bouton&quot;</span>)
-        <span class="ruby-identifier">btnJouer</span>.<span class="ruby-identifier">show</span>
-
-        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">btnJouer</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">lbl</span>)
 
 
 
-        <span class="ruby-identifier">btnClassement</span> = <span class="ruby-constant">BoutonMenu</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-constant">Langue</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;classement&quot;</span>), <span class="ruby-constant">MenuClassement</span>.<span class="ruby-identifier">method</span>(<span class="ruby-value">:new</span>), <span class="ruby-identifier">app</span>)
-        <span class="ruby-constant">Langue</span>.<span class="ruby-identifier">addListener</span>(<span class="ruby-identifier">btnClassement</span>, <span class="ruby-string">&quot;classement&quot;</span>)
-        <span class="ruby-identifier">btnClassement</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;bouton&quot;</span>)
-        <span class="ruby-identifier">btnClassement</span>.<span class="ruby-identifier">show</span>
+    <span class="ruby-identifier">btnJouer</span> = <span class="ruby-constant">BoutonMenu</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-constant">Langue</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;jouer&quot;</span>), <span class="ruby-constant">MenuNiveaux</span>.<span class="ruby-identifier">method</span>(<span class="ruby-value">:new</span>), <span class="ruby-identifier">app</span>)
+    <span class="ruby-constant">Langue</span>.<span class="ruby-identifier">addListener</span>(<span class="ruby-identifier">btnJouer</span>, <span class="ruby-string">&quot;jouer&quot;</span>)
+    <span class="ruby-identifier">btnJouer</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;bouton&quot;</span>)
+    <span class="ruby-identifier">btnJouer</span>.<span class="ruby-identifier">show</span>
 
-        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">btnClassement</span>)
-
-
-                  
-        <span class="ruby-identifier">btnRegles</span> = <span class="ruby-constant">BoutonMenu</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-constant">Langue</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;menuRegles&quot;</span>), <span class="ruby-constant">MenuRegles</span>.<span class="ruby-identifier">method</span>(<span class="ruby-value">:new</span>), <span class="ruby-identifier">app</span>)
-        <span class="ruby-constant">Langue</span>.<span class="ruby-identifier">addListener</span>(<span class="ruby-identifier">btnRegles</span>, <span class="ruby-string">&quot;menuRegles&quot;</span>)
-        <span class="ruby-identifier">btnRegles</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;bouton&quot;</span>)
-        <span class="ruby-identifier">btnRegles</span>.<span class="ruby-identifier">show</span>
-
-        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">btnRegles</span>)
-
-
-        
-        <span class="ruby-identifier">btnTuto</span> = <span class="ruby-constant">BoutonDidacticiel</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-constant">Langue</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;didacticiel&quot;</span>), <span class="ruby-identifier">app</span>)
-        <span class="ruby-constant">Langue</span>.<span class="ruby-identifier">addListener</span>(<span class="ruby-identifier">btnTuto</span>, <span class="ruby-string">&quot;didacticiel&quot;</span>)
-        <span class="ruby-identifier">btnTuto</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;bouton&quot;</span>)
-        <span class="ruby-identifier">btnTuto</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-bot3&quot;</span>)
-        <span class="ruby-identifier">btnTuto</span>.<span class="ruby-identifier">show</span>
-
-        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">btnTuto</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">btnJouer</span>)
 
 
 
-        <span class="ruby-identifier">btnQuitter</span> = <span class="ruby-constant">BoutonSpecial</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-constant">Langue</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;quitter&quot;</span>), <span class="ruby-identifier">app</span>.<span class="ruby-identifier">method</span>(<span class="ruby-value">:closeApp</span>))
-        <span class="ruby-constant">Langue</span>.<span class="ruby-identifier">addListener</span>(<span class="ruby-identifier">btnQuitter</span>, <span class="ruby-string">&quot;quitter&quot;</span>)
-        <span class="ruby-identifier">btnQuitter</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;bouton&quot;</span>)
-        <span class="ruby-identifier">btnQuitter</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-bot&quot;</span>)
-        
-        <span class="ruby-identifier">btnQuitter</span>.<span class="ruby-identifier">show</span>
+    <span class="ruby-identifier">btnClassement</span> = <span class="ruby-constant">BoutonMenu</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-constant">Langue</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;classement&quot;</span>), <span class="ruby-constant">MenuClassement</span>.<span class="ruby-identifier">method</span>(<span class="ruby-value">:new</span>), <span class="ruby-identifier">app</span>)
+    <span class="ruby-constant">Langue</span>.<span class="ruby-identifier">addListener</span>(<span class="ruby-identifier">btnClassement</span>, <span class="ruby-string">&quot;classement&quot;</span>)
+    <span class="ruby-identifier">btnClassement</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;bouton&quot;</span>)
+    <span class="ruby-identifier">btnClassement</span>.<span class="ruby-identifier">show</span>
 
-        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">btnQuitter</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">btnClassement</span>)
 
 
+                
+    <span class="ruby-identifier">btnRegles</span> = <span class="ruby-constant">BoutonMenu</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-constant">Langue</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;menuRegles&quot;</span>), <span class="ruby-constant">MenuRegles</span>.<span class="ruby-identifier">method</span>(<span class="ruby-value">:new</span>), <span class="ruby-identifier">app</span>)
+    <span class="ruby-constant">Langue</span>.<span class="ruby-identifier">addListener</span>(<span class="ruby-identifier">btnRegles</span>, <span class="ruby-string">&quot;menuRegles&quot;</span>)
+    <span class="ruby-identifier">btnRegles</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;bouton&quot;</span>)
+    <span class="ruby-identifier">btnRegles</span>.<span class="ruby-identifier">show</span>
+
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">btnRegles</span>)
 
 
-        <span class="ruby-identifier">francais</span> = <span class="ruby-constant">BoutonLangue</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-string">&quot;&quot;</span>, <span class="ruby-value">0</span>)
-        <span class="ruby-identifier">francais</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;btn-langue-fr&quot;</span>)
-        
-        <span class="ruby-identifier">anglais</span> = <span class="ruby-constant">BoutonLangue</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-string">&quot;&quot;</span>, <span class="ruby-value">1</span>)
-        <span class="ruby-identifier">anglais</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;btn-langue-en&quot;</span>)
+    
+    <span class="ruby-identifier">btnTuto</span> = <span class="ruby-constant">BoutonDidacticiel</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-constant">Langue</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;didacticiel&quot;</span>), <span class="ruby-identifier">app</span>)
+    <span class="ruby-constant">Langue</span>.<span class="ruby-identifier">addListener</span>(<span class="ruby-identifier">btnTuto</span>, <span class="ruby-string">&quot;didacticiel&quot;</span>)
+    <span class="ruby-identifier">btnTuto</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;bouton&quot;</span>)
+    <span class="ruby-identifier">btnTuto</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-bot3&quot;</span>)
+    <span class="ruby-identifier">btnTuto</span>.<span class="ruby-identifier">show</span>
 
-        <span class="ruby-identifier">langueBox</span>=<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>).<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">boite</span><span class="ruby-operator">|</span>
-            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">francais</span>.<span class="ruby-identifier">show</span>)
-            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">anglais</span>.<span class="ruby-identifier">show</span>)
-            <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">show</span>
-        }
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">btnTuto</span>)
 
-        <span class="ruby-identifier">langueBox</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-top&quot;</span>)
+
+
+    <span class="ruby-identifier">btnQuitter</span> = <span class="ruby-constant">BoutonSpecial</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-constant">Langue</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;quitter&quot;</span>), <span class="ruby-identifier">app</span>.<span class="ruby-identifier">method</span>(<span class="ruby-value">:closeApp</span>))
+    <span class="ruby-constant">Langue</span>.<span class="ruby-identifier">addListener</span>(<span class="ruby-identifier">btnQuitter</span>, <span class="ruby-string">&quot;quitter&quot;</span>)
+    <span class="ruby-identifier">btnQuitter</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;bouton&quot;</span>)
+    <span class="ruby-identifier">btnQuitter</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-bot&quot;</span>)
+    
+    <span class="ruby-identifier">btnQuitter</span>.<span class="ruby-identifier">show</span>
+
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">btnQuitter</span>)
+
+
+
+
+    <span class="ruby-identifier">francais</span> = <span class="ruby-constant">BoutonLangue</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-string">&quot;&quot;</span>, <span class="ruby-value">0</span>)
+    <span class="ruby-identifier">francais</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;btn-langue-fr&quot;</span>)
+    
+    <span class="ruby-identifier">anglais</span> = <span class="ruby-constant">BoutonLangue</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-string">&quot;&quot;</span>, <span class="ruby-value">1</span>)
+    <span class="ruby-identifier">anglais</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;btn-langue-en&quot;</span>)
+
+    <span class="ruby-identifier">langueBox</span>=<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>).<span class="ruby-identifier">tap</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">boite</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">francais</span>.<span class="ruby-identifier">show</span>)
+        <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">anglais</span>.<span class="ruby-identifier">show</span>)
+        <span class="ruby-identifier">boite</span>.<span class="ruby-identifier">show</span>
+    }
+
+    <span class="ruby-identifier">langueBox</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;margin-top&quot;</span>)
 
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">langueBox</span>)
 

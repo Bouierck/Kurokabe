@@ -63,7 +63,7 @@
   <h3>Parent</h3>
 
   
-  <p class="link">Gtk::Box
+  <p class="link"><a href="Menu.html">Menu</a>
   
 </div>
 
@@ -127,7 +127,7 @@
 
         <div class="method-description">
         
-        
+        <p>@titlebar =&gt; Barre de titre</p>
         
         </div>
       </div>
@@ -166,7 +166,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File src/Menus/MenuTechnique.rb, line 9</span>
+            <pre><span class="ruby-comment"># File src/Menus/MenuTechnique.rb, line 18</span>
     <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">app</span>)
         <span class="ruby-keyword">super</span>(<span class="ruby-value">:vertical</span>, <span class="ruby-value">10</span>)
 
@@ -423,7 +423,7 @@
 
           
           <div class="method-source-code" id="updateBack-source">
-            <pre><span class="ruby-comment"># File src/Menus/MenuTechnique.rb, line 365</span>
+            <pre><span class="ruby-comment"># File src/Menus/MenuTechnique.rb, line 374</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">updateBack</span>()
         <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@page</span><span class="ruby-operator">&lt;=</span><span class="ruby-value">1</span>) <span class="ruby-keyword">then</span>
                 <span class="ruby-ivar">@boutonRetour</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">false</span>)
@@ -461,7 +461,7 @@
 
           
           <div class="method-source-code" id="updateFront-source">
-            <pre><span class="ruby-comment"># File src/Menus/MenuTechnique.rb, line 355</span>
+            <pre><span class="ruby-comment"># File src/Menus/MenuTechnique.rb, line 364</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">updateFront</span>()
         <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@page</span><span class="ruby-operator">&gt;=</span><span class="ruby-value">7</span>) <span class="ruby-keyword">then</span>
                 <span class="ruby-ivar">@boutonAvance</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">false</span>)
@@ -499,7 +499,7 @@
 
           
           <div class="method-source-code" id="updateLabelPage-source">
-            <pre><span class="ruby-comment"># File src/Menus/MenuTechnique.rb, line 349</span>
+            <pre><span class="ruby-comment"># File src/Menus/MenuTechnique.rb, line 358</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">updateLabelPage</span>(<span class="ruby-identifier">labelPage</span>)
         <span class="ruby-identifier">s</span> = <span class="ruby-string">&quot;PAGE &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">to_s</span>
         <span class="ruby-identifier">labelPage</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-identifier">s</span>)
@@ -533,7 +533,7 @@
 
           
           <div class="method-source-code" id="updatePage-source">
-            <pre><span class="ruby-comment"># File src/Menus/MenuTechnique.rb, line 233</span>
+            <pre><span class="ruby-comment"># File src/Menus/MenuTechnique.rb, line 242</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">updatePage</span>()
             <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@page</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>) <span class="ruby-keyword">then</span>
                     <span class="ruby-ivar">@text1</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-ivar">@textIle0</span>)
@@ -660,7 +660,7 @@
 
           
           <div class="method-source-code" id="updateSensitive-source">
-            <pre><span class="ruby-comment"># File src/Menus/MenuTechnique.rb, line 335</span>
+            <pre><span class="ruby-comment"># File src/Menus/MenuTechnique.rb, line 344</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">updateSensitive</span>()
         <span class="ruby-keyword">if</span> <span class="ruby-ivar">@page</span> <span class="ruby-operator">&lt;=</span><span class="ruby-value">1</span> <span class="ruby-keyword">then</span>
                 <span class="ruby-ivar">@boutonRetour</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">false</span>)

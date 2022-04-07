@@ -79,8 +79,6 @@
     
     <li ><a href="#method-c-langue">::langue</a>
     
-    <li ><a href="#method-c-nbEtoiles">::nbEtoiles</a>
-    
     <li ><a href="#method-c-sauvInfosUtilisateur">::sauvInfosUtilisateur</a>
     
     <li ><a href="#method-c-sauvNiveau">::sauvNiveau</a>
@@ -98,6 +96,8 @@
 
   <section class="description">
     
+<p>Gestion des sauvegardes du jeu</p>
+
   </section>
 
   
@@ -130,13 +130,20 @@
 
         <div class="method-description">
           
-          <p>Constructeur de <a href="Sauvegarde.html"><code>Sauvegarde</code></a></p>
+          <p>Constructeur de <a href="Utilisateur.html"><code>Utilisateur</code></a></p>
+
+<h4 id="method-c-creer-label-Attributes">Attributes<span><a href="#method-c-creer-label-Attributes">&para;</a> <a href="#top">&uarr;</a></span></h4>
+<ul><li>
+<p>-nom- nom de l&#39;utilisateur</p>
+</li><li>
+<p>-langue- langue chois par l&#39;utilisateur</p>
+</li></ul>
           
           
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File src/Donnees/Sauvegarde.rb, line 19</span>
+            <pre><span class="ruby-comment"># File src/Donnees/Sauvegarde.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">unNom</span>)
     <span class="ruby-identifier">new</span>(<span class="ruby-identifier">unNom</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -169,48 +176,12 @@
 
           
           <div class="method-source-code" id="langue-source">
-            <pre><span class="ruby-comment"># File src/Donnees/Sauvegarde.rb, line 70</span>
+            <pre><span class="ruby-comment"># File src/Donnees/Sauvegarde.rb, line 77</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier ruby-title">langue</span>()
-    <span class="ruby-identifier">fInfoUtilisateur</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/infosUtilisateur.krkb&quot;</span>, <span class="ruby-string">&quot;r&quot;</span>)
+    <span class="ruby-identifier">fInfoUtilisateur</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{@@DirKurokabe}/../../profile/#{@@nomUtilisateur}/infosUtilisateur.krkb&quot;</span>, <span class="ruby-string">&quot;r&quot;</span>)
     <span class="ruby-identifier">langue</span> = <span class="ruby-identifier">fInfoUtilisateur</span>.<span class="ruby-identifier">read</span>.<span class="ruby-identifier">split</span>[<span class="ruby-value">0</span>]
     <span class="ruby-identifier">fInfoUtilisateur</span>.<span class="ruby-identifier">close</span>()
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">langue</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-      <div id="method-c-nbEtoiles" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">nbEtoiles</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>Récupère le nombre d&#39;étoiles de l&#39;utilisateur depuis le fichier infoUtilisateur.krkb</p>
-          
-          
-
-          
-          <div class="method-source-code" id="nbEtoiles-source">
-            <pre><span class="ruby-comment"># File src/Donnees/Sauvegarde.rb, line 80</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier ruby-title">nbEtoiles</span>()
-    <span class="ruby-identifier">fInfoUtilisateur</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/infosUtilisateur.krkb&quot;</span>, <span class="ruby-string">&quot;r&quot;</span>)
-    <span class="ruby-identifier">nbEtoiles</span> = <span class="ruby-identifier">fInfoUtilisateur</span>.<span class="ruby-identifier">read</span>.<span class="ruby-identifier">split</span>[<span class="ruby-value">1</span>]
-    <span class="ruby-identifier">fInfoUtilisateur</span>.<span class="ruby-identifier">close</span>()
-    <span class="ruby-keyword">return</span> <span class="ruby-identifier">nbEtoiles</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -226,7 +197,7 @@
         
         <div class="method-heading">
           <span class="method-name">sauvInfosUtilisateur</span><span
-            class="method-args">(uneLangue, nbEtoiles)</span>
+            class="method-args">(uneLangue)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -238,17 +209,18 @@
           <p><a href="Sauvegarde.html"><code>Sauvegarde</code></a> les informations sur l&#39;utilisateur</p>
 
 <h3 id="method-c-sauvInfosUtilisateur-label-Attributes+-3D-3D-3D">Attributes ===<span><a href="#method-c-sauvInfosUtilisateur-label-Attributes+-3D-3D-3D">&para;</a> <a href="#top">&uarr;</a></span></h3>
-
-<p>uneLangue- la langue choisie par l&#39;utilisateur  nbEtoiles- le nombre d&#39;etoiles que l&#39;utilisateur</p>
+<ul><li>
+<p>-uneLangue- la langue choisie par l&#39;utilisateur</p>
+</li></ul>
           
           
 
           
           <div class="method-source-code" id="sauvInfosUtilisateur-source">
-            <pre><span class="ruby-comment"># File src/Donnees/Sauvegarde.rb, line 61</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier ruby-title">sauvInfosUtilisateur</span>(<span class="ruby-identifier">uneLangue</span>, <span class="ruby-identifier">nbEtoiles</span>)
-    <span class="ruby-identifier">fInfoUtilisateur</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/infosUtilisateur.krkb&quot;</span>, <span class="ruby-string">&quot;w&quot;</span>)
-    <span class="ruby-identifier">fInfoUtilisateur</span>.<span class="ruby-identifier">write</span>(<span class="ruby-node">&quot;#{uneLangue}\n#{nbEtoiles}&quot;</span>)
+            <pre><span class="ruby-comment"># File src/Donnees/Sauvegarde.rb, line 68</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier ruby-title">sauvInfosUtilisateur</span>(<span class="ruby-identifier">uneLangue</span>)
+    <span class="ruby-identifier">fInfoUtilisateur</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{@@DirKurokabe}/../../profile/#{@@nomUtilisateur}/infosUtilisateur.krkb&quot;</span>, <span class="ruby-string">&quot;w&quot;</span>)
+    <span class="ruby-identifier">fInfoUtilisateur</span>.<span class="ruby-identifier">write</span>(<span class="ruby-node">&quot;#{uneLangue}&quot;</span>)
     <span class="ruby-identifier">fInfoUtilisateur</span>.<span class="ruby-identifier">close</span>()
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -277,16 +249,21 @@
           <p><a href="Sauvegarde.html"><code>Sauvegarde</code></a> les informations d&#39;un niveau + modifie infosScore.krkb si le niveau est fini</p>
 
 <h3 id="method-c-sauvNiveau-label-Attributes+-3D-3D-3D">Attributes ===<span><a href="#method-c-sauvNiveau-label-Attributes+-3D-3D-3D">&para;</a> <a href="#top">&uarr;</a></span></h3>
-
-<p>nomUtilisateur- Nom de l&#39;utilisateur (dossier de sauvegarde) niveau- L&#39;objet <a href="Niveau.html"><code>Niveau</code></a> a sauvegardé) estFini- Indication si le niveau est fini (1 si fini, 0 si pas fini)  nbEtoiles- Le nombre d&#39;étoiles récupérés sur le niveau</p>
+<ul><li>
+<p>-nomUtilisateur- Nom de l&#39;utilisateur (dossier de sauvegarde)</p>
+</li><li>
+<p>-niveau- L&#39;objet <a href="Niveau.html"><code>Niveau</code></a> a sauvegardé</p>
+</li><li>
+<p>-nbEtoiles- Le nombre d&#39;étoiles récupérés sur le niveau</p>
+</li></ul>
           
           
 
           
           <div class="method-source-code" id="sauvNiveau-source">
-            <pre><span class="ruby-comment"># File src/Donnees/Sauvegarde.rb, line 96</span>
+            <pre><span class="ruby-comment"># File src/Donnees/Sauvegarde.rb, line 93</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier ruby-title">sauvNiveau</span>(<span class="ruby-identifier">nomUtilisateur</span>, <span class="ruby-identifier">niveau</span>, <span class="ruby-identifier">nbEtoiles</span>)
-    <span class="ruby-identifier">fichier</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/levels/#{niveau.mode}/level#{niveau.id}.krkb&quot;</span>, <span class="ruby-string">&quot;w+&quot;</span>)
+    <span class="ruby-identifier">fichier</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{@@DirKurokabe}/../../profile/#{@@nomUtilisateur}/levels/#{niveau.mode}/level#{niveau.id}.krkb&quot;</span>, <span class="ruby-string">&quot;w+&quot;</span>)
     <span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-identifier">niveau</span>,<span class="ruby-identifier">fichier</span>)
     <span class="ruby-identifier">fichier</span>.<span class="ruby-identifier">close</span>
     
@@ -305,7 +282,7 @@
         <span class="ruby-keyword">end</span>
 
         <span class="ruby-comment">#Ouverture du fichier de score</span>
-        <span class="ruby-identifier">fInfoScore</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{@@DirKurokabe}/profile/#{@@nomUtilisateur}/infosScore.krkb&quot;</span>, <span class="ruby-string">&#39;r+&#39;</span>)
+        <span class="ruby-identifier">fInfoScore</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{@@DirKurokabe}/../../profile/#{@@nomUtilisateur}/infosScore.krkb&quot;</span>, <span class="ruby-string">&#39;r+&#39;</span>)
         <span class="ruby-identifier">lines</span> = <span class="ruby-identifier">fInfoScore</span>.<span class="ruby-identifier">read</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;\n&quot;</span>)
 
         <span class="ruby-comment">#Modification de la valeur de score</span>

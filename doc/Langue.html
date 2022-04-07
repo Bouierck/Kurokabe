@@ -96,6 +96,8 @@
 
   <section class="description">
     
+<p>Classe représentant la langue utilisée par le joueur</p>
+
   </section>
 
   
@@ -141,7 +143,7 @@
 
           
           <div class="method-source-code" id="addListener-source">
-            <pre><span class="ruby-comment"># File src/Donnees/Langue.rb, line 69</span>
+            <pre><span class="ruby-comment"># File src/Donnees/Langue.rb, line 72</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">addListener</span>(<span class="ruby-identifier">listener</span>, <span class="ruby-identifier">text</span>)
     <span class="ruby-identifier">@@listeners</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">listener</span>, <span class="ruby-identifier">text</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -179,7 +181,7 @@
 
           
           <div class="method-source-code" id="changerLangue-source">
-            <pre><span class="ruby-comment"># File src/Donnees/Langue.rb, line 25</span>
+            <pre><span class="ruby-comment"># File src/Donnees/Langue.rb, line 28</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">changerLangue</span>(<span class="ruby-identifier">langue</span>)
     
     <span class="ruby-keyword">if</span>(<span class="ruby-identifier">langue</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
@@ -236,7 +238,7 @@
 
           
           <div class="method-source-code" id="init-source">
-            <pre><span class="ruby-comment"># File src/Donnees/Langue.rb, line 14</span>
+            <pre><span class="ruby-comment"># File src/Donnees/Langue.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">init</span>
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">changerLangue</span>(<span class="ruby-value">0</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -269,7 +271,7 @@
 
           
           <div class="method-source-code" id="text-source">
-            <pre><span class="ruby-comment"># File src/Donnees/Langue.rb, line 56</span>
+            <pre><span class="ruby-comment"># File src/Donnees/Langue.rb, line 59</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">text</span>(<span class="ruby-identifier">key</span>)
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">@@trad</span>[<span class="ruby-identifier">key</span>]
 <span class="ruby-keyword">end</span></pre>

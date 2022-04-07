@@ -63,7 +63,7 @@
   <h3>Parent</h3>
 
   
-  <p class="link">Gtk::Box
+  <p class="link"><a href="Menu.html">Menu</a>
   
 </div>
 
@@ -92,6 +92,8 @@
 
   <section class="description">
     
+<p>Représente le menu où se trouve le classement de tous les profils</p>
+
   </section>
 
   
@@ -117,7 +119,7 @@
 
         <div class="method-description">
         
-        
+        <p>@titlebar =&gt; barre de titre du menu</p>
         
         </div>
       </div>
@@ -156,7 +158,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File src/Menus/MenuClassement.rb, line 15</span>
+            <pre><span class="ruby-comment"># File src/Menus/MenuClassement.rb, line 23</span>
     <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">app</span>)
         <span class="ruby-keyword">super</span>(<span class="ruby-value">:vertical</span>, <span class="ruby-value">10</span>)
 
@@ -504,13 +506,13 @@
 
         <div class="method-description">
           
-          
+          <p>Méthode qui ouvre le classement d&#39;un niveau avec les informations sur les joueurs</p>
           
           
 
           
           <div class="method-source-code" id="open_with_datas-source">
-            <pre><span class="ruby-comment"># File src/Menus/MenuClassement.rb, line 332</span>
+            <pre><span class="ruby-comment"># File src/Menus/MenuClassement.rb, line 342</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">open_with_datas</span>(<span class="ruby-identifier">datas</span>)
     <span class="ruby-identifier">mc</span> = <span class="ruby-constant">ClassementNiveau</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@app</span>, <span class="ruby-identifier">datas</span>)
     <span class="ruby-ivar">@app</span>.<span class="ruby-identifier">fenetre</span>.<span class="ruby-identifier">remove</span>(<span class="ruby-ivar">@app</span>.<span class="ruby-identifier">fenetre</span>.<span class="ruby-identifier">child</span>) <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@app</span>.<span class="ruby-identifier">fenetre</span>.<span class="ruby-identifier">child</span>)

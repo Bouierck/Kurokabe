@@ -92,7 +92,7 @@
 
   <section class="description">
     
-<p>Auteur Jérémy Bourgouin &amp; Oussama Belkadi Date : Vendredi 25/02 2022 11:42</p>
+<p>Un <a href="Utilisateur.html"><code>Utilisateur</code></a> sert a connaître le nom ainsi que la langue utilisé par l&#39;utilisateur</p>
 
   </section>
 
@@ -119,20 +119,7 @@
 
         <div class="method-description">
         
-        <p>@nom =&gt; Nom de l&#39;utilisateur @langue =&gt; <a href="Langue.html"><code>Langue</code></a> choisi de type <a href="Langue.html"><code>Langue</code></a> @nbEtoiles =&gt; Nombre d&#39;étoile obtenu dans le mode aventure</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-nbEtoiles" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">nbEtoiles</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>@nom =&gt; Nom de l&#39;utilisateur @langue =&gt; <a href="Langue.html"><code>Langue</code></a> choisi de type <a href="Langue.html"><code>Langue</code></a> @nbEtoiles =&gt; Nombre d&#39;étoile obtenu dans le mode aventure</p>
+        <p>@nom =&gt; Nom de l&#39;utilisateur @langue =&gt; <a href="Langue.html"><code>Langue</code></a> choisi de type <a href="Langue.html"><code>Langue</code></a></p>
         
         </div>
       </div>
@@ -145,7 +132,7 @@
 
         <div class="method-description">
         
-        <p>@nom =&gt; Nom de l&#39;utilisateur @langue =&gt; <a href="Langue.html"><code>Langue</code></a> choisi de type <a href="Langue.html"><code>Langue</code></a> @nbEtoiles =&gt; Nombre d&#39;étoile obtenu dans le mode aventure</p>
+        <p>@nom =&gt; Nom de l&#39;utilisateur @langue =&gt; <a href="Langue.html"><code>Langue</code></a> choisi de type <a href="Langue.html"><code>Langue</code></a></p>
         
         </div>
       </div>
@@ -173,20 +160,20 @@
 
         <div class="method-description">
           
-          <p>Constructeur</p>
+          <p>Constructeur de <a href="Utilisateur.html"><code>Utilisateur</code></a></p>
 
-<h3 id="method-c-creer-label-Attributes">Attributes<span><a href="#method-c-creer-label-Attributes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h4 id="method-c-creer-label-Attributes">Attributes<span><a href="#method-c-creer-label-Attributes">&para;</a> <a href="#top">&uarr;</a></span></h4>
 <ul><li>
 <p>-nom- nom de l&#39;utilisateur</p>
 </li><li>
-<p>-langue- langue de l&#39;utilisateur</p>
+<p>-langue- langue chois par l&#39;utilisateur</p>
 </li></ul>
           
           
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File src/Donnees/Utilisateur.rb, line 23</span>
+            <pre><span class="ruby-comment"># File src/Donnees/Utilisateur.rb, line 20</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Utilisateur</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">nom</span>, <span class="ruby-identifier">langue</span>)
     <span class="ruby-identifier">new</span>(<span class="ruby-identifier">nom</span>, <span class="ruby-identifier">langue</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -219,12 +206,11 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File src/Donnees/Utilisateur.rb, line 29</span>
+            <pre><span class="ruby-comment"># File src/Donnees/Utilisateur.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">nom</span>, <span class="ruby-identifier">langue</span>)
     <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">nom</span>)
     <span class="ruby-ivar">@nom</span> = <span class="ruby-identifier">nom</span>
     <span class="ruby-ivar">@langue</span> = <span class="ruby-identifier">langue</span>
-    <span class="ruby-ivar">@nbEtoiles</span> = <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier">nbEtoiles</span>()
 <span class="ruby-keyword">end</span></pre>
           </div>
           

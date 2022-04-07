@@ -107,6 +107,8 @@
 
   <section class="description">
     
+<p><a href="Niveau.html"><code>Niveau</code></a> classe contenant toutes les informations du niveau grille, historique, chronometre, resolveur</p>
+
   </section>
 
   
@@ -253,7 +255,7 @@
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File src/Niveau/Niveau.rb, line 33</span>
+            <pre><span class="ruby-comment"># File src/Niveau/Niveau.rb, line 37</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Niveau</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">utilisateur</span>, <span class="ruby-identifier">mode</span>)
     <span class="ruby-identifier">new</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">utilisateur</span>, <span class="ruby-identifier">mode</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -286,7 +288,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File src/Niveau/Niveau.rb, line 37</span>
+            <pre><span class="ruby-comment"># File src/Niveau/Niveau.rb, line 41</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">utilisateur</span>, <span class="ruby-identifier">mode</span>)
     
     <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">id</span>
@@ -378,13 +380,13 @@
 
         <div class="method-description">
           
-          
+          <p>Retourne la grille du niveau ainsi que le temps du chrono sous forme de texte</p>
           
           
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File src/Niveau/Niveau.rb, line 107</span>
+            <pre><span class="ruby-comment"># File src/Niveau/Niveau.rb, line 118</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
     <span class="ruby-string">&quot;grille: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; chrono: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">to_s</span>
 <span class="ruby-keyword">end</span></pre>
@@ -417,11 +419,15 @@
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File src/Niveau/Niveau.rb, line 101</span>
+            <pre><span class="ruby-comment"># File src/Niveau/Niveau.rb, line 105</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>
     <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">on</span>(<span class="ruby-keyword">false</span>) <span class="ruby-keyword">if</span> <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">estFini?</span>
     <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">grilleFini</span> = <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">estFini?</span>
-    <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier">sauvNiveau</span>(<span class="ruby-ivar">@utilisateur</span>.<span class="ruby-identifier">nom</span>, <span class="ruby-keyword">self</span>, <span class="ruby-ivar">@utilisateur</span>.<span class="ruby-identifier">nbEtoiles</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">estFini?</span>
+        <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier">sauvNiveau</span>(<span class="ruby-ivar">@utilisateur</span>.<span class="ruby-identifier">nom</span>, <span class="ruby-keyword">self</span>, <span class="ruby-value">0</span>)
+    <span class="ruby-keyword">else</span>
+        <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier">sauvNiveau</span>(<span class="ruby-ivar">@utilisateur</span>.<span class="ruby-identifier">nom</span>, <span class="ruby-keyword">self</span>, <span class="ruby-constant">Score</span>.<span class="ruby-identifier">calculer</span>(<span class="ruby-ivar">@resolveur</span>.<span class="ruby-identifier">nbAppel</span>, <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">timer</span>, <span class="ruby-ivar">@id</span><span class="ruby-operator">&lt;=</span><span class="ruby-value">5</span><span class="ruby-operator">?</span><span class="ruby-value">1</span><span class="ruby-operator">:</span><span class="ruby-identifier">id</span><span class="ruby-operator">&lt;=</span><span class="ruby-value">10</span><span class="ruby-operator">?</span><span class="ruby-value">2</span><span class="ruby-operator">:</span><span class="ruby-value">3</span>))
+    <span class="ruby-keyword">end</span>    
 <span class="ruby-keyword">end</span></pre>
           </div>
           
