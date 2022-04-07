@@ -5,10 +5,15 @@ require_relative "./BoutonMenu.rb"
 ##
 # Bouton de retour
 class BoutonRetour < BoutonMenu
-    
-   ##
-    #@menu Menu à lancé à l'appuie du bouton
 
+    ##
+    # Constructeur
+    #
+    # === Attributes
+    # 
+    # * -menu- menu dans lequel se trouve le bouton
+    # * -uneApp- application
+    #
     def BoutonRetour.creer(menu, app)
         new(menu, app)
     end

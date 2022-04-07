@@ -19,7 +19,7 @@ class Technique
     # Verifie si la technique est applicable à la grille
     # Retourne vrai si oui faux sinon
     #
-    # === AAttributes
+    # === Attributes
     #
     # * -grille- Grille où chercher la technique
     #
@@ -30,7 +30,7 @@ class Technique
     # Renvoie le non de la technique
     #
     def to_s
-        "Techique : " + @nom + " peut être appliqué"
+        "Technique : " + @nom + Langue.text("technique")
     end
 
     ##

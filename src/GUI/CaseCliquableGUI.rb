@@ -2,14 +2,6 @@ require_relative './CaseGUI.rb'
 
 require  'gtk3'
 
-class TypeCase
-
-    VIDE = 0
-    MUR = 1
-    POINT = 2
-
-end
-
 ##
 # Représente l'aspect graphique d'une case cliquable
 #
@@ -35,8 +27,7 @@ class CaseCliquableGUI < CaseGUI
 
     def initialize(c, grille)
 
-        super(c)
-
+        super(c, grille)
         @grille = grille
 
         self.style_context.add_class("case-clic")

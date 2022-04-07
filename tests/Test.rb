@@ -1,5 +1,5 @@
 class Test
-
+    
     def self.assert(numero, condition)
 
         if(condition)

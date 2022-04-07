@@ -6,12 +6,12 @@ difficulteFacile: EASY
 difficulteMoyen: NORMAL
 difficulteDifficile: HARD
 ingameNiveau: Level
-ingameMenu: Menu
-ingameQuitter: Quit
+ingameMenu: MENU
+ingameQuitter: QUIT
 classement: LEADERBOARD
 menuRegles: RULES
 menuTechniques: TECHNICS
-regles: Nurikabe is an island formation puzzle. Unlike other logic puzzles, Nurikabe is solved by partitioning RTALthe clues with walls according to the rules so that all the islands are isolated and there is a continuous path to all the walls.RTALRTALLPuzzles in Nurikabe come in many sizes and range from very easy to extremely difficult, taking from five minutes to several hours to solve. RTALHowever, make a single mistake and you'll find yourself stuck later as you get closer to the solution...RTALRTALRTALLThe principle is simplePERTALRTALYou have a grid like the one belowRTALLThe goal is to blacken out some of the squares, and keep the others blank. RTALYou must respect the following rulesPE RTAL Rule 1 PEach group of adjacent white squares (having one side in common) must contain one and only one numberRTAL Rule 2 PELThe number of squares forming an island must be equal to the number written in the islandRTAL Rule 3 PEThe black squares must be connected to each otherRTAL Rule 4 PEI There cannot be any black squares that go all the way around an islandRTAL Rule 5 PEThere cannot be a square of 4 black squaresRTALRTALRTALThere are variations in the rules that forbid squares of 4 white squares, or which allow loops on black squares. ...RTALThe real 'official' rules are applied here, i.e. the 5 rules specified above. RTALIf you play Nurikabe elsewhere, check the rules beforehand, otherwise the grids may be impossible.RTALRTALLNurikabe is a mix between Mosaiku and Fillomino.
+regles: Nurikabe is an island formation puzzle. Unlike other logic puzzles, Nurikabe is solved by partitioning RTALthe clues with walls according to the rules so that all the islands are isolated and there is a continuous path to all the walls.RTALRTALLPuzzles in Nurikabe come in many sizes and range from very easy to extremely difficult, taking from five minutes to several hours to solve. RTALHowever, make a single mistake and you'll find yourself stuck later as you get closer to the solution...RTALRTALRTALLThe principle is simplePERTALRTALYou have a grid like the one belowRTALLThe goal is to blacken out some of the squares, and keep the others blank. RTALYou must respect the following rulesPE RTAL Rule 1 PEach group of adjacent white squares (having one side in common) must contain one and only one numberRTAL Rule 2 PELThe number of squares forming an island must be equal to the number written in the islandRTAL Rule 3 PEThe black squares must be connected to each otherRTAL Rule 4 PEI There cannot be any black squares that go all the way around an islandRTAL Rule 5 PEThere cannot be a square of 4 black squaresRTALRTALRTALThere are variations in the rules that forbid squares of 4 white squares, or which allow loops on black squares. ...RTALThe real 'official' rules are applied here, i.e. the 5 rules specified above. RTALIf you play Nurikabe elsewhere, check the rules beforehand, otherwise the grids may be impossible.RTALRTALNurikabe is a mix between Mosaiku and Fillomino.
 tech0: Nurikabe is an island-forming puzzle based on a rectangular grid with clues in various places. RTALRTAL    The object is to create islands by partitioning between clues with walls so that each island contains exactly one clue RTAL    and the number of squares in each island equals the value of the clue. In addition, all islands are isolated from each other horizontally and vertically, RTAL    there are no wall areas of 2x2 or larger, and all walls form a continuous path when the puzzle is completed. RTALRTAL    In the example below we have a 6x6 Nurikabe puzzle with six columns and six rows. We now need to surround the clues with walls according to the above rules… but how?
 tech1: 1. Island of 1RTALRTALSince this is an island with a single square we can surround it with walls by shading the horizontally and vertically adjacent squares.
 tech2: 2. Clues separated by one squareRTALRTALAccording to Nurikabe rules, all clues must be partitioned from each other with walls. RTALTherefore when two clues are in the same row or column and separated by one square, RTALthe square in between must be a wall.
@@ -26,7 +26,43 @@ tech10: 7. Island continuityRTALRTAL    The square marked with a red dot in the 
 tech11: 8. Surrounding a completed islandRTALRTAL    In the partially solved puzzle below, the island of 3 has been completed as shown in the highlighted area. RTAL    We can now surround this island with horizontally and vertically adjacent walls as shown in the right image.
 tech12: 9. Avoiding wall area of 2x2RTALRTAL    According to the rules it is not allowed to have wall areas of 2x2 or larger. Therefore RTAL    the highlighted square below cannot be part of the wall and is marked with a dot showing it belongs to one of the islands.
 tech13: 10. Unreachable squareRTALRTAL    In some cases a square cannot belong to any island simply because no clue can “reach” it. RTAL    In the example below the two highlighted squares are too far from the clues and cannot be part of any island. RTAL    They are therefore shaded to indicate they must be part of a wall.
+AvWA2x2: AvWA2x2
+AvWA2x2Desc: No 2x2 wall
+Diagonal: Diagonal of number
+DiagonalDesc: Two diagonal figures form a square with 2 walls
+Island: Island of 1
+IslandDesc: Boxes 1 are necessarily surrounded by walls
+Island2Cases: Island of 2
+Island2CasesDesc: A 2 has two adjacent walls and therefore has a diagonal wall on the opposite side
+IslandContinuity: Block Expansion
+IslandContinuityDesc: An isolated point surrounded by a wall must join another point or a number
+IslandExp: Block Expansion
+IslandExpDesc: A number >1 surrounded by a wall has its island extended
+SquareSepa: Separation of a box
+SquareSepaDesc: Two numbers separated by a square are necessarily separated by a wall
+SrndCompIsland: Island closure
+SrndCompIslandDesc: We close the islands when they are finished
+SurndSqr: White box circled
+SurndSqrDesc: A white box surrounded by a wall is necessarily a wall
+technique:  can be applied
+UnreachSqr: Unreachable box
+UnreachSqrDesc: A square that cannot be reached by a number is necessarily a wall
+WallExp: Wall Expansion
+WallExpDesc: A single wall must always be connected to other walls
 didacticiel: TUTORIAL
 quitter: QUIT
-contiuer: CONTINUE
+continuer: RESUME
 voirtech: SEE TECHNICS
+resolveur: No technique was found or error in the grid
+didactGrille: Click on a case to change her state
+didactArriere: This button allows you to cancel your move
+didactAvant: This button allows you to restore your move
+didactCheck: This button allows you to show if you have and where are your mistakes
+didactReinitialiser: This button allows you to reset the grid
+didactIndice: This button allows you to get clues to be unlocked !
+didactMenu: This button allows you to return to the level selection menu
+didactQuitter: This button allows you to quit the game
+didactPause: This button allows you to pause the game
+didactReprendre: This button allows you to pause the game
+didactMenuPause: This button allows you to return to the level selection menu
+didactQuitterPause: This button allows you to quit the game

@@ -8,7 +8,7 @@ class Diagonal < Technique
 
     def initialize
         
-        super("Diagonal de chiffre", "Deux chiffre en diagonal forme un carré avec 2 murs")
+        super(Langue.text("Diagonal"), Langue.text("DiagonalDesc"))
 
     end
 
@@ -20,6 +20,11 @@ class Diagonal < Technique
                 @casesChange = [] 
 
                 if(c.is_a?(CaseChiffre))
+
+                    ##
+                    # Pas besoin de regarder les cases au dessus on regarde uniquement en descendant
+                    # Diagonal est un chiffre on check si il y a bien 2 murs sur l'autre diagonal
+                    #
 
                     if(isInGrid(grille.matrice, c.x - 1, c.y + 1) && grille.matrice[c.y + 1][c.x - 1].is_a?(CaseChiffre))
 

@@ -39,8 +39,9 @@ require_relative '../Donnees/Langue.rb'
                 label.show 
             }
 
-
             self.pack_start(lbl)
+
+
 
             btnJouer = BoutonMenu.creer(Langue.text("jouer"), 10, 10, MenuNiveaux.method(:new), app)
             Langue.addListener(btnJouer, "jouer")
@@ -49,14 +50,16 @@ require_relative '../Donnees/Langue.rb'
 
             self.pack_start(btnJouer)
 
+
+
             btnClassement = BoutonMenu.creer(Langue.text("classement"), 10, 10, MenuClassement.method(:new), app)
             Langue.addListener(btnClassement, "classement")
             btnClassement.style_context.add_class("bouton")
             btnClassement.show
 
-            # self.pack_start(btnClassement)
-
             self.pack_start(btnClassement)
+
+
                       
             btnRegles = BoutonMenu.creer(Langue.text("menuRegles"), 10, 10, MenuRegles.method(:new), app)
             Langue.addListener(btnRegles, "menuRegles")
@@ -64,18 +67,22 @@ require_relative '../Donnees/Langue.rb'
             btnRegles.show
 
             self.pack_start(btnRegles)
-            
-            btnRegles = BoutonDidacticiel.creer(Langue.text("didacticiel"), 10, 10, app)
-            Langue.addListener(btnRegles, "didacticiel")
-            btnRegles.style_context.add_class("bouton")
-            btnRegles.show
 
-            self.pack_start(btnRegles)
+
+            
+            btnTuto = BoutonDidacticiel.creer(Langue.text("didacticiel"), 10, 10, app)
+            Langue.addListener(btnTuto, "didacticiel")
+            btnTuto.style_context.add_class("bouton")
+            btnTuto.style_context.add_class("margin-bot3")
+            btnTuto.show
+
+            self.pack_start(btnTuto)
+
+
 
             btnQuitter = BoutonSpecial.creer(Langue.text("quitter"), 10, 10, app.method(:closeApp))
             Langue.addListener(btnQuitter, "quitter")
             btnQuitter.style_context.add_class("bouton")
-            btnQuitter.style_context.add_class("margin-top")
             btnQuitter.style_context.add_class("margin-bot")
             
             btnQuitter.show
@@ -84,14 +91,12 @@ require_relative '../Donnees/Langue.rb'
 
 
 
+
             francais = BoutonLangue.creer("", 10, 10, 0)
-            francais.set_image(Gtk::Image.new(__dir__+"/../../assets/img/fr_flag.png"))
             francais.style_context.add_class("btn-langue-fr")
             
             anglais = BoutonLangue.creer("", 10, 10, 1)
-            anglais.set_image(Gtk::Image.new(__dir__+"/../../assets/img/en_flag.png"))
             anglais.style_context.add_class("btn-langue-en")
-    
     
             langueBox=Gtk::Box.new(:horizontal).tap { |boite|
                 boite.pack_start(francais.show)
@@ -103,8 +108,12 @@ require_relative '../Donnees/Langue.rb'
 
         self.pack_start(langueBox)
 
+
+
         self.show
-        
+
+
+        #Bouton retour de la barre de la fenêtre
         @titlebar = Gtk::HeaderBar.new.tap { |barre|
             barre.title = "Nurikabe"
             barre.show_close_button = true

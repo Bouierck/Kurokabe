@@ -15,16 +15,15 @@ class MenuRegles < Gtk::Box
     def initialize(app)
         super(:vertical, 10)
 
-        self.halign = Gtk::Align::CENTER
-		app.fenetre.resize(1300,750)
-        
+        self.halign = Gtk::Align::CENTER        
 
         lbl = Gtk::Label.new.tap{ |label|
             label.set_markup(Langue.text("menuRegles"))
-        label.style_context.add_class("titre1")
+        label.style_context.add_class("titre4")
         label.style_context.add_class("margin-bigleft")
         label.show 
         }
+
 
         btnRegles = BoutonMenu.creer(Langue.text("voirtech"), 10, 10, MenuTechnique.method(:new), app)
         btnRegles.style_context.add_class("bouton")
@@ -39,22 +38,27 @@ class MenuRegles < Gtk::Box
             boite.pack_start(btnRegles)
             boite.show
         }
-
         topbox.style_context.add_class("margin-bot")
         topbox.style_context.add_class("margin-top")
 
         self.pack_start(topbox)
+
         
         textLbl = Gtk::Label.new.tap{ |label|
             label.set_markup(Langue.text("regles"))
             label.style_context.add_class("texte")
         label.show 
         }
+		textLbl.style_context.add_class("margin-bot")
+        textLbl.style_context.add_class("margin-left2")
+        textLbl.style_context.add_class("margin-right2")
+
         self.pack_start(textLbl)
             
 
         self.show
 
+        #Bouton retour de la barre de la fenêtre
         @titlebar = Gtk::HeaderBar.new.tap { |barre|
                 barre.title = "Nurikabe"
                 barre.show_close_button = true

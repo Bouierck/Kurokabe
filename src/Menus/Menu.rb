@@ -1,12 +1,8 @@
 class Menu
-#
-#	def initialize
-#		idMenu = 1
-#	end
 
-	def lancerMenu  
+    ##
+    # lance le menu correspondant
+	def lancerMenu
     end
-		
-		
 
 end # Marqueur de fin de classe
