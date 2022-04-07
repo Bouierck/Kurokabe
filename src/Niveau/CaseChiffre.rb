@@ -28,6 +28,9 @@ class CaseChiffre < Case
         @chiffre = chiffre
     end
 
+    ##
+    # Complète l'affichage de Case avec le chiffre correspondant à la case
+    #
     def to_s
         super() + " | " + chiffre.to_s
     end

@@ -1,3 +1,6 @@
+##
+# Classe représentant la langue utilisée par le joueur
+#
 class Langue
 
     ##

@@ -10,11 +10,15 @@ require_relative '../GUI/NiveauGUI.rb'
 
 require_relative '../Niveau/Niveau.rb'
 
+require_relative './Menu.rb'
+
     ##
     # Widget graphique représentant l'écran d'accueil.
-    class MenuNiveaux < Gtk::Box
+    class MenuNiveaux < Menu
     
     attr_reader :titlebar, :mode
+
+    public_class_method :new
     
 
     def initialize(app)

@@ -2,6 +2,8 @@ require_relative './Technique.rb'
 require_relative '../../Niveau/CaseChiffre.rb'
 require_relative '../../Niveau/CaseCliquable.rb'
 
+##
+# Technique du point qui doit s'étendre quand il est entouré de mur
 class IslandContinuity < Technique
 
     public_class_method :new

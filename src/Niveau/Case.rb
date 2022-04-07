@@ -18,7 +18,7 @@ class Case
     end
 
     ##
-    # Affichage de la case avec son type et sa position
+    # Affiche le type de la case et sa position
     #
     def to_s
         self.class.name + ": " + @x.to_s + ", " + @y.to_s

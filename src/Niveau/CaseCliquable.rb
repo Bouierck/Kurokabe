@@ -65,6 +65,9 @@ class CaseCliquable < Case
         
     end
 
+    ##
+    # Complète l'affichage de Case avec l'état correspondant à la case
+    # 
     def to_s
         super() + " | " + etat.to_s
     end

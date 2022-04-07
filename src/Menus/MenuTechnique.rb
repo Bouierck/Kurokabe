@@ -1,9 +1,13 @@
 require 'gtk3'
 require_relative '../Boutons/BoutonRetour.rb'
 
+require_relative './Menu.rb'
+
 ##
 # Widget graphique représentant l'écran d'accueil.
-class MenuTechnique < Gtk::Box
+class MenuTechnique < Menu
+
+	public_class_method :new
 
     attr_reader :titlebar
     def initialize(app)
