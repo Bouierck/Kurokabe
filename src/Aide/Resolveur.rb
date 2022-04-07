@@ -8,6 +8,7 @@ require_relative './Techniques/AvWA2x2.rb'
 require_relative './Techniques/IslandExp.rb'
 require_relative './Techniques/Island2Cases.rb'
 require_relative './Techniques/SrndCompIsland.rb'
+require_relative './Techniques/IslandContinuity.rb'
 
 module ReponseType
     TEXT = 0
@@ -27,7 +28,7 @@ class Resolveur
 
     def initialize
         @listTech = Array.new
-        @listTech << Island.new << SquareSepa.new << Diagonal.new << SurndSqr.new << WallExp.new << IslandExp.new << Island2Cases.new << UnreachSqr.new << AvWA2x2.new << SrndCompIsland.new
+        @listTech << Island.new << SquareSepa.new << Diagonal.new << SurndSqr.new << WallExp.new << IslandExp.new << IslandContinuity.new << Island2Cases.new << UnreachSqr.new << AvWA2x2.new << SrndCompIsland.new
         @nbAppel = 0
     end
 
