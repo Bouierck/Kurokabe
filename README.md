@@ -25,6 +25,8 @@ Ressources utilisés :
 
 Fichier définitif sous format .ova (Open Virtual Machine) : [Image](https://drive.google.com/file/d/139hzmpBx0P3nulAqyx8GK_0FFXXA101j/view?usp=sharing)
 
+Fichier sous format .vdi (VirtualBox Disk Image) (9Go) (Veuillez préférablement utilisé le format ova) : [VDI](https://drive.google.com/file/d/1W6IMlqcMZ0KUPFw7ltsQZRNXiubEuIoG/view?usp=sharing)
+
 # Objectifs
 
 - Apprendre à s'organiser, concevoir et travailler en équipe
