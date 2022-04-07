@@ -1,3 +1,7 @@
+##
+# Un Didacticiel sert a guider l'utilisateur pour lui montrer comment fonction l'interface d'un niveau
+#
+
 require_relative '../GUI/NiveauGUI.rb'
 require_relative '../GUI/GrilleGUI.rb'
 
@@ -5,25 +9,9 @@ class Didacticiel < NiveauGUI
     ##
     # @niveau => niveau représenté par ce GUI
 
-
     ##
-    # Constructeur du niveau
+    # Initialise le GUI du niveau
     #
-    # === Attributes
-    #
-    # * -app- fenetre de l'application
-    # * -niveau- niveau représenté par ce GUI
-    #
-    def Didacticiel.creer(app, niveau)
-        new(app, niveau)
-    end 
-
-    def initialize(app, niveau)
-
-        super(app, niveau)
-
-    end
-
     def initGUI
         super
 
@@ -37,6 +25,8 @@ class Didacticiel < NiveauGUI
         @titlebar.show
 
         @didactEnCours = true
+
+        #Rend tous les élément des l'interface niveau incliquable
         @boutonMenu.set_sensitive(false)
         @boutonPause.set_sensitive(false)
         @boutonQuitter.set_sensitive(false)
@@ -60,6 +50,7 @@ class Didacticiel < NiveauGUI
     ##
     # Fait un retour arrière
     # puis update l'affichage de la grille
+    # puis affiche popup du bouton retour en avant (si didacticiel non fini)
     #
     def clickRetourArriere
         super
@@ -73,6 +64,7 @@ class Didacticiel < NiveauGUI
     ##
     # Fait un retour avant
     # puis update l'affichage de la grille
+    # puis affiche popup du bouton check (si didacticiel non fini)
     #
     def clickRetourAvant
         super
@@ -86,6 +78,7 @@ class Didacticiel < NiveauGUI
     ##
     # Reinitialise la grille
     # puis update l'affichage de la grille
+    # puis affiche popup du bouton demande d'indice (si didacticiel non fini)
     #
     def clickReinitialiserGrille
         super
@@ -98,6 +91,7 @@ class Didacticiel < NiveauGUI
 
     ##
     # Surbrille les endroits ou il y a des erreurs
+    # puis affiche popup du bouton réinitialiser (si didacticiel non fini)
     #
     def check
         super
@@ -111,6 +105,7 @@ class Didacticiel < NiveauGUI
     ##
     # Regarde s'il y a des techniques
     # puis update l'affichage de la grille
+    # puis affiche popup du bouton quitter, menu et pause
     #
     def appelResoudreGrille
         super
@@ -123,6 +118,11 @@ class Didacticiel < NiveauGUI
         end
     end
 
+    ##
+    # Regarde s'il y a des techniques
+    # puis update l'affichage de la grille
+    # puis affiche popup du bouton quitter, menu et pause
+    #
     def modePause
         super
         if(@didactEnCours && @pause == true)
@@ -133,6 +133,15 @@ class Didacticiel < NiveauGUI
         end
     end
 
+    ##
+    # Affiche un popup 
+    #
+    # === Attributes ===
+    #
+    # * -relative- Élément à laquelle le popup est rattaché
+    # * -msg- Message du popup
+    # * -position- Position du popup par rapport a relative (gauche, droite, haut, bas)
+    #
     def popup(relative, msg, position)
 
         pop = Gtk::Popover.new()

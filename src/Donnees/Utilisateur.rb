@@ -1,24 +1,21 @@
 ##
-# Auteur Jérémy Bourgouin & Oussama Belkadi
-# Date : Vendredi 25/02 2022 11:42
+# Un Utilisateur sert a connaître le nom ainsi que la langue utilisé par l'utilisateur
 #
-
 class Utilisateur
 
     ##
-    #@nom => Nom de l'utilisateur
-    #@langue => Langue choisi de type Langue
-    #@nbEtoiles => Nombre d'étoile obtenu dans le mode aventure
+    # @nom => Nom de l'utilisateur
+    # @langue => Langue choisi de type Langue
 
-    attr_reader :nom, :langue, :nbEtoiles
+    attr_reader :nom, :langue
 
     ##
-    # Constructeur
+    # Constructeur de Utilisateur
     #
-    # === Attributes
+    # ==== Attributes
     #
     # * -nom- nom de l'utilisateur
-    # * -langue- langue de l'utilisateur
+    # * -langue- langue chois par l'utilisateur
     #
     def Utilisateur.creer(nom, langue)
         new(nom, langue)
@@ -30,7 +27,6 @@ class Utilisateur
         Sauvegarde.creer(nom)
         @nom = nom
         @langue = langue
-        @nbEtoiles = Sauvegarde.nbEtoiles()
     end
 
 end # Marqueur de fin de classe

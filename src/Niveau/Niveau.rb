@@ -101,7 +101,11 @@ class Niveau
     def update
         @chrono.on(false) if @grille.estFini?
         @chrono.grilleFini = true if @grille.estFini?
-        Sauvegarde.sauvNiveau(@utilisateur.nom, self, @utilisateur.nbEtoiles)
+        if @grille.estFini?
+            Sauvegarde.sauvNiveau(@utilisateur.nom, self, 0)
+        else
+            Sauvegarde.sauvNiveau(@utilisateur.nom, self, Score.calculer(@resolveur.nbAppel, @chrono.timer, id<=4?1:id<=9?2:3))
+        end    
     end
 
     def to_s
