@@ -17,13 +17,13 @@ class CaseChiffreGUI < CaseGUI
     #
     # * -c- case représentée par le gui
     #
-    def CaseChiffreGUI.creer(c)
-        new(c)
+    def CaseChiffreGUI.creer(c, grille)
+        new(c, grille)
     end
 
-    def initialize(c)
+    def initialize(c, grille)
 
-        super(c)
+        super(c, grille)
         self.label = c.chiffre.to_s
 
     end
