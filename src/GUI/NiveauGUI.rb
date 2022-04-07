@@ -226,6 +226,7 @@ class NiveauGUI < Gtk::Box
         if @niveau.grille.estFini? == false
             @niveau.historique.retourArriere
             @grilleGUI.updateGrille
+            Sauvegarde.sauvNiveau(@niveau.utilisateur.nom, @niveau, 0)
         end
     end
 
@@ -237,6 +238,7 @@ class NiveauGUI < Gtk::Box
         if @niveau.grille.estFini? == false
             @niveau.historique.retourAvant
             @grilleGUI.updateGrille
+            Sauvegarde.sauvNiveau(@niveau.utilisateur.nom, @niveau, 0)
         end
     end
 
@@ -248,6 +250,7 @@ class NiveauGUI < Gtk::Box
         if @niveau.grille.estFini? == false
             @niveau.historique.reinitialiserGrille
             @grilleGUI.updateGrille
+            Sauvegarde.sauvNiveau(@niveau.utilisateur.nom, @niveau, 0)
         end
     end
 
@@ -260,6 +263,7 @@ class NiveauGUI < Gtk::Box
             erreurs.each do |c|
                 @grilleGUI.matriceGUI[c.y][c.x].style_context.add_class("erreur")
             end
+            Sauvegarde.sauvNiveau(@niveau.utilisateur.nom, @niveau, 0)
         end
     end
 
@@ -279,6 +283,7 @@ class NiveauGUI < Gtk::Box
                 }
             end
 
+            Sauvegarde.sauvNiveau(@niveau.utilisateur.nom, @niveau, 0)
         end
     end
 
@@ -296,6 +301,7 @@ class NiveauGUI < Gtk::Box
     # Quitte l'application
     #
     def QuitterFenetre()
+        Sauvegarde.sauvNiveau(@niveau.utilisateur.nom, @niveau, 0)
         @app.quit
     end
 end
