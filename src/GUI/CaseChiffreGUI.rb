@@ -25,20 +25,12 @@ class CaseChiffreGUI < CaseGUI
 
         super(c, grille, grilleGUI)
         self.label = c.chiffre.to_s
-
-        self.signal_connect('enter-notify-event') { hoverIn }
-        self.signal_connect('leave-notify-event') { hoverOut }
     end
 
+    ##
+    # Choisi l'aspect de la case courante lorsque la souris est sur celle-ci en fonction de son état et possiblement l'aspect d'un groupe lié
+    #
     def hoverIn
-        chercheGroupe
-    end
-
-    def hoverOut
-        removeGroupe
-    end
-
-    def chercheGroupe
         listeGroupe = Array.new
         aTraiter = Array.new
         aTraiter << @case
@@ -66,14 +58,14 @@ class CaseChiffreGUI < CaseGUI
         end
     end
 
-    def removeGroupe
+    ##
+    # Quand la souris sort de la case courante, l'aspect par défaut est remis en place
+    #
+    def hoverOut
         @grilleGUI.matriceGUI.each do |ligne|
             ligne.each do |caseGUI|
-                if(caseGUI == self)
-                    self.style_context.remove_class("case-groupe")
-                else
-                    caseGUI.style_context.remove_class("groupe")
-                end
+                caseGUI.style_context.remove_class("case-groupe")
+                caseGUI.style_context.remove_class("groupe")
             end
         end
     end
