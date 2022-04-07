@@ -23,7 +23,7 @@ class NiveauGUI < Gtk::Box
     ##
     # @niveau => niveau représenté par ce GUI
 
-    attr_reader :titlebar
+    attr_reader :chronoLabel, :niveau, :pause, :titlebar, :boutonIndice, :grilleGUI, :boutonArriere, :boutonAvant, :boutonReinitialiser, :boutonCheck, :boutonIndice
 
     ##
     # Constructeur du niveau
@@ -46,7 +46,6 @@ class NiveauGUI < Gtk::Box
         @app = app;
         @pause = false
         initGUI
-        @taille = false
 
     end
 
@@ -55,13 +54,24 @@ class NiveauGUI < Gtk::Box
     #
     def initGUI
 
-      @app.fenetre.signal_connect('size_allocate'){|w,e|
-        puts(e.width,e.height)
-        if(e.width < 580)
-            NiveauReduitGUI.creer(@app,@niveau)
-            NiveauReduitGUI.init
-        end
-      }
+        #Reduire la fentre 
+        @app.fenetre.signal_connect('size_allocate'){|w,e|
+            puts(e.width)
+            if(e.width < 900 )
+                @boxMenu.remove(@chronoLabel)
+
+                boxFonction.remove(@boutonArriere)
+                boxFonction.remove(@boutonAvant)
+                boxFonction.remove(@boutonReinitialiser)
+                boxFonction.remove(@boutonCheck)
+                boxFonction.remove(@boutonIndice)
+
+                self.remove(@grilleGUI)
+
+                NiveauReduitGUI.creer(@app,self)
+            end
+        }
+
 
         #Centre les éléments
         self.valign = Gtk::Align::CENTER
@@ -103,7 +113,6 @@ class NiveauGUI < Gtk::Box
         #bouton fonction
         boxFonction = Gtk::Box.new(:horizontal,5)
 
-=======
         @boutonArriere= BoutonSpecial.creer("↶", 1, 1, self.method(:clickRetourArriere))
         @boutonArriere.style_context.add_class("bouton")
 
@@ -131,7 +140,6 @@ class NiveauGUI < Gtk::Box
         @boxMenu.add(@boutonPause)
         @boxMenu.add(boxFonction)
         @boxMenu.add(@boutonQuitter)
-        @boxMenu.style_context.add_class("margin-left2")
 
 
 
@@ -142,15 +150,11 @@ class NiveauGUI < Gtk::Box
 
         @grilleGUI.style_context.add_class("margin-left2")
         @grilleGUI.valign = Gtk::Align::CENTER
->>>>>>> e67ffe1ef987b2c8f9608d937924b3f4de39c646
         self.add(@grilleGUI)
 
         @boxMenu.style_context.add_class("margin-right2")
         @boxMenu.valign = Gtk::Align::CENTER
         self.add(@boxMenu)
-
-
-
 
 
 
