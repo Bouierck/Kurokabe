@@ -58,7 +58,7 @@ class Grille
 
         @matrice.each do |line|
             line.each do |c|
-                return false if c.is_a?(CaseCliquable) && c.etat != 2  && @matriceCorrigee[c.y][c.x].etat == 2 
+                return false if c.is_a?(CaseCliquable) && c.etat != TypeCase::MUR  && @matriceCorrigee[c.y][c.x].etat == TypeCase::MUR
             end
         end
         
@@ -75,7 +75,7 @@ class Grille
 
         @matrice.each do |line|
             line.each do |c|
-                erreurs.push(c) if c.is_a?(CaseCliquable) && c.etat != 0 && c.etat != @matriceCorrigee[c.y][c.x].etat
+                erreurs.push(c) if c.is_a?(CaseCliquable) && c.etat != TypeCase::VIDE && c.etat != @matriceCorrigee[c.y][c.x].etat
             end
         end
         

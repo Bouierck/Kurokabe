@@ -52,8 +52,6 @@ class Niveau
         tailleGrilleX = donnees[0].to_i
         tailleGrilleY = donnees[1].to_i
         donneesCases = donnees[2].split(" ")
-        donneesHistorique = donnees[3].split(" ")
-
         
         matrice = Array.new(tailleGrilleY) { Array.new(tailleGrilleX) { 0 } }
 
@@ -102,6 +100,7 @@ class Niveau
     # Sauvegarde le niveau dans le fichier correspondant
     def update
         @chrono.on(false) if @grille.estFini?
+        @chrono.grilleFini = true if @grille.estFini?
         Sauvegarde.sauvNiveau(@utilisateur.nom, self, @utilisateur.nbEtoiles)
     end
 

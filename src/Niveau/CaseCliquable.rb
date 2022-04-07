@@ -3,7 +3,13 @@ require_relative "./Historique.rb"
 
 require_relative "../Modules/dpObservateur/Observable.rb"
 
-#require_relative "../Donnees/Sauvegarde.rb"
+class TypeCase
+
+    VIDE = 0
+    MUR = 1
+    POINT = 2
+
+end
 
 ##
 # Case cliquable qui peut prendre plusieurs états (vide, supposé vide ou mur)
@@ -26,7 +32,7 @@ class CaseCliquable < Case
     # * -y- Position y dans la grille
     # * -etat- etat de la case: 0 vide, 1 point, 2 mur
     #
-    def CaseCliquable.creer(x, y, historique, etat = 0)
+    def CaseCliquable.creer(x, y, historique, etat = TypeCase::VIDE)
         new(x, y, historique, etat)
     end
  

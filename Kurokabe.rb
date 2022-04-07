@@ -56,21 +56,17 @@ class Kurokabe < Gtk::Application
         
         self.signal_connect("activate") do
             @fenetre = Fenetre.new(self)
-            self.accueil
+            m = MenuPrincipal.new(self)
+            @fenetre.add(m)
+            @fenetre.titlebar = m.titlebar
             selecteur = MenuConnexion.new(@fenetre, self)
             self.add_window(@fenetre)
-            #@fenetre.set_position(1000,1000) 
-            #GTK_WIN_POS_CENTER_ALWAYS
-        end
-    end
- 
 
-    def accueil
-        accueil = MenuPrincipal.new(self)
-        @fenetre.remove(@fenetre.child) if(@fenetre.child)
-        @fenetre.child = accueil
-        @fenetre.titlebar = accueil.titlebar
-        return self
+            height = Gdk::Screen.height
+            width = Gdk::Screen.width
+
+            @fenetre.move(width/2-700/2, height/2-700/2)
+        end
     end
     
     def closeApp
