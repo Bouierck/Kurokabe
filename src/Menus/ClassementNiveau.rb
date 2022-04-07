@@ -11,6 +11,9 @@ require_relative './Menu.rb'
 #
 class ClassementNiveau < Menu
 
+    ##
+    # @titlebar => barre de titre de la fenêtre
+
     attr_reader:titlebar
 
     public_class_method :new
@@ -54,7 +57,7 @@ class ClassementNiveau < Menu
             end
         }
 
-        @totals = ""
+        totals = ""
         sortedUser = Hash.new
 
         #Récupère le fichier infosScore.krkb de chaque profil
@@ -97,10 +100,10 @@ class ClassementNiveau < Menu
             i+=1
 
             #Prépare l'affiche sous forme de "Classement - NomJoueur : Temps"
-            @totals += i.to_s + " -  " + k + " : " + "#{min}:#{sec}" + "\n"
+            totals += i.to_s + " -  " + k + " : " + "#{min}:#{sec}" + "\n"
         }
         
-        classmLabel.set_markup(@totals)
+        classmLabel.set_markup(totals)
         classmLabel.style_context.add_class("margin-top")
         classmLabel.style_context.add_class("titre3")
         

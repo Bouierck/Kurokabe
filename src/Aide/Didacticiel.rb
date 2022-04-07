@@ -1,6 +1,9 @@
 require_relative '../GUI/NiveauGUI.rb'
 require_relative '../GUI/GrilleGUI.rb'
 
+##
+# Niveau avec un tuto au début
+#
 class Didacticiel < NiveauGUI
     ##
     # @niveau => niveau représenté par ce GUI
@@ -123,6 +126,9 @@ class Didacticiel < NiveauGUI
         end
     end
 
+    ##
+    # Affiche le menu pause et met en pause le jeu
+    #
     def modePause
         super
         if(@didactEnCours && @pause == true)
@@ -133,6 +139,15 @@ class Didacticiel < NiveauGUI
         end
     end
 
+    ##
+    # Affiche un popup
+    #
+    # === Attributes
+    #
+    # * -relative- widget auquel le popup est attaché
+    # * -msg- message à afficher
+    # * -position- position du popup par rapport au widget
+    #
     def popup(relative, msg, position)
 
         pop = Gtk::Popover.new()

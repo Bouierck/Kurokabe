@@ -13,7 +13,7 @@ require_relative './ChronoGUI.rb'
 require 'gtk3'
 
 ##
-# Représente l'aspect graphique d'un niveau
+# Représente l'aspect graphique d'un niveau en fenêtre réduite
 # contient le GUI de la grille
 # ainsi que les différent boutons
 #
@@ -191,6 +191,8 @@ class NiveauReduitGUI < Gtk::Box
 
     end
 
+    ##
+    # Méthode qui la,ce le menu pause et qui stop le chrono
     def modePause()
         if(@pause == false)
             @pause = true
