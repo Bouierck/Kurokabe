@@ -4,6 +4,8 @@ require_relative "./Bouton.rb"
 
 require 'gtk3'
 
+##
+# BoutonSpecial est une classe qui permet d'avoir un bouton et de lui associer une action tant que celle-ci passe par une méthode
 class BoutonSpecial < Bouton
 
     ##

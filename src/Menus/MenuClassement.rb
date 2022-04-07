@@ -7,8 +7,13 @@ require_relative './ClassementNiveau.rb'
 require_relative './Menu.rb'
 
 
-
+##
+# Représente le menu où se trouve le classement de tous les profils
+#
 class MenuClassement < Menu
+
+    ##
+    # @titlebar => barre de titre du menu
 
     attr_reader:titlebar
 
@@ -332,6 +337,8 @@ class MenuClassement < Menu
 
     end
 
+    ##
+    # Méthode qui ouvre le classement d'un niveau avec les informations sur les joueurs
     def open_with_datas(datas)
         mc = ClassementNiveau.new(@app, datas)
         @app.fenetre.remove(@app.fenetre.child) if(@app.fenetre.child)

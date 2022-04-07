@@ -7,6 +7,9 @@ require 'fileutils'
 require_relative '../Niveau/Niveau.rb'
 require_relative '../Niveau/Score.rb'
 
+##
+# Gestion des sauvegardes du jeu
+#
 class Sauvegarde
 
     ##

@@ -1,6 +1,8 @@
 require_relative './Technique.rb'
 require_relative '../../Niveau/CaseCliquable.rb'
 
+##
+# Technique qui consiste à rallonger un mur quand il est forcément coincé par un chiffre
 class WallExp < Technique
 
     public_class_method :new

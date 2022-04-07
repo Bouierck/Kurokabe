@@ -12,10 +12,16 @@ require_relative '../Niveau/Niveau.rb'
 
 require_relative './Menu.rb'
 
-    ##
-    # Widget graphique représentant l'écran d'accueil.
-    class MenuNiveaux < Menu
+##
+# Widget graphique représentant l'écran d'accueil.
+#
+class MenuNiveaux < Menu
     
+    ##
+    # @titlebar => Barre de titre
+    # @mode => Mode de jeu
+    #
+
     attr_reader :titlebar, :mode
 
     public_class_method :new
@@ -310,13 +316,27 @@ require_relative './Menu.rb'
         affichageMode()
 
     end
-        
+    
+    ##
+    # Affiche un message dans le label associé
+    # 
+    # === Attributes ===
+    # 
+    # * -label - zone de texte
+    # * -message - message à afficher
+    #
     def onEvt(label,message)
         puts message
         label.set_text(message)
     end
     
-    #Verrouille le bouton sélectionné
+    ##
+    # Met à jour la fenêtre en fonction du mode de jeu sélectionné
+    #
+    # === Attributes ===
+    #
+    # * -nb- mode de jeu sélectionné
+    #
     def updateButton(nb)
 
         #Bouton classique
@@ -357,13 +377,19 @@ require_relative './Menu.rb'
         end
     end
 
-    #Change le contenu des boutons en fonction de si le niveau a été complété
+    ##
+    # Change le contenu des boutons en fonction de si le niveau a été complété
+    #
+    # === Attributes ===
+    #
+    # * -btn- bouton à modifier
+    # * -niv- niveau concerné par le bouton
+    # * -file_data- données du joueur
+    #
     def validate(btn,niv,file_data)
 
         #Pour le mode classique
 		if @mode == 1 then
-#			p "1"
-# 			btn.set_label(" "+file_data[niv-11]+" ")
 			if file_data[niv-11] == "1"
 				btn.set_label("  ✓  ")
 			else
@@ -373,7 +399,7 @@ require_relative './Menu.rb'
 
         #Pour le mode aventure
 		if @mode == 2 then
-#			p "2"
+
 			if file_data[niv+4] == "1"
 				btn.set_label("★☆☆")
 			elsif file_data[niv+4] == "2"
@@ -409,12 +435,14 @@ require_relative './Menu.rb'
 		end
 	end
 
+    ##
+    # Affiche les boutons de sélection des niveaux
+    #
     def affichageMode()
 
 		# Chargement fichier
 		file = File.open(__dir__ + "/../../profile/" + @app.user.nom + "/infosScore.krkb")
 		file_data = file.read.split(" ")
-#		p file_data
 
 		x = 11
 		y = 0

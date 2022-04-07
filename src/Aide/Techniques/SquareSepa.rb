@@ -2,6 +2,8 @@ require_relative './Technique.rb'
 require_relative '../../Niveau/CaseChiffre.rb'
 require_relative '../../Niveau/CaseCliquable.rb'
 
+##
+# Technique qui permet d'ajouter un carré noir entre deux chiffres
 class SquareSepa < Technique
 
     public_class_method :new
