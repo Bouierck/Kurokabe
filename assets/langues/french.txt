@@ -54,3 +54,15 @@ quitter: QUITTER
 continuer: CONTINUER
 voirtech: VOIR LES TECHNIQUES
 resolveur: Aucune technique n'a été trouvé ou erreur dans la grille
+didactGrille: Cliquez sur une case pour changer son état
+didactArriere: Ce bouton permet de revenir un coup en arrière
+didactAvant: Ce bouton permet de revenir un coup en avant
+didactCheck: Ce bouton permet de regarder si vous avez des erreurs et de les montrer
+didactReinitialiser: Ce bouton permet de réinitialiser la grille
+didactIndice: Ce bouton permet d'obtenir des indices pour te débloquer !
+didactMenu: Ce bouton permet de retourner au menu de sélection des niveaux
+didactQuitter: Ce bouton permet de quitter le jeu
+didactPause: Ce bouton permet de mettre le jeu en pause
+didactReprendre: Ce bouton reprendre la partie
+didactMenuPause: Ce bouton permet de retourner au menu des niveaux
+didactQuitterPause: Ce bouton permet de quitter le jeu

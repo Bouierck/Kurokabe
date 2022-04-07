@@ -54,3 +54,15 @@ quitter: QUIT
 continuer: RESUME
 voirtech: SEE TECHNICS
 resolveur: No technique was found or error in the grid
+didactGrille: Click on a case to change her state
+didactArriere: This button allows you to cancel your move
+didactAvant: This button allows you to restore your move
+didactCheck: This button allows you to show if you have and where are your mistakes
+didactReinitialiser: This button allows you to reset the grid
+didactIndice: This button allows you to get clues to be unlocked !
+didactMenu: This button allows you to return to the level selection menu
+didactQuitter: This button allows you to quit the game
+didactPause: This button allows you to pause the game
+didactReprendre: This button allows you to pause the game
+didactMenuPause: This button allows you to return to the level selection menu
+didactQuitterPause: This button allows you to quit the game

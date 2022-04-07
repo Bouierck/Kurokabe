@@ -52,7 +52,8 @@ class Didacticiel < NiveauGUI
         @boutonQuitterPause.set_sensitive(false)
         
         @grilleGUI.set_sensitive(true)
-        popup(@grilleGUI, "Cliquez sur une case pour changer son état.", Gtk::PositionType::TOP)     
+
+        popup(@grilleGUI, Langue.text("didactGrille"), Gtk::PositionType::TOP)     
 
     end
 
@@ -64,7 +65,7 @@ class Didacticiel < NiveauGUI
         super
         if(@didactEnCours)
             @boutonAvant.set_sensitive(true)
-            popup(@boutonAvant, "Ce bouton permet de revenir un coup en avant.", Gtk::PositionType::TOP)
+            popup(@boutonAvant, Langue.text("didactAvant"), Gtk::PositionType::TOP)
             @boutonArriere.set_sensitive(false)
         end
     end
@@ -77,7 +78,7 @@ class Didacticiel < NiveauGUI
         super
         if(@didactEnCours)
             @boutonCheck.set_sensitive(true)
-            popup(@boutonCheck, "Ce bouton permet regarder si vous avez des erreurs.", Gtk::PositionType::TOP)
+            popup(@boutonCheck, Langue.text("didactCheck"), Gtk::PositionType::TOP)
             @boutonAvant.set_sensitive(false)
         end
     end
@@ -90,7 +91,7 @@ class Didacticiel < NiveauGUI
         super
         if(@didactEnCours)
             @boutonIndice.set_sensitive(true)
-            popup(@boutonIndice, "Ce bouton permet d'obtenir des indices pour te débloquer !", Gtk::PositionType::TOP)
+            popup(@boutonIndice, Langue.text("didactIndice"), Gtk::PositionType::TOP)
             @boutonReinitialiser.set_sensitive(false)
         end
     end
@@ -102,7 +103,7 @@ class Didacticiel < NiveauGUI
         super
         if(@didactEnCours)
             @boutonReinitialiser.set_sensitive(true)
-            popup(@boutonReinitialiser, "Ce bouton permet de réinitialiser la grille.", Gtk::PositionType::TOP)
+            popup(@boutonReinitialiser, Langue.text("didactReinitialiser"), Gtk::PositionType::TOP)
             @boutonCheck.set_sensitive(false)
         end
     end
@@ -114,22 +115,21 @@ class Didacticiel < NiveauGUI
     def appelResoudreGrille
         super
         if(@didactEnCours)
+            popup(@boutonQuitter, Langue.text("didactQuitter"), Gtk::PositionType::LEFT)
+            popup(@boutonMenu, Langue.text("didactMenu"), Gtk::PositionType::LEFT)
             @boutonPause.set_sensitive(true)
-            popup(@boutonPause, "Ce bouton permet de mettre le jeu en pause.", Gtk::PositionType::LEFT)
+            popup(@boutonPause, Langue.text("didactPause"), Gtk::PositionType::LEFT)
             @boutonIndice.set_sensitive(false)
-            popup(@boutonQuitter, "Ce bouton permet de quitter le jeu.", Gtk::PositionType::LEFT)
-            popup(@boutonMenu, "Ce bouton permet de retourner au menu principal.", Gtk::PositionType::LEFT)
         end
     end
 
     def modePause
         super
-        print(@didactEnCours)
         if(@didactEnCours && @pause == true)
             @boutonReprendre.set_sensitive(true)
-            popup(@boutonQuitterPause, "Ce bouton permet de quitter le jeu.", Gtk::PositionType::LEFT)
-            popup(@boutonMenuPause, "Ce bouton permet de retourner au menu principal.", Gtk::PositionType::LEFT)
-            popup(@boutonReprendre, "Ce bouton reprendre la partie.", Gtk::PositionType::LEFT)
+            popup(@boutonQuitterPause, Langue.text("didactQuitterPause"), Gtk::PositionType::LEFT)
+            popup(@boutonMenuPause, Langue.text("didactMenuPause"), Gtk::PositionType::LEFT)
+            popup(@boutonReprendre, Langue.text("didactReprendre"), Gtk::PositionType::LEFT)
         end
     end
 
@@ -144,10 +144,10 @@ class Didacticiel < NiveauGUI
         if(relative == @grilleGUI)
             @boutonArriere.set_sensitive(true)
             relative.signal_connect("button-release-event"){
-                
                 if(@didactEnCours)
                     pop.set_relative_to(nil)
-                    popup(@boutonArriere, "Ce bouton permet de revenir un coup en arrière.", Gtk::PositionType::TOP)
+                    popup(@boutonArriere, Langue.text("didactArriere"), Gtk::PositionType::TOP)
+                    relative.set_sensitive(false)
                 end
             }
         else
