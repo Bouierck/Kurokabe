@@ -20,7 +20,7 @@
 
 Les livrables sont situés dans le dossier "Livrables" de ce repertoire.
 
-Guide d'installation : https://www.youtube.com/watch?v=aEXCjUwnaU8
+Guide d'installation : https://www.youtube.com/watch?v=aEXCjUwnaU8 <br>
 Guide d'utilisation : https://www.youtube.com/watch?v=mwBdHmnsc00
 
 Fichier définitif sous format .ova (3,6Go) (Open Virtual Machine) : [Image](https://drive.google.com/file/d/139hzmpBx0P3nulAqyx8GK_0FFXXA101j/view?usp=sharing)
