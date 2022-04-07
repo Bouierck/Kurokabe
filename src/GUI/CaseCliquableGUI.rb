@@ -2,14 +2,6 @@ require_relative './CaseGUI.rb'
 
 require  'gtk3'
 
-class TypeCase
-
-    VIDE = 0
-    MUR = 1
-    POINT = 2
-
-end
-
 ##
 # Représente l'aspect graphique d'une case cliquable
 #
