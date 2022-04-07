@@ -55,7 +55,7 @@ class NiveauReduitGUI < Gtk::Box
     #
     def initGUI
 
-        #Reduire la fentre 
+        #Agrandir la fenêtre 
         @app.fenetre.signal_connect('size_allocate'){|w,e|
             puts(e.width)
             if(e.width >= 900 )
@@ -174,6 +174,8 @@ class NiveauReduitGUI < Gtk::Box
 
     end
 
+    ##
+    # Méthode qui lance le menu pause et stop le chrono
     def modePause()
         if(@pause == false)
             @pause = true

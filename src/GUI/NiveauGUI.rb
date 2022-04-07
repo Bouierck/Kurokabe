@@ -144,15 +144,15 @@ class NiveauGUI < Gtk::Box
 
         self.show_all
 
-        # #Reduire la fentre 
-        # @app.fenetre.signal_connect('size_allocate'){|w,e|
-        #     puts(e.width)
-        #     if(e.width < 900 )
-        #         m =NiveauReduitGUI.creer(@app,niveau)
-        #         @app.fenetre.remove(self) if(@app.fenetre.child)
-        #         @app.fenetre.child = m
-        #     end 
-        # }
+        #Reduire la fentre 
+        @app.fenetre.signal_connect('size_allocate'){|w,e|
+            puts(e.width)
+            if(e.width < 900 )
+                m =NiveauReduitGUI.creer(@app,niveau)
+                @app.fenetre.remove(self) if(@app.fenetre.child)
+                @app.fenetre.child = m
+            end 
+        }
 
         #Box représentant la pause
 
