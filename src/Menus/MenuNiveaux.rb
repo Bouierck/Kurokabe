@@ -14,8 +14,6 @@ require_relative '../Niveau/Niveau.rb'
     # Widget graphique représentant l'écran d'accueil.
     class MenuNiveaux < Gtk::Box
     
-
-        
     attr_reader :titlebar, :mode
     
 
@@ -30,6 +28,8 @@ require_relative '../Niveau/Niveau.rb'
         @app = app
         @app.fenetre.resize(700,700)
 
+
+
         lbl = Gtk::Label.new.tap{ |label|
             label.set_markup("NIVEAUX")
             label.style_context.add_class("titre")
@@ -39,74 +39,83 @@ require_relative '../Niveau/Niveau.rb'
 
         self.pack_start(lbl)
 
+
+
         @btnAventure= Gtk::Button.new
         @btnAventure.style_context.add_class("bouton")
         @btnAventure.style_context.add_class("margin2")
+
 
         @btnClasse= Gtk::Button.new
         @btnClasse.style_context.add_class("bouton")
         @btnClasse.style_context.add_class("margin2")
 
+
         @btnClassique= Gtk::Button.new
         @btnClassique.style_context.add_class("bouton")
         @btnClassique.style_context.add_class("margin2")
 
-            self.valign = Gtk::Align::CENTER
-            self.halign = Gtk::Align::CENTER
+
+        self.valign = Gtk::Align::CENTER
+        self.halign = Gtk::Align::CENTER
 
 
 
-
-            @btnClassique.tap{|bouton| 
-                bouton.add(Gtk::Label.new.tap{ |label|
-                    label.set_markup(Langue.text("lvlClassique"))
-                    label.show	})
-                bouton.signal_connect("clicked") { 
-                    updateButton(1)
-                    affichageMode()
-                }
-            bouton.show		}
-
-
-            @btnAventure.tap{|bouton| 
-                bouton.add(Gtk::Label.new.tap{ |label|
-                    label.set_markup(Langue.text("lvlAventure"))
-                    label.show	})
-                bouton.signal_connect("clicked") { 
-                    updateButton(2)
-                    affichageMode()
-                }
-                    
-                   
-            bouton.show		}
-            
-
-
-            @btnClasse.tap{|bouton| 
-                bouton.add(Gtk::Label.new.tap{ |label|
-                    label.set_markup(Langue.text("lvlClasse"))
-                    label.show	})
-                bouton.signal_connect("clicked") { 
-                    updateButton(3)
-                    affichageMode()
-                }
-                   
-            bouton.show		}
-            
-
-            boiteMode = Gtk::Box.new(:horizontal).tap { |boite|
-                boite.pack_start(@btnClassique)
-                boite.pack_start(@btnAventure)
-                boite.pack_start(@btnClasse)
-                
-                boite.show
+        #Bouton qui change le contenu de la fenêtre
+        #pour les niveaux du mode classique
+        @btnClassique.tap{|bouton| 
+            bouton.add(Gtk::Label.new.tap{ |label|
+                label.set_markup(Langue.text("lvlClassique"))
+                label.show	})
+            bouton.signal_connect("clicked") { 
+                updateButton(1)
+                affichageMode()
             }
+        bouton.show		}
+
+        #Bouton qui change le contenu de la fenêtre
+        #pour les niveaux du mode aventure
+        @btnAventure.tap{|bouton| 
+            bouton.add(Gtk::Label.new.tap{ |label|
+                label.set_markup(Langue.text("lvlAventure"))
+                label.show	})
+            bouton.signal_connect("clicked") { 
+                updateButton(2)
+                affichageMode()
+            }
+                
+                
+        bouton.show		}
+        
+
+        #Bouton qui change le contenu de la fenêtre
+        #pour les niveaux du mode classé
+        @btnClasse.tap{|bouton| 
+            bouton.add(Gtk::Label.new.tap{ |label|
+                label.set_markup(Langue.text("lvlClasse"))
+                label.show	})
+            bouton.signal_connect("clicked") { 
+                updateButton(3)
+                affichageMode()
+            }
+                
+        bouton.show		}
+        
+
+        boiteMode = Gtk::Box.new(:horizontal).tap { |boite|
+            boite.pack_start(@btnClassique)
+            boite.pack_start(@btnAventure)
+            boite.pack_start(@btnClasse)
+            
+            boite.show
+        }
 
         self.pack_start(boiteMode)
 
-        
 
         self.show
+
+        #Bouton retour de la barre de la fenêtre
         @titlebar = Gtk::HeaderBar.new.tap { |barre|
             barre.title = "Nurikabe"
             barre.subtitle = "Grilles "
@@ -117,6 +126,8 @@ require_relative '../Niveau/Niveau.rb'
 
         @mode = 1 # 1 = Classique, 2 = Aventure, 3 = Classe
 
+        #Par défault, le contenu cdu mode classique est affiché
+        #donc par défault, le bouton du mode classique est vérouillé 
         @btnClassique.set_sensitive(false)
 
         @@ary = Array.new()
@@ -285,7 +296,10 @@ require_relative '../Niveau/Niveau.rb'
         label.set_text(message)
     end
     
+    #Verrouille le bouton sélectionné
     def updateButton(nb)
+
+        #Bouton classique
         if nb == 1 then
             if @@btnClassiqueActive == 0 then
                 @btnClassique.set_sensitive(false)
@@ -297,6 +311,7 @@ require_relative '../Niveau/Niveau.rb'
 
             end
 
+        #Bouton aventure
         elsif nb == 2 then
             if @@btnAventureActive == 0 then
                 @btnAventure.set_sensitive(false)
@@ -308,6 +323,7 @@ require_relative '../Niveau/Niveau.rb'
 
             end
 
+        #Bouton classé
         elsif nb == 3 then 
             if @@btnClasseActive == 0 then
                 @@btnClassiqueActive = 0
@@ -321,7 +337,10 @@ require_relative '../Niveau/Niveau.rb'
         end
     end
 
+    #Change le contenu des boutons en fonction de si le niveau a été complété
     def validate(btn,niv,file_data)
+
+        #Pour le mode classique
 		if @mode == 1 then
 #			p "1"
 # 			btn.set_label(" "+file_data[niv-11]+" ")
@@ -331,6 +350,8 @@ require_relative '../Niveau/Niveau.rb'
 				btn.set_label("     ");
 			end
 		end
+
+        #Pour le mode aventure
 		if @mode == 2 then
 #			p "2"
 			if file_data[niv+4] == "1"
@@ -343,6 +364,8 @@ require_relative '../Niveau/Niveau.rb'
 				btn.set_label("☆☆☆");
 			end
 		end
+
+        #Pour le mode classé
 		if @mode == 3 && file_data[niv+19]!= 0 then
 #			p "3"
 			m = 0
@@ -367,7 +390,6 @@ require_relative '../Niveau/Niveau.rb'
 	end
 
     def affichageMode()
-
 
 		# Chargement fichier
 		file = File.open(__dir__ + "/../../profile/" + @app.user.nom + "/infosScore.krkb")

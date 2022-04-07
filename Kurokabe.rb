@@ -39,6 +39,9 @@ class Kurokabe < Gtk::Application
 
         Langue.init
 
+
+        #Ajout de tous les fichiers CSS
+
         @provider = Gtk::CssProvider.new
         @provider.load(:path => './src/GUI/CSS/case.css')
         
@@ -48,12 +51,17 @@ class Kurokabe < Gtk::Application
         @provider3 = Gtk::CssProvider.new
         @provider3.load(:path => './src/GUI/CSS/regles.css')
 
+        #Ajout avec des CSS avec les priorités
         Gdk::Screen.default.add_style_provider(@provider, 10000000)
         Gdk::Screen.default.add_style_provider(@provider2, 10000100)
         Gdk::Screen.default.add_style_provider(@provider3, 10000200)
+
+
+
         
         @user = nil
         
+        #Création de la fenêtre
         self.signal_connect("activate") do
             @fenetre = Fenetre.new(self)
             m = MenuPrincipal.new(self)
