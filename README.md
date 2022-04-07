@@ -43,8 +43,6 @@ Fichier définitif sous format .iso (VirtualBox image) : [Image]()
 
 - **ZIP** : Cliquer sur Code au dessus de la liste des fichiers de cette page github, appuyer sur "Download ZIP" (Pour le bon fonctionnement de l'application, assurer-vous d'avoir donné les droits d'écriture sur le dossier)
 - **Git** : pour cloner se projet dans votre repo `git clone https://github.com/Bouierck/Kurokabe.git`
-- **Terminal** : Installer le module **subversion** avec `sudo apt install subversion` par exemple.
-Puis, exécuter : `svn export https://github.com/Bouierck/Kurokabe`
 
 # Lancer l'application
 
