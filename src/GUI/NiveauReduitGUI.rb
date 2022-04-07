@@ -91,22 +91,36 @@ class NiveauReduitGUI < Gtk::Box
         boxFonctionreduit.valign = Gtk::Align::CENTER
         boxFonctionreduit.halign = Gtk::Align::CENTER
 
+
+
         @chronoLabelReduit = ChronoGUI.creer(@niveau.chrono)
-        @chronoLabelReduit.style_context.add_class("chrono")
+        @chronoLabelReduit.style_context.add_class("chrono1")
+        @chronoLabelReduit.valign = Gtk::Align::CENTER
+
+
 
         @boutonreduitPause = BoutonPause.creer("⏸", 2, 2, self)
-        @boutonreduitPause.style_context.add_class("bouton-pause")
+        @boutonreduitPause.style_context.add_class("bouton")
+        @boutonreduitPause.valign = Gtk::Align::CENTER
+
+
         
-        niveauLabelReduit = Gtk::Label.new(@niveau.id.to_s)
+        niveauLabelReduit = Gtk::Label.new("1."+@niveau.id.to_s)
         niveauLabelReduit.style_context.add_class("titre")
+        niveauLabelReduit.valign = Gtk::Align::CENTER
+
+
             
         @boxMenuReduit = Gtk::Box.new(:horizontal,3)
-        @boxMenuReduit.valign = Gtk::Align::CENTER
         @boxMenuReduit.halign = Gtk::Align::CENTER
 
         @boxMenuReduit.add(@boutonreduitPause)
         @boxMenuReduit.add(@chronoLabelReduit)
         @boxMenuReduit.add(niveauLabelReduit)
+
+        @boxMenuReduit.style_context.add_class("margin-top2")
+        @boxMenuReduit.style_context.add_class("margin-bot3")
+
             
         @boutonArriereReduit= BoutonSpecial.creer("↶", 1, 1, self.method(:clickRetourArriere))
         @boutonArriereReduit.style_context.add_class("bouton")
@@ -128,6 +142,9 @@ class NiveauReduitGUI < Gtk::Box
         boxFonctionreduit.add(@boutonReinitialiserReduit)
         boxFonctionreduit.add(@boutonCheckReduit)
         boxFonctionreduit.add(@boutonIndiceReduit)
+
+        @grilleGUI.style_context.add_class("margin-bot3")
+        boxFonctionreduit.style_context.add_class("margin-bot2")
             
         self.add(@boxMenuReduit)
         self.add(@grilleGUI)
