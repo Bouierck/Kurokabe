@@ -206,7 +206,23 @@ require_relative '../Niveau/Niveau.rb'
         niv34.style_context.add_class("niveau")
         niv35.style_context.add_class("niveau")
 
+        @tabNiv = Array.new()
 
+        @tabNiv.push(niv11)
+        @tabNiv.push(niv12)
+        @tabNiv.push(niv13)
+        @tabNiv.push(niv14)
+        @tabNiv.push(niv15)
+        @tabNiv.push(niv21)
+        @tabNiv.push(niv22)
+        @tabNiv.push(niv23)
+        @tabNiv.push(niv24)
+        @tabNiv.push(niv25)
+        @tabNiv.push(niv31)
+        @tabNiv.push(niv32)
+        @tabNiv.push(niv33)
+        @tabNiv.push(niv34)
+        @tabNiv.push(niv35)
 
         # ----------------    Boite regroupant boutons  ------------------------
 
@@ -381,6 +397,21 @@ require_relative '../Niveau/Niveau.rb'
 			x = x + 1
 			y = y + 1
 		end
+        if(mode == 2)
+            for i in 15..29 do 
+                if(i == 15 || file_data[i] != "0" || file_data[i - 1] != "0")
+                    @tabNiv[i - 15].set_sensitive(true)
+                else
+                    @tabNiv[i - 15].set_sensitive(false)
+                    print("false")
+                end
+
+            end
+        else
+            @tabNiv.each do |niv|
+                niv.set_sensitive(true)
+            end
+        end
 
 	end
 
