@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Grille - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    <div id="includes-section" class="nav-section">
+  <h3>Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><a class="include" href="Observable.html">Observable</a>
+  
+  
+  
+    <li><a class="include" href="Observateur.html">Observateur</a>
+  
+  
+  </ul>
+</div>
+
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-creer">::creer</a>
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-compareGrille">#compareGrille</a>
+    
+    <li ><a href="#method-i-estFini-3F">#estFini?</a>
+    
+    <li ><a href="#method-i-to_s">#to_s</a>
+    
+    <li ><a href="#method-i-update">#update</a>
+    
+    <li ><a href="#method-i-voisines">#voisines</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Grille">
+  <h1 id="class-Grille" class="class">
+    class Grille
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-matrice" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">matrice</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>@matrice Matrice représentant la grille, composée de <a href="CaseChiffre.html"><code>CaseChiffre</code></a> et de <a href="CaseCliquable.html"><code>CaseCliquable</code></a>. @matriceCorrigee Matrice représentant la grille corrigée avec les états finaux, composée de <a href="CaseChiffre.html"><code>CaseChiffre</code></a> et de <a href="CaseCliquable.html"><code>CaseCliquable</code></a>.</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-matriceCorrigee" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">matriceCorrigee</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>@matrice Matrice représentant la grille, composée de <a href="CaseChiffre.html"><code>CaseChiffre</code></a> et de <a href="CaseCliquable.html"><code>CaseCliquable</code></a>. @matriceCorrigee Matrice représentant la grille corrigée avec les états finaux, composée de <a href="CaseChiffre.html"><code>CaseChiffre</code></a> et de <a href="CaseCliquable.html"><code>CaseCliquable</code></a>.</p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-creer" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">creer</span><span
+            class="method-args">(matrice, matriceCorrigee)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Constructeur de <a href="Grille.html"><code>Grille</code></a></p>
+
+<h4 id="method-c-creer-label-Attributes">Attributes<span><a href="#method-c-creer-label-Attributes">&para;</a> <a href="#top">&uarr;</a></span></h4>
+<ul><li>
+<p>-matrice- matrice vide de la grille</p>
+</li><li>
+<p>-matriceCorrigee- solution de la grille</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="creer-source">
+            <pre><span class="ruby-comment"># File src/Niveau/Grille.rb, line 28</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Grille</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">matrice</span>, <span class="ruby-identifier">matriceCorrigee</span>)
+    <span class="ruby-identifier">new</span>(<span class="ruby-identifier">matrice</span>, <span class="ruby-identifier">matriceCorrigee</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(matrice, matriceCorrigee)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File src/Niveau/Grille.rb, line 34</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">matrice</span>, <span class="ruby-identifier">matriceCorrigee</span>)
+    
+    <span class="ruby-ivar">@observateurs</span> = []
+    <span class="ruby-ivar">@matrice</span> = <span class="ruby-identifier">matrice</span>
+    <span class="ruby-ivar">@matriceCorrigee</span> = <span class="ruby-identifier">matriceCorrigee</span>
+
+    <span class="ruby-comment">#Ajout au case de la grille, la grille comme observateur</span>
+    <span class="ruby-ivar">@matrice</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">line</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+            <span class="ruby-keyword">if</span>(<span class="ruby-identifier">c</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseCliquable</span>))
+                <span class="ruby-identifier">c</span>.<span class="ruby-identifier">ajouteObservateur</span>(<span class="ruby-keyword">self</span>)
+            <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-compareGrille" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">compareGrille</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Compare la grille courante et la correction Retourne Tableau contenant les cases éronnées</p>
+          
+          
+
+          
+          <div class="method-source-code" id="compareGrille-source">
+            <pre><span class="ruby-comment"># File src/Niveau/Grille.rb, line 72</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">compareGrille</span>
+    
+    <span class="ruby-identifier">erreurs</span> = []
+
+    <span class="ruby-ivar">@matrice</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">line</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">erreurs</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">c</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseCliquable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">TypeCase</span><span class="ruby-operator">::</span><span class="ruby-constant">VIDE</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">!=</span> <span class="ruby-ivar">@matriceCorrigee</span>[<span class="ruby-identifier">c</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">c</span>.<span class="ruby-identifier">x</span>].<span class="ruby-identifier">etat</span>
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">erreurs</span>
+    
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-estFini-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">estFini?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode de vérification de la validité de la grille avec le corrigé. Retourne Vrai si la grille est terminée, faux sinon</p>
+          
+          
+
+          
+          <div class="method-source-code" id="estFini-3F-source">
+            <pre><span class="ruby-comment"># File src/Niveau/Grille.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estFini?</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">compareGrille</span> <span class="ruby-operator">!=</span> []
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-ivar">@matrice</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">line</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+            <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseCliquable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">TypeCase</span><span class="ruby-operator">::</span><span class="ruby-constant">MUR</span>  <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@matriceCorrigee</span>[<span class="ruby-identifier">c</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">c</span>.<span class="ruby-identifier">x</span>].<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-constant">TypeCase</span><span class="ruby-operator">::</span><span class="ruby-constant">MUR</span>
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-to_s" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_s</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Affiche la grille dans le terminal pour les tests de celle-ci.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="to_s-source">
+            <pre><span class="ruby-comment"># File src/Niveau/Grille.rb, line 132</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
+    <span class="ruby-identifier">string</span> = <span class="ruby-string">&quot;&quot;</span>
+    <span class="ruby-keyword">for</span> <span class="ruby-identifier">y</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-ivar">@matrice</span>.<span class="ruby-identifier">length</span> <span class="ruby-keyword">do</span>
+        <span class="ruby-keyword">for</span> <span class="ruby-identifier">x</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-ivar">@matrice</span>[<span class="ruby-identifier">y</span>].<span class="ruby-identifier">length</span> <span class="ruby-keyword">do</span>
+            <span class="ruby-identifier">string</span> <span class="ruby-operator">+=</span> <span class="ruby-ivar">@matrice</span>[<span class="ruby-identifier">y</span>][<span class="ruby-identifier">x</span>].<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; &quot;</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">string</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;\n&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">string</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-update" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="update-source">
+            <pre><span class="ruby-comment"># File src/Niveau/Grille.rb, line 86</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>
+    <span class="ruby-identifier">notifObservateurs</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-voisines" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">voisines</span><span
+            class="method-args">(caseC)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="voisines-source">
+            <pre><span class="ruby-comment"># File src/Niveau/Grille.rb, line 90</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">voisines</span>(<span class="ruby-identifier">caseC</span>)
+    <span class="ruby-identifier">voisines</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>)
+        <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@matrice</span>[<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseCliquable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@matrice</span>[<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>].<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-constant">TypeCase</span><span class="ruby-operator">::</span><span class="ruby-constant">POINT</span>)
+            <span class="ruby-identifier">voisines</span>.<span class="ruby-identifier">push</span>(<span class="ruby-ivar">@matrice</span>[<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>])
+        <span class="ruby-keyword">elsif</span>(<span class="ruby-ivar">@matrice</span>[<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseChiffre</span>))
+            <span class="ruby-identifier">voisines</span>.<span class="ruby-identifier">push</span>(<span class="ruby-ivar">@matrice</span>[<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>])
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@matrice</span>[<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">y</span>].<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>)
+        <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@matrice</span>[<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseCliquable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@matrice</span>[<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>].<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-constant">TypeCase</span><span class="ruby-operator">::</span><span class="ruby-constant">POINT</span>)
+            <span class="ruby-identifier">voisines</span>.<span class="ruby-identifier">push</span>(<span class="ruby-ivar">@matrice</span>[<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>])
+        <span class="ruby-keyword">elsif</span>(<span class="ruby-ivar">@matrice</span>[<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseChiffre</span>))
+            <span class="ruby-identifier">voisines</span>.<span class="ruby-identifier">push</span>(<span class="ruby-ivar">@matrice</span>[<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>])
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>)
+        <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@matrice</span>[<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">x</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseCliquable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@matrice</span>[<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">x</span>].<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-constant">TypeCase</span><span class="ruby-operator">::</span><span class="ruby-constant">POINT</span>)
+            <span class="ruby-identifier">voisines</span>.<span class="ruby-identifier">push</span>(<span class="ruby-ivar">@matrice</span>[<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">x</span>])
+        <span class="ruby-keyword">elsif</span>(<span class="ruby-ivar">@matrice</span>[<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">x</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseChiffre</span>))
+            <span class="ruby-identifier">voisines</span>.<span class="ruby-identifier">push</span>(<span class="ruby-ivar">@matrice</span>[<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">x</span>])
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@matrice</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>)
+        <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@matrice</span>[<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">x</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseCliquable</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@matrice</span>[<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">x</span>].<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-constant">TypeCase</span><span class="ruby-operator">::</span><span class="ruby-constant">POINT</span>)
+            <span class="ruby-identifier">voisines</span>.<span class="ruby-identifier">push</span>(<span class="ruby-ivar">@matrice</span>[<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">x</span>])
+        <span class="ruby-keyword">elsif</span>(<span class="ruby-ivar">@matrice</span>[<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">x</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseChiffre</span>))
+
+            <span class="ruby-identifier">voisines</span>.<span class="ruby-identifier">push</span>(<span class="ruby-ivar">@matrice</span>[<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">caseC</span>.<span class="ruby-identifier">x</span>])
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">voisines</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

@@ -6,6 +6,9 @@ require_relative "../Modules/dpObservateur/Observateur.rb"
 require_relative "./CaseChiffre.rb"
 require_relative "./CaseCliquable.rb"
 
+##
+# Grille du niveau contenant l'ensembles des cases
+#
 class Grille
 
     include Observable
@@ -14,6 +17,7 @@ class Grille
     ##
     # @matrice Matrice représentant la grille, composée de CaseChiffre et de CaseCliquable.
     # @matriceCorrigee Matrice représentant la grille corrigée avec les états finaux, composée de CaseChiffre et de CaseCliquable.
+    # @observateurs Tableau contenant les observateurs de la grille.
 
     attr_reader :matrice, :matriceCorrigee
 
@@ -87,6 +91,13 @@ class Grille
         notifObservateurs
     end
 
+    ##
+    # Retourne les voisines d'une case
+    #
+    # === Attributes
+    #
+    # * -caseC- Case dont on veut les voisines
+    #
     def voisines(caseC)
         voisines = Array.new
 

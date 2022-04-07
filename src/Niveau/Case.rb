@@ -17,6 +17,9 @@ class Case
         @cliquable = false
     end
 
+    ##
+    # Affichage de la case avec son type et sa position
+    #
     def to_s
         self.class.name + ": " + @x.to_s + ", " + @y.to_s
     end

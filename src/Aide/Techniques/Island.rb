@@ -2,6 +2,9 @@ require_relative './Technique.rb'
 require_relative '../../Niveau/CaseChiffre.rb'
 require_relative '../../Niveau/CaseCliquable.rb'
 
+##
+# Technique du 1 entouré de murs
+#
 class Island < Technique
 
     public_class_method :new

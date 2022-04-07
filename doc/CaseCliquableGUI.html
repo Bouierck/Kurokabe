@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class CaseCliquableGUI - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="CaseGUI.html">CaseGUI</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-creer">::creer</a>
+    
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-chercheGroupe">#chercheGroupe</a>
+    
+    <li ><a href="#method-i-hoverIn">#hoverIn</a>
+    
+    <li ><a href="#method-i-hoverOut">#hoverOut</a>
+    
+    <li ><a href="#method-i-updateCase">#updateCase</a>
+    
+    <li ><a href="#method-i-updateCaseGUI">#updateCaseGUI</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-CaseCliquableGUI">
+  <h1 id="class-CaseCliquableGUI" class="class">
+    class CaseCliquableGUI
+  </h1>
+
+  <section class="description">
+    
+<p>Représente l&#39;aspect graphique d&#39;une case cliquable</p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-creer" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">creer</span><span
+            class="method-args">(c, grille, grilleGUI)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Constructeur</p>
+
+<h3 id="method-c-creer-label-Attributes">Attributes<span><a href="#method-c-creer-label-Attributes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>-c- case représentée par le gui</p>
+</li><li>
+<p>-grille- grille du niveau</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="creer-source">
+            <pre><span class="ruby-comment"># File src/GUI/CaseCliquableGUI.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">CaseCliquableGUI</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">c</span>, <span class="ruby-identifier">grille</span>, <span class="ruby-identifier">grilleGUI</span>)
+    <span class="ruby-identifier">new</span>(<span class="ruby-identifier">c</span>, <span class="ruby-identifier">grille</span>, <span class="ruby-identifier">grilleGUI</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(c, grille, grilleGUI)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              <a href="CaseGUI.html#method-c-new"><code>CaseGUI::new</code></a>
+            </div>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File src/GUI/CaseCliquableGUI.rb, line 28</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">c</span>, <span class="ruby-identifier">grille</span>, <span class="ruby-identifier">grilleGUI</span>)
+
+    <span class="ruby-keyword">super</span>(<span class="ruby-identifier">c</span>, <span class="ruby-identifier">grille</span>, <span class="ruby-identifier">grilleGUI</span>)
+
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) { <span class="ruby-identifier">updateCase</span> }
+
+    <span class="ruby-identifier">updateCaseGUI</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-chercheGroupe" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">chercheGroupe</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Cherche le groupe lié à la case courante quand il est dans un état POINT</p>
+          
+          
+
+          
+          <div class="method-source-code" id="chercheGroupe-source">
+            <pre><span class="ruby-comment"># File src/GUI/CaseCliquableGUI.rb, line 113</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">chercheGroupe</span>
+    <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@case</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-constant">TypeCase</span><span class="ruby-operator">::</span><span class="ruby-constant">POINT</span>)
+        <span class="ruby-identifier">listeGroupe</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-identifier">aTraiter</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-identifier">aTraiter</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-ivar">@case</span>
+
+        <span class="ruby-keyword">while</span>(<span class="ruby-identifier">aTraiter</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>)
+            <span class="ruby-identifier">caseCourante</span> = <span class="ruby-identifier">aTraiter</span>.<span class="ruby-identifier">shift</span>
+            <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">voisines</span>(<span class="ruby-identifier">caseCourante</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">voisine</span><span class="ruby-operator">|</span>
+                <span class="ruby-keyword">if</span>(<span class="ruby-identifier">listeGroupe</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">voisine</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">voisine</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">CaseCliquable</span>))
+                    <span class="ruby-identifier">aTraiter</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">voisine</span>
+                <span class="ruby-keyword">elsif</span>(<span class="ruby-identifier">listeGroupe</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">voisine</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>)
+                    <span class="ruby-identifier">listeGroupe</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">voisine</span>
+                <span class="ruby-keyword">end</span>
+            <span class="ruby-keyword">end</span>
+            <span class="ruby-identifier">listeGroupe</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">caseCourante</span>
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-identifier">listeGroupe</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+            <span class="ruby-keyword">if</span>(<span class="ruby-identifier">c</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@case</span>)
+                <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;case-groupe&quot;</span>)
+            <span class="ruby-keyword">else</span>
+                <span class="ruby-ivar">@grilleGUI</span>.<span class="ruby-identifier">matriceGUI</span>[<span class="ruby-identifier">c</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">c</span>.<span class="ruby-identifier">x</span>].<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;groupe&quot;</span>)
+            <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-hoverIn" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">hoverIn</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Choisi l&#39;aspect de la case courante lorsque la souris est sur celle-ci en fonction de son état et possiblement l&#39;aspect d&#39;un groupe lié</p>
+          
+          
+
+          
+          <div class="method-source-code" id="hoverIn-source">
+            <pre><span class="ruby-comment"># File src/GUI/CaseCliquableGUI.rb, line 86</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">hoverIn</span>
+    <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@case</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-constant">TypeCase</span><span class="ruby-operator">::</span><span class="ruby-constant">VIDE</span>)
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;case-vide-hover&quot;</span>)
+    <span class="ruby-keyword">elsif</span>(<span class="ruby-ivar">@case</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-constant">TypeCase</span><span class="ruby-operator">::</span><span class="ruby-constant">POINT</span>)
+        <span class="ruby-identifier">chercheGroupe</span>
+    <span class="ruby-keyword">elsif</span>(<span class="ruby-ivar">@case</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-constant">TypeCase</span><span class="ruby-operator">::</span><span class="ruby-constant">MUR</span>)
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;case-mur-hover&quot;</span>)
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-hoverOut" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">hoverOut</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Quand la souris sort de la case courante, l&#39;aspect par défaut est remis en place</p>
+          
+          
+
+          
+          <div class="method-source-code" id="hoverOut-source">
+            <pre><span class="ruby-comment"># File src/GUI/CaseCliquableGUI.rb, line 99</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">hoverOut</span>
+    <span class="ruby-ivar">@grilleGUI</span>.<span class="ruby-identifier">matriceGUI</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ligne</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">ligne</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">caseGUI</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">caseGUI</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">remove_class</span>(<span class="ruby-string">&quot;case-vide-hover&quot;</span>)
+            <span class="ruby-identifier">caseGUI</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">remove_class</span>(<span class="ruby-string">&quot;case-mur-hover&quot;</span>)
+            <span class="ruby-identifier">caseGUI</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">remove_class</span>(<span class="ruby-string">&quot;case-groupe&quot;</span>)
+            <span class="ruby-identifier">caseGUI</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">remove_class</span>(<span class="ruby-string">&quot;groupe&quot;</span>)
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-updateCase" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">updateCase</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>update la cas impossible si la grille est terminé</p>
+          
+          
+
+          
+          <div class="method-source-code" id="updateCase-source">
+            <pre><span class="ruby-comment"># File src/GUI/CaseCliquableGUI.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">updateCase</span>
+
+    <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">estFini?</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>)
+        <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">changeEtat</span>
+        <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">historique</span>.<span class="ruby-identifier">nouveauCoup</span>(<span class="ruby-ivar">@case</span>)
+        <span class="ruby-identifier">updateCaseGUI</span>
+        <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">notifObservateurs</span>
+    <span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-updateCaseGUI" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">updateCaseGUI</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>update l&#39;affichaage de la case</p>
+          
+          
+
+          
+          <div class="method-source-code" id="updateCaseGUI-source">
+            <pre><span class="ruby-comment"># File src/GUI/CaseCliquableGUI.rb, line 56</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">updateCaseGUI</span>
+
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">remove_class</span>(<span class="ruby-string">&quot;indice&quot;</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">remove_class</span>(<span class="ruby-string">&quot;erreur&quot;</span>)
+
+    <span class="ruby-keyword">case</span> <span class="ruby-ivar">@case</span>.<span class="ruby-identifier">etat</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-constant">TypeCase</span><span class="ruby-operator">::</span><span class="ruby-constant">VIDE</span>
+            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">label</span> = <span class="ruby-string">&quot;&quot;</span>
+            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">remove_class</span>(<span class="ruby-string">&quot;case-mur&quot;</span>)
+            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">remove_class</span>(<span class="ruby-string">&quot;case-point&quot;</span>)
+            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;case-vide&quot;</span>)
+        <span class="ruby-keyword">when</span> <span class="ruby-constant">TypeCase</span><span class="ruby-operator">::</span><span class="ruby-constant">POINT</span>
+            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">label</span> = <span class="ruby-string">&quot;●&quot;</span>
+            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">remove_class</span>(<span class="ruby-string">&quot;case-vide&quot;</span>)
+            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">remove_class</span>(<span class="ruby-string">&quot;case-mur&quot;</span>)
+            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;case-point&quot;</span>)
+        <span class="ruby-keyword">when</span> <span class="ruby-constant">TypeCase</span><span class="ruby-operator">::</span><span class="ruby-constant">MUR</span>
+            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">label</span> = <span class="ruby-string">&quot;&quot;</span>
+            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">remove_class</span>(<span class="ruby-string">&quot;case-point&quot;</span>)
+            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">remove_class</span>(<span class="ruby-string">&quot;case-vide&quot;</span>)
+            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;case-mur&quot;</span>)
+    <span class="ruby-keyword">end</span>
+    
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

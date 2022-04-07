@@ -94,6 +94,15 @@ class WallExp < Technique
         
     end
 
+    ##
+    # test si la case est dans la grille
+    #
+    # === Attributes
+    #
+    # * -matrice- matrice de la grille
+    # * -x- position x de la case
+    # * -y- position y de la case
+    #
     def isInGrid(matrice, x, y)
         return x >= 0 && x < matrice.length && y >= 0 && y < matrice.length
     end
