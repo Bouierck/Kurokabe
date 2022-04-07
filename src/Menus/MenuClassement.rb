@@ -4,12 +4,15 @@ require_relative '../Boutons/BoutonRetour.rb'
 
 require_relative './MenuPrincipal.rb'
 require_relative './ClassementNiveau.rb'
+require_relative './Menu.rb'
 
 
 
-class MenuClassement < Gtk::Box
+class MenuClassement < Menu
 
     attr_reader:titlebar
+
+    public_class_method :new
     
 
     def initialize(app)

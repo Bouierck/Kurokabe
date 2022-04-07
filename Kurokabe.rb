@@ -14,6 +14,8 @@ require_relative './src/Menus/MenuTechnique.rb'
 
 require_relative './src/Donnees/Langue.rb'
 
+##
+# Classe représentant le jeu assemblé
 class Kurokabe < Gtk::Application
 
 	@@app = nil
@@ -77,6 +79,8 @@ class Kurokabe < Gtk::Application
         end
     end
     
+    ##
+    # Ferme le jeu
     def closeApp
         @@app.quit
     end

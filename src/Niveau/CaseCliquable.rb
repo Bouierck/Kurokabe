@@ -3,10 +3,19 @@ require_relative "./Historique.rb"
 
 require_relative "../Modules/dpObservateur/Observable.rb"
 
+##
+# Classe d'énumaratioon pour les type de cases
+#
 class TypeCase
 
+    ##
+    # Case Vide
     VIDE = 0
+    ##
+    # Case mur
     MUR = 1
+    ##
+    # Case point
     POINT = 2
 
 end
@@ -56,6 +65,9 @@ class CaseCliquable < Case
         
     end
 
+    ##
+    # Complète l'affichage de Case avec l'état correspondant à la case
+    # 
     def to_s
         super() + " | " + etat.to_s
     end

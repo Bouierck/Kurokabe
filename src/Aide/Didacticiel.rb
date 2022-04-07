@@ -5,6 +5,9 @@
 require_relative '../GUI/NiveauGUI.rb'
 require_relative '../GUI/GrilleGUI.rb'
 
+##
+# Niveau avec un tuto au début
+#
 class Didacticiel < NiveauGUI
     ##
     # @niveau => niveau représenté par ce GUI
@@ -119,8 +122,7 @@ class Didacticiel < NiveauGUI
     end
 
     ##
-    # Regarde s'il y a des techniques
-    # puis update l'affichage de la grille
+    # Affiche le menu pause et met en pause le jeu
     # puis affiche popup du bouton quitter, menu et pause
     #
     def modePause

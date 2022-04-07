@@ -8,11 +8,15 @@ require_relative './MenuClassement.rb'
 
 require_relative '../Donnees/Langue.rb'
 
+require_relative './Menu.rb'
+
     ##
     # Widget graphique représentant l'écran d'accueil.
-    class MenuPrincipal < Gtk::Box
+    class MenuPrincipal < Menu
         
         attr_reader :titlebar, :mode
+
+        public_class_method :new
         
         ##
         # Méthode permettant de créer l'écran d'accueil.
