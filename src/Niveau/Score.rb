@@ -7,10 +7,21 @@ class Score
     #
     def Score.calculer(nbTechnique, timer, difficulte)
 
-        score = (10000/(nbTechnique + 1) - timer * 2)/difficulte
-        return 3 if(score > 2000)
-        return 2 if(score > 850)
-        return 1
+        nb = 1
+
+        case difficulte
+            when 1
+                nb += 1 if timer <= 300
+                nb += 1 if nbTechnique <= 10
+            when 2
+                nb += 1 if timer <= 450
+                nb += 1 if nbTechnique <= 5
+            when 3
+                nb += 1 if timer <= 600
+                nb += 1 if nbTechnique <= 1
+        end
+
+        return nb
 
     end
 

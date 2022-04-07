@@ -10,8 +10,15 @@ require_relative './Techniques/Island2Cases.rb'
 require_relative './Techniques/SrndCompIsland.rb'
 require_relative './Techniques/IslandContinuity.rb'
 
-module ReponseType
+##
+# Type de réponse envoyé par le resolveur
+#
+class ReponseType
+    ##
+    # Envoie d'un message
     TEXT = 0
+    ##
+    # Envoie des cases
     ARRAY = 1
 end
 
@@ -23,6 +30,7 @@ class Resolveur
     ##
     # @listTech => liste des technique a appelé pour donner des indices
     # @nbAppel => nombre d'aide demandé
+    # @typeIndice => type d'indice à donner
 
     attr_reader :nbAppel
 

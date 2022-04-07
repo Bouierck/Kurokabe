@@ -6,6 +6,7 @@ class Chronometre
     ##
     # @timer => temps en seconde depuis le début de la grille
     # @estLance => vrai si le chrono est lancé faux sinon
+    # @grilleFini => vrai si la grille est fini faux sinon
 
     attr_reader :timer
     attr_writer :grilleFini

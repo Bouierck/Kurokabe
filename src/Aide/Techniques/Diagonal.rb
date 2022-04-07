@@ -2,6 +2,9 @@ require_relative './Technique.rb'
 require_relative '../../Niveau/CaseChiffre.rb'
 require_relative '../../Niveau/CaseCliquable.rb'
 
+##
+# Technique de case chiffre en diagonal 
+#
 class Diagonal < Technique
 
     public_class_method :new
@@ -50,6 +53,15 @@ class Diagonal < Technique
         
     end
 
+    ##
+    # test si la case est dans la grille
+    #
+    # === Attributes
+    #
+    # * -matrice- matrice de la grille
+    # * -x- position x de la case
+    # * -y- position y de la case
+    #
     def isInGrid(matrice, x, y)
 
         return x >= 0 && x < matrice.length && y >= 0 && y < matrice.length
