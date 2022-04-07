@@ -21,7 +21,7 @@ class BoutonRetour < BoutonMenu
     private_class_method :new
 
     def initialize(menu, app)
-        super("❮", 10, 10, menu, app)
+        super("❮", menu, app)
     end
 end
     

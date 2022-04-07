@@ -18,19 +18,17 @@ class BoutonMenu < Bouton
     # === Attributes
     #
     # * -uneEtiquette- étiquette du bouton
-    # * -uneLongueur- longueur du bouton
-    # * -uneLargeur- largeur du bouton
     # * -unMenu- menu à lancer
     # * -app- application
-    def BoutonMenu.creer(uneEtiquette, uneLongueur, uneLargeur, unMenu, app)
-        new(uneEtiquette, uneLongueur, uneLargeur, unMenu, app)
+    def BoutonMenu.creer(uneEtiquette, unMenu, app)
+        new(uneEtiquette, unMenu, app)
     end
 
     private_class_method :new
 
-    def initialize(uneEtiquette, uneLongueur, uneLargeur, unMenu, app)
+    def initialize(uneEtiquette, unMenu, app)
 
-        super(uneEtiquette, uneLongueur, uneLargeur)
+        super(uneEtiquette)
         @menu = unMenu
 
         self.signal_connect('clicked'){

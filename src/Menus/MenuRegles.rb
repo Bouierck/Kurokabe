@@ -25,7 +25,7 @@ class MenuRegles < Gtk::Box
         }
 
 
-        btnRegles = BoutonMenu.creer(Langue.text("voirtech"), 10, 10, MenuTechnique.method(:new), app)
+        btnRegles = BoutonMenu.creer(Langue.text("voirtech"), MenuTechnique.method(:new), app)
         btnRegles.style_context.add_class("bouton")
         btnRegles.style_context.add_class("margin-left2")
         btnRegles.style_context.add_class("margin-right2")
