@@ -98,7 +98,7 @@ class Grille
             end
         end
 
-        if(caseC.x < @matrice[caseC.y].length - 2)
+        if(caseC.x < @matrice[caseC.y].length - 1)
             if(@matrice[caseC.y][caseC.x + 1].is_a?(CaseCliquable) && @matrice[caseC.y][caseC.x + 1].etat == TypeCase::POINT)
                 voisines.push(@matrice[caseC.y][caseC.x + 1])
             elsif(@matrice[caseC.y][caseC.x + 1].is_a?(CaseChiffre))
@@ -114,7 +114,7 @@ class Grille
             end
         end
 
-        if(caseC.y < @matrice.length - 2)
+        if(caseC.y < @matrice.length - 1)
             if(@matrice[caseC.y + 1][caseC.x].is_a?(CaseCliquable) && @matrice[caseC.y + 1][caseC.x].etat == TypeCase::POINT)
                 voisines.push(@matrice[caseC.y + 1][caseC.x])
             elsif(@matrice[caseC.y + 1][caseC.x].is_a?(CaseChiffre))

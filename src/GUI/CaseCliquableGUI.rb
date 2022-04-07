@@ -83,6 +83,9 @@ class CaseCliquableGUI < CaseGUI
 
     end
 
+    ##
+    # Choisi l'aspect de la case courante lorsque la souris est sur celle-ci en fonction de son état et possiblement l'aspect d'un groupe lié
+    #
     def hoverIn
         if(@case.etat == TypeCase::VIDE)
             self.style_context.add_class("case-vide-hover")
@@ -93,16 +96,23 @@ class CaseCliquableGUI < CaseGUI
         end
     end
 
+    ##
+    # Quand la souris sort de la case courante, l'aspect par défaut est remis en place
+    #
     def hoverOut
-        if(@case.etat == TypeCase::VIDE)
-            self.style_context.remove_class("case-vide-hover")
-        elsif(@case.etat == TypeCase::POINT)
-            removeGroupe
-        elsif(@case.etat == TypeCase::MUR)
-            self.style_context.remove_class("case-mur-hover")
+        @grilleGUI.matriceGUI.each do |ligne|
+            ligne.each do |caseGUI|
+                caseGUI.style_context.remove_class("case-vide-hover")
+                caseGUI.style_context.remove_class("case-mur-hover")
+                caseGUI.style_context.remove_class("case-groupe")
+                caseGUI.style_context.remove_class("groupe")
+            end
         end
     end
 
+    ##
+    # Cherche le groupe lié à la case courante quand il est dans un état POINT
+    #
     def chercheGroupe
         if(@case.etat == TypeCase::POINT)
             listeGroupe = Array.new
@@ -126,18 +136,6 @@ class CaseCliquableGUI < CaseGUI
                     self.style_context.add_class("case-groupe")
                 else
                     @grilleGUI.matriceGUI[c.y][c.x].style_context.add_class("groupe")
-                end
-            end
-        end
-    end
-
-    def removeGroupe
-        @grilleGUI.matriceGUI.each do |ligne|
-            ligne.each do |caseGUI|
-                if(caseGUI == self)
-                    self.style_context.remove_class("case-groupe")
-                else
-                    caseGUI.style_context.remove_class("groupe")
                 end
             end
         end
