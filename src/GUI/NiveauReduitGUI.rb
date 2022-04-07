@@ -57,7 +57,6 @@ class NiveauReduitGUI < Gtk::Box
 
         #Agrandir la fenêtre 
         @app.fenetre.signal_connect('size_allocate'){|w,e|
-            puts(e.width)
             if(e.width >= 900 )
                 m = NiveauGUI.creer(@app,@niveau)
                 @app.fenetre.remove(self) if(@app.fenetre.child)
