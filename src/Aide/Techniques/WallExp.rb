@@ -17,16 +17,17 @@ class WallExp < Technique
             line.each do |c|
 
                 @casesChange = []
-                
+                file = Queue.new()
+
                 if(c.is_a?(CaseCliquable) && c.etat == TypeCase::MUR)
                     
-                    ca = c
+                    file << c
 
-                    while(ca != nil)
+                    while(file.empty?)
                     
+                        ca = file.pop
                         reliee = false
                         countPossible = 0
-
 
                         #On check si la case noir est toute seul
                         reliee = true if(isInGrid(grille.matrice, ca.x - 1, ca.y) && @casesChange.include?(grille.matrice[ca.y][ca.x - 1]) == false && grille.matrice[ca.y][ca.x - 1].is_a?(CaseCliquable) && grille.matrice[ca.y][ca.x - 1].etat == TypeCase::MUR)
@@ -37,7 +38,7 @@ class WallExp < Technique
 
                         reliee = true if(isInGrid(grille.matrice, ca.x + 1, ca.y) && @casesChange.include?(grille.matrice[ca.y][ca.x + 1]) == false && grille.matrice[ca.y][ca.x + 1].is_a?(CaseCliquable) && grille.matrice[ca.y][ca.x + 1].etat == TypeCase::MUR)
 
-                        #Si elle est toute seul on regarde si elle n'a qu'ene seul possibilité de sortie
+                        #Si elle est toute seul on regarde si elle n'a qu'une seul possibilité de sortie
                         if(reliee == false)
                             
                             if(isInGrid(grille.matrice, ca.x - 1, ca.y) && @casesChange.include?(grille.matrice[ca.y][ca.x - 1]) == false && grille.matrice[ca.y][ca.x - 1].is_a?(CaseCliquable) && grille.matrice[ca.y][ca.x - 1].etat == TypeCase::VIDE)
@@ -70,11 +71,11 @@ class WallExp < Technique
 
                         end
 
+                        puts countPossible
+
                         if(countPossible == 1)
-                            ca = cs
-                            @casesChange << ca
-                        else
-                            ca = nil
+                            file << cs
+                            @casesChange << cs
                         end
 
                         puts(ca)
