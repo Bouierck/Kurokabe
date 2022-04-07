@@ -28,8 +28,10 @@ class Resolveur
 
     def initialize
         @listTech = Array.new
-        @listTech << Island.new << SquareSepa.new << Diagonal.new << SurndSqr.new << WallExp.new << IslandExp.new << IslandContinuity.new << Island2Cases.new << UnreachSqr.new << AvWA2x2.new << SrndCompIsland.new
+        @listTech << Island.new << SquareSepa.new << Diagonal.new << SurndSqr.new << WallExp.new << IslandExp.new << UnreachSqr.new << AvWA2x2.new << SrndCompIsland.new << IslandContinuity.new << Island2Cases.new 
         @nbAppel = 0
+        @typeIndice = 0
+
     end
 
     ##
@@ -48,15 +50,19 @@ class Resolveur
 
                 if tech.verifieTech(grille)
                     
-                    if(@nbAppel % 3 == 0)
+                    @typeIndice = 0 if tech != @prevTech
+
+                    if(@typeIndice % 3 == 0)
                         rep = {:response => ReponseType::TEXT, :text => tech.to_s}
-                    elsif(@nbAppel % 3 == 1)
+                    elsif(@typeIndice % 3 == 1)
                         rep = {:response => ReponseType::TEXT, :text => tech.to_s_desc}
                     else
                         rep = {:response => ReponseType::ARRAY, :text => tech.to_s_desc, :cases => tech.casesChange}
                     end
 
-                    @nbAppel = (@nbAppel + 1) % 3
+                    @nbAppel += 1
+                    @typeIndice = (@typeIndice + 1) % 3
+                    @prevTech = tech
                     return rep
 
                 end
