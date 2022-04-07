@@ -74,7 +74,7 @@ class NiveauReduitGUI < Gtk::Box
 
         #title bar et bouton retour
         @titlebar = Gtk::HeaderBar.new
-        @titlebar.title = "Nurikabe"
+        @titlebar.title = "Kurokabe"
         @titlebar.show_close_button = true
         @titlebar.show
 
@@ -99,7 +99,7 @@ class NiveauReduitGUI < Gtk::Box
 
 
 
-        @boutonreduitPause = BoutonPause.creer("⏸", 2, 2, self)
+        @boutonreduitPause = BoutonPause.creer("⏸", self)
         @boutonreduitPause.style_context.add_class("bouton")
         @boutonreduitPause.valign = Gtk::Align::CENTER
 
@@ -122,19 +122,19 @@ class NiveauReduitGUI < Gtk::Box
         @boxMenuReduit.style_context.add_class("margin-bot3")
 
             
-        @boutonArriereReduit= BoutonSpecial.creer("↶", 1, 1, self.method(:clickRetourArriere))
+        @boutonArriereReduit= BoutonSpecial.creer("↶", self.method(:clickRetourArriere))
         @boutonArriereReduit.style_context.add_class("bouton")
 
-        @boutonAvantReduit = BoutonSpecial.creer("↷", 2, 2, self.method(:clickRetourAvant))
+        @boutonAvantReduit = BoutonSpecial.creer("↷", self.method(:clickRetourAvant))
         @boutonAvantReduit.style_context.add_class("bouton")
             
-        @boutonReinitialiserReduit = BoutonSpecial.creer("↻", 2, 2, self.method(:clickReinitialiserGrille))
+        @boutonReinitialiserReduit = BoutonSpecial.creer("↻", self.method(:clickReinitialiserGrille))
         @boutonReinitialiserReduit.style_context.add_class("bouton")
             
-        @boutonCheckReduit = BoutonSpecial.creer("👁️", 2, 2, self.method(:check))
+        @boutonCheckReduit = BoutonSpecial.creer("👁️", self.method(:check))
         @boutonCheckReduit.style_context.add_class("bouton")
             
-        @boutonIndiceReduit = BoutonSpecial.creer("💡", 2, 2, self.method(:appelResoudreGrille))
+        @boutonIndiceReduit = BoutonSpecial.creer("💡", self.method(:appelResoudreGrille))
         @boutonIndiceReduit.style_context.add_class("bouton")
             
         boxFonctionreduit.add(@boutonArriereReduit)
@@ -173,13 +173,13 @@ class NiveauReduitGUI < Gtk::Box
             label.show 
         }
 
-        @boutonReprendre = BoutonPause.creer(Langue.text("continuer"), 2, 10, self)
+        @boutonReprendre = BoutonPause.creer(Langue.text("continuer"), self)
         @boutonReprendre.style_context.add_class("bouton")
 
-        @boutonMenuPause = BoutonMenu.creer(Langue.text("ingameMenu"), 2, 10, MenuNiveaux.method(:new), @app)
+        @boutonMenuPause = BoutonMenu.creer(Langue.text("ingameMenu"), MenuNiveaux.method(:new), @app)
         @boutonMenuPause.style_context.add_class("bouton")
 
-        @boutonQuitterPause = BoutonSpecial.creer(Langue.text("ingameQuitter"), 2, 20, self.method(:QuitterFenetre))
+        @boutonQuitterPause = BoutonSpecial.creer(Langue.text("ingameQuitter"), self.method(:QuitterFenetre))
         @boutonQuitterPause.style_context.add_class("bouton")
 
         @boxPause.add(niveauLabelPause)
@@ -199,11 +199,6 @@ class NiveauReduitGUI < Gtk::Box
             self.remove(@boxMenuReduit)
             self.remove(@grilleGUI)
             self.remove(boxFonctionreduit)
-
-            # box = Gtk::Box.new(:vertical,2)
-
-            # box.add(Gtk::Label.new(@niveau.chrono.to_s))
-            # box.add(@boxPause)
 
             self.add(@boxPause)
 

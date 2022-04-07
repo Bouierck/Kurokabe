@@ -18,16 +18,14 @@ class BoutonLangue < Bouton
     # === Attributes
     #
     # * -dirImg- localisation de l'image du bouton
-    # * -uneLongueur- longueur du bouton
-    # * -uneLargeur- largeur du bouton
     # * -uneLangue- langue du bouton
-    def BoutonLangue.creer(dirImg, uneLongueur, uneLargeur, uneLangue)
-        new(dirImg, uneLongueur, uneLargeur, uneLangue)
+    def BoutonLangue.creer(dirImg, uneLangue)
+        new(dirImg, uneLangue)
     end
 
-    def initialize(dirImg, uneLongueur, uneLargeur, uneLangue)
+    def initialize(dirImg, uneLangue)
         
-        super("", uneLongueur, uneLargeur)
+        super("")
 
         self.set_image(Gtk::Image.new(__dir__ + dirImg))
 

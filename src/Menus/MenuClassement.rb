@@ -321,7 +321,7 @@ class MenuClassement < Gtk::Box
         
         #Bouton retour dans la barre de la fenêtre
         @titlebar = Gtk::HeaderBar.new.tap { |barre|
-            barre.title = "Nurikabe"
+            barre.title = "Kurokabe"
             barre.show_close_button = true
             barre.pack_start(BoutonRetour.creer(MenuPrincipal.method(:new), app).show)
             barre.show

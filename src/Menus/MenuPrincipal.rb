@@ -18,7 +18,7 @@ require_relative '../Donnees/Langue.rb'
         # Méthode permettant de créer l'écran d'accueil.
         #
         # Paramètres :
-        # [+app+]   Application (Nurikabe)
+        # [+app+]   Application (Kurokabe)
         def initialize(app)
             super(:vertical, 10)
 
@@ -43,7 +43,7 @@ require_relative '../Donnees/Langue.rb'
 
 
 
-            btnJouer = BoutonMenu.creer(Langue.text("jouer"), 10, 10, MenuNiveaux.method(:new), app)
+            btnJouer = BoutonMenu.creer(Langue.text("jouer"), MenuNiveaux.method(:new), app)
             Langue.addListener(btnJouer, "jouer")
             btnJouer.style_context.add_class("bouton")
             btnJouer.show
@@ -52,7 +52,7 @@ require_relative '../Donnees/Langue.rb'
 
 
 
-            btnClassement = BoutonMenu.creer(Langue.text("classement"), 10, 10, MenuClassement.method(:new), app)
+            btnClassement = BoutonMenu.creer(Langue.text("classement"), MenuClassement.method(:new), app)
             Langue.addListener(btnClassement, "classement")
             btnClassement.style_context.add_class("bouton")
             btnClassement.show
@@ -61,7 +61,7 @@ require_relative '../Donnees/Langue.rb'
 
 
                       
-            btnRegles = BoutonMenu.creer(Langue.text("menuRegles"), 10, 10, MenuRegles.method(:new), app)
+            btnRegles = BoutonMenu.creer(Langue.text("menuRegles"), MenuRegles.method(:new), app)
             Langue.addListener(btnRegles, "menuRegles")
             btnRegles.style_context.add_class("bouton")
             btnRegles.show
@@ -70,7 +70,7 @@ require_relative '../Donnees/Langue.rb'
 
 
             
-            btnTuto = BoutonDidacticiel.creer(Langue.text("didacticiel"), 10, 10, app)
+            btnTuto = BoutonDidacticiel.creer(Langue.text("didacticiel"), app)
             Langue.addListener(btnTuto, "didacticiel")
             btnTuto.style_context.add_class("bouton")
             btnTuto.style_context.add_class("margin-bot3")
@@ -80,7 +80,7 @@ require_relative '../Donnees/Langue.rb'
 
 
 
-            btnQuitter = BoutonSpecial.creer(Langue.text("quitter"), 10, 10, app.method(:closeApp))
+            btnQuitter = BoutonSpecial.creer(Langue.text("quitter"), app.method(:closeApp))
             Langue.addListener(btnQuitter, "quitter")
             btnQuitter.style_context.add_class("bouton")
             btnQuitter.style_context.add_class("margin-bot")
@@ -92,10 +92,10 @@ require_relative '../Donnees/Langue.rb'
 
 
 
-            francais = BoutonLangue.creer("", 10, 10, 0)
+            francais = BoutonLangue.creer("", 0)
             francais.style_context.add_class("btn-langue-fr")
             
-            anglais = BoutonLangue.creer("", 10, 10, 1)
+            anglais = BoutonLangue.creer("", 1)
             anglais.style_context.add_class("btn-langue-en")
     
             langueBox=Gtk::Box.new(:horizontal).tap { |boite|
@@ -115,7 +115,7 @@ require_relative '../Donnees/Langue.rb'
 
         #Bouton retour de la barre de la fenêtre
         @titlebar = Gtk::HeaderBar.new.tap { |barre|
-            barre.title = "Nurikabe"
+            barre.title = "Kurokabe"
             barre.show_close_button = true
             barre.show
         }

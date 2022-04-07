@@ -20,20 +20,18 @@ class BoutonNiveau < Bouton
     # === Attributes
     # 
     # * -uneEtiquette- étiquette du bouton
-    # * -uneLongueur- longueur du bouton
-    # * -uneLargeur- largeur du bouton
     # * -id- Identifiant du niveau
     # * -menuNiveau- Menu des niveaux
     # * -app- application
     #
-    def BoutonNiveau.creer(uneEtiquette, uneLongueur, uneLargeur, id, menuNiveau, app)
-        new(uneEtiquette, uneLongueur, uneLargeur, id, menuNiveau, app)
+    def BoutonNiveau.creer(uneEtiquette, id, menuNiveau, app)
+        new(uneEtiquette, id, menuNiveau, app)
     end
 
     private_class_method :new
 
-    def initialize(uneEtiquette, uneLongueur, uneLargeur, id, menuNiveau, app)
-        super(uneEtiquette, uneLongueur, uneLargeur)
+    def initialize(uneEtiquette, id, menuNiveau, app)
+        super(uneEtiquette)
 
         self.width_request = 79
         self.height_request = 50

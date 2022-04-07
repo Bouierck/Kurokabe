@@ -117,7 +117,7 @@ require_relative '../Niveau/Niveau.rb'
 
         #Bouton retour de la barre de la fenêtre
         @titlebar = Gtk::HeaderBar.new.tap { |barre|
-            barre.title = "Nurikabe"
+            barre.title = "Kurokabe"
             barre.subtitle = "Grilles "
             barre.show_close_button = true
             barre.pack_start(BoutonRetour.creer(MenuPrincipal.method(:new), app))
@@ -156,49 +156,49 @@ require_relative '../Niveau/Niveau.rb'
 
         # ----------------    Boutons niveaux ------------------------
 
-        niv11 = BoutonNiveau.creer("level 1", 10, 10, 1, self, @app)
+        niv11 = BoutonNiveau.creer("level 1", 1, self, @app)
         niv11.show
 
-        niv12 = BoutonNiveau.creer("level 2", 10, 10, 2, self, @app)
+        niv12 = BoutonNiveau.creer("level 2", 2, self, @app)
         niv12.show
 
-        niv13 = BoutonNiveau.creer("level 3", 10, 10, 3, self, @app)
+        niv13 = BoutonNiveau.creer("level 3", 3, self, @app)
         niv13.show
 
-        niv14 = BoutonNiveau.creer("level 4", 10, 10, 4, self, @app)
+        niv14 = BoutonNiveau.creer("level 4", 4, self, @app)
         niv14.show
 
-        niv15 = BoutonNiveau.creer("level 5", 10, 10, 5, self, @app)
+        niv15 = BoutonNiveau.creer("level 5", 5, self, @app)
         niv15.show
 
-        niv21 = BoutonNiveau.creer("level 6", 10, 10, 6, self, @app)
+        niv21 = BoutonNiveau.creer("level 6", 6, self, @app)
         niv21.show
 
-        niv22 = BoutonNiveau.creer("level 7", 10, 10, 7, self, @app)
+        niv22 = BoutonNiveau.creer("level 7", 7, self, @app)
         niv22.show
 
-        niv23 = BoutonNiveau.creer("level 8", 10, 10, 8, self, @app)
+        niv23 = BoutonNiveau.creer("level 8", 8, self, @app)
         niv23.show
 
-        niv24 = BoutonNiveau.creer("level 9", 10, 10, 9, self, @app)
+        niv24 = BoutonNiveau.creer("level 9", 9, self, @app)
         niv24.show
 
-        niv25 = BoutonNiveau.creer("level 10", 10, 10, 10, self, @app)
+        niv25 = BoutonNiveau.creer("level 10", 10, self, @app)
         niv25.show
 
-        niv31 = BoutonNiveau.creer("level 11", 10, 10, 11, self, @app)
+        niv31 = BoutonNiveau.creer("level 11", 11, self, @app)
         niv31.show
 
-        niv32 = BoutonNiveau.creer("level 12", 10, 10, 12, self, @app)
+        niv32 = BoutonNiveau.creer("level 12", 12, self, @app)
         niv32.show
 
-        niv33 = BoutonNiveau.creer("level 13", 10, 10, 13, self, @app)
+        niv33 = BoutonNiveau.creer("level 13", 13, self, @app)
         niv33.show
 
-        niv34 = BoutonNiveau.creer("level 14", 10, 10, 14, self, @app)
+        niv34 = BoutonNiveau.creer("level 14", 14, self, @app)
         niv34.show
 
-        niv35 = BoutonNiveau.creer("level 15", 10, 10, 15, self, @app)
+        niv35 = BoutonNiveau.creer("level 15", 15, self, @app)
         niv35.show
 
         niv11.style_context.add_class("niveau")
