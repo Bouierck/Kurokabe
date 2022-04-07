@@ -6,6 +6,10 @@ require_relative "../Donnees/Sauvegarde.rb"
 require_relative './Grille.rb'
 require_relative './Chronometre.rb'
 
+##
+# Niveau classe contenant toutes les informations du niveau
+# grille, historique, chronometre, resolveur
+#
 class Niveau
 
     include Observateur
@@ -104,6 +108,9 @@ class Niveau
         Sauvegarde.sauvNiveau(@utilisateur.nom, self, @utilisateur.nbEtoiles)
     end
 
+    ##
+    # Retourne la grille du niveau ainsi que le temps du chrono sous forme de texte 
+    #
     def to_s
         "grille: " + @grille.to_s + " chrono: " + @chrono.to_s
     end

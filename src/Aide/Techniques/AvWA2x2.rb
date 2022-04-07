@@ -2,6 +2,9 @@ require_relative './Technique.rb'
 require_relative '../../Niveau/CaseCliquable.rb'
 require_relative '../../Niveau/CaseChiffre.rb'
 
+##
+# Technique: les mur de 2x2 sont impossible
+#
 class AvWA2x2 < Technique
 
     public_class_method :new
