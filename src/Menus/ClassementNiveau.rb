@@ -3,14 +3,17 @@ require 'gtk3'
 require_relative '../Boutons/BoutonRetour.rb'
 
 require_relative './MenuClassement.rb'
+require_relative './Menu.rb'
 
 
 ##
 # Menu regroupant les informations de classement sur les niveau classés
 #
-class ClassementNiveau < Gtk::Box
+class ClassementNiveau < Menu
 
     attr_reader:titlebar
+
+    public_class_method :new
 
     def initialize(app,datas)
 

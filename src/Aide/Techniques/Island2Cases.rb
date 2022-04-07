@@ -2,6 +2,9 @@ require_relative './Technique.rb'
 require_relative '../../Niveau/CaseCliquable.rb'
 require_relative '../../Niveau/CaseChiffre.rb'
 
+
+##
+# Technique de case noire en diagonal d'un 2
 class Island2Cases < Technique
 
     public_class_method :new

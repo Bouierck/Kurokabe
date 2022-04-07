@@ -7,9 +7,13 @@ require_relative '../Donnees/Langue.rb'
 
 require_relative './MenuPrincipal.rb'
 
+require_relative './Menu.rb'
+
 ##
 # Widget graphique représentant l'écran d'accueil.
-class MenuRegles < Gtk::Box
+class MenuRegles < Menu
+
+    public_class_method :new
 
     attr_reader :titlebar
     def initialize(app)
