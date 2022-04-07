@@ -28,7 +28,7 @@ class Didacticiel < NiveauGUI
         super
 
         @titlebar = Gtk::HeaderBar.new
-        @titlebar.title = "Nurikabe"
+        @titlebar.title = "Kurokabe"
         @titlebar.show_close_button = true
         @titlebar.pack_start(BoutonRetour.creer(MenuPrincipal.method(:new), @app).tap {|b|
             b.sensitive = true

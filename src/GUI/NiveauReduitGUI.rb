@@ -74,7 +74,7 @@ class NiveauReduitGUI < Gtk::Box
 
         #title bar et bouton retour
         @titlebar = Gtk::HeaderBar.new
-        @titlebar.title = "Nurikabe"
+        @titlebar.title = "Kurokabe"
         @titlebar.show_close_button = true
         @titlebar.show
 

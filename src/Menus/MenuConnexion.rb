@@ -10,7 +10,7 @@ class MenuConnexion < Gtk::Dialog
         #
         # Paramètres :
         # [+parent+]        Fenêtre parente au sélecteur d'utilisateur
-        # [+app+]           Application (Nurikabe)
+        # [+app+]           Application (Kurokabe)
         def initialize(parent, app = nil)
 
             super(title: "Nouvel utilisateur", parent: parent,

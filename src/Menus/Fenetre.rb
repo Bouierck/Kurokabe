@@ -13,7 +13,7 @@ class Fenetre < Gtk::Window
     # Crée une fenêtre principale.
     #
     # Paramètres :
-    # [+app+]   Application (Nurikabe)
+    # [+app+]   Application (Kurokabe)
     def initialize(app)
         super()
         self.style_context.add_class("bg")
@@ -21,7 +21,7 @@ class Fenetre < Gtk::Window
         self.default_height = 500
         self.icon_name = "applications-games"
         self.titlebar = Gtk::HeaderBar.new.tap { |barre_titre|              
-            barre_titre.title = "Nurikabe"
+            barre_titre.title = "Kurokabe"
             barre_titre.show_close_button = true
             barre_titre.show
         }

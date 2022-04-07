@@ -60,7 +60,7 @@ class MenuRegles < Gtk::Box
 
         #Bouton retour de la barre de la fenêtre
         @titlebar = Gtk::HeaderBar.new.tap { |barre|
-                barre.title = "Nurikabe"
+                barre.title = "Kurokabe"
                 barre.show_close_button = true
                 barre.pack_start(BoutonRetour.creer(MenuPrincipal.method(:new), app).tap { |bouton|
                     bouton.sensitive = true
