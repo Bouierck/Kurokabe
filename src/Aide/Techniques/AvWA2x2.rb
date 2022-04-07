@@ -12,12 +12,13 @@ class AvWA2x2 < Technique
 
     def verifieTech(grille)
         grille.matrice.each do |line|
+            #On parcourt toutes les cases de la grille
             line.each do |c|
 
                 @casesChange = []
 
                 if(c.is_a?(CaseCliquable) && c.etat == TypeCase::VIDE)
-
+                    #On verifie que la case en haut de la case courante est cliquable et que c'est un mur
                     if (c.y < grille.matrice.length - 1 && (grille.matrice[c.y + 1][c.x].is_a?(CaseCliquable) && grille.matrice[c.y + 1][c.x].etat == TypeCase::MUR))
 
                         if(c.x > 0 && (grille.matrice[c.y + 1][c.x - 1].is_a?(CaseCliquable) && grille.matrice[c.y + 1][c.x - 1].etat == TypeCase::MUR) && 
@@ -37,7 +38,7 @@ class AvWA2x2 < Technique
 
                     end
                     if (c.y > 0 && (grille.matrice[c.y - 1][c.x].is_a?(CaseCliquable) && grille.matrice[c.y - 1][c.x].etat == TypeCase::MUR))
-
+                        #On verifie que la case en bas de la case courante est cliquable et que c'est un mur
                         if(c.x > 0 && (grille.matrice[c.y - 1][c.x - 1].is_a?(CaseCliquable) && grille.matrice[c.y - 1][c.x - 1].etat == TypeCase::MUR) && 
                         (grille.matrice[c.y][c.x - 1].is_a?(CaseCliquable) && grille.matrice[c.y ][c.x - 1].etat == TypeCase::MUR))
 
