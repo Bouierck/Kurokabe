@@ -49,9 +49,9 @@ class GrilleGUI < Gtk::Grid
             line.each do |c|
 
                 if(c.is_a?(CaseCliquable))
-                    @matriceGUI[c.y][c.x] = CaseCliquableGUI.creer(c, @grille)
+                    @matriceGUI[c.y][c.x] = CaseCliquableGUI.creer(c, @grille, self)
                 else
-                    @matriceGUI[c.y][c.x] = CaseChiffreGUI.creer(c, @grille)
+                    @matriceGUI[c.y][c.x] = CaseChiffreGUI.creer(c, @grille, self)
                 end
 
                 self.attach(@matriceGUI[c.y][c.x], c.x*2, c.y*2, 2, 2)

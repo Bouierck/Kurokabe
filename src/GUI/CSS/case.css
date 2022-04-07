@@ -1,6 +1,7 @@
 .case{
 
     background: none;
+    background-color: white;
     color: black;
     border-radius: 0;
     text-decoration: none;
@@ -24,12 +25,12 @@
 
 }
 
-.case-clic:hover {
-    background-color: #999999;;
-}
-
 .case-vide{
     background-color: white;
+}
+
+.case-vide-hover{
+    background-color: #999999;
 }
 
 .case-point{
@@ -40,7 +41,7 @@
     background-color: black;
 }
 
-.case-mur:hover{
+.case-mur-hover{
     background-color: #292929;
 }
 
@@ -56,4 +57,12 @@
     border-width: 10px;
     border-color: black;
     background: black;
+}
+
+.case-groupe{
+    background-color: #666666;
+}
+
+.groupe{
+    background-color: #999999;
 }

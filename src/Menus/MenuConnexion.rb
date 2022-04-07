@@ -32,9 +32,8 @@ class MenuConnexion < Gtk::Dialog
             entree.style_context.add_class("entry")
             entree.style_context.add_class("margin-bot")
 
-
             #Retient le dernier utilisateur connecté et met par défault son nom dans la barre de texte
-            lastCo = File.open(__dir__ + '/../../profile/LastCo.krkb', 'r')
+            lastCo = File.open(__dir__ + '/LastCo.krkb', 'r')
             pseudo = lastCo.read
 
             entree.set_text(pseudo)
@@ -45,7 +44,7 @@ class MenuConnexion < Gtk::Dialog
                 if(e.keyval == Gdk::Keyval::KEY_Return)
                     p "OK"
                     app.user = Utilisateur.creer(entree.text, 0)
-                    lastCo = File.open(__dir__ + '/../../profile/LastCo.krkb', 'w')
+                    lastCo = File.open(__dir__ + '/LastCo.krkb', 'w')
                     lastCo.write(entree.text)
                     lastCo.close
                     self.destroy
@@ -85,7 +84,7 @@ class MenuConnexion < Gtk::Dialog
                     when Gtk::ResponseType::OK
                         p "OK"
                         app.user = Utilisateur.creer(entree.text, 0)
-                        lastCo = File.open(__dir__ + '/../../profile/LastCo.krkb', 'w')
+                        lastCo = File.open(__dir__ + '/LastCo.krkb', 'w')
                         lastCo.write(entree.text)
                         lastCo.close
                         self.destroy
