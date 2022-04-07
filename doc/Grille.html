@@ -117,6 +117,8 @@
 
   <section class="description">
     
+<p><a href="Grille.html"><code>Grille</code></a> du niveau contenant l&#39;ensembles des cases</p>
+
   </section>
 
   
@@ -142,7 +144,7 @@
 
         <div class="method-description">
         
-        <p>@matrice Matrice représentant la grille, composée de <a href="CaseChiffre.html"><code>CaseChiffre</code></a> et de <a href="CaseCliquable.html"><code>CaseCliquable</code></a>. @matriceCorrigee Matrice représentant la grille corrigée avec les états finaux, composée de <a href="CaseChiffre.html"><code>CaseChiffre</code></a> et de <a href="CaseCliquable.html"><code>CaseCliquable</code></a>.</p>
+        <p>@matrice Matrice représentant la grille, composée de <a href="CaseChiffre.html"><code>CaseChiffre</code></a> et de <a href="CaseCliquable.html"><code>CaseCliquable</code></a>. @matriceCorrigee Matrice représentant la grille corrigée avec les états finaux, composée de <a href="CaseChiffre.html"><code>CaseChiffre</code></a> et de <a href="CaseCliquable.html"><code>CaseCliquable</code></a>. @observateurs Tableau contenant les observateurs de la grille.</p>
         
         </div>
       </div>
@@ -155,7 +157,7 @@
 
         <div class="method-description">
         
-        <p>@matrice Matrice représentant la grille, composée de <a href="CaseChiffre.html"><code>CaseChiffre</code></a> et de <a href="CaseCliquable.html"><code>CaseCliquable</code></a>. @matriceCorrigee Matrice représentant la grille corrigée avec les états finaux, composée de <a href="CaseChiffre.html"><code>CaseChiffre</code></a> et de <a href="CaseCliquable.html"><code>CaseCliquable</code></a>.</p>
+        <p>@matrice Matrice représentant la grille, composée de <a href="CaseChiffre.html"><code>CaseChiffre</code></a> et de <a href="CaseCliquable.html"><code>CaseCliquable</code></a>. @matriceCorrigee Matrice représentant la grille corrigée avec les états finaux, composée de <a href="CaseChiffre.html"><code>CaseChiffre</code></a> et de <a href="CaseCliquable.html"><code>CaseCliquable</code></a>. @observateurs Tableau contenant les observateurs de la grille.</p>
         
         </div>
       </div>
@@ -196,7 +198,7 @@
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File src/Niveau/Grille.rb, line 28</span>
+            <pre><span class="ruby-comment"># File src/Niveau/Grille.rb, line 32</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Grille</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">matrice</span>, <span class="ruby-identifier">matriceCorrigee</span>)
     <span class="ruby-identifier">new</span>(<span class="ruby-identifier">matrice</span>, <span class="ruby-identifier">matriceCorrigee</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -229,7 +231,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File src/Niveau/Grille.rb, line 34</span>
+            <pre><span class="ruby-comment"># File src/Niveau/Grille.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">matrice</span>, <span class="ruby-identifier">matriceCorrigee</span>)
     
     <span class="ruby-ivar">@observateurs</span> = []
@@ -282,7 +284,7 @@
 
           
           <div class="method-source-code" id="compareGrille-source">
-            <pre><span class="ruby-comment"># File src/Niveau/Grille.rb, line 72</span>
+            <pre><span class="ruby-comment"># File src/Niveau/Grille.rb, line 76</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">compareGrille</span>
     
     <span class="ruby-identifier">erreurs</span> = []
@@ -325,7 +327,7 @@
 
           
           <div class="method-source-code" id="estFini-3F-source">
-            <pre><span class="ruby-comment"># File src/Niveau/Grille.rb, line 54</span>
+            <pre><span class="ruby-comment"># File src/Niveau/Grille.rb, line 58</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estFini?</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">compareGrille</span> <span class="ruby-operator">!=</span> []
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
@@ -368,7 +370,7 @@
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File src/Niveau/Grille.rb, line 132</span>
+            <pre><span class="ruby-comment"># File src/Niveau/Grille.rb, line 143</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
     <span class="ruby-identifier">string</span> = <span class="ruby-string">&quot;&quot;</span>
     <span class="ruby-keyword">for</span> <span class="ruby-identifier">y</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-ivar">@matrice</span>.<span class="ruby-identifier">length</span> <span class="ruby-keyword">do</span>
@@ -408,7 +410,7 @@
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File src/Niveau/Grille.rb, line 86</span>
+            <pre><span class="ruby-comment"># File src/Niveau/Grille.rb, line 90</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>
     <span class="ruby-identifier">notifObservateurs</span>
 <span class="ruby-keyword">end</span></pre>
@@ -435,13 +437,18 @@
 
         <div class="method-description">
           
-          
+          <p>Retourne les voisines d&#39;une case</p>
+
+<h3 id="method-i-voisines-label-Attributes">Attributes<span><a href="#method-i-voisines-label-Attributes">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>-caseC- <a href="Case.html"><code>Case</code></a> dont on veut les voisines</p>
+</li></ul>
           
           
 
           
           <div class="method-source-code" id="voisines-source">
-            <pre><span class="ruby-comment"># File src/Niveau/Grille.rb, line 90</span>
+            <pre><span class="ruby-comment"># File src/Niveau/Grille.rb, line 101</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">voisines</span>(<span class="ruby-identifier">caseC</span>)
     <span class="ruby-identifier">voisines</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
 

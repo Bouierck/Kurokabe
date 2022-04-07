@@ -94,6 +94,8 @@
 
   <section class="description">
     
+<p><a href="Technique.html"><code>Technique</code></a> de case chiffre en diagonal</p>
+
   </section>
 
   
@@ -137,7 +139,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File src/Aide/Techniques/Diagonal.rb, line 9</span>
+            <pre><span class="ruby-comment"># File src/Aide/Techniques/Diagonal.rb, line 12</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>
     
     <span class="ruby-keyword">super</span>(<span class="ruby-constant">Langue</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;Diagonal&quot;</span>), <span class="ruby-constant">Langue</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;DiagonalDesc&quot;</span>))
@@ -189,7 +191,7 @@
 
           
           <div class="method-source-code" id="isInGrid-source">
-            <pre><span class="ruby-comment"># File src/Aide/Techniques/Diagonal.rb, line 62</span>
+            <pre><span class="ruby-comment"># File src/Aide/Techniques/Diagonal.rb, line 65</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">isInGrid</span>(<span class="ruby-identifier">matrice</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
 
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">matrice</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">y</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">y</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">matrice</span>.<span class="ruby-identifier">length</span>
@@ -224,7 +226,7 @@
 
           
           <div class="method-source-code" id="verifieTech-source">
-            <pre><span class="ruby-comment"># File src/Aide/Techniques/Diagonal.rb, line 15</span>
+            <pre><span class="ruby-comment"># File src/Aide/Techniques/Diagonal.rb, line 18</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">verifieTech</span>(<span class="ruby-identifier">grille</span>)
 
     <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">matrice</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>

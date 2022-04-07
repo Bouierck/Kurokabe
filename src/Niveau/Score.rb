@@ -1,3 +1,6 @@
+##
+# Contient la fonctionde calcule d'étoile
+#
 class Score
 
     private_class_method :new

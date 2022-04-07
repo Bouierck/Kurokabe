@@ -108,7 +108,7 @@
 
   <section class="description">
     
-<p>Représente l&#39;aspect graphique d&#39;un niveau contient le GUI de la grille ainsi que les différent boutons</p>
+<p>Représente l&#39;aspect graphique d&#39;un niveau en fenêtre réduite contient le GUI de la grille ainsi que les différent boutons</p>
 
   </section>
 
@@ -269,7 +269,7 @@
 
           
           <div class="method-source-code" id="QuitterFenetre-source">
-            <pre><span class="ruby-comment"># File src/GUI/NiveauReduitGUI.rb, line 281</span>
+            <pre><span class="ruby-comment"># File src/GUI/NiveauReduitGUI.rb, line 283</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">QuitterFenetre</span>()
     <span class="ruby-ivar">@app</span>.<span class="ruby-identifier ruby-title">quit</span>
 <span class="ruby-keyword">end</span></pre>
@@ -302,7 +302,7 @@
 
           
           <div class="method-source-code" id="appelResoudreGrille-source">
-            <pre><span class="ruby-comment"># File src/GUI/NiveauReduitGUI.rb, line 269</span>
+            <pre><span class="ruby-comment"># File src/GUI/NiveauReduitGUI.rb, line 271</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">appelResoudreGrille</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">estFini?</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>
         <span class="ruby-identifier">indice</span> = <span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">resolveur</span>.<span class="ruby-identifier">resoudreGrille</span>(<span class="ruby-ivar">@grilleGUI</span>.<span class="ruby-identifier">grille</span>)
@@ -340,7 +340,7 @@
 
           
           <div class="method-source-code" id="check-source">
-            <pre><span class="ruby-comment"># File src/GUI/NiveauReduitGUI.rb, line 256</span>
+            <pre><span class="ruby-comment"># File src/GUI/NiveauReduitGUI.rb, line 258</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">check</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">estFini?</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>
         <span class="ruby-identifier">erreurs</span> =  <span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">compareGrille</span>
@@ -378,7 +378,7 @@
 
           
           <div class="method-source-code" id="clickReinitialiserGrille-source">
-            <pre><span class="ruby-comment"># File src/GUI/NiveauReduitGUI.rb, line 246</span>
+            <pre><span class="ruby-comment"># File src/GUI/NiveauReduitGUI.rb, line 248</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clickReinitialiserGrille</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">estFini?</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>
         <span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">historique</span>.<span class="ruby-identifier">reinitialiserGrille</span>
@@ -414,7 +414,7 @@
 
           
           <div class="method-source-code" id="clickRetourArriere-source">
-            <pre><span class="ruby-comment"># File src/GUI/NiveauReduitGUI.rb, line 224</span>
+            <pre><span class="ruby-comment"># File src/GUI/NiveauReduitGUI.rb, line 226</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clickRetourArriere</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">estFini?</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>
         <span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">historique</span>.<span class="ruby-identifier">retourArriere</span>
@@ -450,7 +450,7 @@
 
           
           <div class="method-source-code" id="clickRetourAvant-source">
-            <pre><span class="ruby-comment"># File src/GUI/NiveauReduitGUI.rb, line 235</span>
+            <pre><span class="ruby-comment"># File src/GUI/NiveauReduitGUI.rb, line 237</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clickRetourAvant</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">estFini?</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>
         <span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">historique</span>.<span class="ruby-identifier">retourAvant</span>
@@ -647,13 +647,13 @@
 
         <div class="method-description">
           
-          
+          <p>Méthode qui la,ce le menu pause et qui stop le chrono</p>
           
           
 
           
           <div class="method-source-code" id="modePause-source">
-            <pre><span class="ruby-comment"># File src/GUI/NiveauReduitGUI.rb, line 194</span>
+            <pre><span class="ruby-comment"># File src/GUI/NiveauReduitGUI.rb, line 196</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">modePause</span>()
     <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@pause</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>)
         <span class="ruby-ivar">@pause</span> = <span class="ruby-keyword">true</span>
