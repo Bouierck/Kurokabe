@@ -48,6 +48,9 @@ class CaseGUI < Gtk::Button
             self.height_request = 45
             self.style_context.add_class("case-petit")
         end
+
+        self.signal_connect('enter-notify-event') { hoverIn }
+        self.signal_connect('leave-notify-event') { hoverOut }
     end
 
 end
