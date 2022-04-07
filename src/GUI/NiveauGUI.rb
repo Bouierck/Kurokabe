@@ -144,7 +144,7 @@ class NiveauGUI < Gtk::Box
 	    
 	#Reduire la fentre 
         # @app.fenetre.signal_connect('size_allocate'){|w,e|
-        #     if(e.width < 900 )
+        #     if(e.width < 945 )
         #         m =NiveauReduitGUI.creer(@app,niveau)
         #         @app.fenetre.remove(self) if(@app.fenetre.child)
         #         @app.fenetre.child = m
