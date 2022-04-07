@@ -13,9 +13,14 @@ require_relative './Menu.rb'
 # Widget graphique représentant l'écran d'accueil.
 class MenuRegles < Menu
 
-    public_class_method :new
+    ##
+    # @titlebar => Barre de titre
+    #
 
     attr_reader :titlebar
+
+    public_class_method :new
+
     def initialize(app)
         super(:vertical, 10)
 

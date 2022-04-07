@@ -2,6 +2,8 @@ require_relative './Technique.rb'
 require_relative '../../Niveau/CaseCliquable.rb'
 require_relative '../../Niveau/CaseChiffre.rb'
 
+##
+# Technique qui consiste à entourer un ilot completé avec des cases noires
 class SrndCompIsland < Technique
 
     public_class_method :new

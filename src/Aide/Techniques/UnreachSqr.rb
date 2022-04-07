@@ -2,6 +2,8 @@ require_relative './Technique.rb'
 require_relative '../../Niveau/CaseChiffre.rb'
 require_relative '../../Niveau/CaseCliquable.rb'
 
+##
+# Technique qui consiste à remplacer par des cases noires les cases inateignables par un chiffre
 class UnreachSqr < Technique
 
     public_class_method :new

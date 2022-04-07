@@ -2,6 +2,9 @@ require_relative './Technique.rb'
 require_relative '../../Niveau/CaseChiffre.rb'
 require_relative '../../Niveau/CaseCliquable.rb'
 
+##
+# Technique qui permet de d'ajouter une case noire dans une case entourée par des cases noires
+#
 class SurndSqr < Technique
    
     public_class_method :new

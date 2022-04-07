@@ -1,3 +1,5 @@
+##
+# Classe représentant la forme d'une technique
 class Technique
 
     ##
