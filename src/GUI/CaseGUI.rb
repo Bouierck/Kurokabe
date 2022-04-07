@@ -17,16 +17,18 @@ class CaseGUI < Gtk::Button
     #
     # * -c- case représentée par le gui
     #
-    def CaseGUI.creer(c, grille)
-        new(c, grille)
+    def CaseGUI.creer(c, grille, grilleGUI)
+        new(c, grille, grilleGUI)
     end
 
     private_class_method :new
 
-    def initialize(c, grille)
+    def initialize(c, grille, grilleGUI)
         super()
         @case = c
         @nbCase = grille.matrice.length*grille.matrice.length
+        @grille = grille
+        @grilleGUI = grilleGUI
 
         case @nbCase
         when 25
