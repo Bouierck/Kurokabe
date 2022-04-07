@@ -136,6 +136,7 @@ class NiveauGUI < Gtk::Box
         self.add(@grilleGUI)
 
         @boxMenu.style_context.add_class("margin-right2")
+        @boxMenu.style_context.add_class("margin-left2")
         @boxMenu.valign = Gtk::Align::CENTER
         self.add(@boxMenu)
 
@@ -144,15 +145,25 @@ class NiveauGUI < Gtk::Box
 
         self.show_all
 
-        # #Reduire la fentre 
+
+
+
+
+        #Reduire la fentre 
         # @app.fenetre.signal_connect('size_allocate'){|w,e|
-        #     puts(e.width)
-        #     if(e.width < 900 )
+        # puts(e.width)
+        #     if(e.width < 945 )
         #         m =NiveauReduitGUI.creer(@app,niveau)
         #         @app.fenetre.remove(self) if(@app.fenetre.child)
         #         @app.fenetre.child = m
         #     end 
         # }
+
+
+
+
+
+
 
         #Box représentant la pause
 
