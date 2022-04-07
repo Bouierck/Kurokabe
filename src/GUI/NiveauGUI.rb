@@ -54,23 +54,6 @@ class NiveauGUI < Gtk::Box
     #
     def initGUI
 
-        #Reduire la fentre 
-        @app.fenetre.signal_connect('size_allocate'){|w,e|
-            puts(e.width)
-            if(e.width < 900 )
-                @boxMenu.remove(@chronoLabel)
-
-                boxFonction.remove(@boutonArriere)
-                boxFonction.remove(@boutonAvant)
-                boxFonction.remove(@boutonReinitialiser)
-                boxFonction.remove(@boutonCheck)
-                boxFonction.remove(@boutonIndice)
-
-                self.remove(@grilleGUI)
-
-                NiveauReduitGUI.creer(@app,self)
-            end
-        }
 
 
         #Centre les éléments
@@ -159,12 +142,17 @@ class NiveauGUI < Gtk::Box
 
         @chronoLabel.lancer if @niveau.grille.estFini? == false
 
-
         self.show_all
 
-
-
-
+        # #Reduire la fentre 
+        # @app.fenetre.signal_connect('size_allocate'){|w,e|
+        #     puts(e.width)
+        #     if(e.width < 900 )
+        #         m =NiveauReduitGUI.creer(@app,niveau)
+        #         @app.fenetre.remove(self) if(@app.fenetre.child)
+        #         @app.fenetre.child = m
+        #     end 
+        # }
 
         #Box représentant la pause
 
@@ -234,7 +222,75 @@ class NiveauGUI < Gtk::Box
         end
     end
 
-    private
+    def reduire()
+        @boxReduite = Gtk::Box.new(:vertical,3)
+        
+        
+        @boxReduite.valign = Gtk::Align::CENTER
+        @boxReduite.halign = Gtk::Align::CENTER
+        
+        
+        boxFonctionreduit = Gtk::Box.new(:horizontal,5)
+
+        @boutonreduitPause = BoutonPause.creer("⏸", 2, 2, self)
+        @boutonreduitPause.style_context.add_class("bouton-pause")
+        
+            niveauLabelReduit = Gtk::Label.new(@niveau.id.to_s)
+            niveauLabelReduit.style_context.add_class("titre")
+            
+            @boxMenuReduit = Gtk::Box.new(:horizontal,3)
+            @boxMenuReduit.add(@boutonreduitPause)
+            @boxMenuReduit.add(@chronoLabel)
+            @boxMenuReduit.add(niveauLabelReduit)
+            
+            @boutonArriereReduit= BoutonSpecial.creer("↶", 1, 1, self.method(:clickRetourArriere))
+            @boutonArriereReduit.style_context.add_class("bouton")
+
+            @boutonAvantReduit = BoutonSpecial.creer("↷", 2, 2, self.method(:clickRetourAvant))
+            @boutonAvantReduit.style_context.add_class("bouton")
+            
+            @boutonReinitialiserReduit = BoutonSpecial.creer("↻", 2, 2, self.method(:clickReinitialiserGrille))
+            @boutonReinitialiserReduit.style_context.add_class("bouton")
+            
+            @boutonCheckReduit = BoutonSpecial.creer("👁️", 2, 2, self.method(:check))
+            @boutonCheckReduit.style_context.add_class("bouton")
+            
+            @boutonIndiceReduit = BoutonSpecial.creer("💡", 2, 2, self.method(:appelResoudreGrille))
+            @boutonIndiceReduit.style_context.add_class("bouton")
+            
+            boxFonctionreduit.add(@boutonArriereReduit)
+            boxFonctionreduit.add(@boutonAvantReduit)
+            boxFonctionreduit.add(@boutonReinitialiserReduit)
+            boxFonctionreduit.add(@boutonCheckReduit)
+            boxFonctionreduit.add(@boutonIndiceReduit)
+            
+            @boxReduite.add(@boxMenuReduit)
+            @boxReduite.add(@grilleGUI)
+            @boxReduite.add(boxFonctionreduit)
+
+            self.modeReduit
+
+        end
+        
+    def modeAgrandi()
+        self.remove(@boxReduite)
+
+        self.add(@grilleGUI)
+        self.add(@boxMenu)
+
+        self.show_all
+    end
+
+    def modeReduit()
+
+        self.remove(@grilleGUI)
+        self.remove(@boxMenu)
+
+        self.add(@boxReduite)
+
+        self.show_all
+
+    end 
 
     ##
     # Fait un retour arrière

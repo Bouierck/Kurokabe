@@ -35,18 +35,17 @@ class NiveauReduitGUI < Gtk::Box
     # def NiveauReduitGUI.creer(app, niveau)
     #     new(app, niveau)
     # end
-    def NiveauReduitGUI.creer(app,niveauGUI)
-        new(app,niveauGUI)
+    def NiveauReduitGUI.creer(app,niveau)
+        new(app,niveau)
     end
 
-    def initialize(app, niveauGUI)
+    def initialize(app, niveau)
 
         super(:vertical,3)
-
-        @niveauGUI = niveauGUI
-        @grilleGUI = @niveauGUI.grilleGUI
+        @niveau = niveau
+        @grilleGUI = GrilleGUI.creer(@niveau.grille)
         @app = app;
-        @pause = @niveauGUI.pause;
+        @pause = false
         initGUI
 
     end
@@ -60,17 +59,10 @@ class NiveauReduitGUI < Gtk::Box
         @app.fenetre.signal_connect('size_allocate'){|w,e|
             puts(e.width)
             if(e.width >= 900 )
-                @boxMenu.remove(@chronoLabel)
-        
-                boxFonction.remove(@boutonArriere)
-                boxFonction.remove(@boutonAvant)
-                boxFonction.remove(@boutonReinitialiser)
-                boxFonction.remove(@boutonCheck)
-                boxFonction.remove(@boutonIndice)
-        
-                self.remove(@grilleGUI)
-                niveauGUI.init
-            end
+                m = NiveauGUI.creer(@app,@niveau)
+                @app.fenetre.remove(self) if(@app.fenetre.child)
+                @app.fenetre.child = m
+            end 
         }
 
 
@@ -88,68 +80,60 @@ class NiveauReduitGUI < Gtk::Box
 
 
         #Box du menu en haut
-        @boxMenu = Gtk::Box.new(:horizontal,3)
+        @boxReduite = Gtk::Box.new(:vertical,3)
+        
+        
+        @boxReduite.valign = Gtk::Align::CENTER
+        @boxReduite.halign = Gtk::Align::CENTER
+        
+        
+        boxFonctionreduit = Gtk::Box.new(:horizontal,5)
+        boxFonctionreduit.valign = Gtk::Align::CENTER
+        boxFonctionreduit.halign = Gtk::Align::CENTER
 
-        #Menu du haut avec pause, chrono et le nom du niveau
-        @boutonPause = BoutonPause.creer("⏸", 2, 2, self)
-        @boutonPause.style_context.add_class("bouton-pause")
+        @chronoLabelReduit = ChronoGUI.creer(@niveau.chrono)
+        @chronoLabelReduit.style_context.add_class("chrono")
 
-        niveauLabel = Gtk::Label.new(@niveauGUI.niveau.id.to_s)
-        niveauLabel.style_context.add_class("titre")
+        @boutonreduitPause = BoutonPause.creer("⏸", 2, 2, self)
+        @boutonreduitPause.style_context.add_class("bouton-pause")
+        
+        niveauLabelReduit = Gtk::Label.new(@niveau.id.to_s)
+        niveauLabelReduit.style_context.add_class("titre")
+            
+        @boxMenuReduit = Gtk::Box.new(:horizontal,3)
+        @boxMenuReduit.valign = Gtk::Align::CENTER
+        @boxMenuReduit.halign = Gtk::Align::CENTER
 
-        @chronoLabel = @niveauGUI.chronoLabel
-        @chronoLabel.style_context.add_class("chrono")
+        @boxMenuReduit.add(@boutonreduitPause)
+        @boxMenuReduit.add(@chronoLabelReduit)
+        @boxMenuReduit.add(niveauLabelReduit)
+            
+        @boutonArriereReduit= BoutonSpecial.creer("↶", 1, 1, self.method(:clickRetourArriere))
+        @boutonArriereReduit.style_context.add_class("bouton")
 
-        #bouton fonction
-        @boxFonction = Gtk::Box.new(:horizontal,5)
-
-        @boutonArriere = @niveauGUI.boutonArriere
-        @boutonArriere.style_context.add_class("bouton")
-
-        @boutonAvant = @niveauGUI.boutonAvant
-        @boutonAvant.style_context.add_class("bouton")
-
-        @boutonReinitialiser = @niveauGUI.boutonReinitialiser
-        @boutonReinitialiser.style_context.add_class("bouton")
-
-        @boutonCheck = @niveauGUI.boutonCheck
-        @boutonCheck.style_context.add_class("bouton")
-
-        @boutonIndice = @niveauGUI.boutonIndice
-        @boutonIndice.style_context.add_class("bouton")
-
-        @boxMenu.add(@boutonPause)
-        @boxMenu.add(@chronoLabel)
-        @boxMenu.add(niveauLabel)
-
-
-        @boxFonction.add(@boutonArriere)
-        @boxFonction.add(@boutonAvant)
-        @boxFonction.add(@boutonReinitialiser)
-        @boxFonction.add(@boutonCheck)
-        @boxFonction.add(@boutonIndice)
-
-
-        # Ajout des deux composant de la box du niveau
-        @boxMenu.valign = Gtk::Align::CENTER
-        @boxMenu.style_context.add_class("margin-left2")
-        self.add(@boxMenu)
-
-        @grilleGUI.style_context.add_class("margin-right2")
-        @grilleGUI.valign = Gtk::Align::CENTER
+        @boutonAvantReduit = BoutonSpecial.creer("↷", 2, 2, self.method(:clickRetourAvant))
+        @boutonAvantReduit.style_context.add_class("bouton")
+            
+        @boutonReinitialiserReduit = BoutonSpecial.creer("↻", 2, 2, self.method(:clickReinitialiserGrille))
+        @boutonReinitialiserReduit.style_context.add_class("bouton")
+            
+        @boutonCheckReduit = BoutonSpecial.creer("👁️", 2, 2, self.method(:check))
+        @boutonCheckReduit.style_context.add_class("bouton")
+            
+        @boutonIndiceReduit = BoutonSpecial.creer("💡", 2, 2, self.method(:appelResoudreGrille))
+        @boutonIndiceReduit.style_context.add_class("bouton")
+            
+        boxFonctionreduit.add(@boutonArriereReduit)
+        boxFonctionreduit.add(@boutonAvantReduit)
+        boxFonctionreduit.add(@boutonReinitialiserReduit)
+        boxFonctionreduit.add(@boutonCheckReduit)
+        boxFonctionreduit.add(@boutonIndiceReduit)
+            
+        self.add(@boxMenuReduit)
         self.add(@grilleGUI)
+        self.add(boxFonctionreduit)
 
-        @boxFonction.valign = Gtk::Align::CENTER
-        self.add(@boxFonction)
-
-        @chronoLabel.lancer if @niveauGUI.niveau.grille.estFini? == false
-
-        @niveauGUI.show_all
-
-
-
-
-        #Box représentant la pause
+        self.show_all
 
 
         @boxPause = Gtk::Box.new(:vertical,5)
@@ -165,32 +149,61 @@ class NiveauReduitGUI < Gtk::Box
         }
 
         niveauLabelPause = Gtk::Label.new.tap{ |label|
-            label.set_markup("Niveau #{@niveauGUI.niveau.id}")
+            label.set_markup("#{Langue.text("ingameNiveau")} #{@niveau.id}")
             label.style_context.add_class("titre")
             label.style_context.add_class("margin-bot")
             label.style_context.add_class("pause")
             label.show 
         }
 
-        boutonReprendre = BoutonPause.creer("Reprendre", 2, 10, self)
-        boutonReprendre.style_context.add_class("bouton")
+        @boutonReprendre = BoutonPause.creer(Langue.text("continuer"), 2, 10, self)
+        @boutonReprendre.style_context.add_class("bouton")
 
-        boutonMenuPause = BoutonMenu.creer("Menu", 2, 10, MenuNiveaux.method(:new), @app)
-        boutonMenuPause.style_context.add_class("bouton")
+        @boutonMenuPause = BoutonMenu.creer(Langue.text("ingameMenu"), 2, 10, MenuNiveaux.method(:new), @app)
+        @boutonMenuPause.style_context.add_class("bouton")
 
-        boutonQuitterPause = BoutonSpecial.creer("Quitter", 2, 20, self.method(:QuitterFenetre))
-        boutonQuitterPause.style_context.add_class("bouton")
+        @boutonQuitterPause = BoutonSpecial.creer(Langue.text("ingameQuitter"), 2, 20, self.method(:QuitterFenetre))
+        @boutonQuitterPause.style_context.add_class("bouton")
 
         @boxPause.add(niveauLabelPause)
         @boxPause.add(lbl)
-        @boxPause.add(boutonReprendre)
-        @boxPause.add(boutonMenuPause)
-        @boxPause.add(boutonQuitterPause)
+        @boxPause.add(@boutonReprendre)
+        @boxPause.add(@boutonMenuPause)
+        @boxPause.add(@boutonQuitterPause)
 
 
     end
 
-    private
+    def modePause()
+        if(@pause == false)
+            @pause = true
+            @chronoLabel.stop
+
+            self.remove(@boxMenuReduit)
+            self.remove(@grilleGUI)
+            self.remove(boxFonctionreduit)
+
+            # box = Gtk::Box.new(:vertical,2)
+
+            # box.add(Gtk::Label.new(@niveau.chrono.to_s))
+            # box.add(@boxPause)
+
+            self.add(@boxPause)
+
+            self.show_all
+        else
+            @pause = false
+            @chronoLabel.lancer if @niveau.grille.estFini? == false
+
+            self.remove(@boxPause)
+
+            self.add(@boxMenuReduit)
+            self.add(@grilleGUI)
+            self.add(boxFonctionreduit)
+
+            self.show_all
+        end
+    end
 
     ##
     # Fait un retour arrière
