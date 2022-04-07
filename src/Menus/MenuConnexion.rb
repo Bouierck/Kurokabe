@@ -12,6 +12,7 @@ class MenuConnexion < Gtk::Dialog
         # [+parent+]        Fenêtre parente au sélecteur d'utilisateur
         # [+app+]           Application (Nurikabe)
         def initialize(parent, app = nil)
+
             super(title: "Nouvel utilisateur", parent: parent,
             flags: Gtk::DialogFlags::USE_HEADER_BAR |
             Gtk::DialogFlags::MODAL |
@@ -20,6 +21,7 @@ class MenuConnexion < Gtk::Dialog
             self.title = "Connexion"
             self.set_default_size(300, 200)
             self.child.add(Gtk::Label.new("Connexion"))
+
 
             entree = Gtk::Entry.new.tap { |entree|
                 entree.signal_connect("activate") {
@@ -30,6 +32,7 @@ class MenuConnexion < Gtk::Dialog
             entree.style_context.add_class("entry")
             entree.style_context.add_class("margin-bot")
 
+            #Retient le dernier utilisateur connecté et met par défault son nom dans la barre de texte
             lastCo = File.open(__dir__ + '/LastCo.krkb', 'r')
             pseudo = lastCo.read
 
@@ -47,6 +50,8 @@ class MenuConnexion < Gtk::Dialog
                     self.destroy
                 end
             }
+
+
 
             self.content_area.add(
                     Gtk::Box.new(:vertical).tap { |boite|

@@ -31,7 +31,6 @@ class MenuClassement < Gtk::Box
             button.signal_connect("clicked") { 
             open_with_datas(11)
         }
-        #niv11.style_context.add_class("bouton")
         button.show
     }
         
@@ -42,7 +41,6 @@ class MenuClassement < Gtk::Box
                 button.signal_connect("clicked") { 
             open_with_datas(12)
         }
-        #niv12.style_context.add_class("bouton")
         button.show
     }
 
@@ -53,7 +51,6 @@ class MenuClassement < Gtk::Box
                 button.signal_connect("clicked") { 
             open_with_datas(13)
         }
-        #niv13.style_context.add_class("bouton")
         button.show
     }
 
@@ -64,7 +61,6 @@ class MenuClassement < Gtk::Box
                 button.signal_connect("clicked") { 
             open_with_datas(14)
         }
-        #niv14.style_context.add_class("bouton")
         button.show
     }
 
@@ -75,7 +71,6 @@ class MenuClassement < Gtk::Box
                 button.signal_connect("clicked") { 
             open_with_datas(15)
         }
-        #niv15.style_context.add_class("bouton")
         button.show
     }
 
@@ -88,7 +83,6 @@ class MenuClassement < Gtk::Box
             button.signal_connect("clicked") { 
             open_with_datas(21)
         }
-        #niv21.style_context.add_class("bouton")
         button.show
     }
         
@@ -99,7 +93,6 @@ class MenuClassement < Gtk::Box
             button.signal_connect("clicked") { 
             open_with_datas(22)
         }
-        #niv22.style_context.add_class("bouton")
         button.show
     }
 
@@ -110,7 +103,6 @@ class MenuClassement < Gtk::Box
             button.signal_connect("clicked") { 
             open_with_datas(23)
         }
-        #niv23.style_context.add_class("bouton")
         button.show
     }
 
@@ -121,7 +113,6 @@ class MenuClassement < Gtk::Box
             button.signal_connect("clicked") { 
             open_with_datas(24)
         }
-        #niv24.style_context.add_class("bouton")
         button.show
     }
 
@@ -132,7 +123,6 @@ class MenuClassement < Gtk::Box
             button.signal_connect("clicked") { 
             open_with_datas(25)
         }
-        #niv25.style_context.add_class("bouton")
         button.show
     }
         
@@ -146,7 +136,6 @@ class MenuClassement < Gtk::Box
             button.signal_connect("clicked") { 
             open_with_datas(31)
         }
-        #niv31.style_context.add_class("bouton")
         button.show
     }
 
@@ -157,7 +146,6 @@ class MenuClassement < Gtk::Box
             button.signal_connect("clicked") { 
             open_with_datas(32)
         }
-        #niv32.style_context.add_class("bouton")
         button.show
     }
 
@@ -168,7 +156,6 @@ class MenuClassement < Gtk::Box
           button.signal_connect("clicked") { 
          open_with_datas(33)
         }
-        #niv33.style_context.add_class("bouton")
         button.show
     }
 
@@ -179,7 +166,6 @@ class MenuClassement < Gtk::Box
            button.signal_connect("clicked") { 
            open_with_datas(34)
         }
-        #niv34.style_context.add_class("bouton")
         button.show
     }
 
@@ -190,7 +176,6 @@ class MenuClassement < Gtk::Box
         button.signal_connect("clicked") { 
             open_with_datas(35)
         }
-        #niv35.style_context.add_class("bouton")
         button.show
     }
         
@@ -260,7 +245,7 @@ class MenuClassement < Gtk::Box
         niv35.width_request = 79
         niv35.height_request = 55
 
-
+        #Affiche les niveaux faciles en ligne
         nivFacileBox=Gtk::Box.new(:horizontal).tap { |boite|
             boite.pack_start(niv11)
             boite.pack_start(niv12)
@@ -270,6 +255,7 @@ class MenuClassement < Gtk::Box
             boite.show
         }
 
+        #Affiche les niveaux moyens en ligne
         nivMediumBox=Gtk::Box.new(:horizontal).tap { |boite|
             boite.pack_start(niv21)
             boite.pack_start(niv22)
@@ -279,6 +265,7 @@ class MenuClassement < Gtk::Box
             boite.show
         }
 
+        #Affiche les niveaux difficiles en ligne
         nivDifficileBox=Gtk::Box.new(:horizontal).tap { |boite|
             boite.pack_start(niv31)
             boite.pack_start(niv32)
@@ -291,12 +278,16 @@ class MenuClassement < Gtk::Box
 
 # -------------------- Creation des labels ---------------------------
 
+        #Titre de la fenêtre
         topLabel = Gtk::Label.new.tap{ |label|
             label.set_markup(Langue.text("classement"))
             label.style_context.add_class("titre")
             label.style_context.add_class("margin-bot")
             label.show 
         }
+
+
+        #Labels des difficultés 
 
         facileLabel = Gtk::Label.new.tap{ |label|
             label.set_markup(Langue.text("difficulteFacile"))
@@ -328,6 +319,7 @@ class MenuClassement < Gtk::Box
 
         self.show
         
+        #Bouton retour dans la barre de la fenêtre
         @titlebar = Gtk::HeaderBar.new.tap { |barre|
             barre.title = "Nurikabe"
             barre.show_close_button = true

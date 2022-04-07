@@ -64,5 +64,5 @@ didactMenu: Ce bouton permet de retourner au menu de sélection des niveaux
 didactQuitter: Ce bouton permet de quitter le jeu
 didactPause: Ce bouton permet de mettre le jeu en pause
 didactReprendre: Ce bouton reprendre la partie
-didactMenuPause: Ce bouton permet de retourner au menu des niveaux
+didactMenuPause: Ce bouton permet de retourner au menu de sélection des niveaux
 didactQuitterPause: Ce bouton permet de quitter le jeu

@@ -1,6 +1,6 @@
 
 .margin-bigleft{
-    margin-left: 320px;
+    margin-left: 350px;
 }
 
 .margin-top2{
@@ -9,6 +9,14 @@
 
 .margin-bot2{
     margin-bottom: 50px;
+}
+
+.margin-top3{
+    margin-top: 20px;
+}
+
+.margin-bot3{
+    margin-bottom: 20px;
 }
 
 .margin-bottom2{
@@ -31,6 +39,12 @@
 .titre2{
     color: black;
     font-size: 16px;
+    font-weight: bold;
+}
+
+.titre4{
+    color: black;
+    font-size: 24px;
     font-weight: bold;
 }
 
