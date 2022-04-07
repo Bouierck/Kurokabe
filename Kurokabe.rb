@@ -35,7 +35,7 @@ class Kurokabe < Gtk::Application
 
 
     def initialize
-    	super("projet.Nurikabe", :flags_none)
+    	super("projet.Kurokabe", :flags_none)
 
         Langue.init
 

@@ -18,7 +18,7 @@ require_relative '../Donnees/Langue.rb'
         # Méthode permettant de créer l'écran d'accueil.
         #
         # Paramètres :
-        # [+app+]   Application (Nurikabe)
+        # [+app+]   Application (Kurokabe)
         def initialize(app)
             super(:vertical, 10)
 
@@ -115,7 +115,7 @@ require_relative '../Donnees/Langue.rb'
 
         #Bouton retour de la barre de la fenêtre
         @titlebar = Gtk::HeaderBar.new.tap { |barre|
-            barre.title = "Nurikabe"
+            barre.title = "Kurokabe"
             barre.show_close_button = true
             barre.show
         }
