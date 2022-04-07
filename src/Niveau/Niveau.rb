@@ -108,7 +108,7 @@ class Niveau
         if @grille.estFini?
             Sauvegarde.sauvNiveau(@utilisateur.nom, self, 0)
         else
-            Sauvegarde.sauvNiveau(@utilisateur.nom, self, Score.calculer(@resolveur.nbAppel, @chrono.timer, id<=4?1:id<=9?2:3))
+            Sauvegarde.sauvNiveau(@utilisateur.nom, self, Score.calculer(@resolveur.nbAppel, @chrono.timer, @id<=5?1:id<=10?2:3))
         end    
     end
 
