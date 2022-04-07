@@ -18,12 +18,12 @@
 
 <br>
 
-Ressources utilisés : 
-[Cahier des charges](https://docs.google.com/document/d/1FlOhuZBHOW_MoYjFRI37mKT_h2xnf7UtVAXiw66D7dE/edit?usp=sharing),
-[Diagramme de Gantt](https://docs.google.com/spreadsheets/d/19JpsNgYenO6e5OJJh9Wqvrw7NUWOYOXc-5A1ql4AVF8/edit#gid=0),
-[Trello](https://trello.com/b/AYIpps7L/jacoding).
+Les livrables sont situés dans le dossier "Livrables" de ce repertoire.
 
-Fichier définitif sous format .ova (Open Virtual Machine) : [Image](https://drive.google.com/file/d/139hzmpBx0P3nulAqyx8GK_0FFXXA101j/view?usp=sharing)
+Guide d'installation : https://www.youtube.com/watch?v=aEXCjUwnaU8
+Guide d'utilisation : https://www.youtube.com/watch?v=mwBdHmnsc00
+
+Fichier définitif sous format .ova (3,6Go) (Open Virtual Machine) : [Image](https://drive.google.com/file/d/139hzmpBx0P3nulAqyx8GK_0FFXXA101j/view?usp=sharing)
 
 Fichier sous format .vdi (VirtualBox Disk Image) (9Go) (Veuillez préférablement utilisé le format ova) : [VDI](https://drive.google.com/file/d/1W6IMlqcMZ0KUPFw7ltsQZRNXiubEuIoG/view?usp=sharing)
 
