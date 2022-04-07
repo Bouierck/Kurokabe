@@ -5,7 +5,9 @@ require_relative '../Boutons/BoutonRetour.rb'
 require_relative './MenuClassement.rb'
 
 
-
+##
+# Menu regroupant les informations de classement sur les niveau classés
+#
 class ClassementNiveau < Gtk::Box
 
     attr_reader:titlebar
@@ -42,7 +44,8 @@ class ClassementNiveau < Gtk::Box
         users = Dir.entries(path_to_profile).select { |f| 
             if(f.start_with?(".") == false) then 
                 f 
-            end}
+            end
+        }
 
         @totals = ""
         sortedUser = Hash.new
@@ -81,7 +84,8 @@ class ClassementNiveau < Gtk::Box
             sec = v % 60
             i+=1
             @totals += i.to_s + " -  " + k + " : " + "#{min}:#{sec}" + "\n"
-    }
+        }
+        
         classmLabel.set_markup(@totals)
         classmLabel.style_context.add_class("margin-top")
         classmLabel.style_context.add_class("titre3")
