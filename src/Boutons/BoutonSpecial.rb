@@ -12,17 +12,15 @@ class BoutonSpecial < Bouton
     # === Attributes
     #
     # * -uneEtiquette- étiquette du bouton
-    # * -uneLongueur- longueur du bouton
-    # * -uneLargeur- largeur du bouton
     # * -uneMethode- méthode à lancer lors du clic
     #
-    def BoutonSpecial.creer(uneEtiquette, uneLongueur, uneLargeur, uneMethode)
-        new(uneEtiquette, uneLongueur, uneLargeur, uneMethode)
+    def BoutonSpecial.creer(uneEtiquette, uneMethode)
+        new(uneEtiquette, uneMethode)
     end
 
-    def initialize(uneEtiquette, uneLongueur, uneLargeur, uneMethode)
+    def initialize(uneEtiquette, uneMethode)
         
-        super(uneEtiquette, uneLongueur, uneLargeur)
+        super(uneEtiquette)
         @methode = uneMethode
 
         self.signal_connect('clicked'){

@@ -20,15 +20,13 @@ class BoutonPause < Bouton
     # === Attributes
     #
     # * -uneEtiquette- étiquette du bouton
-    # * -uneLongueur- longueur du bouton
-    # * -uneLargeur- largeur du bouton
     # * -unNiveau- niveau dans lequel se lance la pause
-    def BoutonPause.creer(uneEtiquette, uneLongueur, uneLargeur, unNiveau)
-        new(uneEtiquette, uneLongueur, uneLargeur, unNiveau)
+    def BoutonPause.creer(uneEtiquette, unNiveau)
+        new(uneEtiquette, unNiveau)
     end
 
-    def initialize(uneEtiquette, uneLongueur, uneLargeur, unNiveau)
-        super(uneEtiquette, uneLongueur, uneLargeur)
+    def initialize(uneEtiquette, unNiveau)
+        super(uneEtiquette)
         @niveau = unNiveau
 
         self.signal_connect('clicked'){

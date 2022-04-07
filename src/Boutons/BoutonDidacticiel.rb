@@ -17,18 +17,16 @@ class BoutonDidacticiel < Bouton
     # === Attributes
     #
     # * -uneEtiquette- étiquette du bouton
-    # * -uneLongueur- longueur du bouton
-    # * -uneLargeur- largeur du bouton
     # * -app- application
     #
-    def BoutonDidacticiel.creer(uneEtiquette, uneLongueur, uneLargeur, app)
-        new(uneEtiquette, uneLongueur, uneLargeur, app)
+    def BoutonDidacticiel.creer(uneEtiquette, app)
+        new(uneEtiquette, app)
     end
 
     private_class_method :new
 
-    def initialize(uneEtiquette, uneLongueur, uneLargeur, app)
-        super(uneEtiquette, uneLongueur, uneLargeur)
+    def initialize(uneEtiquette, app)
+        super(uneEtiquette)
 
         self.signal_connect('clicked'){
     

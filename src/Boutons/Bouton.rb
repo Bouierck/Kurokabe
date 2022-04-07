@@ -7,21 +7,11 @@ require 'gtk3'
 #
 class Bouton < Gtk::Button
 
-    ##
-    # @longueur longueur du bouton
-    # @largeur largeur du bouton
-
-    attr_reader :longueur, :largeur
-
     private_class_method :new
 
-	def initialize(uneEtiquette, uneLongueur, uneLargeur)
+	def initialize(uneEtiquette)
         
         super(uneEtiquette)
-
-        @longueur = uneLongueur
-        @largeur = uneLargeur
-
         self.show
 
     end
