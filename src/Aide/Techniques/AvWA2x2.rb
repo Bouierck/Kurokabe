@@ -2,6 +2,8 @@ require_relative './Technique.rb'
 require_relative '../../Niveau/CaseCliquable.rb'
 require_relative '../../Niveau/CaseChiffre.rb'
 
+require_relative '../../Donnees/Langue.rb'
+
 ##
 # Technique: les mur de 2x2 sont impossible
 #

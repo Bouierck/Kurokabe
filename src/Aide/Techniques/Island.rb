@@ -2,6 +2,8 @@ require_relative './Technique.rb'
 require_relative '../../Niveau/CaseChiffre.rb'
 require_relative '../../Niveau/CaseCliquable.rb'
 
+require_relative '../../Donnees/Langue.rb'
+
 ##
 # Technique du 1 entouré de murs
 #

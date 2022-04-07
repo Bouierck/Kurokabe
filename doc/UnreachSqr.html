@@ -94,6 +94,8 @@
 
   <section class="description">
     
+<p><a href="Technique.html"><code>Technique</code></a> qui consiste à remplacer par des cases noires les cases inateignables par un chiffre</p>
+
   </section>
 
   
@@ -132,7 +134,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File src/Aide/Techniques/Technique.rb, line 12</span>
+            <pre><span class="ruby-comment"># File src/Aide/Techniques/Technique.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">nom</span>, <span class="ruby-identifier">desc</span>)
     <span class="ruby-ivar">@casesChange</span> = []
     <span class="ruby-ivar">@nom</span> = <span class="ruby-identifier">nom</span>
@@ -172,7 +174,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File src/Aide/Techniques/UnreachSqr.rb, line 9</span>
+            <pre><span class="ruby-comment"># File src/Aide/Techniques/UnreachSqr.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>
     
     <span class="ruby-keyword">super</span>(<span class="ruby-constant">Langue</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;UnreachSqr&quot;</span>), <span class="ruby-constant">Langue</span>.<span class="ruby-identifier">text</span>(<span class="ruby-string">&quot;UnreachSqrDesc&quot;</span>))
@@ -215,7 +217,7 @@
 
           
           <div class="method-source-code" id="verifieTech-source">
-            <pre><span class="ruby-comment"># File src/Aide/Techniques/UnreachSqr.rb, line 15</span>
+            <pre><span class="ruby-comment"># File src/Aide/Techniques/UnreachSqr.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">verifieTech</span>(<span class="ruby-identifier">grille</span>)
 
     <span class="ruby-identifier">file</span> = <span class="ruby-constant">Queue</span>.<span class="ruby-identifier">new</span> <span class="ruby-comment">#File stock les cases du parcours</span>

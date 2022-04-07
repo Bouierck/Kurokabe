@@ -36,7 +36,7 @@ class Resolveur
 
     def initialize
         @listTech = Array.new
-        @listTech << Island.new << SquareSepa.new << Diagonal.new << SurndSqr.new << WallExp.new << IslandExp.new << UnreachSqr.new << AvWA2x2.new << SrndCompIsland.new << IslandContinuity.new << Island2Cases.new 
+        @listTech << Island.new << SrndCompIsland.new << SquareSepa.new << Diagonal.new << Island2Cases.new << SurndSqr.new << WallExp.new << IslandExp.new << UnreachSqr.new << AvWA2x2.new  << IslandContinuity.new
         @nbAppel = 0
         @typeIndice = 0
 

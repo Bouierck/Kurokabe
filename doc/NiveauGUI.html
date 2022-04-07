@@ -382,9 +382,10 @@
 
           
           <div class="method-source-code" id="QuitterFenetre-source">
-            <pre><span class="ruby-comment"># File src/GUI/NiveauGUI.rb, line 298</span>
+            <pre><span class="ruby-comment"># File src/GUI/NiveauGUI.rb, line 303</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">QuitterFenetre</span>()
-    <span class="ruby-ivar">@app</span>.<span class="ruby-identifier ruby-title">quit</span>
+    <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier ruby-title">sauvNiveau</span>(<span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">utilisateur</span>.<span class="ruby-identifier">nom</span>, <span class="ruby-ivar">@niveau</span>, <span class="ruby-value">0</span>)
+    <span class="ruby-ivar">@app</span>.<span class="ruby-identifier">quit</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -415,7 +416,7 @@
 
           
           <div class="method-source-code" id="appelResoudreGrille-source">
-            <pre><span class="ruby-comment"># File src/GUI/NiveauGUI.rb, line 270</span>
+            <pre><span class="ruby-comment"># File src/GUI/NiveauGUI.rb, line 274</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">appelResoudreGrille</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">estFini?</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>
 
@@ -428,6 +429,7 @@
             }
         <span class="ruby-keyword">end</span>
 
+        <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier">sauvNiveau</span>(<span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">utilisateur</span>.<span class="ruby-identifier">nom</span>, <span class="ruby-ivar">@niveau</span>, <span class="ruby-value">0</span>)
     <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -459,13 +461,14 @@
 
           
           <div class="method-source-code" id="check-source">
-            <pre><span class="ruby-comment"># File src/GUI/NiveauGUI.rb, line 257</span>
+            <pre><span class="ruby-comment"># File src/GUI/NiveauGUI.rb, line 260</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">check</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">estFini?</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>
         <span class="ruby-identifier">erreurs</span> =  <span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">compareGrille</span>
         <span class="ruby-identifier">erreurs</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
             <span class="ruby-ivar">@grilleGUI</span>.<span class="ruby-identifier">matriceGUI</span>[<span class="ruby-identifier">c</span>.<span class="ruby-identifier">y</span>][<span class="ruby-identifier">c</span>.<span class="ruby-identifier">x</span>].<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;erreur&quot;</span>)
         <span class="ruby-keyword">end</span>
+        <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier">sauvNiveau</span>(<span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">utilisateur</span>.<span class="ruby-identifier">nom</span>, <span class="ruby-ivar">@niveau</span>, <span class="ruby-value">0</span>)
     <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -497,11 +500,12 @@
 
           
           <div class="method-source-code" id="clickReinitialiserGrille-source">
-            <pre><span class="ruby-comment"># File src/GUI/NiveauGUI.rb, line 247</span>
+            <pre><span class="ruby-comment"># File src/GUI/NiveauGUI.rb, line 249</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clickReinitialiserGrille</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">estFini?</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>
         <span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">historique</span>.<span class="ruby-identifier">reinitialiserGrille</span>
         <span class="ruby-ivar">@grilleGUI</span>.<span class="ruby-identifier">updateGrille</span>
+        <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier">sauvNiveau</span>(<span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">utilisateur</span>.<span class="ruby-identifier">nom</span>, <span class="ruby-ivar">@niveau</span>, <span class="ruby-value">0</span>)
     <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -538,6 +542,7 @@
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">estFini?</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>
         <span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">historique</span>.<span class="ruby-identifier">retourArriere</span>
         <span class="ruby-ivar">@grilleGUI</span>.<span class="ruby-identifier">updateGrille</span>
+        <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier">sauvNiveau</span>(<span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">utilisateur</span>.<span class="ruby-identifier">nom</span>, <span class="ruby-ivar">@niveau</span>, <span class="ruby-value">0</span>)
     <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -569,11 +574,12 @@
 
           
           <div class="method-source-code" id="clickRetourAvant-source">
-            <pre><span class="ruby-comment"># File src/GUI/NiveauGUI.rb, line 236</span>
+            <pre><span class="ruby-comment"># File src/GUI/NiveauGUI.rb, line 237</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clickRetourAvant</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">estFini?</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>
         <span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">historique</span>.<span class="ruby-identifier">retourAvant</span>
         <span class="ruby-ivar">@grilleGUI</span>.<span class="ruby-identifier">updateGrille</span>
+        <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier">sauvNiveau</span>(<span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">utilisateur</span>.<span class="ruby-identifier">nom</span>, <span class="ruby-ivar">@niveau</span>, <span class="ruby-value">0</span>)
     <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -698,7 +704,7 @@
         
     <span class="ruby-comment">#Reduire la fentre</span>
     <span class="ruby-comment"># @app.fenetre.signal_connect(&#39;size_allocate&#39;){|w,e|</span>
-    <span class="ruby-comment">#     if(e.width &lt; 900 )</span>
+    <span class="ruby-comment">#     if(e.width &lt; 945 )</span>
     <span class="ruby-comment">#         m =NiveauReduitGUI.creer(@app,niveau)</span>
     <span class="ruby-comment">#         @app.fenetre.remove(self) if(@app.fenetre.child)</span>
     <span class="ruby-comment">#         @app.fenetre.child = m</span>
@@ -829,7 +835,7 @@
 
           
           <div class="method-source-code" id="popup-source">
-            <pre><span class="ruby-comment"># File src/GUI/NiveauGUI.rb, line 285</span>
+            <pre><span class="ruby-comment"># File src/GUI/NiveauGUI.rb, line 290</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">popup</span>(<span class="ruby-identifier">relative</span>, <span class="ruby-identifier">msg</span>, <span class="ruby-identifier">position</span>)
 
     <span class="ruby-identifier">pop</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Popover</span>.<span class="ruby-identifier">new</span>()
